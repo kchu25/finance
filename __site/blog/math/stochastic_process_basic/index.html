@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="/libs/katex/katex.min.css">
+     
+   <link rel="stylesheet" href="/libs/highlight/styles/github.min.css">
+   
+  <link rel="stylesheet" href="/css/franklin.css">
+<link rel="stylesheet" href="/css/hypertext.css">
+<link rel="icon" href="/assets/favicon.png">
+
+   <title>Stochastic Process Basics for Brownian Motion</title>  
+</head>
+<body>
+<header>
+  <h1 style="color:#283747">Finance</h1>
+  <nav>
+    <a href="/" class="current">Tags</a>
+  | <a href="/blog/" >Notes</a>
+  <hr/>
+  </nav>
+</header>
+
+
+<!-- Content appended here -->
+<div class="franklin-content"><h1 id="stochastic_process_basics_for_brownian_motion"><a href="#stochastic_process_basics_for_brownian_motion" class="header-anchor">Stochastic Process Basics for Brownian Motion</a></h1>
+<h2 id="foundation_random_variables_in_continuous_time"><a href="#foundation_random_variables_in_continuous_time" class="header-anchor"><ol>
+<li><p>Foundation: Random Variables in Continuous Time</p>
+</li>
+</ol>
+</a></h2>
+<p>A <strong>stochastic process</strong> is a collection of random variables indexed by time: \(\{X(t) : t \in T\}\). Think of it as a random function of time, where at each moment \(t\), \(X(t)\) is a random variable.</p>
+<p>For discrete processes you know well &#40;like random walks&#41;, we have \(X_0, X_1, X_2, \ldots\) In continuous time, we have \(X(t)\) for all \(t \in [0, \infty)\).</p>
+<h2 id="ol_start2_brownian_motion_wiener_process"><a href="#ol_start2_brownian_motion_wiener_process" class="header-anchor"><ol start="2">
+<li><p>Brownian Motion &#40;Wiener Process&#41;</p>
+</li>
+</ol>
+</a></h2>
+<p><strong>Definition:</strong> A process \(B(t)\) is Brownian motion if:</p>
+<ol>
+<li><p>\(B(0) = 0\)</p>
+</li>
+<li><p>Independent increments: \(B(t_2) - B(t_1)\) is independent of \(B(t_4) - B(t_3)\) for non-overlapping intervals</p>
+</li>
+<li><p>Stationary increments: \(B(t+s) - B(t) \sim \mathcal{N}(0, s)\) for all \(t, s > 0\)</p>
+</li>
+<li><p>Continuous paths &#40;but nowhere differentiable&#33;&#41;</p>
+</li>
+</ol>
+<p><strong>Key insight:</strong> Brownian motion is the continuous-time limit of a random walk with step size → 0 and step frequency → ∞.</p>
+<h2 id="ol_start3_the_problem_with_traditional_calculus"><a href="#ol_start3_the_problem_with_traditional_calculus" class="header-anchor"><ol start="3">
+<li><p>The Problem with Traditional Calculus</p>
+</li>
+</ol>
+</a></h2>
+<p>In normal calculus, we&#39;d write:</p>
+\[\frac{dX}{dt} = f(X, t) \implies dX = f(X, t)dt\]
+<p>But Brownian motion \(B(t)\) is <strong>nowhere differentiable</strong>, so \(dB/dt\) doesn&#39;t exist in the classical sense. We need a new framework.</p>
+<h2 id="35_why_bm_is_not_differentiable_but_we_can_still_use_db"><a href="#35_why_bm_is_not_differentiable_but_we_can_still_use_db" class="header-anchor">3.5. Why BM is Not Differentiable But We Can Still Use dB</a></h2>
+<h3 id="the_non-differentiability_proof_intuition"><a href="#the_non-differentiability_proof_intuition" class="header-anchor">The Non-Differentiability Proof &#40;Intuition&#41;</a></h3>
+<p><strong>Why BM isn&#39;t differentiable:</strong> Consider the derivative definition:</p>
+\[B'(t) = \lim_{h \to 0} \frac{B(t+h) - B(t)}{h}\]
+<p>For this limit to exist, we need \((B(t+h) - B(t))/h\) to converge as \(h \to 0\). But:</p>
+<ul>
+<li><p>\(B(t+h) - B(t) \sim \mathcal{N}(0, h)\) for any \(h > 0\)</p>
+</li>
+<li><p>So \(\frac{B(t+h) - B(t)}{h} \sim \mathcal{N}\left(0, \frac{h}{h^2}\right) = \mathcal{N}(0, 1/h)\) for any \(h > 0\)</p>
+<ul>
+<li><p><em>Note: If \(Z \sim \mathcal{N}(0, \sigma^2)\), then \(Z/c \sim \mathcal{N}(0, \sigma^2/c^2)\)</em></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>As \(h \to 0\), the variance \(1/h \to \infty\). The ratio doesn&#39;t converge; it explodes&#33; Almost surely, for any \(t\), the derivative \(B'(t)\) doesn&#39;t exist.</p>
+<p><strong>Geometric intuition:</strong> BM has infinite &quot;wiggling&quot; at every scale. Zoom in on any point, and you see more jagged variation, never smoothing out to a tangent line.</p>
+<h3 id="so_why_can_we_write_db"><a href="#so_why_can_we_write_db" class="header-anchor">So Why Can We Write dB?</a></h3>
+<p><strong>Key distinction:</strong> \(dB\) is NOT \((dB/dt) \cdot dt\). It&#39;s a fundamentally different object.</p>
+<p><strong>Is \(dB\) a differential?</strong> Not in the classical sense. In traditional calculus, differentials are related to derivatives: \(dy = f'(x)dx\) where \(f'\) exists. Here, \(dB\) is a <strong>stochastic differential</strong> - a new type of object defined through the integration theory itself, not through differentiation.</p>
+<p><strong>What dB means:</strong></p>
+\(dB = dB(t) = B(t+dt) - B(t)\)
+<p>This is an <strong>infinitesimal random increment</strong>, not a derivative times \(dt\). Think of it as:</p>
+<ul>
+<li><p><strong>\(dB\)</strong>: a random variable with distribution \(\mathcal{N}(0, dt)\)</p>
+</li>
+<li><p><strong>Not decomposable</strong> into \((dB/dt) \cdot dt\) because \(dB/dt\) doesn&#39;t exist</p>
+</li>
+<li><p>Best thought of as a &quot;random infinitesimal&quot; - a fundamental building block, not derived from anything else</p>
+</li>
+</ul>
+<h3 id="the_mathematical_framework_stochastic_integration"><a href="#the_mathematical_framework_stochastic_integration" class="header-anchor">The Mathematical Framework: Stochastic Integration</a></h3>
+<p><strong>Traditional calculus:</strong> Integration is defined via derivatives &#40;Fundamental Theorem of Calculus&#41;</p>
+<p><strong>Stochastic calculus:</strong> Integration is defined <em>directly</em> via limits of sums:</p>
+\[\int_0^T f(t)dB(t) = \lim_{n \to \infty} \sum_{i} f(t_i)(B(t_{i+1}) - B(t_i))\]
+<p>This integral is well-defined even though \(B(t)\) has no derivative&#33; We&#39;re:</p>
+<ol>
+<li><p>Partitioning the interval \([0, T]\)</p>
+</li>
+<li><p>Taking increments \(\Delta B_i = B(t_{i+1}) - B(t_i)\)</p>
+</li>
+<li><p>Summing \(f(t_i) \cdot \Delta B_i\)</p>
+</li>
+<li><p>Taking limit as partition gets finer</p>
+</li>
+</ol>
+<p><strong>Key insight:</strong> We never need derivatives. We only need:</p>
+<ul>
+<li><p>The path \(B(t)\) itself &#40;which is continuous&#41;</p>
+</li>
+<li><p>The increments \(B(t_2) - B(t_1)\) &#40;which are well-defined&#41;</p>
+</li>
+</ul>
+<h3 id="differential_notation_is_shorthand"><a href="#differential_notation_is_shorthand" class="header-anchor">Differential Notation is Shorthand</a></h3>
+<p>When we write:</p>
+\[dX = \mu \, dt + \sigma \, dB\]
+<p>We really mean the <strong>integral equation</strong>:</p>
+\[X(t) - X(0) = \int_0^t \mu(s)ds + \int_0^t \sigma(s)dB(s)\]
+<p>The differential form \(dX\) is just convenient notation for:</p>
+\[X(t+dt) - X(t) \approx \mu(t)dt + \sigma(t)dB(t)\]
+<p><strong>Analogy to discrete math:</strong> </p>
+<ul>
+<li><p>In difference equations: \(X_{n+1} - X_n = f(X_n)\)</p>
+</li>
+<li><p>We might write: \(\Delta X_n = f(X_n)\)</p>
+</li>
+<li><p>Similarly: \(dX = \mu dt + \sigma dB\) means &quot;infinitesimal increment equals...&quot;</p>
+</li>
+</ul>
+<p>We&#39;re not claiming \(dX/dt\) exists; we&#39;re describing how \(X\) increments over infinitesimal time intervals.</p>
+<h3 id="why_this_works"><a href="#why_this_works" class="header-anchor">Why This Works</a></h3>
+<p><strong>Regularity requirements:</strong></p>
+<ol>
+<li><p>\(B(t)\) is continuous &#40;can take limits&#41;</p>
+</li>
+<li><p>\(B(t)\) has bounded variation on finite intervals &#40;integration works&#41;</p>
+</li>
+<li><p>Increments are independent and Gaussian &#40;can compute expectations&#41;</p>
+</li>
+</ol>
+<p>Even without differentiability, these properties suffice to build a rigorous integration theory &#40;Itô, 1944&#41;.</p>
+<p><strong>Bottom line:</strong> </p>
+<ul>
+<li><p>\(dB/dt\) doesn&#39;t exist ✗</p>
+</li>
+<li><p>\(dB\) exists as a random infinitesimal ✓</p>
+</li>
+<li><p>\(\int f \, dB\) exists as a well-defined limit ✓</p>
+</li>
+<li><p>Differential notation \(dB\) is shorthand for integration, not differentiation</p>
+</li>
+</ul>
+<h2 id="ol_start4_stochastic_differentials_the_intuition"><a href="#ol_start4_stochastic_differentials_the_intuition" class="header-anchor"><ol start="4">
+<li><p>Stochastic Differentials: The Intuition</p>
+</li>
+</ol>
+</a></h2>
+<h3 id="the_differential_notation"><a href="#the_differential_notation" class="header-anchor">The Differential Notation</a></h3>
+<p>When we write <strong>\(dB(t)\)</strong> &#40;or \(dW(t)\)&#41;, we mean:</p>
+\[dB(t) = B(t + dt) - B(t)\]
+<p>This is an <strong>infinitesimal increment</strong> of Brownian motion. Key properties:</p>
+<ul>
+<li><p>\(\mathbb{E}[dB(t)] = 0\) &#40;zero mean&#41;</p>
+</li>
+<li><p>\(\mathbb{E}[dB(t)^2] = dt\) &#40;variance grows linearly with time&#41;</p>
+</li>
+<li><p>\(dB(t) \sim \mathcal{N}(0, dt)\)</p>
+</li>
+</ul>
+<h3 id="the_scaling_mystery"><a href="#the_scaling_mystery" class="header-anchor">The Scaling Mystery</a></h3>
+<p>Here&#39;s the non-intuitive part from regular calculus:</p>
+\[dB(t) = O(\sqrt{dt}) \quad \text{NOT } O(dt)\]
+<p>This is because variance scales with \(dt\), so standard deviation scales with \(\sqrt{dt}\).</p>
+<p>Note: </p>
+<ul>
+<li><p><strong>Linear variance growth</strong>: Even though \(dt\) is small, the <em>linearity</em> matters - it tells us how uncertainty accumulates over finite time &#40;grows as \(\sqrt{T}\), not \(T\)&#41;</p>
+</li>
+<li><p>The \(\sqrt{dt}\) scaling - why it&#39;s crucial:</p>
+<ul>
+<li><p>It makes \((dB)^2=O(dt)\) non-negligible &#40;the foundation of Itô calculus&#41;.</p>
+</li>
+<li><p>Diffusion dominates drift at small time scales</p>
+</li>
+<li><p>Random accumulation is sublinear &#40;\(\sqrt{T}\), not \(T\)&#41;</p>
+</li>
+<li><p>Forces second-order terms in the chain rule</p>
+</li>
+</ul>
+</li>
+<li><p>drunk-walking analogy: - after \(N\) random steps,    you&#39;re \(\sqrt{N}\) blocks away, not \(N\) blocks.    This captures why the \(\sqrt{t}\) scaling is fundamental to understanding random motion&#33;</p>
+</li>
+</ul>
+<p><strong>Drunk-walking analogy:</strong> After \(N\) random steps &#40;each step ±1 block with equal probability&#41;, you&#39;re typically \(\sqrt{N}\) blocks away from where you started, not \(N\) blocks away. This \(\sqrt{N}\) scaling captures the &quot;inefficiency&quot; of random exploration - you don&#39;t make linear progress because you keep randomly changing direction. The same principle applies to Brownian motion: over time \(t\), the typical displacement is \(O(\sqrt{t})\), not \(O(t)\).</p>
+<h2 id="ol_start5_stochastic_differential_equations_sdes"><a href="#ol_start5_stochastic_differential_equations_sdes" class="header-anchor"><ol start="5">
+<li><p>Stochastic Differential Equations &#40;SDEs&#41;</p>
+</li>
+</ol>
+</a></h2>
+<p>A typical SDE looks like:</p>
+\(dX(t) = \mu(X, t)dt + \sigma(X, t)dB(t)\)
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li><p><strong>\(\mu(X, t)dt\)</strong>: deterministic drift &#40;like traditional calculus&#41;</p>
+</li>
+<li><p><strong>\(\sigma(X, t)dB(t)\)</strong>: random diffusion &#40;the new part&#41;</p>
+</li>
+</ul>
+<h3 id="understanding_mu_drift_is_it_a_rate_or_percentage"><a href="#understanding_mu_drift_is_it_a_rate_or_percentage" class="header-anchor">Understanding \(\mu\) &#40;Drift&#41;: Is it a Rate or Percentage?</a></h3>
+<p><strong>Short answer:</strong> \(\mu\) is an <strong>instantaneous rate of change</strong> with units of &#91;value/time&#93;.</p>
+<p><strong>Intuitive breakdown:</strong></p>
+<ul>
+<li><p>In \(dX = \mu \, dt\), we have: \(\frac{dX}{dt} = \mu\)</p>
+</li>
+<li><p>So \(\mu\) is literally &quot;how fast \(X\) changes per unit time&quot; &#40;deterministically&#41;</p>
+</li>
+<li><p>Units: If \(X\) is dollars and \(t\) is years, then \(\mu\) has units dollars/year</p>
+</li>
+</ul>
+<p><strong>When is \(\mu\) a percentage?</strong> In finance, for <strong>geometric Brownian motion</strong>:</p>
+\(dS = \mu S \, dt + \sigma S \, dB\)
+<p>Here:</p>
+<ul>
+<li><p>\(\mu\) has units &#91;1/time&#93; - it&#39;s a <strong>rate of return</strong> &#40;e.g., 0.05/year &#61; 5&#37; per year&#41;</p>
+</li>
+<li><p>The equation says: &quot;stock price changes by \(\mu\) percent per unit time &#40;on average&#41;&quot;</p>
+</li>
+<li><p>Dividing both sides by \(S\): \(\frac{dS}{S} = \mu \, dt + \sigma \, dB\) ← log-return&#33;</p>
+</li>
+</ul>
+<p><strong>Key distinction:</strong></p>
+<ul>
+<li><p><strong>Arithmetic BM:</strong> \(dX = \mu \, dt + \sigma \, dB\) → \(\mu\) is absolute rate &#40;e.g., &#43;&#36;5/year&#41;</p>
+</li>
+<li><p><strong>Geometric BM:</strong> \(dX = \mu X \, dt + \sigma X \, dB\) → \(\mu\) is relative rate &#40;e.g., &#43;5&#37;/year&#41;</p>
+</li>
+</ul>
+<p><strong>Drift coefficient</strong> \(\mu\) versus <strong>diffusion coefficient</strong> \(\sigma\):</p>
+<ul>
+<li><p>\(\mu\) has units <a href="or &#91;1/time&#93; if relative">value/time</a></p>
+</li>
+<li><p>\(\sigma\) has units <a href="or &#91;1/\(\sqrt{\text{time}}\)&#93; if relative">value/\(\sqrt{\text{time}}\)</a></p>
+</li>
+<li><p>Over time \(\Delta t\): drift contribution is \(O(\Delta t)\), diffusion is \(O(\sqrt{\Delta t})\)</p>
+</li>
+</ul>
+<p><strong>Discrete approximation</strong> &#40;for intuition&#41;:</p>
+\[X(t + \Delta t) - X(t) \approx \mu(X, t)\Delta t + \sigma(X, t)\sqrt{\Delta t} \cdot Z\]
+<p>where \(Z \sim \mathcal{N}(0, 1)\).</p>
+<h2 id="ol_start6_itô_calculus_the_non-standard_rules"><a href="#ol_start6_itô_calculus_the_non-standard_rules" class="header-anchor"><ol start="6">
+<li><p>Itô Calculus: The Non-Standard Rules</p>
+</li>
+</ol>
+</a></h2>
+<h3 id="why_normal_calculus_fails"><a href="#why_normal_calculus_fails" class="header-anchor">Why Normal Calculus Fails</a></h3>
+<p>In regular calculus: \((dt)^2 = 0\) &#40;negligible&#41;</p>
+<p>In stochastic calculus:</p>
+\[(dB)^2 = dt \quad \text{(NOT negligible!)}\]
+\[dB \cdot dt = 0\]
+\[(dt)^2 = 0\]
+<p>This is because \(dB = O(\sqrt{dt})\), so \((dB)^2 = O(dt)\).</p>
+<h3 id="itôs_lemma_chain_rule_for_sdes"><a href="#itôs_lemma_chain_rule_for_sdes" class="header-anchor">Itô&#39;s Lemma &#40;Chain Rule for SDEs&#41;</a></h3>
+<p>If \(X\) satisfies: \(dX = \mu dt + \sigma dB\)</p>
+<p>And \(Y = f(X, t)\), then:</p>
+\[dY = \left(\frac{\partial f}{\partial t} + \mu \frac{\partial f}{\partial x} + \frac{1}{2}\sigma^2 \frac{\partial^2 f}{\partial x^2}\right)dt + \sigma \frac{\partial f}{\partial x} dB\]
+<p><strong>Notice:</strong> The extra term \(\frac{1}{2}\sigma^2 \frac{\partial^2 f}{\partial x^2}\) appears because \((dB)^2 = dt \neq 0\).</p>
+<p><strong>Compare to deterministic calculus:</strong></p>
+\[\frac{dY}{dt} = \frac{\partial f}{\partial t} + \frac{dX}{dt}\frac{\partial f}{\partial x} \quad \text{[no second derivative term]}\]
+<h2 id="ol_start7_integration_two_interpretations"><a href="#ol_start7_integration_two_interpretations" class="header-anchor"><ol start="7">
+<li><p>Integration: Two Interpretations</p>
+</li>
+</ol>
+</a></h2>
+<p>For the integral \(\int \sigma(X)dB\), there are two conventions:</p>
+<p><strong>Itô integral</strong> &#40;most common&#41;:</p>
+<ul>
+<li><p>\(\sigma\) evaluated at the left endpoint of each interval</p>
+</li>
+<li><p>Results in a martingale &#40;\(\mathbb{E}[X(t) | X(s)] = X(s)\)&#41;</p>
+</li>
+<li><p>Non-anticipating &#40;causal&#41;</p>
+</li>
+</ul>
+<p><strong>Stratonovich integral</strong>:</p>
+<ul>
+<li><p>\(\sigma\) evaluated at the midpoint</p>
+</li>
+<li><p>Obeys ordinary chain rule</p>
+</li>
+<li><p>Written as \(\int \sigma(X) \circ dB\)</p>
+</li>
+</ul>
+<p>For computer science applications &#40;simulations, filtering&#41;, Itô is standard.</p>
+<h2 id="ol_start8_computational_perspective"><a href="#ol_start8_computational_perspective" class="header-anchor"><ol start="8">
+<li><p>Computational Perspective</p>
+</li>
+</ol>
+</a></h2>
+<p><strong>Simulating</strong> \(dX = \mu dt + \sigma dB\) from time \(t\) to \(t + \Delta t\):</p>
+<pre><code class="language-python">X_new &#61; X_old &#43; mu * Delta_t &#43; sigma * sqrt&#40;Delta_t&#41; * randn&#40;&#41;</code></pre>
+<p>This is the <strong>Euler-Maruyama method</strong>, the stochastic analog of Euler&#39;s method.</p>
+<h2 id="ol_start9_key_takeaways"><a href="#ol_start9_key_takeaways" class="header-anchor"><ol start="9">
+<li><p>Key Takeaways</p>
+</li>
+</ol>
+</a></h2>
+<ol>
+<li><p><strong>\(dB\) is not a traditional differential</strong> – it&#39;s an infinitesimal random variable</p>
+</li>
+<li><p><strong>\((dB)^2 = dt\)</strong> – second-order terms matter in stochastic calculus</p>
+</li>
+<li><p><strong>Brownian motion has \(\sqrt{t}\) scaling</strong> – this fundamentally changes calculus rules</p>
+</li>
+<li><p><strong>SDEs encode two types of dynamics</strong>: deterministic drift &#43; random diffusion</p>
+</li>
+<li><p><strong>Itô&#39;s lemma adds a correction term</strong> involving the second derivative due to \((dB)^2\)</p>
+</li>
+</ol>
+<h2 id="ol_start10_connection_to_your_background"><a href="#ol_start10_connection_to_your_background" class="header-anchor"><ol start="10">
+<li><p>Connection to Your Background</p>
+</li>
+</ol>
+</a></h2>
+<ul>
+<li><p><strong>Discrete math:</strong> Think of Brownian motion as the limit of a random walk where step size → 0 at rate \(\sqrt{\Delta t}\)</p>
+</li>
+<li><p><strong>Optimization:</strong> SDEs appear in stochastic gradient descent &#40;Langevin dynamics&#41;, simulated annealing, and policy gradient methods</p>
+</li>
+<li><p><strong>CS applications:</strong> Kalman filtering, options pricing, reinforcement learning, generative models &#40;diffusion models&#33;&#41;</p>
+</li>
+</ul>
+<div class="page-foot">
+    Contact me by <a href="mailto:skchu@wustl.edu">E-mail</a> | <a href="https://github.com/kchu25">Github</a> | <a href="https://www.linkedin.com/in/kchu1/">Linkedin</a>
+    <br>
+    This work is licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.  Last modified: October 06, 2025.
+    <br>
+    Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia language</a>.
+</div>
+</div><!-- CONTENT ENDS HERE -->
+    
+        <script src="/libs/katex/katex.min.js"></script>
+<script src="/libs/katex/contrib/auto-render.min.js"></script>
+<script>renderMathInElement(document.body)</script>
+
+    
+    
+        <script src="/libs/highlight/highlight.min.js"></script>
+<script>hljs.highlightAll();hljs.configure({tabReplace: '    '});</script>
+
+    
+  </body>
+</html>

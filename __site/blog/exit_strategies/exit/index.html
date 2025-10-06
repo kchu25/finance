@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="/libs/katex/katex.min.css">
+     
+  
+  <link rel="stylesheet" href="/css/franklin.css">
+<link rel="stylesheet" href="/css/hypertext.css">
+<link rel="icon" href="/assets/favicon.png">
+
+   <title>Mathematical Framework for Mean Reversion Exit Strategies</title>  
+</head>
+<body>
+<header>
+  <h1 style="color:#283747">Finance</h1>
+  <nav>
+    <a href="/" class="current">Tags</a>
+  | <a href="/blog/" >Notes</a>
+  <hr/>
+  </nav>
+</header>
+
+
+<!-- Content appended here -->
+<div class="franklin-content"><h1 id="mathematical_framework_for_mean_reversion_exit_strategies"><a href="#mathematical_framework_for_mean_reversion_exit_strategies" class="header-anchor">Mathematical Framework for Mean Reversion Exit Strategies</a></h1>
+<h2 id="expected_value_framework"><a href="#expected_value_framework" class="header-anchor"><ol>
+<li><p>Expected Value Framework</p>
+</li>
+</ol>
+</a></h2>
+<p><strong>The Big Idea:</strong> Your goal is simple - maximize the average profit across all the different ways the trade could play out.</p>
+\[E[\text{Total Profit}] = \sum_{i} P(\text{scenario}_i) \times \text{Profit}_i\]
+<p><strong>Concrete Example:</strong> Say you enter a mean reversion trade when a stock drops 2&#37; below its average. Historically, you know:</p>
+<ul>
+<li><p>40&#37; of the time it bounces to &#43;1&#37; profit → contributes \(0.40 \times 1\% = 0.40\%\)</p>
+</li>
+<li><p>30&#37; of the time it only reaches &#43;0.5&#37; → contributes \(0.30 \times 0.5\% = 0.15\%\)</p>
+</li>
+<li><p>30&#37; of the time it drops further and you lose 1&#37; → contributes \(0.30 \times (-1\%) = -0.30\%\)</p>
+</li>
+</ul>
+<p><strong>Expected profit:</strong> \(0.40\% + 0.15\% - 0.30\% = 0.25\%\) per trade</p>
+<h2 id="ol_start2_exit_strategy_comparison"><a href="#ol_start2_exit_strategy_comparison" class="header-anchor"><ol start="2">
+<li><p>Exit Strategy Comparison</p>
+</li>
+</ol>
+</a></h2>
+<p>Let \(P_0\) be where you bought and \(P_t\) be the current price.</p>
+<h3 id="single_exit_strategy"><a href="#single_exit_strategy" class="header-anchor">Single Exit Strategy</a></h3>
+<p><strong>The Idea:</strong> Pick one target, one stop loss. All or nothing.</p>
+\[E[\pi] = P(\text{hit target}) \times r_{\text{target}} - P(\text{hit stop}) \times r_{\text{stop}}\]
+<p><strong>Example:</strong> You always exit at &#43;1.5&#37; or -1&#37; stop loss.</p>
+<ul>
+<li><p>60&#37; chance of hitting &#43;1.5&#37;</p>
+</li>
+<li><p>40&#37; chance of hitting -1&#37;</p>
+</li>
+</ul>
+\[E[\pi] = 0.60 \times 1.5\% - 0.40 \times 1\% = 0.90\% - 0.40\% = 0.50\%\]
+<h3 id="scaled_exit_strategy"><a href="#scaled_exit_strategy" class="header-anchor">Scaled Exit Strategy</a></h3>
+<p><strong>The Idea:</strong> Take money off the table gradually. Lock in some profit early, let some ride for bigger gains.</p>
+\[E[\pi] = \frac{1}{3}\sum_{i=1}^{3} T_i \cdot P(T_i \mid T_1, \ldots, T_{i-1})\]
+<p><strong>Example:</strong> Sell 1/3 at each level: &#43;0.5&#37;, &#43;1&#37;, &#43;1.5&#37;</p>
+<p>From historical data:</p>
+<ul>
+<li><p>\(P(\text{reach } +0.5\%) = 0.80\) &#40;80&#37; of trades get here&#41;</p>
+</li>
+<li><p>\(P(\text{reach } +1\% \mid \text{reached } +0.5\%) = 0.70\) &#40;of those, 70&#37; continue&#41;</p>
+</li>
+<li><p>\(P(\text{reach } +1.5\% \mid \text{reached } +1\%) = 0.50\) &#40;of those, 50&#37; continue&#41;</p>
+</li>
+</ul>
+\[\begin{align}
+E[\pi] &= \frac{1}{3}[0.5\% \times 0.80] + \frac{1}{3}[1.0\% \times (0.80 \times 0.70)] + \frac{1}{3}[1.5\% \times (0.80 \times 0.70 \times 0.50)] \\
+&= \frac{1}{3}[0.40\%] + \frac{1}{3}[0.56\%] + \frac{1}{3}[0.42\%] \\
+&= 0.133\% + 0.187\% + 0.140\% = 0.46\%
+\end{align}\]
+<p>Notice this gives similar expected return to single exit, but with much less volatility&#33;</p>
+<h2 id="ol_start3_optimal_stopping_problem"><a href="#ol_start3_optimal_stopping_problem" class="header-anchor"><ol start="3">
+<li><p>Optimal Stopping Problem</p>
+</li>
+</ol>
+</a></h2>
+<p><strong>The Big Idea:</strong> At every moment, you&#39;re asking: &quot;Should I take profits now or wait for more?&quot; This is a classic problem in math.</p>
+\[V(P_t) = \max\left\{P_t - P_0, \quad E[V(P_{t+1}) \mid P_t] - c\right\}\]
+<p>Keep holding when:</p>
+\[E[\text{Profit} \mid \text{hold}] > E[\text{Profit} \mid \text{exit now}]\]
+<p><strong>Example:</strong> You&#39;re up 0.8&#37; right now. Should you sell?</p>
+<p>Current profit if you exit: <strong>0.8&#37;</strong></p>
+<p>Expected profit if you hold one more minute:</p>
+<ul>
+<li><p>60&#37; chance price goes to 1.0&#37; → profit &#61; 1.0&#37;</p>
+</li>
+<li><p>40&#37; chance price drops to 0.5&#37; → profit &#61; 0.5&#37;</p>
+</li>
+<li><p>Expected value &#61; \(0.60 \times 1.0\% + 0.40 \times 0.5\% = 0.80\%\)</p>
+</li>
+</ul>
+<p>They&#39;re equal&#33; But if there&#39;s any holding cost \(c\) &#40;commissions, slippage risk&#41;, you should exit now.</p>
+<h2 id="ol_start4_risk-adjusted_performance"><a href="#ol_start4_risk-adjusted_performance" class="header-anchor"><ol start="4">
+<li><p>Risk-Adjusted Performance</p>
+</li>
+</ol>
+</a></h2>
+<h3 id="sharpe_ratio"><a href="#sharpe_ratio" class="header-anchor">Sharpe Ratio</a></h3>
+<p><strong>The Idea:</strong> Making money is great, but how bumpy is the ride? Sharpe ratio measures profit per unit of risk.</p>
+\[\text{Sharpe} = \frac{E[R] - R_f}{\sigma(R)}\]
+<p><strong>Example:</strong> Compare two strategies over 100 trades:</p>
+<p><strong>Strategy A &#40;single exit&#41;:</strong></p>
+<ul>
+<li><p>Average profit: 0.50&#37;</p>
+</li>
+<li><p>Standard deviation: 1.2&#37;</p>
+</li>
+<li><p>Sharpe &#61; \(0.50\% / 1.2\% = 0.42\)</p>
+</li>
+</ul>
+<p><strong>Strategy B &#40;scaled exit&#41;:</strong></p>
+<ul>
+<li><p>Average profit: 0.46&#37;</p>
+</li>
+<li><p>Standard deviation: 0.8&#37;</p>
+</li>
+<li><p>Sharpe &#61; \(0.46\% / 0.8\% = 0.58\) ✓ <strong>Better&#33;</strong></p>
+</li>
+</ul>
+<p>Strategy B makes slightly less on average, but it&#39;s much smoother, so it wins on risk-adjusted basis.</p>
+<h3 id="utility_function"><a href="#utility_function" class="header-anchor">Utility Function</a></h3>
+<p><strong>The Idea:</strong> How much do you hate losing? The parameter \(\lambda\) measures your fear.</p>
+\[U = E[\pi] - \frac{\lambda}{2}\text{Var}[\pi]\]
+<p><strong>Example:</strong> You&#39;re choosing between two strategies:</p>
+<p><strong>Strategy A:</strong></p>
+<ul>
+<li><p>\(E[\pi] = 1.0\%\)</p>
+</li>
+<li><p>\(\text{Var}[\pi] = 4\%^2 = 0.0016\)</p>
+</li>
+</ul>
+<p><strong>Strategy B:</strong></p>
+<ul>
+<li><p>\(E[\pi] = 0.8\%\)</p>
+</li>
+<li><p>\(\text{Var}[\pi] = 1\%^2 = 0.0001\)</p>
+</li>
+</ul>
+<p>If you&#39;re moderately risk-averse with \(\lambda = 2\):</p>
+\[\begin{align}
+U_A &= 1.0\% - \frac{2}{2} \times 0.0016 = 1.0\% - 0.16\% = 0.84\% \\
+U_B &= 0.8\% - \frac{2}{2} \times 0.0001 = 0.8\% - 0.01\% = 0.79\%
+\end{align}\]
+<p>Strategy A still wins, but it&#39;s close. If \(\lambda = 4\) &#40;very risk-averse&#41;, then B wins.</p>
+<h2 id="ol_start5_kelly_criterion_for_position_sizing"><a href="#ol_start5_kelly_criterion_for_position_sizing" class="header-anchor"><ol start="5">
+<li><p>Kelly Criterion for Position Sizing</p>
+</li>
+</ol>
+</a></h2>
+<p><strong>The Idea:</strong> How much of your bankroll should you risk? Kelly tells you the mathematically optimal amount.</p>
+\[f^* = \frac{p \cdot b - q}{b}\]
+<p>where \(p\) &#61; win probability, \(q\) &#61; loss probability, \(b\) &#61; win/loss ratio</p>
+<p><strong>Example:</strong> Your mean reversion strategy:</p>
+<ul>
+<li><p>Wins 65&#37; of the time &#40;\(p = 0.65\), \(q = 0.35\)&#41;</p>
+</li>
+<li><p>Average win is 1.5&#37;, average loss is 1&#37; → \(b = 1.5\)</p>
+</li>
+</ul>
+\[f^* = \frac{0.65 \times 1.5 - 0.35}{1.5} = \frac{0.975 - 0.35}{1.5} = \frac{0.625}{1.5} = 0.417\]
+<p><strong>Bet 41.7&#37; of your capital on each trade.</strong></p>
+<p><strong>Connection to Exits:</strong> As the stock reverts to the mean, your edge shrinks &#40;less room to run&#41;. Kelly says reduce exposure proportionally → this mathematically justifies scaling out&#33;</p>
+<h2 id="ol_start6_conditional_probability_framework"><a href="#ol_start6_conditional_probability_framework" class="header-anchor"><ol start="6">
+<li><p>Conditional Probability Framework</p>
+</li>
+</ol>
+</a></h2>
+<p><strong>The Idea:</strong> Use your historical data to estimate: &quot;If I&#39;ve gotten this far, what are the odds I get further?&quot;</p>
+\[\begin{align}
+P(\text{reach } +0.5\% \mid \text{entry}) &= p_1 \\
+P(\text{reach } +1.0\% \mid \text{reached } +0.5\%) &= p_2 \\
+P(\text{reach } +1.5\% \mid \text{reached } +1.0\%) &= p_3
+\end{align}\]
+<p><strong>Real Example from Backtest:</strong> You analyze 200 mean reversion trades:</p>
+<ul>
+<li><p>160 reached &#43;0.5&#37; → \(p_1 = 160/200 = 0.80\)</p>
+</li>
+<li><p>Of those 160, 100 reached &#43;1.0&#37; → \(p_2 = 100/160 = 0.625\)</p>
+</li>
+<li><p>Of those 100, 40 reached &#43;1.5&#37; → \(p_3 = 40/100 = 0.40\)</p>
+</li>
+</ul>
+<p>Expected profit for 1/3 position at each level:</p>
+\[E[\pi] = \frac{1}{3}(0.5\% \times 0.80) + \frac{1}{3}(1.0\% \times 0.80 \times 0.625) + \frac{1}{3}(1.5\% \times 0.80 \times 0.625 \times 0.40)\]
+\[= \frac{1}{3}(0.40\%) + \frac{1}{3}(0.50\%) + \frac{1}{3}(0.30\%) = 0.40\%\]
+<h2 id="ol_start7_monte_carlo_optimization"><a href="#ol_start7_monte_carlo_optimization" class="header-anchor"><ol start="7">
+<li><p>Monte Carlo Optimization</p>
+</li>
+</ol>
+</a></h2>
+<p><strong>The Idea:</strong> Can&#39;t solve it analytically? Simulate it 10,000 times and see which strategy wins&#33;</p>
+\[\begin{align}
+\mu &= \frac{1}{N}\sum_{i=1}^{N} \pi_i \quad \text{(mean profit)} \\
+\sigma^2 &= \frac{1}{N}\sum_{i=1}^{N} (\pi_i - \mu)^2 \quad \text{(variance)} \\
+\text{Sharpe} &= \frac{\mu}{\sigma}
+\end{align}\]
+<p><strong>Example Simulation Results &#40;10,000 trades each&#41;:</strong></p>
+<table><tr><th align="right">Strategy</th><th align="right">Mean Profit</th><th align="right">Std Dev</th><th align="right">Sharpe</th><th align="right">Median Profit</th></tr><tr><td align="right">Single Exit &#40;1.5&#37;&#41;</td><td align="right">0.52&#37;</td><td align="right">1.8&#37;</td><td align="right">0.29</td><td align="right">0.30&#37;</td></tr><tr><td align="right">Scaled &#40;0.5/1.0/1.5&#37;&#41;</td><td align="right">0.48&#37;</td><td align="right">1.1&#37;</td><td align="right"><strong>0.44</strong></td><td align="right"><strong>0.45&#37;</strong></td></tr><tr><td align="right">Trailing Stop</td><td align="right">0.55&#37;</td><td align="right">2.2&#37;</td><td align="right">0.25</td><td align="right">0.20&#37;</td></tr></table>
+<p><strong>Winner:</strong> Scaled exit has the best Sharpe and best median &#40;it&#39;s more consistent&#41;.</p>
+<p>Choose strategy that maximizes:</p>
+\[\arg\max_{\text{strategy}} \left\{\text{Sharpe ratio}, \quad \text{Median}[\pi]\right\}\]
+<h2 id="key_mathematical_insight"><a href="#key_mathematical_insight" class="header-anchor">Key Mathematical Insight</a></h2>
+<p>Scaled exits dominate because of the <strong>variance reduction effect</strong>:</p>
+\[\text{Var}\left[\frac{1}{3}X_1 + \frac{1}{3}X_2 + \frac{1}{3}X_3\right] < \text{Var}[X_3]\]
+<p>Even though \(E[X_3]\) might be highest &#40;waiting for the biggest target&#41;, the variance kills your Sharpe ratio. By taking partial profits, you:</p>
+<ol>
+<li><p><strong>Reduce \(\text{Var}[\pi]\)</strong> → smoother equity curve</p>
+</li>
+<li><p><strong>Maintain exposure</strong> to tail events → don&#39;t miss the big moves</p>
+</li>
+<li><p><strong>Achieve higher Sharpe</strong> → better compounding long-term</p>
+</li>
+</ol>
+<div class="page-foot">
+    Contact me by <a href="mailto:skchu@wustl.edu">E-mail</a> | <a href="https://github.com/kchu25">Github</a> | <a href="https://www.linkedin.com/in/kchu1/">Linkedin</a>
+    <br>
+    This work is licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.  Last modified: October 06, 2025.
+    <br>
+    Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia language</a>.
+</div>
+</div><!-- CONTENT ENDS HERE -->
+    
+        <script src="/libs/katex/katex.min.js"></script>
+<script src="/libs/katex/contrib/auto-render.min.js"></script>
+<script>renderMathInElement(document.body)</script>
+
+    
+    
+  </body>
+</html>

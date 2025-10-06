@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="/libs/katex/katex.min.css">
+     
+   <link rel="stylesheet" href="/libs/highlight/styles/github.min.css">
+   
+  <link rel="stylesheet" href="/css/franklin.css">
+<link rel="stylesheet" href="/css/hypertext.css">
+<link rel="icon" href="/assets/favicon.png">
+
+   <title>Optimal Stopping with Log Prices for Mean Reversion</title>  
+</head>
+<body>
+<header>
+  <h1 style="color:#283747">Finance</h1>
+  <nav>
+    <a href="/" class="current">Tags</a>
+  | <a href="/blog/" >Notes</a>
+  <hr/>
+  </nav>
+</header>
+
+
+<!-- Content appended here -->
+<div class="franklin-content"><h1 id="optimal_stopping_with_log_prices_for_mean_reversion"><a href="#optimal_stopping_with_log_prices_for_mean_reversion" class="header-anchor">Optimal Stopping with Log Prices for Mean Reversion</a></h1>
+<h2 id="why_log_prices"><a href="#why_log_prices" class="header-anchor">Why Log Prices?</a></h2>
+<p><strong>The Problem:</strong> Raw prices don&#39;t normalize for price level. A &#36;1 move means different things for a &#36;10 stock vs a &#36;1000 stock.</p>
+<p><strong>The Solution:</strong> Work in log space where returns are additive and symmetric.</p>
+\[r_{\log} = \ln\left(\frac{P_t}{P_0}\right)\]
+<p><strong>Key Properties:</strong></p>
+<ul>
+<li><p><strong>Additive:</strong> \(\ln(P_t/P_0) = \ln P_t - \ln P_0\)</p>
+</li>
+<li><p><strong>Symmetric:</strong> A 10\&#37; gain and 10\&#37; loss have equal magnitude in log space</p>
+</li>
+<li><p><strong>Stationary:</strong> Statistical properties don&#39;t depend on price level</p>
+</li>
+</ul>
+<h2 id="mean_reversion_in_log_space"><a href="#mean_reversion_in_log_space" class="header-anchor">Mean Reversion in Log Space</a></h2>
+<p>Mean reversion is naturally modeled as an <strong>Ornstein-Uhlenbeck &#40;OU&#41; process</strong> in log prices:</p>
+\[d(\ln P_t) = \theta(\mu - \ln P_t)dt + \sigma dW_t\]
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><p>\(\theta\) &#61; mean reversion speed &#40;how fast it reverts&#41;</p>
+</li>
+<li><p>\(\mu\) &#61; long-run equilibrium level &#40;log price&#41;</p>
+</li>
+<li><p>\(\sigma\) &#61; volatility</p>
+</li>
+<li><p>\(W_t\) &#61; Brownian motion</p>
+</li>
+</ul>
+<p><strong>Intuition:</strong> When \(\ln P_t < \mu\) &#40;price below average&#41;, the drift is positive and pulls it back up. When \(\ln P_t > \mu\), drift is negative.</p>
+<p><strong>Discrete-time approximation:</strong></p>
+\[\ln P_{t+\Delta t} = \ln P_t + \theta(\mu - \ln P_t)\Delta t + \sigma\sqrt{\Delta t} \cdot \epsilon\]
+<p>where \(\epsilon \sim N(0,1)\).</p>
+<h2 id="optimal_stopping_in_log_space"><a href="#optimal_stopping_in_log_space" class="header-anchor">Optimal Stopping in Log Space</a></h2>
+<p>The value function becomes:</p>
+\[V(\ln P_t) = \max\left\{\ln P_t - \ln P_0, \quad E[V(\ln P_{t+1}) \mid \ln P_t] - c\right\}\]
+<p><strong>Decision rule:</strong> Exit when current profit exceeds expected future profit &#40;accounting for holding costs&#41;.</p>
+\[\text{Exit if: } \quad \ln P_t - \ln P_0 \geq E[V(\ln P_{t+1}) \mid \ln P_t] - c\]
+<p><strong>Why this works better:</strong></p>
+<ol>
+<li><p>Mean reversion dynamics are <strong>linear</strong> in log space</p>
+</li>
+<li><p>Conditional expectations are easy to compute from OU process</p>
+</li>
+<li><p>Probabilities are <strong>stationary</strong> &#40;don&#39;t depend on price level&#41;</p>
+</li>
+</ol>
+<h2 id="concrete_example"><a href="#concrete_example" class="header-anchor">Concrete Example</a></h2>
+<p><strong>Setup:</strong></p>
+<ul>
+<li><p>Stock normally trades at \(\ln P = 4.605\) &#40;\(e^{4.605} ≈ \$100\)&#41;</p>
+</li>
+<li><p>Currently at \(\ln P = 4.500\) &#40;\(e^{4.500} ≈ \$90\)&#41; — oversold&#33;</p>
+</li>
+<li><p>Mean reversion speed: \(\theta = 2.0\) per hour</p>
+</li>
+<li><p>Volatility: \(\sigma = 0.15\) per hour</p>
+</li>
+<li><p>Time step: \(\Delta t = 0.1\) hours &#40;6 minutes&#41;</p>
+</li>
+</ul>
+<p><strong>Expected log price in 6 minutes:</strong></p>
+\[E[\ln P_{t+0.1}] = 4.500 + 2.0 \times (4.605 - 4.500) \times 0.1 = 4.500 + 0.021 = 4.521\]
+<p>In price terms: \(e^{4.521} ≈ \$91.91\)</p>
+<p><strong>At current position \(\ln P = 4.55\) &#40;\(\approx \$94.63\)&#41;:</strong></p>
+<p>Current profit: \(4.55 - 4.50 = 0.05\) log points \(\approx 5.13\%\)</p>
+<p>Expected profit if holding another 6 minutes:</p>
+\[E[\ln P_{t+0.1}] = 4.55 + 2.0 \times (4.605 - 4.55) \times 0.1 = 4.561\]
+<p>Expected profit: \(4.561 - 4.50 = 0.061\) log points \(\approx 6.29\%\)</p>
+<p><strong>Decision:</strong> If holding cost \(c < 0.011\) &#40;≈1.1\&#37;&#41;, keep holding&#33;</p>
+<h2 id="symmetry_correction_example"><a href="#symmetry_correction_example" class="header-anchor">Symmetry Correction Example</a></h2>
+<p><strong>Common mistake:</strong> Setting symmetric percentage stops/targets in price space.</p>
+<p>Stock at &#36;100, trader sets:</p>
+<ul>
+<li><p>Target: &#36;110 &#40;&#43;10\&#37;&#41;</p>
+</li>
+<li><p>Stop: &#36;90 &#40;−10\&#37;&#41;</p>
+</li>
+</ul>
+<p><strong>In log space:</strong></p>
+<ul>
+<li><p>Target: \(\ln(110/100) = 0.0953\)</p>
+</li>
+<li><p>Stop: \(\ln(90/100) = -0.1054\)</p>
+</li>
+</ul>
+<p><strong>Asymmetric&#33;</strong> You&#39;re risking 10.54\&#37; to gain 9.53\&#37;.</p>
+<p><strong>Corrected symmetric setup:</strong></p>
+<ul>
+<li><p>Target: \(\ln(100) + 0.10 = 4.705 \Rightarrow P = \$110.52\)</p>
+</li>
+<li><p>Stop: \(\ln(100) - 0.10 = 4.505 \Rightarrow P = \$90.48\)</p>
+</li>
+</ul>
+<p>Now risk/reward is truly balanced in log space.</p>
+<h2 id="julia_implementation"><a href="#julia_implementation" class="header-anchor">Julia Implementation</a></h2>
+<h3 id="estimating_ou_process_parameters"><a href="#estimating_ou_process_parameters" class="header-anchor">Estimating OU Process Parameters</a></h3>
+<pre><code class="language-julia">using Statistics, LinearAlgebra
+
+function estimate_ou_parameters&#40;log_prices::Vector&#123;Float64&#125;, Δt::Float64&#41;
+    &quot;&quot;&quot;
+    Estimate θ, μ, σ from historical log price data
+    Using discrete-time regression: Δ&#40;log P&#41; &#61; θ&#40;μ - log P_t&#41;Δt &#43; ε
+    &quot;&quot;&quot;
+    n &#61; length&#40;log_prices&#41; - 1
+    
+    # Create regression variables
+    X &#61; hcat&#40;ones&#40;n&#41;, log_prices&#91;1:end-1&#93;&#41;  # &#91;1, log P_t&#93;
+    y &#61; diff&#40;log_prices&#41;  # Δ&#40;log P&#41;
+    
+    # OLS regression: y &#61; β₀ &#43; β₁*log_P_t &#43; ε
+    β &#61; &#40;X&#39; * X&#41; \ &#40;X&#39; * y&#41;
+    
+    # Extract parameters
+    # y &#61; θμΔt - θΔt*log_P_t &#43; ε
+    θ &#61; -β&#91;2&#93; / Δt
+    μ &#61; -β&#91;1&#93; / β&#91;2&#93;
+    
+    # Estimate volatility from residuals
+    residuals &#61; y - X * β
+    σ &#61; std&#40;residuals&#41; / sqrt&#40;Δt&#41;
+    
+    return θ, μ, σ
+end
+
+# Example usage
+log_prices &#61; &#91;4.60, 4.58, 4.56, 4.55, 4.54, 4.53, 4.52, 4.50&#93;
+Δt &#61; 1/60  # 1 minute intervals
+
+θ, μ, σ &#61; estimate_ou_parameters&#40;log_prices, Δt&#41;
+println&#40;&quot;θ &#40;reversion speed&#41;: &#36;&#40;round&#40;θ, digits&#61;3&#41;&#41;&quot;&#41;
+println&#40;&quot;μ &#40;long-run mean&#41;: &#36;&#40;round&#40;μ, digits&#61;3&#41;&#41;&quot;&#41;
+println&#40;&quot;σ &#40;volatility&#41;: &#36;&#40;round&#40;σ, digits&#61;3&#41;&#41;&quot;&#41;</code></pre>
+<h3 id="optimal_stopping_decision"><a href="#optimal_stopping_decision" class="header-anchor">Optimal Stopping Decision</a></h3>
+<pre><code class="language-julia">function expected_log_price&#40;log_P_current::Float64, θ::Float64, 
+                           μ::Float64, Δt::Float64&#41;
+    &quot;&quot;&quot;
+    Expected log price after Δt under OU process
+    E&#91;ln P_&#123;t&#43;Δt&#125; | ln P_t&#93; &#61; ln P_t &#43; θ&#40;μ - ln P_t&#41;Δt
+    &quot;&quot;&quot;
+    return log_P_current &#43; θ * &#40;μ - log_P_current&#41; * Δt
+end
+
+function should_exit&#40;log_entry::Float64, log_current::Float64, 
+                    θ::Float64, μ::Float64, Δt::Float64, 
+                    holding_cost::Float64&#41;
+    &quot;&quot;&quot;
+    Optimal stopping decision in log space
+    Exit if current profit ≥ expected future profit - costs
+    &quot;&quot;&quot;
+    # Current profit in log space
+    current_profit &#61; log_current - log_entry
+    
+    # Expected log price after Δt
+    log_expected &#61; expected_log_price&#40;log_current, θ, μ, Δt&#41;
+    expected_profit &#61; log_expected - log_entry
+    
+    # Exit if holding is not worth the cost
+    return current_profit &gt;&#61; expected_profit - holding_cost
+end
+
+# Example: Decision at different price levels
+log_entry &#61; 4.50  # Entered at &#36;90
+θ, μ &#61; 2.0, 4.605
+Δt &#61; 0.1  # 6 minutes
+holding_cost &#61; 0.001  # 0.1&#37; cost
+
+for log_P in 4.52:0.01:4.62
+    P &#61; exp&#40;log_P&#41;
+    exit_decision &#61; should_exit&#40;log_entry, log_P, θ, μ, Δt, holding_cost&#41;
+    profit_pct &#61; 100 * &#40;log_P - log_entry&#41;
+    
+    println&#40;&quot;Price: \&#36;&#36;&#40;round&#40;P, digits&#61;2&#41;&#41;, &quot; *
+            &quot;Profit: &#36;&#40;round&#40;profit_pct, digits&#61;2&#41;&#41;&#37;, &quot; *
+            &quot;Exit: &#36;exit_decision&quot;&#41;
+end</code></pre>
+<h3 id="monte_carlo_simulation"><a href="#monte_carlo_simulation" class="header-anchor">Monte Carlo Simulation</a></h3>
+<pre><code class="language-julia">using Random, Distributions
+
+function simulate_ou_path&#40;log_P0::Float64, θ::Float64, μ::Float64, 
+                         σ::Float64, Δt::Float64, n_steps::Int&#41;
+    &quot;&quot;&quot;
+    Simulate one path of OU process in log space
+    &quot;&quot;&quot;
+    log_prices &#61; zeros&#40;n_steps &#43; 1&#41;
+    log_prices&#91;1&#93; &#61; log_P0
+    
+    for t in 1:n_steps
+        drift &#61; θ * &#40;μ - log_prices&#91;t&#93;&#41; * Δt
+        diffusion &#61; σ * sqrt&#40;Δt&#41; * randn&#40;&#41;
+        log_prices&#91;t&#43;1&#93; &#61; log_prices&#91;t&#93; &#43; drift &#43; diffusion
+    end
+    
+    return log_prices
+end
+
+function test_exit_strategies&#40;log_entry::Float64, θ::Float64, μ::Float64,
+                             σ::Float64, Δt::Float64, n_sims::Int&#41;
+    &quot;&quot;&quot;
+    Compare different exit strategies via Monte Carlo
+    &quot;&quot;&quot;
+    n_steps &#61; 100  # Simulate 100 time steps
+    
+    # Strategy results
+    single_exit_profits &#61; Float64&#91;&#93;
+    scaled_exit_profits &#61; Float64&#91;&#93;
+    optimal_stop_profits &#61; Float64&#91;&#93;
+    
+    for sim in 1:n_sims
+        log_path &#61; simulate_ou_path&#40;log_entry, θ, μ, σ, Δt, n_steps&#41;
+        
+        # Strategy 1: Single exit at &#43;2&#37; or -1&#37; stop
+        target &#61; log_entry &#43; 0.02
+        stop &#61; log_entry - 0.01
+        single_profit &#61; 0.0
+        
+        for log_P in log_path
+            if log_P &gt;&#61; target
+                single_profit &#61; 0.02
+                break
+            elseif log_P &lt;&#61; stop
+                single_profit &#61; -0.01
+                break
+            end
+        end
+        push&#33;&#40;single_exit_profits, single_profit&#41;
+        
+        # Strategy 2: Scaled exit &#40;1/3 at 0.5&#37;, 1&#37;, 1.5&#37;&#41;
+        targets &#61; &#91;log_entry &#43; 0.005, log_entry &#43; 0.01, log_entry &#43; 0.015&#93;
+        filled &#61; &#91;false, false, false&#93;
+        scaled_profit &#61; 0.0
+        
+        for log_P in log_path
+            for i in 1:3
+                if &#33;filled&#91;i&#93; &amp;&amp; log_P &gt;&#61; targets&#91;i&#93;
+                    filled&#91;i&#93; &#61; true
+                    scaled_profit &#43;&#61; &#40;targets&#91;i&#93; - log_entry&#41; / 3
+                end
+            end
+            if all&#40;filled&#41;
+                break
+            end
+        end
+        push&#33;&#40;scaled_exit_profits, scaled_profit&#41;
+        
+        # Strategy 3: Optimal stopping
+        optimal_profit &#61; 0.0
+        for &#40;i, log_P&#41; in enumerate&#40;log_path&#41;
+            if should_exit&#40;log_entry, log_P, θ, μ, Δt, 0.0001&#41;
+                optimal_profit &#61; log_P - log_entry
+                break
+            end
+        end
+        push&#33;&#40;optimal_stop_profits, optimal_profit&#41;
+    end
+    
+    # Calculate statistics
+    strategies &#61; &#91;&quot;Single Exit&quot;, &quot;Scaled Exit&quot;, &quot;Optimal Stop&quot;&#93;
+    results &#61; &#91;single_exit_profits, scaled_exit_profits, optimal_stop_profits&#93;
+    
+    println&#40;&quot;\nMonte Carlo Results &#40;&#36;n_sims simulations&#41;:\n&quot;&#41;
+    println&#40;&quot;Strategy          | Mean    | Std Dev | Sharpe&quot;&#41;
+    println&#40;&quot;-&quot; ^ 50&#41;
+    
+    for &#40;name, profits&#41; in zip&#40;strategies, results&#41;
+        μ_profit &#61; mean&#40;profits&#41;
+        σ_profit &#61; std&#40;profits&#41;
+        sharpe &#61; μ_profit / σ_profit
+        
+        println&#40;&quot;&#36;&#40;rpad&#40;name, 17&#41;&#41; | &quot; *
+                &quot;&#36;&#40;rpad&#40;round&#40;100*μ_profit, digits&#61;3&#41;, 7&#41;&#41; | &quot; *
+                &quot;&#36;&#40;rpad&#40;round&#40;100*σ_profit, digits&#61;3&#41;, 7&#41;&#41; | &quot; *
+                &quot;&#36;&#40;round&#40;sharpe, digits&#61;3&#41;&#41;&quot;&#41;
+    end
+end
+
+# Run simulation
+Random.seed&#33;&#40;42&#41;
+test_exit_strategies&#40;4.50, 2.0, 4.605, 0.15, 0.1, 10000&#41;</code></pre>
+<h2 id="key_insights_from_log_space_analysis"><a href="#key_insights_from_log_space_analysis" class="header-anchor">Key Insights from Log Space Analysis</a></h2>
+<h3 id="probabilities_are_more_stable"><a href="#probabilities_are_more_stable" class="header-anchor"><ol>
+<li><p>Probabilities are More Stable</p>
+</li>
+</ol>
+</a></h3>
+<p>In price space, the probability of reaching &#36;110 from &#36;100 is different from reaching &#36;55 from &#36;50.</p>
+<p>In log space, \(P(\text{reach } +0.0953 \mid \text{entry})\) is the same regardless of price level&#33;</p>
+<h3 id="ol_start2_variance_reduction_still_dominates"><a href="#ol_start2_variance_reduction_still_dominates" class="header-anchor"><ol start="2">
+<li><p>Variance Reduction Still Dominates</p>
+</li>
+</ol>
+</a></h3>
+\[\text{Var}\left[\sum_{i=1}^{3} \frac{1}{3}(\ln P_{T_i} - \ln P_0)\right] < \text{Var}[\ln P_{T_3} - \ln P_0]\]
+<p>Scaled exits reduce variance in log space, which compounds to better long-term growth.</p>
+<h3 id="ol_start3_kelly_criterion_connection"><a href="#ol_start3_kelly_criterion_connection" class="header-anchor"><ol start="3">
+<li><p>Kelly Criterion Connection</p>
+</li>
+</ol>
+</a></h3>
+<p>Since log returns compound multiplicatively, Kelly criterion naturally works in log space:</p>
+\[\max_f E[\ln(\text{Wealth})]\]
+<p>This reinforces: work in log space for all decision-making&#33;</p>
+<h2 id="bottom_line"><a href="#bottom_line" class="header-anchor">Bottom Line</a></h2>
+<p><strong>Optimal stopping MUST use log prices</strong> because:</p>
+<ol>
+<li><p>✓ Normalizes for price level</p>
+</li>
+<li><p>✓ Makes mean reversion linear and tractable</p>
+</li>
+<li><p>✓ Creates stable, stationary probabilities</p>
+</li>
+<li><p>✓ Aligns with Kelly criterion &#40;log wealth maximization&#41;</p>
+</li>
+<li><p>✓ Enables proper risk-symmetric stop/target placement</p>
+</li>
+</ol>
+<p><strong>And scaled exits still win</strong> because variance reduction in log space leads to superior compounding over time&#33;</p>
+<div class="page-foot">
+    Contact me by <a href="mailto:skchu@wustl.edu">E-mail</a> | <a href="https://github.com/kchu25">Github</a> | <a href="https://www.linkedin.com/in/kchu1/">Linkedin</a>
+    <br>
+    This work is licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.  Last modified: October 06, 2025.
+    <br>
+    Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia language</a>.
+</div>
+</div><!-- CONTENT ENDS HERE -->
+    
+        <script src="/libs/katex/katex.min.js"></script>
+<script src="/libs/katex/contrib/auto-render.min.js"></script>
+<script>renderMathInElement(document.body)</script>
+
+    
+    
+        <script src="/libs/highlight/highlight.min.js"></script>
+<script>hljs.highlightAll();hljs.configure({tabReplace: '    '});</script>
+
+    
+  </body>
+</html>

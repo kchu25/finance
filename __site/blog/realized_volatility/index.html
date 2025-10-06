@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="/libs/katex/katex.min.css">
+     
+  
+  <link rel="stylesheet" href="/css/franklin.css">
+<link rel="stylesheet" href="/css/hypertext.css">
+<link rel="icon" href="/assets/favicon.png">
+
+   <title>Realized Volatility: Complete Mathematical Explanation</title>  
+</head>
+<body>
+<header>
+  <h1 style="color:#283747">Finance</h1>
+  <nav>
+    <a href="/" class="current">Tags</a>
+  | <a href="/blog/" >Notes</a>
+  <hr/>
+  </nav>
+</header>
+
+
+<!-- Content appended here -->
+<div class="franklin-content"><h1 id="realized_volatility_complete_mathematical_explanation"><a href="#realized_volatility_complete_mathematical_explanation" class="header-anchor">Realized Volatility: Complete Mathematical Explanation</a></h1>
+<h2 id="what_is_realized_volatility"><a href="#what_is_realized_volatility" class="header-anchor">What is Realized Volatility?</a></h2>
+<p><strong>Realized Volatility &#40;RV&#41;</strong> measures the actual historical volatility of a stock based on observed price movements. It quantifies how much the stock price has fluctuated over a given period.</p>
+<hr />
+<h2 id="step-by-step_calculation"><a href="#step-by-step_calculation" class="header-anchor">Step-by-Step Calculation</a></h2>
+<h3 id="step_1_calculate_daily_returns"><a href="#step_1_calculate_daily_returns" class="header-anchor">Step 1: Calculate Daily Returns</a></h3>
+<p>Given a sequence of closing prices \(P_0, P_1, P_2, \ldots, P_n\) over \(n\) days:</p>
+\[r_i = \ln\left(\frac{P_i}{P_{i-1}}\right) = \ln(P_i) - \ln(P_{i-1})\]
+<p><strong>Variables</strong>:</p>
+<ul>
+<li><p>\(P_i\) &#61; closing price on day \(i\)</p>
+</li>
+<li><p>\(P_{i-1}\) &#61; closing price on the previous day</p>
+</li>
+<li><p>\(r_i\) &#61; <strong>log return</strong> &#40;continuous return&#41; on day \(i\)</p>
+</li>
+<li><p>\(\ln\) &#61; natural logarithm</p>
+</li>
+</ul>
+<p><strong>Why log returns?</strong></p>
+<ul>
+<li><p>They are additive: \(r_{1\to 3} = r_1 + r_2 + r_3\)</p>
+</li>
+<li><p>More theoretically sound for statistical analysis</p>
+</li>
+<li><p>Assumption: returns follow a normal distribution &#40;in Black-Scholes framework&#41;</p>
+</li>
+</ul>
+<p><strong>Example</strong>:</p>
+<ul>
+<li><p>Day 1: \(P_0 = \$100\), Day 2: \(P_1 = \$102\)</p>
+</li>
+<li><p>\(r_1 = \ln(102/100) = \ln(1.02) \approx 0.0198\) or 1.98&#37;</p>
+</li>
+</ul>
+<hr />
+<h3 id="step_2_calculate_standard_deviation_of_daily_returns"><a href="#step_2_calculate_standard_deviation_of_daily_returns" class="header-anchor">Step 2: Calculate Standard Deviation of Daily Returns</a></h3>
+\[\sigma_{\text{daily}} = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (r_i - \bar{r})^2}\]
+<p><strong>Variables</strong>:</p>
+<ul>
+<li><p>\(n\) &#61; number of days in the sample period</p>
+</li>
+<li><p>\(r_i\) &#61; daily return on day \(i\)</p>
+</li>
+<li><p>\(\bar{r}\) &#61; mean &#40;average&#41; of all daily returns &#61; \(\frac{1}{n}\sum_{i=1}^{n} r_i\)</p>
+</li>
+<li><p>\(\sigma_{\text{daily}}\) &#61; standard deviation of daily returns</p>
+</li>
+<li><p>\((n-1)\) &#61; <strong>Bessel&#39;s correction</strong> &#40;unbiased estimator for sample standard deviation&#41;</p>
+</li>
+</ul>
+<p><strong>Interpretation</strong>: This measures the typical day-to-day fluctuation in returns.</p>
+<p><strong>Example</strong>:</p>
+<ul>
+<li><p>If daily returns are: 1&#37;, -0.5&#37;, 2&#37;, 0.5&#37;, -1&#37;</p>
+</li>
+<li><p>Calculate mean, then compute deviations from mean, square them, average, and take square root</p>
+</li>
+</ul>
+<hr />
+<h3 id="step_3_annualize_the_daily_volatility"><a href="#step_3_annualize_the_daily_volatility" class="header-anchor">Step 3: Annualize the Daily Volatility</a></h3>
+\[\sigma_{\text{annual}} = \sigma_{\text{daily}} \times \sqrt{252}\]
+<p><strong>Variables</strong>:</p>
+<ul>
+<li><p>\(\sigma_{\text{annual}}\) &#61; <strong>annualized volatility</strong> &#40;the final realized volatility&#41;</p>
+</li>
+<li><p>\(\sigma_{\text{daily}}\) &#61; daily standard deviation from Step 2</p>
+</li>
+<li><p>\(252\) &#61; typical number of trading days per year &#40;excludes weekends and holidays&#41;</p>
+</li>
+<li><p>\(\sqrt{252} \approx 15.87\)</p>
+</li>
+</ul>
+<p><strong>Why multiply by \(\sqrt{252}\)?</strong></p>
+<p>This comes from the statistical property that <strong>variance scales linearly with time</strong> for independent random variables.</p>
+<blockquote>
+<p><strong>Side note:</strong> If the daily variance is \(\sigma^2\), then over \(T\) days, the total variance is \(T \times \sigma^2\). This means that if you double the time period, the variance doubles &#40;not the standard deviation&#41;. The standard deviation grows with \(\sqrt{T}\), which is why we multiply by \(\sqrt{252}\) to annualize daily volatility.</p>
+</blockquote>
+<blockquote>
+<p><strong>Proof:</strong> Let \(r_1, r_2, \ldots, r_T\) be independent daily returns, each with variance \(\operatorname{Var}(r_i) = \sigma^2\). The variance of the sum is:</p>
+</blockquote>
+\[
+> \operatorname{Var}\left(\sum_{i=1}^T r_i\right) = \sum_{i=1}^T \operatorname{Var}(r_i) = T \sigma^2
+> \]
+<blockquote>
+<p>because the variance of the sum of independent variables is the sum of their variances.</p>
+</blockquote>
+<h4 id="mathematical_derivation"><a href="#mathematical_derivation" class="header-anchor">Mathematical Derivation:</a></h4>
+<p>Assume daily returns \(r_i\) are independent and identically distributed &#40;i.i.d.&#41; with variance \(\sigma_{\text{daily}}^2\).</p>
+<p>Over \(T\) days, the cumulative return is:</p>
+\[R_T = r_1 + r_2 + \cdots + r_T\]
+<p>The variance of the sum of independent random variables is:</p>
+\[\text{Var}(R_T) = \text{Var}(r_1) + \text{Var}(r_2) + \cdots + \text{Var}(r_T) = T \times \sigma_{\text{daily}}^2\]
+<p>Therefore, the standard deviation over \(T\) days is:</p>
+\[\sigma_T = \sqrt{\text{Var}(R_T)} = \sqrt{T \times \sigma_{\text{daily}}^2} = \sqrt{T} \times \sigma_{\text{daily}}\]
+<p>For one year &#40;\(T = 252\) trading days&#41;:</p>
+\[\sigma_{\text{annual}} = \sqrt{252} \times \sigma_{\text{daily}}\]
+<p><strong>Intuition</strong>: Volatility grows with the square root of time, not linearly. A stock with 2&#37; daily volatility has roughly \(2\% \times 15.87 \approx 31.7\%\) annual volatility, not \(2\% \times 252 = 504\%\).</p>
+<hr />
+<h2 id="complete_formula"><a href="#complete_formula" class="header-anchor">Complete Formula</a></h2>
+<p>Putting it all together:</p>
+\[\boxed{\sigma_{RV} = \sqrt{252} \times \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} \left(\ln\frac{P_i}{P_{i-1}} - \bar{r}\right)^2}}\]
+<p>Where:</p>
+<ul>
+<li><p>\(\sigma_{RV}\) &#61; <strong>Realized Volatility</strong> &#40;annualized&#41;</p>
+</li>
+<li><p>\(P_i\) &#61; closing price on day \(i\)</p>
+</li>
+<li><p>\(n\) &#61; number of days in sample period</p>
+</li>
+<li><p>\(\bar{r}\) &#61; mean of daily log returns</p>
+</li>
+<li><p>\(252\) &#61; trading days per year</p>
+</li>
+</ul>
+<hr />
+<h2 id="practical_example"><a href="#practical_example" class="header-anchor">Practical Example</a></h2>
+<p><strong>Given</strong>: 5 days of closing prices: \(100, 102, 101, 103, 102\)</p>
+<p><strong>Step 1</strong>: Calculate daily returns</p>
+<ul>
+<li><p>\(r_1 = \ln(102/100) = 0.0198\)</p>
+</li>
+<li><p>\(r_2 = \ln(101/102) = -0.0099\)</p>
+</li>
+<li><p>\(r_3 = \ln(103/101) = 0.0196\)</p>
+</li>
+<li><p>\(r_4 = \ln(102/103) = -0.0098\)</p>
+</li>
+</ul>
+<p><strong>Step 2</strong>: Calculate mean return</p>
+\[\bar{r} = \frac{0.0198 - 0.0099 + 0.0196 - 0.0098}{4} = 0.0049\]
+<p><strong>Step 3</strong>: Calculate daily standard deviation</p>
+\[\sigma_{\text{daily}} = \sqrt{\frac{(0.0198-0.0049)^2 + (-0.0099-0.0049)^2 + (0.0196-0.0049)^2 + (-0.0098-0.0049)^2}{3}}\]
+\[\approx 0.0164 \text{ or } 1.64\%\]
+<p><strong>Step 4</strong>: Annualize</p>
+\[\sigma_{RV} = 0.0164 \times \sqrt{252} \approx 0.0164 \times 15.87 \approx 0.26 \text{ or } 26\%\]
+<p><strong>Result</strong>: The realized volatility is approximately <strong>26&#37; annualized</strong>.</p>
+<hr />
+<h2 id="key_properties"><a href="#key_properties" class="header-anchor">Key Properties</a></h2>
+<ol>
+<li><p><strong>Lookback period matters</strong>: Typically use 20-252 days</p>
+<ul>
+<li><p>20 days ≈ 1 month &#40;short-term volatility&#41;</p>
+</li>
+<li><p>60 days ≈ 3 months &#40;medium-term&#41;</p>
+</li>
+</ul>
+</li>
+</ol>
+<div class="page-foot">
+    Contact me by <a href="mailto:skchu@wustl.edu">E-mail</a> | <a href="https://github.com/kchu25">Github</a> | <a href="https://www.linkedin.com/in/kchu1/">Linkedin</a>
+    <br>
+    This work is licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.  Last modified: October 06, 2025.
+    <br>
+    Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia language</a>.
+</div>
+</div><!-- CONTENT ENDS HERE -->
+    
+        <script src="/libs/katex/katex.min.js"></script>
+<script src="/libs/katex/contrib/auto-render.min.js"></script>
+<script>renderMathInElement(document.body)</script>
+
+    
+    
+  </body>
+</html>

@@ -2,7 +2,6 @@
 @def published = "5 October 2025"
 @def tags = ["options"]
 
-
 # Black-Scholes: Intuitive Explanation
 
 ## The Big Question
@@ -60,13 +59,13 @@ $$Ke^{-rt}$$
 - $r$ = Risk-free interest rate (e.g., 5% = 0.05)
 - $t$ = Time to expiration (in years)
 
-**Intuition**: Money in the future is worth less than money today. If $K = 100$ and you receive it in 1 year at 5% interest, its present value is $100 \times e^{-0.05 \times 1} \approx 95.12$.
+**Intuition**: Money in the future is worth less than money today. If $K = 100$ and you receive it in 1 year at 5% interest, its present value is 100 USD × $e^{-0.05 \times 1} \approx$ 95.12 USD.
 
 **Example**:
 - Strike $K = 100$
 - Time $t = 0.25$ years (3 months)
 - Rate $r = 0.05$
-- Present value: $100 \times e^{-0.05 \times 0.25} = 100 \times 0.9876 = 98.76$
+- Present value: 100 USD × $e^{-0.05 \times 0.25}$ = 100 USD × 0.9876 = 98.76 USD
 
 ---
 
@@ -122,12 +121,12 @@ These look complex, but they encode everything about the option's "moneyness" an
 
 ### For a Put Option:
 
-**Scenario**: You own a put with strike $K = \$100$, stock is at $S_0 = \$95$.
+**Scenario**: You own a put with strike $K =$ 100 USD, stock is at $S_0 =$ 95 USD.
 
 1. **What happens if you exercise?**
-   - You sell stock worth $\$95$ (current market value)
-   - You receive $\$100$ (the strike price)
-   - Your gain: $\$5$
+   - You sell stock worth 95 USD (current market value)
+   - You receive 100 USD (the strike price)
+   - Your gain: 5 USD
 
 2. **But will you exercise?**
    - Only if the stock is below $K$ at expiration
@@ -223,11 +222,11 @@ Step 2: Assume future ≈ past
         σ_future ≈ σ_RV = 28%
 
 Step 3: Plug into BS formula
-        V_BS(S₀, K, t, r, σ=0.28) = $3.20
+        V_BS(S₀, K, t, r, σ=0.28) = 3.20 USD
 
 Step 4: Compare to market
-        Market price = $3.05
-        Your estimate = $3.20
+        Market price = 3.05 USD
+        Your estimate = 3.20 USD
         → Option looks cheap! (if you trust your σ estimate)
 ```
 
@@ -241,13 +240,13 @@ Step 4: Compare to market
 
 ```
 Known:
-- Market price = $3.05 (what the option actually trades at)
-- S₀ = $98, K = $100, t = 1 day, r = 5%
+- Market price = 3.05 USD (what the option actually trades at)
+- S₀ = 98 USD, K = 100 USD, t = 1 day, r = 5%
 
 Unknown:
 - What σ makes BS match market price?
 
-Solve: Find σ such that V_BS(S₀, K, t, r, σ) = $3.05
+Solve: Find σ such that V_BS(S₀, K, t, r, σ) = 3.05 USD
 
 Result: σ_IV = 42% (implied volatility)
 ```
@@ -274,7 +273,7 @@ Rather than guessing future volatility, traders:
 - IV extracts that collective forecast
 
 **Example interpretation:**
-- Put trading at $3.05 → IV = 42%
+- Put trading at 3.05 USD → IV = 42%
 - This means: "The market expects this stock to move ±42% annually"
 - Historical volatility was only 28% → market expects MORE volatility than usual
 - This explains why the option is expensive
@@ -363,8 +362,8 @@ With high volatility, there's a greater chance the stock drops far below the str
 Let's price a 3-month put option:
 
 **Inputs**:
-- $S_0 = \$100$ (current stock price)
-- $K = \$95$ (strike price, OTM put)
+- $S_0 =$ 100 USD (current stock price)
+- $K =$ 95 USD (strike price, OTM put)
 - $t = 0.25$ years (3 months)
 - $\sigma = 0.30$ (30% annual volatility)
 - $r = 0.05$ (5% interest rate)
@@ -392,9 +391,9 @@ $$V_{put} = 95 \times e^{-0.05 \times 0.25} \times 0.363 - 100 \times 0.308$$
 
 $$V_{put} = 95 \times 0.9876 \times 0.363 - 100 \times 0.308$$
 
-$$V_{put} = 34.05 - 30.80 = \$3.25$$
+$$V_{put} = 34.05 - 30.80 = 3.25 \text{ USD}$$
 
-**Result**: This OTM put is worth approximately **$3.25**.
+**Result**: This OTM put is worth approximately **3.25 USD**.
 
 ---
 
@@ -470,18 +469,18 @@ The formula is elegant because it reduces a complex stochastic problem (uncertai
 
 ```
 Your broker/exchange shows:
-Put Option: Strike $100, Expiry Oct 15
-Bid: $2.95
-Ask: $3.05
+Put Option: Strike 100 USD, Expiry Oct 15
+Bid: 2.95 USD
+Ask: 3.05 USD
 ```
 
 **You see prices, not formulas**. Market makers have already priced the options using Black-Scholes (or more sophisticated models).
 
 **You simply**:
-1. Look at the Ask price ($3.05)
+1. Look at the Ask price (3.05 USD)
 2. Decide if it's worth it for your strategy
 3. Click "Buy"
-4. Pay $3.05 per share ($305 per contract)
+4. Pay 3.05 USD per share (305 USD per contract)
 
 **No calculation required** — the market has done the pricing for you.
 
@@ -493,18 +492,18 @@ Even though you don't calculate it manually, BS is essential for understanding *
 
 #### 1. Understanding What You're Paying For
 
-When you see a put option costs $3.05, Black-Scholes tells you this price reflects:
+When you see a put option costs 3.05 USD, Black-Scholes tells you this price reflects:
 
 | Component | What It Means | How to Check |
 |-----------|--------------|--------------|
-| **Intrinsic Value** | $\max(K - S_0, 0)$ | If stock is $98 and strike is $100: intrinsic = $2 |
-| **Time Value** | Premium - Intrinsic | $3.05 - $2 = $1.05 time value |
+| **Intrinsic Value** | $\max(K - S_0, 0)$ | If stock is 98 USD and strike is 100 USD: intrinsic = 2 USD |
+| **Time Value** | Premium - Intrinsic | 3.05 USD - 2 USD = 1.05 USD time value |
 | **Implied Volatility** | Market's expectation of future moves | High IV after jumps = expensive options |
 | **Time Decay (Theta)** | How much you lose per day | Same-day options bleed fast |
 
 **Practical use**: 
 - If IV is historically high (IVR > 70%), you're overpaying
-- If theta is large ($-0.30/day), your option bleeds $30/day on a 100-share contract
+- If theta is large (-0.30 USD/day), your option bleeds 30 USD/day on a 100-share contract
 - This tells you whether the trade makes sense
 
 ---
@@ -517,9 +516,9 @@ This is the **primary real-world use** of Black-Scholes for traders.
 
 ```
 Known:
-- Market price of put = $3.05 (observed)
-- Stock price S₀ = $98
-- Strike K = $100
+- Market price of put = 3.05 USD (observed)
+- Stock price S₀ = 98 USD
+- Strike K = 100 USD
 - Time t = 1 day (0.0027 years)
 - Rate r = 0.05
 
@@ -527,7 +526,7 @@ Unknown:
 - What volatility (σ) does the market expect?
 ```
 
-**Solve**: Find σ such that $V_{BS}(S_0, K, t, r, \sigma) = \$3.05$
+**Solve**: Find σ such that $V_{BS}(S_0, K, t, r, \sigma) =$ 3.05 USD
 
 This gives you **Implied Volatility (IV)**.
 
@@ -545,23 +544,23 @@ Black-Scholes derivatives give you the Greeks. Your broker displays these:
 
 ```
 Put Option Display:
-Price: $3.05
+Price: 3.05 USD
 Delta: -0.35
 Gamma: 0.08
-Theta: -$0.28/day
-Vega: $0.12
+Theta: -0.28 USD/day
+Vega: 0.12 USD
 ```
 
 **You don't calculate these** — your platform does. But understanding BS helps you interpret them:
 
 | Greek | What You Check | Trading Decision |
 |-------|----------------|------------------|
-| **Delta** | If -0.35, stock drops $1 → put gains ~$0.35 | Need $10 drop to gain $3.50 |
-| **Theta** | Losing $0.28/day | In 3 hours (1/8 day) you lose ~$0.035 |
-| **Vega** | Gains $0.12 per 1% IV increase | If IV drops 5%, you lose $0.60 even if stock doesn't move |
+| **Delta** | If -0.35, stock drops 1 USD → put gains ~0.35 USD | Need 10 USD drop to gain 3.50 USD |
+| **Theta** | Losing 0.28 USD/day | In 3 hours (1/8 day) you lose ~0.035 USD |
+| **Vega** | Gains 0.12 USD per 1% IV increase | If IV drops 5%, you lose 0.60 USD even if stock doesn't move |
 | **Gamma** | How fast delta changes | High gamma near expiry = unstable position |
 
-**Practical decision**: If theta is -$0.28/day and you're trading same-day, you need the stock to drop quickly. If it trades sideways for 2 hours, you've already lost ~$0.12 to time decay.
+**Practical decision**: If theta is -0.28 USD/day and you're trading same-day, you need the stock to drop quickly. If it trades sideways for 2 hours, you've already lost ~0.12 USD to time decay.
 
 ---
 
@@ -571,9 +570,9 @@ You're deciding between three puts. Your broker shows:
 
 | Strike | Premium | Delta | Theta | IV | Break-Even |
 |--------|---------|-------|-------|----|-----------| 
-| $100 (ITM) | $5.50 | -0.75 | -$0.45 | 40% | Stock → $94.50 |
-| $98 (ATM) | $3.05 | -0.50 | -$0.35 | 42% | Stock → $94.95 |
-| $95 (OTM) | $1.20 | -0.25 | -$0.15 | 45% | Stock → $93.80 |
+| 100 USD (ITM) | 5.50 USD | -0.75 | -0.45 USD | 40% | Stock → 94.50 USD |
+| 98 USD (ATM) | 3.05 USD | -0.50 | -0.35 USD | 42% | Stock → 94.95 USD |
+| 95 USD (OTM) | 1.20 USD | -0.25 | -0.15 USD | 45% | Stock → 93.80 USD |
 
 **Without BS knowledge**: You might just pick the cheapest.
 
@@ -594,22 +593,22 @@ BS framework helps you understand these trade-offs.
 
 #### 5. Deciding When to Exit
 
-You bought the put at $3.05. Stock drops to $96. Your put is now worth $3.80.
+You bought the put at 3.05 USD. Stock drops to 96 USD. Your put is now worth 3.80 USD.
 
-**Question**: Sell now (+$0.75 profit) or hold for more?
+**Question**: Sell now (+0.75 USD profit) or hold for more?
 
 **BS thinking helps**:
 
 ```
 Time passed: 2 hours (still 6 hours to close)
-Theta cost: ~$0.10 already eaten
+Theta cost: ~0.10 USD already eaten
 Current IV: Dropped from 42% to 38% (vol crush)
-Vega loss: -4% IV × $0.12 = -$0.48
+Vega loss: -4% IV × 0.12 USD = -0.48 USD
 
-Without IV drop, your put would be worth: $3.80 + $0.48 = $4.28
-Stock move gave you: $4.28 - $3.05 = $1.23
-But IV crush cost you: $0.48
-Net gain: $0.75
+Without IV drop, your put would be worth: 3.80 USD + 0.48 USD = 4.28 USD
+Stock move gave you: 4.28 USD - 3.05 USD = 1.23 USD
+But IV crush cost you: 0.48 USD
+Net gain: 0.75 USD
 ```
 
 **Insight**: You made money on direction, but volatility crush cost you 40% of potential gains. This explains why your profit is less than expected.
@@ -628,14 +627,14 @@ Net gain: $0.75
    - **Your situation**: Post-jump IVR is probably 80-90% → very expensive
 
 2. **Estimate Required Move**
-   - Use Delta: If delta = -0.35, you need ~$3 drop per $1 profit
+   - Use Delta: If delta = -0.35, you need ~3 USD drop per 1 USD profit
    - Check break-even: Strike - Premium
    - **Your situation**: Need 3-5% drop in hours → high bar
 
 3. **Assess Time Decay**
    - Look at Theta
    - Calculate: How much will I lose per hour?
-   - **Your situation**: 0DTE options, theta might be -$0.50/day = -$0.02/hour
+   - **Your situation**: 0DTE options, theta might be -0.50 USD/day = -0.02 USD/hour
 
 #### During the Trade:
 
@@ -645,8 +644,8 @@ Net gain: $0.75
    - How much theta have I paid?
 
 5. **Set Exit Rules**
-   - Target profit: "Exit if I make 50% ($1.50 on $3 put)"
-   - Stop loss: "Exit if down 30% (put drops to $2.10)"
+   - Target profit: "Exit if I make 50% (1.50 USD on 3 USD put)"
+   - Stop loss: "Exit if down 30% (put drops to 2.10 USD)"
    - Time stop: "Exit at 2pm regardless" (avoid last-hour theta burn)
 
 #### After the Trade:
@@ -728,31 +727,30 @@ The formula continuously recalculates as inputs change:
 ### Example: Your Trade Timeline
 
 Let's walk through what's happening behind the scenes:
-
 #### 9:30 AM - You Want to Buy
 
 **Market maker's BS calculation:**
 ```
 Inputs:
-- Stock price S₀ = $100
-- Strike K = $98
+- Stock price S₀ = 100 USD
+- Strike K = 98 USD
 - Time to close t = 6.5 hours = 6.5/(24×252) ≈ 0.00107 years
 - Implied volatility σ = 45% (elevated after jump)
 - Risk-free rate r = 5%
 
-BS Output: Put value = $3.05
+BS Output: Put value = 3.05 USD
 ```
 
 **What you see on screen:**
 ```
-Put Option $98 Strike
-Bid: $2.95
-Ask: $3.05
+Put Option 98 USD Strike
+Bid: 2.95 USD
+Ask: 3.05 USD
 
 [Buy Button]
 ```
 
-**You click "Buy" and pay $3.05** - no calculation needed on your part.
+**You click "Buy" and pay 3.05 USD** - no calculation needed on your part.
 
 ---
 
@@ -761,21 +759,21 @@ Ask: $3.05
 **Market maker's BS calculation (automatically updated):**
 ```
 Inputs:
-- Stock price S₀ = $96 ← Changed!
-- Strike K = $98
+- Stock price S₀ = 96 USD ← Changed!
+- Strike K = 98 USD
 - Time to close t = 5 hours = 5/(24×252) ≈ 0.00082 years ← Less time
 - Implied volatility σ = 38% ← Decreased!
 - Risk-free rate r = 5%
 
-BS Output: Put value = $3.80
+BS Output: Put value = 3.80 USD
 ```
 
 **What you see:**
 ```
-Put Option $98 Strike
-Bid: $3.75
-Ask: $3.85
-Your Position: +$0.75 (bought at $3.05)
+Put Option 98 USD Strike
+Bid: 3.75 USD
+Ask: 3.85 USD
+Your Position: +0.75 USD (bought at 3.05 USD)
 ```
 
 ---
@@ -785,27 +783,27 @@ Your Position: +$0.75 (bought at $3.05)
 **Market maker's BS calculation:**
 ```
 Inputs:
-- Stock price S₀ = $95 ← Dropped more!
-- Strike K = $98
+- Stock price S₀ = 95 USD ← Dropped more!
+- Strike K = 98 USD
 - Time to close t = 2 hours = 2/(24×252) ≈ 0.00033 years ← Much less time
 - Implied volatility σ = 35% ← Normalized
 - Risk-free rate r = 5%
 
-BS Output: Put value = $4.20
+BS Output: Put value = 4.20 USD
 ```
 
 **What you see:**
 ```
-Put Option $98 Strike
-Bid: $4.15
-Ask: $4.25
+Put Option 98 USD Strike
+Bid: 4.15 USD
+Ask: 4.25 USD
 
 [Sell Button]
 ```
 
-**You click "Sell" and receive $4.15** - again, no calculation needed.
+**You click "Sell" and receive 4.15 USD** - again, no calculation needed.
 
-**Your profit:** $4.15 - $3.05 = **$1.10 per share**
+**Your profit:** 4.15 USD - 3.05 USD = **1.10 USD per share**
 
 ---
 
@@ -813,11 +811,11 @@ Ask: $4.25
 
 | Time | What Changed | BS Recalculated | Result | Your Action |
 |------|--------------|-----------------|---------|-------------|
-| **9:30 AM** | Jump happened, IV spiked | Put worth $3.05 | Ask = $3.05 | You buy |
-| **9:31 AM** | Stock moved slightly | Put worth $3.02 | Bid/Ask updates | You hold |
-| **9:45 AM** | Stock dropped $1 | Put worth $3.35 | Bid/Ask updates | You hold |
-| **11:00 AM** | Stock at $96, IV dropped | Put worth $3.80 | Bid/Ask updates | You monitor |
-| **2:00 PM** | Stock at $95, time running out | Put worth $4.20 | Bid = $4.15 | You sell |
+| **9:30 AM** | Jump happened, IV spiked | Put worth 3.05 USD | Ask = 3.05 USD | You buy |
+| **9:31 AM** | Stock moved slightly | Put worth 3.02 USD | Bid/Ask updates | You hold |
+| **9:45 AM** | Stock dropped 1 USD | Put worth 3.35 USD | Bid/Ask updates | You hold |
+| **11:00 AM** | Stock at 96 USD, IV dropped | Put worth 3.80 USD | Bid/Ask updates | You monitor |
+| **2:00 PM** | Stock at 95 USD, time running out | Put worth 4.20 USD | Bid = 4.15 USD | You sell |
 
 **Every single price** (whether you're buying, holding, or selling) comes from BS being calculated with current market conditions.
 
@@ -827,12 +825,12 @@ Ask: $4.25
 
 #### When Buying (9:30 AM):
 
-**You see:** Ask = $3.05
+**You see:** Ask = 3.05 USD
 
 **BS knowledge helps:**
 - "IV is 45%, but historical average is 30% → I'm overpaying by ~40%"
-- "Theta is -$0.40/day → I lose $0.05/hour from time decay"
-- "Delta is -0.35 → I need $3 drop to make $1"
+- "Theta is -0.40 USD/day → I lose 0.05 USD/hour from time decay"
+- "Delta is -0.35 → I need 3 USD drop to make 1 USD"
 
 **Decision:** "Worth it only if I expect a big, fast drop"
 
@@ -840,14 +838,14 @@ Ask: $4.25
 
 #### During Trade (11:00 AM):
 
-**You see:** Current value $3.80 (up $0.75)
+**You see:** Current value 3.80 USD (up 0.75 USD)
 
 **BS knowledge helps:**
-- "Stock dropped $4, but my put only gained $0.75... why?"
+- "Stock dropped 4 USD, but my put only gained 0.75 USD... why?"
 - "IV dropped from 45% to 38% (7% decrease)"
-- "Vega is $0.12, so -7% IV cost me -7 × $0.12 = -$0.84"
-- "I lost $0.10 to theta (1.5 hours elapsed)"
-- "Stock move gave me ~$1.40, but IV crush + theta cost $0.94"
+- "Vega is 0.12 USD, so -7% IV cost me -7 × 0.12 USD = -0.84 USD"
+- "I lost 0.10 USD to theta (1.5 hours elapsed)"
+- "Stock move gave me ~1.40 USD, but IV crush + theta cost 0.94 USD"
 
 **Understanding:** "I'm fighting IV crush - need to sell soon before it drops more"
 
@@ -855,15 +853,15 @@ Ask: $4.25
 
 #### When Selling (2:00 PM):
 
-**You see:** Bid = $4.15
+**You see:** Bid = 4.15 USD
 
 **BS knowledge helps:**
-- "Stock dropped $5 total, my put should be worth more..."
+- "Stock dropped 5 USD total, my put should be worth more..."
 - "But time is almost up (high theta cost)"
 - "And IV dropped from 45% to 35% (10% total decline)"
 - "Profit is less than expected, but IV normalized - good time to exit"
 
-**Decision:** "Take the $1.10 profit before theta eats more"
+**Decision:** "Take the 1.10 USD profit before theta eats more"
 
 ---
 
@@ -873,13 +871,13 @@ Think of it like stock prices:
 
 **Stocks:**
 - Price updates every second based on supply/demand
-- You see: "AAPL: $175.50"
+- You see: "AAPL: 175.50 USD"
 - You don't calculate this price - market determines it
 - But understanding valuation (P/E, growth, etc.) helps you know if it's expensive
 
 **Options:**
 - Price updates every second based on BS inputs
-- You see: "Put: Bid $4.15 / Ask $4.25"
+- You see: "Put: Bid 4.15 USD / Ask 4.25 USD"
 - You don't calculate BS - market makers do it
 - But understanding BS (IV, theta, delta, etc.) helps you know if it's expensive
 

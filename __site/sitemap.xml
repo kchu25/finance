@@ -2,61 +2,43 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-    <loc>https://kchu25.github.io/mathematics/blog/index.html</loc>
+    <loc>https://kchu25.github.io/index.html</loc>
     <lastmod>2025-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>https://kchu25.github.io/mathematics/menu1/index.html</loc>
-    <lastmod>2024-08-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://kchu25.github.io/mathematics/blog/measure_theory/ito_integral_history/index.html</loc>
+    <loc>https://kchu25.github.io/blog/exit_strategies/exit/index.html</loc>
     <lastmod>2025-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>https://kchu25.github.io/mathematics/menu3/index.html</loc>
-    <lastmod>2024-08-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://kchu25.github.io/mathematics/blog/measure_theory/2_integration/index.html</loc>
+    <loc>https://kchu25.github.io/blog/exit_strategies/optimal_stopping/index.html</loc>
     <lastmod>2025-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>https://kchu25.github.io/mathematics/menu2/index.html</loc>
-    <lastmod>2024-08-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-</url>
-<url>
-    <loc>https://kchu25.github.io/mathematics/blog/measure_theory/3_convergence_thms/index.html</loc>
+    <loc>https://kchu25.github.io/blog/math/stochastic_process_basic/index.html</loc>
     <lastmod>2025-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>https://kchu25.github.io/mathematics/blog/measure_theory/1_measure/index.html</loc>
+    <loc>https://kchu25.github.io/blog/options/black_scholes/index.html</loc>
     <lastmod>2025-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>https://kchu25.github.io/mathematics/blog/measure_theory/to_OU_process/index.html</loc>
+    <loc>https://kchu25.github.io/blog/index.html</loc>
     <lastmod>2025-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
 <url>
-    <loc>https://kchu25.github.io/mathematics/index.html</loc>
+    <loc>https://kchu25.github.io/blog/realized_volatility/index.html</loc>
     <lastmod>2025-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

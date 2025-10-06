@@ -1,12 +1,10 @@
-@def title = "Optimal Stopping with Log Prices for Mean Reversion"
-@def published = "5 October 2025"
-@def tags = ["exit-strategy"]
+
 
 # Optimal Stopping with Log Prices for Mean Reversion
 
 ## Why Log Prices?
 
-**The Problem:** Raw prices don't normalize for price level. A $1 move means different things for a $10 stock vs a $1000 stock.
+**The Problem:** Raw prices don't normalize for price level. A \$1 move means different things for a \$10 stock vs a \$1000 stock.
 
 **The Solution:** Work in log space where returns are additive and symmetric.
 
@@ -14,7 +12,7 @@ $$r_{\log} = \ln\left(\frac{P_t}{P_0}\right)$$
 
 **Key Properties:**
 - **Additive:** $\ln(P_t/P_0) = \ln P_t - \ln P_0$
-- **Symmetric:** A 10% gain and 10% loss have equal magnitude in log space
+- **Symmetric:** A 10\% gain and 10\% loss have equal magnitude in log space
 - **Stationary:** Statistical properties don't depend on price level
 
 ## Mean Reversion in Log Space
@@ -76,21 +74,21 @@ $$E[\ln P_{t+0.1}] = 4.55 + 2.0 \times (4.605 - 4.55) \times 0.1 = 4.561$$
 
 Expected profit: $4.561 - 4.50 = 0.061$ log points $\approx 6.29\%$
 
-**Decision:** If holding cost $c < 0.011$ (≈1.1%), keep holding!
+**Decision:** If holding cost $c < 0.011$ (≈1.1\%), keep holding!
 
 ## Symmetry Correction Example
 
 **Common mistake:** Setting symmetric percentage stops/targets in price space.
 
-Stock at $\$100$, trader sets:
-- Target: $\$110$ (+10%)
-- Stop: $\$90$ (−10%)
+Stock at \$100, trader sets:
+- Target: \$110 (+10\%)
+- Stop: \$90 (−10\%)
 
 **In log space:**
 - Target: $\ln(110/100) = 0.0953$
 - Stop: $\ln(90/100) = -0.1054$
 
-**Asymmetric!** You're risking 10.54% to gain 9.53%.
+**Asymmetric!** You're risking 10.54\% to gain 9.53\%.
 
 **Corrected symmetric setup:**
 - Target: $\ln(100) + 0.10 = 4.705 \Rightarrow P = \$110.52$
@@ -299,7 +297,7 @@ test_exit_strategies(4.50, 2.0, 4.605, 0.15, 0.1, 10000)
 
 ### 1. Probabilities are More Stable
 
-In price space, $P(\text{reach } \$110 \mid P = \$100)$ is different from $P(\text{reach } \$55 \mid P = \$50)$.
+In price space, the probability of reaching \$110 from \$100 is different from reaching \$55 from \$50.
 
 In log space, $P(\text{reach } +0.0953 \mid \text{entry})$ is the same regardless of price level!
 
