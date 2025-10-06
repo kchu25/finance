@@ -2,6 +2,7 @@
 @def published = "5 October 2025"
 @def tags = ["options"]
 
+
 # Black-Scholes: Intuitive Explanation
 
 ## The Big Question

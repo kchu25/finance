@@ -68,6 +68,16 @@ $$\sigma_{\text{annual}} = \sigma_{\text{daily}} \times \sqrt{252}$$
 
 This comes from the statistical property that **variance scales linearly with time** for independent random variables.
 
+> **Side note:**
+> If the daily variance is $\sigma^2$, then over $T$ days, the total variance is $T \times \sigma^2$. This means that if you double the time period, the variance doubles (not the standard deviation). The standard deviation grows with $\sqrt{T}$, which is why we multiply by $\sqrt{252}$ to annualize daily volatility.
+
+> **Proof:**
+> Let $r_1, r_2, \ldots, r_T$ be independent daily returns, each with variance $\operatorname{Var}(r_i) = \sigma^2$. The variance of the sum is:
+> $$
+> \operatorname{Var}\left(\sum_{i=1}^T r_i\right) = \sum_{i=1}^T \operatorname{Var}(r_i) = T \sigma^2
+> $$
+> because the variance of the sum of independent variables is the sum of their variances.
+
 #### Mathematical Derivation:
 
 Assume daily returns $r_i$ are independent and identically distributed (i.i.d.) with variance $\sigma_{\text{daily}}^2$.
