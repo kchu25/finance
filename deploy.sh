@@ -20,7 +20,7 @@ touch .nojekyll
 # Commit and push
 git add .
 git commit -m "Deploy Franklin.jl site"
-git push -f mathematics gh-pages
+git push -f finance gh-pages
 
 # Switch back to main
 git checkout main
