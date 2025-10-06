@@ -4,5 +4,7 @@
 <h1>Tags</h1>
 ~~~
 
-- [measure-theory](tag/measure-theory)
+- [exit-strategy](tag/exit-strategy)
+- [options](tag/options)
+- [volatility-estimates](tag/volatility-estimates)
 
