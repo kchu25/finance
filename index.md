@@ -7,4 +7,5 @@
 - [exit-strategy](tag/exit-strategy)
 - [options](tag/options)
 - [volatility-estimates](tag/volatility-estimates)
+- [math](tag/math)
 
