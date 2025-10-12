@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="/libs/katex/katex.min.css">
+     
+   <link rel="stylesheet" href="/libs/highlight/styles/github.min.css">
+   
+  <link rel="stylesheet" href="/css/franklin.css">
+<link rel="stylesheet" href="/css/hypertext.css">
+<link rel="icon" href="/assets/favicon.png">
+
+   <title>The Hurst Exponent: An Intuitive Guide</title>  
+</head>
+<body>
+<header>
+  <h1 style="color:#283747">Finance</h1>
+  <nav>
+    <a href="/" class="current">Tags</a>
+  | <a href="/blog/" >Notes</a>
+  <hr/>
+  </nav>
+</header>
+
+
+<!-- Content appended here -->
+<div class="franklin-content"><h1 id="the_hurst_exponent_an_intuitive_guide"><a href="#the_hurst_exponent_an_intuitive_guide" class="header-anchor">The Hurst Exponent: An Intuitive Guide</a></h1>
+<h2 id="what_is_it_really"><a href="#what_is_it_really" class="header-anchor">What Is It, Really?</a></h2>
+<p>The <strong>Hurst exponent</strong> is basically a way to measure if a time series has &quot;memory.&quot; Think about it like this: when a stock price goes up today, does that tell you anything about where it&#39;s going tomorrow? The Hurst exponent quantifies exactly that.</p>
+<p>It&#39;s a single number, \(H\), that falls between 0 and 1, and it tells you one of three stories:</p>
+<h3 id="the_three_stories"><a href="#the_three_stories" class="header-anchor">The Three Stories</a></h3>
+<p><strong>\(H = 0.5\)</strong> — &quot;I have no memory of yesterday&quot;</p>
+<ul>
+<li><p>This is a random walk, like a drunk person stumbling around</p>
+</li>
+<li><p>Each step is completely independent of the last</p>
+</li>
+<li><p>Classic efficient market hypothesis territory</p>
+</li>
+<li><p>Flipping a coin and walking left/right based on the result</p>
+</li>
+</ul>
+<p><strong>\(H > 0.5\)</strong> — &quot;What happened before matters&quot; &#40;Persistent/Trending&#41;</p>
+<ul>
+<li><p>If it went up yesterday, it&#39;s more likely to go up today</p>
+</li>
+<li><p>Think of momentum: trends tend to continue</p>
+</li>
+<li><p>Like a freight train: once it&#39;s moving in a direction, it keeps going</p>
+</li>
+<li><p>Markets with strong momentum or bubbles often show this</p>
+</li>
+</ul>
+<p><strong>\(H < 0.5\)</strong> — &quot;I like to undo what I just did&quot; &#40;Mean-reverting&#41;</p>
+<ul>
+<li><p>If it went up yesterday, it&#39;s more likely to go down today</p>
+</li>
+<li><p>Like a rubber band that&#39;s been stretched</p>
+</li>
+<li><p>The series &quot;fights&quot; against deviations from its average</p>
+</li>
+<li><p>Mean-reversion traders love finding these</p>
+</li>
+</ul>
+<h2 id="why_rescaled_range_lets_break_it_down"><a href="#why_rescaled_range_lets_break_it_down" class="header-anchor">Why &quot;Rescaled Range&quot;? Let&#39;s Break It Down</a></h2>
+<p>This name sounds intimidating, but it&#39;s actually pretty logical once you see what&#39;s happening.</p>
+<h3 id="the_story_behind_the_name"><a href="#the_story_behind_the_name" class="header-anchor">The Story Behind the Name</a></h3>
+<p>Harold Hurst was studying the Nile River in the 1950s. He wanted to figure out how big a reservoir Egypt needed to handle droughts and floods. The question was: <em>how much does the water level vary over time?</em></p>
+<p>Here&#39;s what he did:</p>
+<h3 id="step_1_calculate_the_range"><a href="#step_1_calculate_the_range" class="header-anchor">Step 1: Calculate the Range</a></h3>
+<p>Imagine you&#39;re tracking your deviation from average over time:</p>
+<ol>
+<li><p>Start with your time series: \(X_1, X_2, X_3, ..., X_n\)</p>
+</li>
+<li><p>Calculate the mean: \(\bar{X}\)</p>
+</li>
+<li><p>Create cumulative deviations from the mean:</p>
+</li>
+</ol>
+\[Y_k = \sum_{i=1}^{k} (X_i - \bar{X})\]
+<ol start="4">
+<li><p>Find the <strong>range</strong>: \(R = \max(Y_k) - \min(Y_k)\)</p>
+</li>
+</ol>
+<p>Think of this as: &quot;How far did I wander from my average path, at my furthest point?&quot;</p>
+<h3 id="step_2_rescale_by_standard_deviation"><a href="#step_2_rescale_by_standard_deviation" class="header-anchor">Step 2: Rescale by Standard Deviation</a></h3>
+<p>Here&#39;s the clever bit. Different time series have different scales—one stock might wiggle by dollars, another by pennies. To compare them fairly, Hurst divided by the standard deviation \(S\):</p>
+\(\frac{R}{S}\)
+<p>That&#39;s the <strong>&quot;rescaled range&quot;</strong>—the range, rescaled to be independent of the units you&#39;re measuring in.</p>
+<h3 id="step_3_the_power_law"><a href="#step_3_the_power_law" class="header-anchor">Step 3: The Power Law</a></h3>
+<p>The magic happens when you look at different time spans. Hurst found:</p>
+\(\frac{R(n)}{S(n)} \propto n^H\)
+<p>Or taking logs:</p>
+\(\log\left(\frac{R}{S}\right) \approx H \cdot \log(n) + \text{constant}\)
+<p>For a random walk, the range grows like \(\sqrt{n}\), so \(H = 0.5\). But real rivers &#40;and stock prices&#33;&#41; often behave differently. If \(H > 0.5\), the range grows <em>faster</em> than random—things cluster and trend. If \(H < 0.5\), it grows <em>slower</em>—mean reversion keeps things in check.</p>
+<h2 id="why_does_rs_make_intuitive_sense"><a href="#why_does_rs_make_intuitive_sense" class="header-anchor">Why Does R/S Make Intuitive Sense?</a></h2>
+<p>Let&#39;s dig deeper into why this ratio is so clever.</p>
+<h3 id="the_numerator_range_r"><a href="#the_numerator_range_r" class="header-anchor">The Numerator: Range &#40;R&#41;</a></h3>
+<p>The range asks: <strong>&quot;What&#39;s the biggest excursion you took from your starting point?&quot;</strong></p>
+<p>If you track cumulative deviations from the mean, \(R\) measures how far you wandered at your most extreme point. Think of it as your maximum &quot;displacement&quot; from equilibrium.</p>
+<ul>
+<li><p><strong>Trending systems</strong>: Range grows large because deviations compound &#40;positive feedback&#41;</p>
+</li>
+<li><p><strong>Mean-reverting systems</strong>: Range stays small because you keep getting pulled back</p>
+</li>
+</ul>
+<h3 id="the_denominator_standard_deviation_s"><a href="#the_denominator_standard_deviation_s" class="header-anchor">The Denominator: Standard Deviation &#40;S&#41;</a></h3>
+<p>Standard deviation asks: <strong>&quot;What&#39;s your typical wiggle size?&quot;</strong></p>
+<p>This is measuring the <em>local</em> volatility—how much you jump around from step to step, regardless of direction.</p>
+<ul>
+<li><p>A jumpy stock might have high \(S\) but small \(R\) if it bounces randomly</p>
+</li>
+<li><p>A smooth trending stock might have low \(S\) but large \(R\) if it drifts persistently</p>
+</li>
+</ul>
+<h3 id="the_ratio_rs_how_far_did_you_wander_relative_to_how_much_you_wiggle"><a href="#the_ratio_rs_how_far_did_you_wander_relative_to_how_much_you_wiggle" class="header-anchor">The Ratio: R/S — &quot;How far did you wander relative to how much you wiggle?&quot;</a></h3>
+<p>This is the beautiful part. By dividing, you&#39;re asking:</p>
+<blockquote>
+<p>&quot;Given how volatile you are step-to-step, how far did your cumulative wandering take you?&quot;</p>
+</blockquote>
+<p><strong>For a random walk</strong> &#40;\(H = 0.5\)&#41;:</p>
+<ul>
+<li><p>Your wiggles cancel out randomly</p>
+</li>
+<li><p>Range grows like \(\sqrt{n}\) &#40;square root of time&#41;</p>
+</li>
+<li><p>Standard deviation also grows like \(\sqrt{n}\)</p>
+</li>
+<li><p>So \(R/S\) grows like \(\sqrt{n}\) → neutral scaling</p>
+</li>
+</ul>
+<p><strong>For trending behavior</strong> &#40;\(H > 0.5\)&#41;:</p>
+<ul>
+<li><p>Your wiggles <em>reinforce</em> each other</p>
+</li>
+<li><p>Range grows <em>faster</em> than \(\sqrt{n}\)</p>
+</li>
+<li><p>You&#39;re wandering farther than your local volatility would suggest</p>
+</li>
+<li><p>\(R/S\) grows like \(n^{0.7}\) &#40;example&#41; → super-diffusive</p>
+</li>
+</ul>
+<p><strong>For mean-reverting behavior</strong> &#40;\(H < 0.5\)&#41;:</p>
+<ul>
+<li><p>Your wiggles <em>cancel</em> each other out</p>
+</li>
+<li><p>Range grows <em>slower</em> than \(\sqrt{n}\)</p>
+</li>
+<li><p>You stay closer to home than random chance would predict</p>
+</li>
+<li><p>\(R/S\) grows like \(n^{0.3}\) &#40;example&#41; → sub-diffusive</p>
+</li>
+</ul>
+<h3 id="a_physical_analogy"><a href="#a_physical_analogy" class="header-anchor">A Physical Analogy</a></h3>
+<p>Imagine you&#39;re measuring how drunk someone is by watching them walk:</p>
+<ul>
+<li><p><strong>Standard deviation</strong>: How big are their individual steps? &#40;Are they stumbling wildly or taking small shuffles?&#41;</p>
+</li>
+<li><p><strong>Range</strong>: How far from the bar did they end up?</p>
+</li>
+<li><p><strong>R/S</strong>: Given how much they stumble per step, how far did they manage to travel?</p>
+</li>
+</ul>
+<p>A truly drunk person stumbles a lot &#40;\(S\) is high&#41; but doesn&#39;t go far &#40;\(R\) is small&#41; → \(R/S\) is small, \(H < 0.5\)</p>
+<p>A person with purpose might take smaller steps &#40;\(S\) is lower&#41; but ends up far away &#40;\(R\) is large&#41; → \(R/S\) is large, \(H > 0.5\)</p>
+<h3 id="flipping_it_around_fixed_h_variable_n"><a href="#flipping_it_around_fixed_h_variable_n" class="header-anchor">Flipping It Around: Fixed H, Variable n</a></h3>
+<p>You asked a great question: <strong>&quot;What if we fix H and look at how n changes?&quot;</strong></p>
+<p>This is actually how you <em>use</em> the Hurst exponent in practice&#33; </p>
+<p>If you know \(H \approx 0.7\) for a stock, you can predict:</p>
+<ul>
+<li><p>&quot;Over 100 days, I expect \(R/S \approx 100^{0.7} \approx 25\)&quot;</p>
+</li>
+<li><p>&quot;Over 400 days, I expect \(R/S \approx 400^{0.7} \approx 72\)&quot;</p>
+</li>
+</ul>
+<p>This tells you <strong>how much the range will grow as you extend your time horizon</strong>. </p>
+<h4 id="practical_applications"><a href="#practical_applications" class="header-anchor">Practical Applications:</a></h4>
+<p><strong>1. Risk Management</strong>:  If \(H = 0.7\), your max drawdown risk grows faster than \(\sqrt{time}\). A position that seems safe over 1 month might blow up over 6 months.</p>
+<p><strong>2. Position Sizing</strong>:  For mean-reverting strategies &#40;\(H < 0.5\)&#41;, you can size larger because excursions stay bounded. For trending strategies &#40;\(H > 0.5\)&#41;, you need wider stops because range grows faster.</p>
+<p><strong>3. Time Horizon Selection</strong>: If you know \(H\) and a target \(R/S\) ratio &#40;say, you want to capture moves of 2 standard deviations&#41;, you can solve: \(n = \left(\frac{R/S_{\text{target}}}{c}\right)^{1/H}\)</p>
+<p>This tells you the optimal holding period for your strategy&#33;</p>
+<h3 id="the_key_insight"><a href="#the_key_insight" class="header-anchor">The Key Insight</a></h3>
+<p>The ratio \(R/S\) separates <strong>directional persistence</strong> &#40;how far you wander&#41; from <strong>local randomness</strong> &#40;how much you wiggle&#41;. </p>
+<ul>
+<li><p>High \(R\) alone doesn&#39;t mean trending—could just be high volatility</p>
+</li>
+<li><p>Low \(S\) alone doesn&#39;t mean smooth—could just be low volatility</p>
+</li>
+<li><p>But \(R/S\) growing faster than \(\sqrt{n}\)? That&#39;s <em>structure</em>. That&#39;s memory. That&#39;s edge.</p>
+</li>
+</ul>
+<h2 id="the_intuition_a_walking_analogy"><a href="#the_intuition_a_walking_analogy" class="header-anchor">The Intuition: A Walking Analogy</a></h2>
+<p>Imagine three drunk friends leaving a bar:</p>
+<p><strong>Friend 1</strong> &#40;\(H = 0.5\)&#41;: Flips a coin at each step. Heads &#61; north, tails &#61; south. Completely random. After 100 steps, they&#39;re probably around \(\sqrt{100} = 10\) blocks away.</p>
+<p><strong>Friend 2</strong> &#40;\(H = 0.7\)&#41;: Has a tendency to keep going in whatever direction they&#39;re currently going. &quot;I&#39;m walking north? Cool, I&#39;ll keep walking north&#33;&quot; After 100 steps, they&#39;re <em>more</em> than 10 blocks away—maybe 15 or 20. The range of their wandering is larger.</p>
+<p><strong>Friend 3</strong> &#40;\(H = 0.3\)&#41;: Every time they take a few steps north, they think &quot;wait, I should head back south.&quot; They&#39;re fighting against themselves. After 100 steps, they&#39;re probably only 5-7 blocks from the bar. The range is smaller.</p>
+<h2 id="using_it_for_stocks_does_it_make_sense"><a href="#using_it_for_stocks_does_it_make_sense" class="header-anchor">Using It for Stocks: Does It Make Sense?</a></h2>
+<h3 id="for_stock_screening_yes_but"><a href="#for_stock_screening_yes_but" class="header-anchor">For Stock Screening: <strong>Yes, but...</strong></a></h3>
+<p>The logic is sound:</p>
+<ul>
+<li><p>Find stocks with \(H < 0.4\) → Trade mean-reversion strategies &#40;pairs trading, buy dips&#41;</p>
+</li>
+<li><p>Find stocks with \(H > 0.6\) → Trade momentum strategies &#40;ride the trend&#41;</p>
+</li>
+<li><p>Stocks near \(H = 0.5\) → Probably efficient, harder to trade systematically</p>
+</li>
+</ul>
+<p><strong>But beware</strong>: </p>
+<ul>
+<li><p>\(H\) is not stable over time. A mean-reverting stock can become trending</p>
+</li>
+<li><p>Estimation is noisy. You need lots of data, and you&#39;ll get false signals</p>
+</li>
+<li><p>Markets aren&#39;t stationary—the rules change</p>
+</li>
+</ul>
+<h3 id="for_regime_change_this_is_actually_clever"><a href="#for_regime_change_this_is_actually_clever" class="header-anchor">For Regime Change: <strong>This is actually clever</strong></a></h3>
+<p>This is where it gets interesting. Instead of calculating one \(H\) for a stock, calculate it in a <em>rolling window</em>:</p>
+\[H_t = \text{Hurst exponent over last 60 days ending at time } t\]
+<p>Now watch for changes:</p>
+<ul>
+<li><p>\(H\) jumps from 0.4 to 0.65? Market might be entering a trending regime &#40;start of a bubble?&#41;</p>
+</li>
+<li><p>\(H\) drops from 0.6 to 0.4? Trend is breaking, mean reversion kicking in &#40;top of bubble?&#41;</p>
+</li>
+</ul>
+<p>You&#39;re not predicting <em>direction</em>, you&#39;re detecting <em>structural changes in behavior</em>. That&#39;s gold for risk management.</p>
+<h3 id="real_talk_the_limitations"><a href="#real_talk_the_limitations" class="header-anchor">Real Talk: The Limitations</a></h3>
+<ol>
+<li><p><strong>Window sensitivity</strong>: Calculate \(H\) over 30 days vs 250 days, you&#39;ll get different answers</p>
+</li>
+<li><p><strong>Non-stationarity</strong>: Financial markets break the statistical assumptions constantly</p>
+</li>
+<li><p><strong>Computational cost</strong>: You need significant historical data</p>
+</li>
+<li><p><strong>Not a holy grail</strong>: It&#39;s one indicator. Combine it with volatility, volume, correlations, etc.</p>
+</li>
+</ol>
+<h2 id="a_practical_example"><a href="#a_practical_example" class="header-anchor">A Practical Example</a></h2>
+<p>Let&#39;s say you&#39;re analyzing SPY &#40;S&amp;P 500 ETF&#41;:</p>
+<pre><code class="language-python"># Pseudocode
+for each day t:
+    data &#61; prices&#91;t-60:t&#93;  # Last 60 days
+    H&#91;t&#93; &#61; calculate_hurst&#40;data&#41;
+    
+    if H&#91;t&#93; &gt; 0.65 and previous_H &lt; 0.5:
+        alert&#40;&quot;Regime change: entering trending market&quot;&#41;
+    elif H&#91;t&#93; &lt; 0.35 and previous_H &gt; 0.5:
+        alert&#40;&quot;Regime change: entering mean-reverting market&quot;&#41;</code></pre>
+<p>You&#39;d see \(H\) spike during the 2020-2021 bull run &#40;strong momentum&#41;, then drop during choppy consolidation periods.</p>
+<h2 id="why_this_matters"><a href="#why_this_matters" class="header-anchor">Why This Matters</a></h2>
+<p>The Hurst exponent captures something fundamental: <strong>markets have moods</strong>. Sometimes they trend relentlessly, sometimes they chop around a mean, sometimes they&#39;re random. </p>
+<p>Traditional analysis might say &quot;this stock is volatile&quot; or &quot;this stock has momentum.&quot; The Hurst exponent asks a deeper question: <strong>&quot;Does this stock&#39;s behavior predict its own future behavior?&quot;</strong></p>
+<p>And that&#39;s a question worth asking.</p>
+<h2 id="the_bottom_line"><a href="#the_bottom_line" class="header-anchor">The Bottom Line</a></h2>
+<ul>
+<li><p><strong>The name</strong>: &quot;Rescaled range&quot; because you measure how far things wander &#40;range&#41; and divide by standard deviation &#40;rescale&#41; to make it comparable</p>
+</li>
+<li><p><strong>For screening</strong>: Yes, theoretically sound—match strategies to market memory</p>
+</li>
+<li><p><strong>For regime detection</strong>: Even better—watch for structural changes in behavior</p>
+</li>
+<li><p><strong>The catch</strong>: It&#39;s not magic. Use it as part of a toolkit, not as a silver bullet</p>
+</li>
+</ul>
+<p>The Hurst exponent won&#39;t make you rich overnight, but it can help you understand <em>what kind of game</em> the market is currently playing. And knowing the game is half the battle.</p>
+<div class="page-foot">
+    Contact me by <a href="mailto:skchu@wustl.edu">E-mail</a> | <a href="https://github.com/kchu25">Github</a> | <a href="https://www.linkedin.com/in/kchu1/">Linkedin</a>
+    <br>
+    This work is licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.  Last modified: October 12, 2025.
+    <br>
+    Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia language</a>.
+</div>
+</div><!-- CONTENT ENDS HERE -->
+    
+        <script src="/libs/katex/katex.min.js"></script>
+<script src="/libs/katex/contrib/auto-render.min.js"></script>
+<script>renderMathInElement(document.body)</script>
+
+    
+    
+        <script src="/libs/highlight/highlight.min.js"></script>
+<script>hljs.highlightAll();hljs.configure({tabReplace: '    '});</script>
+
+    
+  </body>
+</html>
