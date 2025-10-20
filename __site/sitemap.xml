@@ -15,7 +15,7 @@
 </url>
 <url>
     <loc>https://kchu25.github.io/blog/exit_strategies/optimal_stopping/index.html</loc>
-    <lastmod>2025-10-06</lastmod>
+    <lastmod>2025-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -32,8 +32,14 @@
     <priority>0.5</priority>
 </url>
 <url>
+    <loc>https://kchu25.github.io/blog/exit_strategies/o/index.html</loc>
+    <lastmod>2025-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
     <loc>https://kchu25.github.io/blog/index.html</loc>
-    <lastmod>2025-10-12</lastmod>
+    <lastmod>2025-10-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>

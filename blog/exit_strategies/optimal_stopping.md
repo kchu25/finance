@@ -1,4 +1,6 @@
-
+@def title = "Optimal Stopping with Log Prices for Mean Reversion"
+@def published = "12 October 2025"
+@def tags = ["exit-strategy"]
 
 # Optimal Stopping with Log Prices for Mean Reversion
 
