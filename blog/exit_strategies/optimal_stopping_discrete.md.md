@@ -1,6 +1,7 @@
 @def title = "Optimal Stopping: A Discrete Approach"
 @def published = "20 October 2025"
 @def tags = ["exit-strategy"]
+
 # Optimal Stopping: A Discrete Approach
 
 ## Why Work in Log Space?
@@ -168,6 +169,19 @@ From the regression coefficients:
 > - $x_t$ itself is **NOT stationary** (it fluctuates around $\mu$ but the level matters)
 > - However, $(x_t - \mu)$ **IS stationary** (deviations from mean are stationary)
 > - The increments $\Delta x_t = x_{t+1} - x_t$ are also stationary
+> 
+> **The estimation-application gap:** You estimate $\theta$ and $\mu$ from **stationary** differences/deviations in historical data, but then apply them to the current **non-stationary** price level $x_t$. Why does this work?
+> 
+> - The OU model says: the drift $\theta(\mu - x_t)\Delta t$ pulls $x_t$ toward $\mu$, regardless of the current level
+> - Since $(x_t - \mu)$ is stationary, the *dynamics* are the same whether $x_t = 4.50$ or $x_t = 4.70$
+> - Your estimated parameters capture these dynamics, which you assume will govern future price movements
+> 
+> **The leap of faith:** You're betting that mean-reverting behavior observed historically will continue to work at today's price level. This breaks when:
+> - $\mu$ has shifted (regime change) → your historical estimate is outdated
+> - Market conditions changed (volatility spike, trending) → dynamics no longer apply
+> - Price breaks far beyond expected range → signal that parameters may be invalid
+> 
+> This is why traders constantly monitor whether current price behavior matches their estimated model!
 > 
 > **Why the regression works:** When you run:
 > $y_t = x_{t+1} - x_t = \beta_0 + \beta_1 x_t + \text{error}$
