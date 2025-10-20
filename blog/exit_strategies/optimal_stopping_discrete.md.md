@@ -81,7 +81,24 @@ Then the expected profit is:
 $$\text{Profit}_{\text{expected}} = \mathbb{E}[x_{t+1} | x_t] - x_{\text{entry}}$$
 
 **Exit rule:**
-$$\text{Exit if: } x_t - x_{\text{entry}} \geq \mathbb{E}[x_{t+1} | x_t] - x_{\text{entry}} - c$$
+$\text{Exit if: } x_t - x_{\text{entry}} \geq \mathbb{E}[x_{t+1} | x_t] - x_{\text{entry}} - c$
+
+> **Intuition behind the exit rule:** This compares two options:
+> 
+> - **Left side** ($x_t - x_{\text{entry}}$): Profit if you exit **now**
+> - **Right side** ($\mathbb{E}[x_{t+1} | x_t] - x_{\text{entry}} - c$): Expected profit if you **wait one more step**, minus holding costs
+> 
+> **Exit when the left ≥ right**, meaning "taking profit now is at least as good as waiting."
+> 
+> **Three scenarios:**
+> 
+> 1. **You're in profit and far from equilibrium:** Expected future profit > current profit → keep holding (mean reversion will push you higher)
+> 
+> 2. **You're in profit and near equilibrium:** Expected future profit ≈ current profit → exit (not much more to gain, why pay holding costs?)
+> 
+> 3. **Expected future is negative:** You expect things to get worse → exit immediately, regardless of current position
+> 
+> The beauty: this single rule handles taking profits, cutting losses, and everything in between!
 
 Where $c$ is your holding cost (trading fees, slippage, opportunity cost).
 
@@ -141,10 +158,37 @@ From the regression coefficients:
 
 > **The big assumption:** You're assuming the mean-reverting dynamics you observed historically will continue today. If the market regime has changed (news, volatility spike, trend), your parameters could be wrong. This is the fundamental challenge of all statistical trading!
 
+> **Stationarity requirement:** This strategy assumes $\mu$, $\theta$, and $\sigma$ remain **constant over time** (stationarity). In reality, markets violate this constantly:
+> 
+> - **Regime shifts:** Earnings announcement → new equilibrium $\mu$
+> - **Volatility spikes:** Market panic → $\sigma$ jumps dramatically  
+> - **Trending periods:** Sustained uptrend → mean reversion temporarily breaks down
+> - **Intraday patterns:** Different dynamics at market open vs. close
+> 
+> **What practitioners do:**
+> - **Use shorter lookback windows** (20-30 days) to capture recent regime
+> - **Re-estimate frequently** (daily or intraday) to adapt to changes
+> - **Add trend filters** (only trade mean reversion when no strong trend detected)
+> - **Monitor for breakouts** (if price moves far beyond expected range, pause trading)
+> 
+> The OU process is mathematically stationary, but real markets aren't. Managing this gap between model and reality is the art of statistical trading.
+
 **Quick sanity checks:**
 - $\theta > 0$? (Must be positive for mean reversion)
 - $\mu$ near recent average log price? (If wildly different, model may not fit)
 - $\sigma$ reasonable? (Compare to historical volatility measures)
+
+> **Why must $\theta > 0$?** Consider the drift term $\theta(\mu - x_t)\Delta t$:
+> 
+> - If $x_t < \mu$ (below average): $(\mu - x_t) > 0$
+>   - With $\theta > 0$: drift is positive → pushes price **up toward** $\mu$ ✓
+>   - With $\theta < 0$: drift is negative → pushes price **down away from** $\mu$ ✗
+> 
+> - If $x_t > \mu$ (above average): $(\mu - x_t) < 0$
+>   - With $\theta > 0$: drift is negative → pushes price **down toward** $\mu$ ✓
+>   - With $\theta < 0$: drift is positive → pushes price **up away from** $\mu$ ✗
+> 
+> **If $\theta < 0$:** You get explosive trending (away from $\mu$), not mean reversion! If your regression gives $\beta_1 > 0$ (so $\theta = -\beta_1/\Delta t < 0$), the stock isn't mean-reverting—it's trending. The optimal stopping framework doesn't apply; you need a different strategy!
 
 ## A Concrete Example
 
