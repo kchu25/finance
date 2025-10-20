@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="/libs/katex/katex.min.css">
+     
+   <link rel="stylesheet" href="/libs/highlight/styles/github.min.css">
+   
+  <link rel="stylesheet" href="/css/franklin.css">
+<link rel="stylesheet" href="/css/hypertext.css">
+<link rel="icon" href="/assets/favicon.png">
+
+   <title>Understanding Stationarity: ADF Test and Autocorrelation</title>  
+</head>
+<body>
+<header>
+  <h1 style="color:#283747">Finance</h1>
+  <nav>
+    <a href="/" class="current">Tags</a>
+  | <a href="/blog/" >Notes</a>
+  <hr/>
+  </nav>
+</header>
+
+
+<!-- Content appended here -->
+<div class="franklin-content"><h1 id="understanding_stationarity_adf_test_and_autocorrelation"><a href="#understanding_stationarity_adf_test_and_autocorrelation" class="header-anchor">Understanding Stationarity: ADF Test and Autocorrelation</a></h1>
+<p>Hey&#33; Let&#39;s break down these concepts in a way that actually makes sense.</p>
+<h2 id="whats_the_big_picture"><a href="#whats_the_big_picture" class="header-anchor">What&#39;s the Big Picture?</a></h2>
+<p>When you&#39;re working with time series data, you need to know if your data is <strong>stationary</strong> - basically, does it have stable statistical properties over time, or is it wandering around? This matters because many statistical models assume stationarity.</p>
+<h2 id="the_augmented_dickey-fuller_adf_test"><a href="#the_augmented_dickey-fuller_adf_test" class="header-anchor">The Augmented Dickey-Fuller &#40;ADF&#41; Test</a></h2>
+<p>The ADF test is like a detective that checks if your time series has a &quot;unit root&quot; - which is a fancy way of saying &quot;does this data have a tendency to wander off and not come back?&quot;</p>
+<h3 id="how_it_works"><a href="#how_it_works" class="header-anchor">How It Works</a></h3>
+<p>The ADF test runs a regression that looks something like this:</p>
+\(\Delta x_t = \alpha + \beta t + \gamma x_{t-1} + \sum_{i=1}^{p} \delta_i \Delta x_{t-i} + \epsilon_t\)
+<p>Where:</p>
+<ul>
+<li><p>\(\Delta x_t = x_t - x_{t-1}\) &#40;the change from one period to the next&#41;</p>
+</li>
+<li><p>\(\gamma\) is the key parameter we care about</p>
+</li>
+<li><p>The sum term handles autocorrelation at different lags</p>
+</li>
+</ul>
+<p><strong>Yes, ALL of these are estimated&#33;</strong> It&#39;s just a regular OLS regression. Let me break down what each parameter does:</p>
+<h3 id="the_parameters_explained"><a href="#the_parameters_explained" class="header-anchor">The Parameters Explained</a></h3>
+<p><strong>\(\alpha\) &#40;intercept/drift&#41;</strong>: </p>
+<ul>
+<li><p>This is just a constant term</p>
+</li>
+<li><p>Captures whether there&#39;s a general upward/downward drift in the series</p>
+</li>
+<li><p>Estimated like any regression intercept</p>
+</li>
+</ul>
+<p><strong>\(\beta\) &#40;trend coefficient&#41;</strong>:</p>
+<ul>
+<li><p>Multiplied by time \(t\) &#40;1, 2, 3, 4, ...&#41;</p>
+</li>
+<li><p>Captures whether there&#39;s a deterministic time trend</p>
+</li>
+<li><p>You can actually choose to include this or not&#33; More on this below.</p>
+</li>
+</ul>
+<p><strong>\(\gamma\) &#40;the star of the show&#41;</strong>:</p>
+<ul>
+<li><p>Coefficient on the lagged level \(x_{t-1}\)</p>
+</li>
+<li><p><strong>This is what we&#39;re testing&#33;</strong></p>
+</li>
+<li><p>If \(\gamma\) is significantly negative → mean reversion → stationary</p>
+</li>
+<li><p>If \(\gamma \approx 0\) → unit root → non-stationary</p>
+</li>
+</ul>
+<p><strong>\(\delta_i\) &#40;lagged difference terms&#41;</strong>:</p>
+<ul>
+<li><p>Coefficients on past changes \(\Delta x_{t-1}, \Delta x_{t-2}\), etc.</p>
+</li>
+<li><p>These &quot;soak up&quot; any serial correlation in the residuals</p>
+</li>
+<li><p>Make sure your test results are valid</p>
+</li>
+<li><p>There are \(p\) of these &#40;you choose \(p\)&#41;</p>
+</li>
+</ul>
+<h3 id="how_do_you_choose_what_to_include"><a href="#how_do_you_choose_what_to_include" class="header-anchor">How Do You Choose What to Include?</a></h3>
+<p>The ADF test actually has <strong>three versions</strong> depending on what you include:</p>
+<ol>
+<li><p><strong>No constant, no trend</strong>: \(\Delta x_t = \gamma x_{t-1} + \sum \delta_i \Delta x_{t-i} + \epsilon_t\)</p>
+</li>
+<li><p><strong>With constant, no trend</strong>: \(\Delta x_t = \alpha + \gamma x_{t-1} + \sum \delta_i \Delta x_{t-i} + \epsilon_t\)</p>
+</li>
+<li><p><strong>With constant and trend</strong>: \(\Delta x_t = \alpha + \beta t + \gamma x_{t-1} + \sum \delta_i \Delta x_{t-i} + \epsilon_t\)</p>
+</li>
+</ol>
+<p>You pick based on your data:</p>
+<ul>
+<li><p>Random walk with no drift? → Version 1</p>
+</li>
+<li><p>Data oscillates around a constant? → Version 2</p>
+</li>
+<li><p>Data has a clear time trend? → Version 3</p>
+</li>
+</ul>
+<h3 id="how_many_lags_p"><a href="#how_many_lags_p" class="header-anchor">How Many Lags &#40;\(p\)&#41;?</a></h3>
+<p>You need to choose how many lagged differences to include. Common approaches:</p>
+<p><strong>1. Information Criteria &#40;most common&#41;</strong>:</p>
+<ul>
+<li><p>Try different values of \(p\)</p>
+</li>
+<li><p>Pick the one that minimizes AIC or BIC</p>
+</li>
+<li><p>Most software does this automatically</p>
+</li>
+</ul>
+<p><strong>2. Rule of thumb</strong>:</p>
+<ul>
+<li><p>\(p \approx 12 \times (T/100)^{1/4}\) where \(T\) is your sample size</p>
+</li>
+<li><p>For monthly data: \(p \approx 12\)</p>
+</li>
+<li><p>For quarterly data: \(p \approx 4\)</p>
+</li>
+</ul>
+<p><strong>3. Ljung-Box test</strong>:</p>
+<ul>
+<li><p>Keep adding lags until residuals show no autocorrelation</p>
+</li>
+</ul>
+<p><strong>The test checks</strong>: Is \(\gamma\) significantly negative?</p>
+<ul>
+<li><p><strong>If \(\gamma < 0\) and significant</strong>: Your series &quot;wants&quot; to return to some level → <strong>stationary</strong> ✓</p>
+</li>
+<li><p><strong>If \(\gamma \approx 0\)</strong>: Your series just wanders around → <strong>non-stationary</strong> &#40;unit root&#41; ✗</p>
+</li>
+</ul>
+<h3 id="interpreting_the_results"><a href="#interpreting_the_results" class="header-anchor">Interpreting the Results</a></h3>
+<p>You&#39;ll get a test statistic and a p-value:</p>
+<ul>
+<li><p><strong>p-value &lt; 0.05</strong>: Reject the null hypothesis → series is stationary</p>
+</li>
+<li><p><strong>p-value &gt; 0.05</strong>: Can&#39;t reject null → series likely has a unit root &#40;non-stationary&#41;</p>
+</li>
+</ul>
+<p>The null hypothesis is &quot;there&#39;s a unit root&quot; &#40;non-stationary&#41;, so a low p-value is good news&#33;</p>
+<h2 id="checking_autocorrelation_of_x_t_-_barx"><a href="#checking_autocorrelation_of_x_t_-_barx" class="header-anchor">Checking Autocorrelation of \((x_t - \bar{x})\)</a></h2>
+<p>Now let&#39;s talk about your second question. You&#39;re looking at the <strong>demeaned series</strong> &#40;subtracting the mean&#41; and checking its autocorrelation.</p>
+<h3 id="what_does_negative_at_lag_1_mean"><a href="#what_does_negative_at_lag_1_mean" class="header-anchor">What Does &quot;Negative at Lag 1&quot; Mean?</a></h3>
+<p>The autocorrelation at lag 1 measures the correlation between:</p>
+<ul>
+<li><p>\((x_t - \bar{x})\) &#40;today&#39;s deviation from mean&#41; and </p>
+</li>
+<li><p>\((x_{t-1} - \bar{x})\) &#40;yesterday&#39;s deviation from mean&#41;</p>
+</li>
+</ul>
+<p>Let me break this down with a concrete example:</p>
+<p><strong>Imagine a stock price that oscillates around &#36;100</strong>:</p>
+<table><tr><th align="right">Time</th><th align="right">Price \(x_t\)</th><th align="right">Deviation \((x_t - \bar{x})\)</th></tr><tr><td align="right">1</td><td align="right">&#36;95</td><td align="right">-&#36;5 &#40;below average&#41;</td></tr><tr><td align="right">2</td><td align="right">&#36;105</td><td align="right">&#43;&#36;5 &#40;above average&#41;</td></tr><tr><td align="right">3</td><td align="right">&#36;98</td><td align="right">-&#36;2 &#40;below average&#41;</td></tr><tr><td align="right">4</td><td align="right">&#36;102</td><td align="right">&#43;&#36;2 &#40;above average&#41;</td></tr><tr><td align="right">5</td><td align="right">&#36;99</td><td align="right">-&#36;1 &#40;below average&#41;</td></tr></table>
+<p>See the pattern? When it&#39;s above average at time \(t\), it tends to be below average at time \(t-1\) &#40;and vice versa&#41;. The signs <strong>alternate</strong> - that&#39;s negative autocorrelation&#33;</p>
+<h3 id="what_negative_lag-1_autocorrelation_tells_you"><a href="#what_negative_lag-1_autocorrelation_tells_you" class="header-anchor">What Negative Lag-1 Autocorrelation Tells You</a></h3>
+<p><strong>If autocorrelation at lag 1 is negative</strong> &#40;like -0.3&#41;:</p>
+<ul>
+<li><p>When today is above the mean → yesterday was likely below the mean</p>
+</li>
+<li><p>When today is below the mean → yesterday was likely above the mean</p>
+</li>
+<li><p>The series <strong>overshoots and corrects</strong> - it bounces around the mean</p>
+</li>
+<li><p>This is <strong>mean reversion</strong> &#61; hallmark of stationarity&#33;</p>
+</li>
+</ul>
+<p><strong>If autocorrelation at lag 1 is positive</strong> &#40;like &#43;0.7&#41;:</p>
+<ul>
+<li><p>When today is above the mean → yesterday was probably also above the mean</p>
+</li>
+<li><p>When today is below the mean → yesterday was probably also below the mean</p>
+</li>
+<li><p>The series has <strong>persistence</strong> - it stays on one side</p>
+</li>
+<li><p>This suggests <strong>non-stationarity</strong> &#40;like a random walk&#41;</p>
+</li>
+</ul>
+<h3 id="visual_intuition"><a href="#visual_intuition" class="header-anchor">Visual Intuition</a></h3>
+<p>Think of it like a ball:</p>
+<p><strong>Negative autocorrelation &#40;stationary&#41;</strong>:</p>
+<ul>
+<li><p>Ball on a spring attached to a wall</p>
+</li>
+<li><p>Pull it right → it bounces back left</p>
+</li>
+<li><p>Pull it left → it bounces back right</p>
+</li>
+<li><p>Always returns to center &#40;the mean&#41;</p>
+</li>
+</ul>
+<p><strong>Positive autocorrelation &#40;non-stationary&#41;</strong>:</p>
+<ul>
+<li><p>Ball rolling on a flat surface</p>
+</li>
+<li><p>Push it right → it keeps going right</p>
+</li>
+<li><p>No force pulling it back</p>
+</li>
+<li><p>Can drift away indefinitely</p>
+</li>
+</ul>
+<h3 id="why_this_matters_for_stationarity"><a href="#why_this_matters_for_stationarity" class="header-anchor">Why This Matters for Stationarity</a></h3>
+<p>A stationary series has a <strong>stable mean</strong> it orbits around. If you see negative lag-1 autocorrelation, it means:</p>
+<ul>
+<li><p>The series doesn&#39;t wander off</p>
+</li>
+<li><p>It has a &quot;home base&quot; &#40;the mean&#41;</p>
+</li>
+<li><p>Deviations are temporary and self-correcting</p>
+</li>
+</ul>
+<p>This is exactly what stationarity requires&#33;</p>
+<h3 id="why_negative_lag-1_suggests_stationarity"><a href="#why_negative_lag-1_suggests_stationarity" class="header-anchor">Why Negative Lag-1 Suggests Stationarity</a></h3>
+<p>Think about it intuitively:</p>
+<p><strong>Stationary process</strong>: If you&#39;re above the mean today, you tend to drift back down tomorrow &#40;negative autocorrelation&#41;. The series has a &quot;home base&quot; it returns to.</p>
+<p><strong>Non-stationary process</strong>: If you&#39;re high today, you tend to stay high tomorrow &#40;positive autocorrelation&#41;. The series can wander off indefinitely.</p>
+<h3 id="the_connection_to_adf"><a href="#the_connection_to_adf" class="header-anchor">The Connection to ADF</a></h3>
+<p>The negative autocorrelation at lag 1 is actually related to what the ADF test checks&#33; When the ADF finds \(\gamma < 0\), it&#39;s detecting that same mean-reverting behavior.</p>
+<h2 id="what_should_you_actually_test"><a href="#what_should_you_actually_test" class="header-anchor">What Should You Actually Test?</a></h2>
+<h3 id="heres_the_deal_with_stock_prices"><a href="#heres_the_deal_with_stock_prices" class="header-anchor">Here&#39;s the Deal with Stock Prices</a></h3>
+<p>You&#39;re absolutely right&#33; Stock prices are almost <strong>never stationary</strong> - they wander around, trend up/down, and don&#39;t have a stable mean. This is called being <strong>integrated of order 1</strong>, or <strong>I&#40;1&#41;</strong>.</p>
+<p>But here&#39;s the key insight: <strong>their returns &#40;differences&#41; usually ARE stationary&#33;</strong></p>
+<h3 id="what_to_test_in_practice"><a href="#what_to_test_in_practice" class="header-anchor">What to Test in Practice</a></h3>
+<p><strong>Test the raw series first</strong>:</p>
+<pre><code class="language-julia"># Test the price level
+adf_test &#61; ADFTest&#40;stock_prices, :constant, 1&#41;</code></pre>
+<p>If it&#39;s non-stationary &#40;high p-value&#41;, then test the differences:</p>
+<pre><code class="language-julia"># Test the returns &#40;first difference&#41;
+returns &#61; diff&#40;stock_prices&#41;  # This is Δx_t
+adf_test &#61; ADFTest&#40;returns, :constant, 1&#41;</code></pre>
+<h3 id="the_logic"><a href="#the_logic" class="header-anchor">The Logic</a></h3>
+<p>The ADF test <strong>already works on the original series</strong> \(x_t\). Remember the regression:</p>
+\(\Delta x_t = \alpha + \gamma x_{t-1} + \sum_{i=1}^{p} \delta_i \Delta x_{t-i} + \epsilon_t\)
+<p>The test creates the differences internally&#33; You give it \(x_t\) &#40;the levels&#41;, and it:</p>
+<ol>
+<li><p>Computes \(\Delta x_t\) on the left side</p>
+</li>
+<li><p>Tests if \(x_{t-1}\) has a significant negative coefficient</p>
+</li>
+</ol>
+<h3 id="so_what_should_you_do"><a href="#so_what_should_you_do" class="header-anchor">So What Should You Do?</a></h3>
+<p><strong>Option 1 &#40;Standard approach&#41;</strong>:</p>
+<ul>
+<li><p>Run ADF on the price levels \(x_t\)</p>
+</li>
+<li><p>If non-stationary → differencing is needed</p>
+</li>
+<li><p>Run ADF on returns \(\Delta x_t\) to confirm they&#39;re stationary</p>
+</li>
+<li><p>Use returns for modeling</p>
+</li>
+</ul>
+<p><strong>Option 2 &#40;If you know it&#39;s I&#40;1&#41;&#41;</strong>:</p>
+<ul>
+<li><p>Skip straight to testing returns</p>
+</li>
+<li><p>Most financial time series are I&#40;1&#41;, so this saves time</p>
+</li>
+</ul>
+<h3 id="example_stock_prices"><a href="#example_stock_prices" class="header-anchor">Example: Stock Prices</a></h3>
+<pre><code class="language-julia">using HypothesisTests, StatsBase
+
+# Test price levels
+prices &#61; &#91;100, 102, 101, 105, 108, ...&#93;
+adf_prices &#61; ADFTest&#40;prices, :constant, 1&#41;
+println&#40;&quot;Prices p-value: &quot;, pvalue&#40;adf_prices&#41;&#41;  # Usually &gt; 0.05 &#40;non-stationary&#41;
+
+# Test returns
+returns &#61; diff&#40;log.&#40;prices&#41;&#41;  # Log returns
+adf_returns &#61; ADFTest&#40;returns, :constant, 1&#41;
+println&#40;&quot;Returns p-value: &quot;, pvalue&#40;adf_returns&#41;&#41;  # Usually &lt; 0.05 &#40;stationary&#33;&#41;</code></pre>
+<blockquote>
+<p><strong>Note on differencing</strong>: When you compute returns with <code>diff&#40;&#41;</code>, you lose one observation&#33; If <code>prices</code> has \(T\) observations, <code>returns</code> will have \(T-1\) observations starting from the second time point. This is because \(\Delta x_2 = x_2 - x_1\) is your first return &#40;you can&#39;t compute a return for \(x_1\) since there&#39;s no \(x_0\)&#41;. This is normal - just remember to align your dates/indices accordingly&#33;</p>
+</blockquote>
+<h3 id="integration_order"><a href="#integration_order" class="header-anchor">Integration Order</a></h3>
+<ul>
+<li><p><strong>I&#40;0&#41;</strong>: Stationary as-is &#40;rare for prices&#41;</p>
+</li>
+<li><p><strong>I&#40;1&#41;</strong>: Stationary after 1st difference &#40;most financial data&#41;</p>
+</li>
+<li><p><strong>I&#40;2&#41;</strong>: Needs 2 differences &#40;rare, usually a data problem&#41;</p>
+</li>
+</ul>
+<p><strong>Bottom line</strong>: Test the levels first to see if you need to difference. If ADF says non-stationary, difference once and test again&#33;</p>
+<p><strong>What to look for</strong>:</p>
+<ul>
+<li><p>ADF p-value &lt; 0.05 ✓</p>
+</li>
+<li><p>Lag-1 autocorrelation is negative ✓</p>
+</li>
+<li><p>Both suggest your series is stationary&#33;</p>
+</li>
+</ul>
+<h2 id="key_takeaway"><a href="#key_takeaway" class="header-anchor">Key Takeaway</a></h2>
+<p>Both tests are looking at the same fundamental question from different angles: <strong>Does this series have a stable mean it returns to?</strong></p>
+<ul>
+<li><p><strong>ADF</strong>: Formal statistical test</p>
+</li>
+<li><p><strong>Negative lag-1 autocorrelation</strong>: Quick visual/numeric check</p>
+</li>
+</ul>
+<p>If you see both, you&#39;re in good shape for modeling&#33;</p>
+<div class="page-foot">
+    Contact me by <a href="mailto:skchu@wustl.edu">E-mail</a> | <a href="https://github.com/kchu25">Github</a> | <a href="https://www.linkedin.com/in/kchu1/">Linkedin</a>
+    <br>
+    This work is licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.  Last modified: October 20, 2025.
+    <br>
+    Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia language</a>.
+</div>
+</div><!-- CONTENT ENDS HERE -->
+    
+        <script src="/libs/katex/katex.min.js"></script>
+<script src="/libs/katex/contrib/auto-render.min.js"></script>
+<script>renderMathInElement(document.body)</script>
+
+    
+    
+        <script src="/libs/highlight/highlight.min.js"></script>
+<script>hljs.highlightAll();hljs.configure({tabReplace: '    '});</script>
+
+    
+  </body>
+</html>
