@@ -1,7 +1,6 @@
 @def title = "Optimal Stopping: A Discrete Approach"
 @def published = "20 October 2025"
 @def tags = ["exit-strategy"]
-
 # Optimal Stopping: A Discrete Approach
 
 ## Why Work in Log Space?
@@ -165,13 +164,32 @@ From the regression coefficients:
 > - **Trending periods:** Sustained uptrend → mean reversion temporarily breaks down
 > - **Intraday patterns:** Different dynamics at market open vs. close
 > 
+> **What kind of stationarity?** The OU process models $x_t = \ln(P_t)$ as mean-reverting around $\mu$. This means:
+> - $x_t$ itself is **NOT stationary** (it fluctuates around $\mu$ but the level matters)
+> - However, $(x_t - \mu)$ **IS stationary** (deviations from mean are stationary)
+> - The increments $\Delta x_t = x_{t+1} - x_t$ are also stationary
+> 
+> **Why the regression works:** When you run:
+> $y_t = x_{t+1} - x_t = \beta_0 + \beta_1 x_t + \text{error}$
+> 
+> You're regressing **differences** ($y_t$) on **levels** ($x_t$). This is valid for mean-reverting processes but would be problematic for random walks! The key:
+> 
+> - **Random walk** (non-stationary): $x_{t+1} = x_t + \varepsilon_t$ → no mean reversion, regressing differences on levels is spurious
+> - **Mean reversion** (stationary around $\mu$): $x_{t+1} = x_t + \theta(\mu - x_t)\Delta t + \varepsilon_t$ → the level $x_t$ predicts future changes because of the pull toward $\mu$
+> 
+> **How to test if your stock is mean-reverting:**
+> - **Augmented Dickey-Fuller (ADF) test** on $x_t$: Rejects unit root? → Evidence of mean reversion
+> - **Check autocorrelation** of $(x_t - \bar{x})$: Negative at lag 1? → Mean reversion signal
+> 
+> If ADF fails to reject or autocorrelation is near zero, you likely have a random walk, not mean reversion!
+> 
 > **What practitioners do:**
 > - **Use shorter lookback windows** (20-30 days) to capture recent regime
 > - **Re-estimate frequently** (daily or intraday) to adapt to changes
 > - **Add trend filters** (only trade mean reversion when no strong trend detected)
 > - **Monitor for breakouts** (if price moves far beyond expected range, pause trading)
 > 
-> The OU process is mathematically stationary, but real markets aren't. Managing this gap between model and reality is the art of statistical trading.
+> The OU process is mathematically stationary around its mean, but real markets aren't. Managing this gap between model and reality is the art of statistical trading.
 
 **Quick sanity checks:**
 - $\theta > 0$? (Must be positive for mean reversion)
