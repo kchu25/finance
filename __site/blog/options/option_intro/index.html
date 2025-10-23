@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="/libs/katex/katex.min.css">
+     
+   <link rel="stylesheet" href="/libs/highlight/styles/github.min.css">
+   
+  <link rel="stylesheet" href="/css/franklin.css">
+<link rel="stylesheet" href="/css/hypertext.css">
+<link rel="icon" href="/assets/favicon.png">
+
+   <title>Essential Options Trading Concepts for Algo Trading</title>  
+</head>
+<body>
+<header>
+  <h1 style="color:#283747">Finance</h1>
+  <nav>
+    <a href="/" class="current">Tags</a>
+  | <a href="/blog/" >Notes</a>
+  <hr/>
+  </nav>
+</header>
+
+
+<!-- Content appended here -->
+<div class="franklin-content"><h1 id="essential_options_trading_concepts_for_algo_trading"><a href="#essential_options_trading_concepts_for_algo_trading" class="header-anchor">Essential Options Trading Concepts for Algo Trading</a></h1>
+<h2 id="implied_volatility_the_foundation"><a href="#implied_volatility_the_foundation" class="header-anchor"><ol>
+<li><p>Implied Volatility: The Foundation</p>
+</li>
+</ol>
+</a></h2>
+<p><strong>Implied Volatility &#40;IV&#41;</strong> is the market&#39;s expectation of future volatility, <em>backed out</em> from observed option prices. It&#39;s the volatility that makes the Black-Scholes formula match the market price.</p>
+<h3 id="mathematical_definition"><a href="#mathematical_definition" class="header-anchor">Mathematical Definition</a></h3>
+<p>Given market price \(V_{\text{market}}\) for an option, IV is the \(\sigma\) that solves: \(V_{\text{market}} = V_{BS}(S, K, t, r, \sigma)\) &#40;section 2&#41;</p>
+<p><strong>There is no closed-form solution</strong> — IV must be solved numerically &#40;e.g., Newton-Raphson, bisection&#41;.</p>
+<h3 id="key_insight_iv_is_forward-looking"><a href="#key_insight_iv_is_forward-looking" class="header-anchor">Key Insight: IV is Forward-Looking</a></h3>
+<ul>
+<li><p><strong>Realized Volatility</strong>: What actually happened &#40;historical&#41;</p>
+</li>
+<li><p><strong>Implied Volatility</strong>: What the market <em>expects</em> will happen &#40;forward-looking&#41;</p>
+</li>
+<li><p><strong>The disconnect</strong>: IV often deviates from RV → trading opportunities</p>
+</li>
+</ul>
+<table><tr><th align="right">Concept</th><th align="right">What It Measures</th><th align="right">Formula</th><th align="right">Trading Signal</th></tr><tr><td align="right"><strong>Realized Vol &#40;RV&#41;</strong></td><td align="right">Actual historical volatility</td><td align="right">\(\sigma_{RV} = \sqrt{252} \times \text{std}(r_{\text{daily}})\)</td><td align="right">Backward-looking</td></tr><tr><td align="right"><strong>Implied Vol &#40;IV&#41;</strong></td><td align="right">Market&#39;s expected volatility</td><td align="right">Solve \(V_{\text{market}} = V_{BS}(\sigma)\)</td><td align="right">Forward-looking</td></tr><tr><td align="right"><strong>IV vs RV</strong></td><td align="right">Pricing dislocation</td><td align="right">Compare IV to RV</td><td align="right">If IV &gt; RV: options expensive; If IV &lt; RV: options cheap</td></tr></table>
+<p>Note: 252 – there are 252 trading days per year</p>
+<h3 id="the_volatility_surface"><a href="#the_volatility_surface" class="header-anchor">The Volatility Surface</a></h3>
+<p><strong>Critical fact</strong>: IV is <em>not</em> a single number. Each strike \(K\) and time to expiry \(T\) has its own IV: \(\sigma_{\text{IV}} = f(K, T)\)</p>
+<p>This 3D surface has characteristic patterns:</p>
+<table><tr><th align="right">Pattern</th><th align="right">Description</th><th align="right">Implication</th></tr><tr><td align="right"><strong>Volatility Smile</strong></td><td align="right">IV is U-shaped across strikes &#40;higher at extremes&#41;</td><td align="right">Far OTM/ITM options priced with higher IV</td></tr><tr><td align="right"><strong>Volatility Skew</strong></td><td align="right">IV is asymmetric &#40;puts typically &gt; calls&#41;</td><td align="right">Fear premium: OTM puts cost more</td></tr><tr><td align="right"><strong>Term Structure</strong></td><td align="right">IV varies by expiry &#40;near-term often &gt; long-term&#41;</td><td align="right">Front-month options more sensitive to events</td></tr></table>
+<p><strong>For your strategy</strong>: Post-jump, the entire surface shifts up &#40;especially near-term strikes&#41; → you&#39;re buying at elevated IV.</p>
+<h3 id="market_regimes_shift_the_surface"><a href="#market_regimes_shift_the_surface" class="header-anchor">Market Regimes Shift the Surface</a></h3>
+<p>The IV surface is <em>dynamic</em>:</p>
+<ul>
+<li><p><strong>Normal times</strong>: Relatively flat, stable</p>
+</li>
+<li><p><strong>Pre-earnings</strong>: Front-month ATM IV spikes</p>
+</li>
+<li><p><strong>Post-jump/news</strong>: Entire surface elevates, skew steepens</p>
+</li>
+<li><p><strong>Market crash</strong>: Put skew becomes extreme</p>
+</li>
+</ul>
+<p><strong>Algo implication</strong>: You can&#39;t use static IV assumptions. Must track IV percentile or rank relative to history.</p>
+<h3 id="systematic_trading_opportunities"><a href="#systematic_trading_opportunities" class="header-anchor">Systematic Trading Opportunities</a></h3>
+<p>Many algos exploit IV dislocations:</p>
+<ol>
+<li><p><strong>Vol arbitrage</strong>: Trade when IV ≠ expected RV</p>
+</li>
+<li><p><strong>IV mean reversion</strong>: Elevated IV tends to normalize</p>
+</li>
+<li><p><strong>Term structure plays</strong>: Front-month vs back-month IV spreads</p>
+</li>
+<li><p><strong>Cross-asset vol</strong>: When stock IV disconnects from index IV</p>
+</li>
+</ol>
+<p><strong>Your situation</strong>: After a jump, IV is elevated → buying options is expensive → need larger move to overcome the &quot;vol premium&quot; you paid.</p>
+<h3 id="what_you_need_to_track"><a href="#what_you_need_to_track" class="header-anchor">What You Need to Track</a></h3>
+<p>For algo trading:</p>
+<ul>
+<li><p><strong>IV percentile</strong>: Where is current IV vs 1-year range? &#40;IVR formula in Section 3&#41;</p>
+</li>
+<li><p><strong>IV skew</strong>: Are OTM puts unusually expensive relative to ATM?</p>
+</li>
+<li><p><strong>Term structure</strong>: Is front-month IV elevated vs next month?</p>
+</li>
+<li><p><strong>RV estimation</strong>: Is actual volatility rising or falling?</p>
+</li>
+</ul>
+<p><strong>Rule of thumb</strong>: Avoid buying options when IVR &gt; 70&#37; unless your edge is exceptional.</p>
+<hr />
+<h2 id="the_greeks_risk_exposures"><a href="#the_greeks_risk_exposures" class="header-anchor"><ol>
+<li><p>The Greeks: Risk Exposures</p>
+</li>
+</ol>
+</a></h2>
+<table><tr><th align="right">Greek</th><th align="right">Formula</th><th align="right">Range</th><th align="right">Intuition</th><th align="right">Algo Relevance</th></tr><tr><td align="right"><strong>Delta &#40;Δ&#41;</strong></td><td align="right">\(\Delta = \frac{\partial V}{\partial S}\)</td><td align="right">Put: \(-1 < \Delta < 0\)</td><td align="right">1 usd stock move &#61; \(\|\Delta\|\) option move</td><td align="right">Hedge ratio; Delta-neutral &#61; no directional exposure</td></tr><tr><td align="right"><strong>Gamma &#40;Γ&#41;</strong></td><td align="right">\(\Gamma = \frac{\partial^2 V}{\partial S^2}\)</td><td align="right">Always positive</td><td align="right">How fast Delta changes; high \(\Gamma\) &#61; unstable position</td><td align="right">Peaks ATM near expiry; large moves blow up position</td></tr><tr><td align="right"><strong>Theta &#40;θ&#41;</strong></td><td align="right">\(\theta = \frac{\partial V}{\partial t}\)</td><td align="right">Typically \(-0.01\) to \(-0.50\) &#40;&#36;/day&#41;</td><td align="right">Lose \(\|\theta\|\) per day from time passing</td><td align="right">0DTE options lose 20-50&#37; in hours; theta kills same-day trades</td></tr><tr><td align="right"><strong>Vega &#40;ν&#41;</strong></td><td align="right">\(\nu = \frac{\partial V}{\partial \sigma}\)</td><td align="right">Typically \(0.01\) to \(0.30\) &#40;&#36;/1&#37; IV&#41;</td><td align="right">IV spike &#61; option price up &#40;even if stock flat&#41;</td><td align="right">Right on direction but lose on IV crush &#61; common trap</td></tr></table>
+<p><strong>Notation remarks:</strong></p>
+<ul>
+<li><p>\(V\) &#61; Option value/price &#40;the dependent variable, measured in &#36;&#41;</p>
+</li>
+<li><p>\(S\) &#61; Stock price &#40;underlying asset price, in &#36;&#41;</p>
+</li>
+<li><p>\(t\) &#61; Time &#40;measured in days for theta; note that Black-Scholes uses years, so \(\theta_{BS} = \theta_{daily} \times 365\)&#41;</p>
+</li>
+<li><p>\(\sigma\) &#61; Implied volatility &#40;IV&#41;, expressed as annualized standard deviation &#40;e.g., 0.30 &#61; 30&#37; IV&#41;</p>
+</li>
+<li><p><strong>Put Delta</strong>: Negative because put value decreases when stock price increases</p>
+</li>
+<li><p><strong>Call Delta</strong>: Would be positive &#40;\(0 < \Delta < 1\)&#41; because call value increases with stock price</p>
+</li>
+<li><p><strong>&quot;Long&quot;</strong>: Refers to buying/owning options &#40;as opposed to selling/writing&#41;. Long options have negative theta &#40;you lose money from time decay&#41; and positive vega &#40;you benefit from IV increases&#41;</p>
+</li>
+</ul>
+<h3 id="key_greek_relationships"><a href="#key_greek_relationships" class="header-anchor">Key Greek Relationships</a></h3>
+<ul>
+<li><p><strong>Gamma peaks</strong>: ATM options near expiration</p>
+</li>
+<li><p><strong>Theta accelerates</strong>: Exponentially near expiry &#40;last week: 30-50&#37; decay&#41;</p>
+</li>
+<li><p><strong>Vega matters</strong>: Post-jump IV is elevated → you overpay for options</p>
+</li>
+</ul>
+<hr />
+<h2 id="ol_start2_black-scholes_framework"><a href="#ol_start2_black-scholes_framework" class="header-anchor"><ol start="2">
+<li><p>Black-Scholes Framework</p>
+</li>
+</ol>
+</a></h2>
+<p>The Black-Scholes model provides closed-form solutions for European option prices. This is the \(V_{BS}\) referenced in Section 0.</p>
+<h3 id="call_and_put_pricing"><a href="#call_and_put_pricing" class="header-anchor">Call and Put Pricing</a></h3>
+<p><strong>Call option</strong>: \(V_{BS}^{\text{call}}(S_0, K, t, r, \sigma) = S_0 N(d_1) - Ke^{-rt}N(d_2)\)</p>
+<p><strong>Put option</strong>: \(V_{BS}^{\text{put}}(S_0, K, t, r, \sigma) = Ke^{-rt}N(-d_2) - S_0N(-d_1)\)</p>
+<p>Where: \(d_1 = \frac{\ln(S_0/K) + (r + \sigma^2/2)t}{\sigma\sqrt{t}}\)</p>
+\(d_2 = d_1 - \sigma\sqrt{t}\)
+<p>And \(N(\cdot)\) is the cumulative standard normal distribution function: \(N(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{x} e^{-z^2/2} dz\)</p>
+<h3 id="parameters"><a href="#parameters" class="header-anchor">Parameters</a></h3>
+<table><tr><th align="right">Parameter</th><th align="right">Symbol</th><th align="right">Meaning</th><th align="right">Algo Impact</th></tr><tr><td align="right">Stock Price</td><td align="right">\(S_0\)</td><td align="right">Current price</td><td align="right">Your entry point</td></tr><tr><td align="right">Strike Price</td><td align="right">\(K\)</td><td align="right">Exercise price</td><td align="right">Choose based on desired \(\Delta\)</td></tr><tr><td align="right">Volatility</td><td align="right">\(\sigma\)</td><td align="right">Implied volatility</td><td align="right">Jumps &#61; high IV &#61; expensive options</td></tr><tr><td align="right">Time</td><td align="right">\(t\)</td><td align="right">Time to expiry</td><td align="right">Small \(t\) &#61; fast decay</td></tr><tr><td align="right">Rate</td><td align="right">\(r\)</td><td align="right">Risk-free rate</td><td align="right">Mostly irrelevant for short-term</td></tr></table>
+<p><strong>Critical Insight</strong>: Options price <em>expected</em> volatility, not realized. Post-jump, everyone expects moves → options already expensive.</p>
+<hr />
+<h2 id="ol_start3_volatility_concepts"><a href="#ol_start3_volatility_concepts" class="header-anchor"><ol start="3">
+<li><p>Volatility Concepts</p>
+</li>
+</ol>
+</a></h2>
+<table><tr><th align="right">Type</th><th align="right">Definition</th><th align="right">Formula</th><th align="right">Trading Implication</th></tr><tr><td align="right"><strong>Implied Volatility &#40;IV&#41;</strong></td><td align="right">Market&#39;s expected future volatility</td><td align="right">Derived from option prices</td><td align="right">High after jumps &#40;bad for buyers&#41;</td></tr><tr><td align="right"><strong>Realized Volatility &#40;RV&#41;</strong></td><td align="right">Actual historical volatility</td><td align="right">\(\sigma_{RV} = \sqrt{252} \times \text{std}(r_{\text{daily}})\)</td><td align="right">Compare to IV to find edge</td></tr><tr><td align="right"><strong>IV Rank &#40;IVR&#41;</strong></td><td align="right">Current IV relative to range</td><td align="right">\(\text{IVR} = \frac{IV - IV_{52w,\text{low}}}{IV_{52w,\text{high}} - IV_{52w,\text{low}}}\)</td><td align="right">IVR &gt; 50&#37; &#61; buying expensive</td></tr></table>
+<h3 id="the_volatility_trade"><a href="#the_volatility_trade" class="header-anchor">The Volatility Trade</a></h3>
+<ul>
+<li><p><strong>Buying options</strong> &#61; long volatility &#40;profitable if \(RV > IV\)&#41;</p>
+</li>
+<li><p><strong>After jump</strong>: IV spikes → you buy high → need massive move to profit</p>
+</li>
+<li><p><strong>Expected Move</strong>: \(EM = S_0 \times IV \times \sqrt{t/252}\)</p>
+</li>
+</ul>
+<hr />
+<h2 id="ol_start4_moneyness_and_strike_selection"><a href="#ol_start4_moneyness_and_strike_selection" class="header-anchor"><ol start="4">
+<li><p>Moneyness and Strike Selection</p>
+</li>
+</ol>
+</a></h2>
+<table><tr><th align="right">Type</th><th align="right">Condition &#40;Put&#41;</th><th align="right">Delta Range</th><th align="right">Characteristics</th><th align="right">Use Case</th></tr><tr><td align="right"><strong>ATM</strong></td><td align="right">\(S \approx K\)</td><td align="right">\(\Delta \approx -0.5\)</td><td align="right">Highest \(\Gamma\), most \(\theta\) decay</td><td align="right">Balanced risk/reward</td></tr><tr><td align="right"><strong>OTM</strong></td><td align="right">\(S > K\)</td><td align="right">\(-0.5 < \Delta < 0\)</td><td align="right">Cheaper, needs bigger move</td><td align="right">Lottery ticket; your likely choice</td></tr><tr><td align="right"><strong>ITM</strong></td><td align="right">\(S < K\)</td><td align="right">\(-1 < \Delta < -0.5\)</td><td align="right">Expensive, acts like stock short</td><td align="right">High probability, high cost</td></tr></table>
+<p><strong>For Your Strategy</strong>: OTM puts &#40;\(\Delta \approx -0.3\) to \(-0.4\)&#41; keep cost down, but require SIGNIFICANT drop.</p>
+<hr />
+<h2 id="ol_start5_value_components_and_relationships"><a href="#ol_start5_value_components_and_relationships" class="header-anchor"><ol start="5">
+<li><p>Value Components and Relationships</p>
+</li>
+</ol>
+</a></h2>
+<h3 id="put-call_parity"><a href="#put-call_parity" class="header-anchor">Put-Call Parity</a></h3>
+\[P + S = C + PV(K)\]
+<p>No arbitrage between puts, calls, and stock.</p>
+<h3 id="option_value_decomposition"><a href="#option_value_decomposition" class="header-anchor">Option Value Decomposition</a></h3>
+\[\text{Put Value} = \max(K - S, 0) + \text{Time Value}\]
+<table><tr><th align="right">Component</th><th align="right">Before Expiry</th><th align="right">At Expiry</th><th align="right">What Decays</th></tr><tr><td align="right"><strong>Intrinsic</strong></td><td align="right">\(\max(K-S, 0)\)</td><td align="right">\(\max(K-S, 0)\)</td><td align="right">Never</td></tr><tr><td align="right"><strong>Extrinsic</strong></td><td align="right">Priced by BS model</td><td align="right">0</td><td align="right">This is \(\theta\)</td></tr></table>
+<hr />
+<h2 id="ol_start6_execution_and_market_microstructure"><a href="#ol_start6_execution_and_market_microstructure" class="header-anchor"><ol start="6">
+<li><p>Execution and Market Microstructure</p>
+</li>
+</ol>
+</a></h2>
+<table><tr><th align="right">Concept</th><th align="right">Formula</th><th align="right">Typical Values</th><th align="right">Algo Impact</th></tr><tr><td align="right"><strong>Bid-Ask Spread</strong></td><td align="right">\(\text{Ask} - \text{Bid}\)</td><td align="right">2-10&#37; of price</td><td align="right">Instant loss on entry</td></tr><tr><td align="right"><strong>Mid Price</strong></td><td align="right">\(\frac{\text{Bid} + \text{Ask}}{2}\)</td><td align="right">Theoretical</td><td align="right">Can&#39;t actually trade here</td></tr><tr><td align="right"><strong>Slippage</strong></td><td align="right">\(\|\text{Fill} - \text{Mid}\|\)</td><td align="right">5-20&#37; of spread</td><td align="right">Must account in backtest</td></tr></table>
+<h3 id="liquidity_filters_for_algos"><a href="#liquidity_filters_for_algos" class="header-anchor">Liquidity Filters for Algos</a></h3>
+<pre><code class="language-python">if volume &lt; 100 or open_interest &lt; 500:
+    skip_this_option&#40;&#41;  # Too illiquid</code></pre>
+<p><strong>Reality</strong>: </p>
+<ul>
+<li><p>You buy at Ask, sell at Bid → immediate 2-10&#37; loss</p>
+</li>
+<li><p>On volatile jumps: spreads widen &#61; worse fills</p>
+</li>
+<li><p>First 5 min: widest spreads, most chaotic</p>
+</li>
+</ul>
+<hr />
+<h2 id="ol_start7_advanced_volatility_structure"><a href="#ol_start7_advanced_volatility_structure" class="header-anchor"><ol start="7">
+<li><p>Advanced Volatility Structure</p>
+</li>
+</ol>
+</a></h2>
+<h3 id="volatility_smile_and_skew"><a href="#volatility_smile_and_skew" class="header-anchor">Volatility Smile and Skew</a></h3>
+<ul>
+<li><p><strong>Smile</strong>: IV varies by strike &#40;U-shaped curve&#41;</p>
+</li>
+<li><p><strong>Skew</strong>: OTM puts have HIGHER IV &#40;fear premium&#41; → your puts cost more</p>
+</li>
+<li><p><strong>Term Structure</strong>: IV varies by expiry; front-month most volatile</p>
+</li>
+</ul>
+<h3 id="volatility_surface"><a href="#volatility_surface" class="header-anchor">Volatility Surface</a></h3>
+\[\sigma = f(K, T)\]
+<p>IV is a function of both strike \(K\) and time to expiry \(T\).</p>
+<hr />
+<h2 id="ol_start8_position_sizing_and_risk_management"><a href="#ol_start8_position_sizing_and_risk_management" class="header-anchor"><ol start="8">
+<li><p>Position Sizing and Risk Management</p>
+</li>
+</ol>
+</a></h2>
+<table><tr><th align="right">Metric</th><th align="right">Formula</th><th align="right">Guideline</th></tr><tr><td align="right"><strong>Max Loss</strong></td><td align="right">Premium paid</td><td align="right">100&#37; of position &#40;options can → 0&#41;</td></tr><tr><td align="right"><strong>Position Size</strong></td><td align="right">-</td><td align="right">1-2&#37; account risk per trade MAX</td></tr><tr><td align="right"><strong>Kelly Criterion</strong></td><td align="right">\(f^* = \frac{pb - q}{b}\)</td><td align="right">Use \(\frac{1}{4}\) Kelly to avoid ruin</td></tr><tr><td align="right"><strong>Expectancy</strong></td><td align="right">\(E = (p \times W) - (q \times L)\)</td><td align="right">Must be &gt; 0 after all costs</td></tr></table>
+<p>Where: \(p\) &#61; win probability, \(q = 1-p\), \(b\) &#61; win/loss ratio, \(W\) &#61; avg win, \(L\) &#61; avg loss</p>
+<hr />
+<h2 id="ol_start9_break-even_analysis"><a href="#ol_start9_break-even_analysis" class="header-anchor"><ol start="9">
+<li><p>Break-Even Analysis</p>
+</li>
+</ol>
+</a></h2>
+<h3 id="long_put_break-even"><a href="#long_put_break-even" class="header-anchor">Long Put Break-Even</a></h3>
+\[\text{Break-even} = K - \text{Premium Paid}\]
+<p>Stock must drop to this level for you to profit at expiration.</p>
+<h3 id="profitloss_at_expiration"><a href="#profitloss_at_expiration" class="header-anchor">Profit/Loss at Expiration</a></h3>
+\[\text{P/L} = \max(K - S_T, 0) - \text{Premium}\]
+<p><strong>Before expiration</strong>: Value includes time value, so P/L is more complex.</p>
+<hr />
+<h2 id="ol_start10_the_complete_cost_stack_your_reality"><a href="#ol_start10_the_complete_cost_stack_your_reality" class="header-anchor"><ol start="10">
+<li><p>The Complete Cost Stack &#40;Your Reality&#41;</p>
+</li>
+</ol>
+</a></h2>
+<table><tr><th align="right">Cost Component</th><th align="right">Impact</th><th align="right">Magnitude</th></tr><tr><td align="right"><strong>Theta Decay</strong></td><td align="right">\(-\|\theta\|\) per day</td><td align="right">-\(X\) every hour</td></tr><tr><td align="right"><strong>High IV</strong></td><td align="right">Post-jump elevation</td><td align="right">Overpay 10-30&#37;</td></tr><tr><td align="right"><strong>Delta Requirement</strong></td><td align="right">Need significant move</td><td align="right">2-5&#37;&#43; drop to profit</td></tr><tr><td align="right"><strong>Bid-Ask Spread</strong></td><td align="right">Entry/exit slippage</td><td align="right">Instant 1-3&#37; loss</td></tr><tr><td align="right"><strong>15-min Delay</strong></td><td align="right">Missed optimal entry</td><td align="right">Worse pricing</td></tr></table>
+<h3 id="profitability_condition"><a href="#profitability_condition" class="header-anchor">Profitability Condition</a></h3>
+\[(\text{Win Rate} \times \text{Avg Win}) > (\text{Loss Rate} \times \text{Avg Loss}) + \theta_{\text{cost}} + \text{Spread Cost}\]
+<p><strong>Rough requirement</strong>: Need 60&#37;&#43; win rate OR 3:1 reward:risk ratio.</p>
+<hr />
+<h2 id="ol_start11_recommended_trading_progression"><a href="#ol_start11_recommended_trading_progression" class="header-anchor"><ol start="11">
+<li><p>Recommended Trading Progression</p>
+</li>
+</ol>
+</a></h2>
+<table><tr><th align="right">Stage</th><th align="right">Instrument</th><th align="right">Why</th><th align="right">Complexity</th></tr><tr><td align="right"><strong>1. Validate Edge</strong></td><td align="right">Short stock</td><td align="right">Clean P/L, no Greeks, no \(\theta\)</td><td align="right">Low</td></tr><tr><td align="right"><strong>2. Add Definition</strong></td><td align="right">Put spreads</td><td align="right">Defined risk, less \(\theta\)</td><td align="right">Medium</td></tr><tr><td align="right"><strong>3. Optimize Returns</strong></td><td align="right">Naked puts</td><td align="right">Max leverage &#40;if edge proven&#41;</td><td align="right">High</td></tr></table>
+<p><strong>Critical</strong>: Most retail algo traders lose on options by underestimating \(\theta\) decay and overestimating directional edge.</p>
+<hr />
+<h2 id="summary_big_picture_for_your_strategy"><a href="#summary_big_picture_for_your_strategy" class="header-anchor">Summary: Big Picture for Your Strategy</a></h2>
+<p>Your <strong>challenge stack</strong>:</p>
+<ol>
+<li><p>Racing the clock &#40;theta decay&#41;</p>
+</li>
+<li><p>Buying expensive &#40;elevated post-jump IV&#41;</p>
+</li>
+<li><p>Need large move &#40;OTM puts require significant drop&#41;</p>
+</li>
+<li><p>Execution costs &#40;bid-ask spread&#41;</p>
+</li>
+<li><p>Information delay &#40;15-min lag&#41;</p>
+</li>
+</ol>
+<p><strong>Math reality</strong>: Each of these eats 10-20&#37; of potential profit. Stacked together, they create a ~60-80&#37; headwind.</p>
+<p><strong>Path forward</strong>: Prove the directional edge exists with simpler instruments &#40;short stock&#41; BEFORE adding options complexity.</p>
+<div class="page-foot">
+    Contact me by <a href="mailto:skchu@wustl.edu">E-mail</a> | <a href="https://github.com/kchu25">Github</a> | <a href="https://www.linkedin.com/in/kchu1/">Linkedin</a>
+    <br>
+    This work is licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.  Last modified: October 23, 2025.
+    <br>
+    Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia language</a>.
+</div>
+</div><!-- CONTENT ENDS HERE -->
+    
+        <script src="/libs/katex/katex.min.js"></script>
+<script src="/libs/katex/contrib/auto-render.min.js"></script>
+<script>renderMathInElement(document.body)</script>
+
+    
+    
+        <script src="/libs/highlight/highlight.min.js"></script>
+<script>hljs.highlightAll();hljs.configure({tabReplace: '    '});</script>
+
+    
+  </body>
+</html>

@@ -81,12 +81,12 @@ For algo trading:
 |-------|---------|-------|-----------|----------------|
 | **Delta (Δ)** | $\Delta = \frac{\partial V}{\partial S}$ | Put: $-1 < \Delta < 0$ | 1 usd stock move = $\|\Delta\|$ option move | Hedge ratio; Delta-neutral = no directional exposure |
 | **Gamma (Γ)** | $\Gamma = \frac{\partial^2 V}{\partial S^2}$ | Always positive | How fast Delta changes; high $\Gamma$ = unstable position | Peaks ATM near expiry; large moves blow up position |
-| **Theta (θ)** | $\theta = \frac{\partial V}{\partial t}$ | Typically $-0.01$ to $-0.50$ ($/day) | Lose $\|\theta\|$ per day from time passing | 0DTE options lose 20-50% in hours; theta kills same-day trades |
-| **Vega (ν)** | $\nu = \frac{\partial V}{\partial \sigma}$ | Typically $0.01$ to $0.30$ ($/1% IV) | IV spike = option price up (even if stock flat) | Right on direction but lose on IV crush = common trap |
+| **Theta (θ)** | $\theta = \frac{\partial V}{\partial t}$ | Typically $-0.01$ to $-0.50$ (\$/day) | Lose $\|\theta\|$ per day from time passing | 0DTE options lose 20-50% in hours; theta kills same-day trades |
+| **Vega (ν)** | $\nu = \frac{\partial V}{\partial \sigma}$ | Typically $0.01$ to $0.30$ (\$/1% IV) | IV spike = option price up (even if stock flat) | Right on direction but lose on IV crush = common trap |
 
 **Notation remarks:**
-- $V$ = Option value/price (the dependent variable, measured in $)
-- $S$ = Stock price (underlying asset price, in $)
+- $V$ = Option value/price (the dependent variable, measured in \$)
+- $S$ = Stock price (underlying asset price, in \$)
 - $t$ = Time (measured in days for theta; note that Black-Scholes uses years, so $\theta_{BS} = \theta_{daily} \times 365$)
 - $\sigma$ = Implied volatility (IV), expressed as annualized standard deviation (e.g., 0.30 = 30% IV)
 - **Put Delta**: Negative because put value decreases when stock price increases
