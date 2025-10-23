@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="/libs/katex/katex.min.css">
+     
+   <link rel="stylesheet" href="/libs/highlight/styles/github.min.css">
+   
+  <link rel="stylesheet" href="/css/franklin.css">
+<link rel="stylesheet" href="/css/hypertext.css">
+<link rel="icon" href="/assets/favicon.png">
+
+   <title>Strike Price: Options Terminology Explained</title>  
+</head>
+<body>
+<header>
+  <h1 style="color:#283747">Finance</h1>
+  <nav>
+    <a href="/" class="current">Tags</a>
+  | <a href="/blog/" >Notes</a>
+  <hr/>
+  </nav>
+</header>
+
+
+<!-- Content appended here -->
+<div class="franklin-content"><h1 id="strike_price_options_terminology_explained"><a href="#strike_price_options_terminology_explained" class="header-anchor">Strike Price: Options Terminology Explained</a></h1>
+<h2 id="what_is_strike_price"><a href="#what_is_strike_price" class="header-anchor">What is Strike Price?</a></h2>
+<p><strong>Strike price &#40;K&#41;</strong> &#61; The <strong>predetermined price</strong> at which you have the <strong>right</strong> to buy &#40;for calls&#41; or sell &#40;for puts&#41; the underlying stock.</p>
+<p><strong>Important</strong>: Strike does NOT mean &quot;buy&quot; — it&#39;s the exercise price written into the option contract.</p>
+<hr />
+<h2 id="for_put_options_your_strategy"><a href="#for_put_options_your_strategy" class="header-anchor">For Put Options &#40;Your Strategy&#41;</a></h2>
+<p>When you buy a put option with strike price \(K\):</p>
+<ul>
+<li><p>You have the <strong>right to sell</strong> the stock at price \(K\)</p>
+</li>
+<li><p>This right is valuable when the stock price falls below \(K\)</p>
+</li>
+<li><p>You profit when the market price is significantly below your strike</p>
+</li>
+</ul>
+<h3 id="example_100_strike_put"><a href="#example_100_strike_put" class="header-anchor">Example: &#36;100 Strike Put</a></h3>
+<p>You buy a put option with strike \(K = \$100\) for a premium of \(\$3\).</p>
+<table><tr><th align="right">Stock Price</th><th align="right">Put Value &#40;approx&#41;</th><th align="right">Your P/L</th><th align="right">Explanation</th></tr><tr><td align="right">\(\$105\)</td><td align="right">\(\$0\)</td><td align="right">\(-\$3\) &#40;loss&#41;</td><td align="right">No value; why sell at &#36;100 when market is &#36;105?</td></tr><tr><td align="right">\(\$100\)</td><td align="right">\(\$0-3\)</td><td align="right">\(-\$3\) to \(\$0\)</td><td align="right">At-the-money; only time value remains</td></tr><tr><td align="right">\(\$95\)</td><td align="right">\(\$5\)</td><td align="right">\(+\$2\) &#40;profit&#41;</td><td align="right">Intrinsic value &#61; &#36;100 - \(95 = \$5; minus \$3 premium = \$2 profit |
+| \)&#36;90\( | \)&#36;10\( | \)&#43;&#36;7\( (profit) | Intrinsic value = \$100 - \)90 &#61; &#36;10; minus &#36;3 premium &#61; &#36;7 profit</td></tr><tr><td align="right">\(\$85\)</td><td align="right">\(\$15\)</td><td align="right">\(+\$12\) &#40;profit&#41;</td><td align="right">Intrinsic value &#61; &#36;100 - \(85 = \$15; minus \$3 premium = \$12 profit |
+
+**Key insight**: Your strike price (\)100&#41; is the level at which you can <strong>sell</strong> the stock. The lower the market price goes below your strike, the more profitable your put becomes.</td></tr></table>
+<hr />
+<h2 id="complete_options_terminology"><a href="#complete_options_terminology" class="header-anchor">Complete Options Terminology</a></h2>
+<table><tr><th align="right">Term</th><th align="right">Definition</th><th align="right">Example</th></tr><tr><td align="right"><strong>Strike Price &#40;K&#41;</strong></td><td align="right">Predetermined exercise price in the contract</td><td align="right">\(K = \$100\) means you can sell at \(100 (put) or buy at \$100 (call) |
+| **Premium** | The price you **pay** to buy an option | You pay \)&#36;3\( to acquire the put option |
+| **Buy / Go Long** | Purchase an option (you pay premium) | "Buy a \)100 strike put for &#36;3&quot;</td></tr><tr><td align="right"><strong>Sell / Go Short / Write</strong></td><td align="right">Sell an option &#40;you collect premium&#41;</td><td align="right">&quot;Sell a &#36;100 strike put, collect &#36;3&quot; &#40;risky: unlimited downside&#41;</td></tr><tr><td align="right"><strong>Exercise</strong></td><td align="right">Actually use your right in the contract</td><td align="right">Exercise the put &#61; sell stock at strike price \(K\)</td></tr><tr><td align="right"><strong>Intrinsic Value</strong></td><td align="right">How much the option is &quot;in the money&quot;</td><td align="right">For put: \(\max(K - S, 0)\) where \(S\) is stock price</td></tr><tr><td align="right"><strong>Extrinsic Value</strong></td><td align="right">Time value &#43; volatility value</td><td align="right">Premium - Intrinsic Value</td></tr><tr><td align="right"><strong>Expiration</strong></td><td align="right">Date when option contract ends</td><td align="right">Options expire worthless if not in-the-money</td></tr></table>
+<hr />
+<h2 id="your_strategy_broken_down"><a href="#your_strategy_broken_down" class="header-anchor">Your Strategy Broken Down</a></h2>
+<p><strong>What you&#39;re doing</strong>:</p>
+<ol>
+<li><p><strong>Buy a put option</strong> &#40;go long a put&#41;</p>
+</li>
+<li><p><strong>Choose a strike price \(K\)</strong> &#40;e.g., \(K = \) current price or slightly below&#41;</p>
+</li>
+<li><p><strong>Pay a premium</strong> &#40;this is your maximum loss&#41;</p>
+</li>
+<li><p><strong>Hope the stock drops</strong> below \(K\) by afternoon</p>
+</li>
+<li><p><strong>Sell the put</strong> &#40;close position&#41; for a profit if stock dropped</p>
+</li>
+</ol>
+<p><strong>Example trade</strong>:</p>
+<pre><code class="language-julia">Morning: Stock jumps to \&#36;50
+You buy: &#36;48 strike put for \&#36;1.50 premium
+Afternoon: Stock drops to \&#36;46
+Your put is now worth: ~\&#36;2.50 &#40;intrinsic: \&#36;48-\&#36;46&#61;&#36;2, plus remaining time value&#41;
+You sell: Close the put for \&#36;2.50
+Profit: \&#36;2.50 - \&#36;1.50 &#61; \&#36;1.00 per share</code></pre>
+<hr />
+<h2 id="strike_selection_matters"><a href="#strike_selection_matters" class="header-anchor">Strike Selection Matters</a></h2>
+<table><tr><th align="right">Strike Choice</th><th align="right">Delta</th><th align="right">Cost</th><th align="right">Probability</th><th align="right">Required Move</th></tr><tr><td align="right"><strong>ATM</strong> &#40;At-the-money&#41;</td><td align="right">~-0.50</td><td align="right">Medium</td><td align="right">~50&#37;</td><td align="right">Moderate drop needed</td></tr><tr><td align="right"><strong>OTM</strong> &#40;Out-of-the-money&#41;</td><td align="right">-0.30 to -0.40</td><td align="right">Cheap</td><td align="right">~30-40&#37;</td><td align="right">Large drop needed</td></tr><tr><td align="right"><strong>ITM</strong> &#40;In-the-money&#41;</td><td align="right">-0.60 to -0.90</td><td align="right">Expensive</td><td align="right">~60-90&#37;</td><td align="right">Small drop needed</td></tr></table>
+<p><strong>For your strategy</strong>: You&#39;ll likely choose <strong>OTM puts</strong> &#40;strike below current price&#41; to keep costs low, but this requires a significant drop to profit.</p>
+<hr />
+<h2 id="common_confusion_strike_vs_premium"><a href="#common_confusion_strike_vs_premium" class="header-anchor">Common Confusion: Strike vs Premium</a></h2>
+<table><tr><th align="right">Aspect</th><th align="right">Strike Price</th><th align="right">Premium</th></tr><tr><td align="right"><strong>What it is</strong></td><td align="right">Exercise price in contract</td><td align="right">Price you pay for the option</td></tr><tr><td align="right"><strong>Fixed?</strong></td><td align="right">Yes &#40;set at purchase&#41;</td><td align="right">No &#40;changes continuously&#41;</td></tr><tr><td align="right"><strong>Who sets it</strong></td><td align="right">Exchange &#40;standardized strikes&#41;</td><td align="right">Market &#40;supply/demand&#41;</td></tr><tr><td align="right"><strong>Your cash flow</strong></td><td align="right">No money changes hands</td><td align="right">You pay this upfront</td></tr><tr><td align="right"><strong>Example</strong></td><td align="right">\(K = \$100\)</td><td align="right">Premium &#61; \(\$3\) per share</td></tr></table>
+<p><strong>The transaction</strong>: You pay the <strong>premium</strong> &#40;&#36;3&#41; to buy an option that gives you the right to sell at the <strong>strike</strong> &#40;&#36;100&#41;.</p>
+<hr />
+<h2 id="quick_reference_put_option_payoff"><a href="#quick_reference_put_option_payoff" class="header-anchor">Quick Reference: Put Option Payoff</a></h2>
+<p>At expiration, a long put is worth:</p>
+\[\text{Put Value} = \max(K - S_T, 0)\]
+<p>Your profit/loss:</p>
+\[\text{P/L} = \max(K - S_T, 0) - \text{Premium Paid}\]
+<p>Where:</p>
+<ul>
+<li><p>\(K\) &#61; strike price</p>
+</li>
+<li><p>\(S_T\) &#61; stock price at expiration &#40;or when you close&#41;</p>
+</li>
+<li><p>Premium Paid &#61; what you paid upfront</p>
+</li>
+</ul>
+<p><strong>Break-even</strong>: Stock must drop to \(K - \text{Premium}\) for you to break even at expiration.</p>
+<p>Example: &#36;100 strike put, &#36;3 premium → break-even at \(\$97\)</p>
+<hr />
+<h2 id="summary"><a href="#summary" class="header-anchor">Summary</a></h2>
+<ul>
+<li><p><strong>Strike price</strong> ≠ &quot;buy&quot; — it&#39;s the <strong>exercise price</strong> in the contract</p>
+</li>
+<li><p>For puts: Strike is the price at which you can <strong>sell</strong> the stock</p>
+</li>
+<li><p>You <strong>pay a premium</strong> to buy the option</p>
+</li>
+<li><p>You profit when stock price drops <strong>below</strong> your strike &#40;minus the premium you paid&#41;</p>
+</li>
+<li><p>Strike selection involves a trade-off: lower strikes are cheaper but need bigger moves</p>
+</li>
+</ul>
+<p>In your jump-fade strategy, you&#39;re buying OTM puts hoping the stock drops enough below your strike to overcome the premium paid and time decay.</p>
+<div class="page-foot">
+    Contact me by <a href="mailto:skchu@wustl.edu">E-mail</a> | <a href="https://github.com/kchu25">Github</a> | <a href="https://www.linkedin.com/in/kchu1/">Linkedin</a>
+    <br>
+    This work is licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.  Last modified: October 23, 2025.
+    <br>
+    Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia language</a>.
+</div>
+</div><!-- CONTENT ENDS HERE -->
+    
+        <script src="/libs/katex/katex.min.js"></script>
+<script src="/libs/katex/contrib/auto-render.min.js"></script>
+<script>renderMathInElement(document.body)</script>
+
+    
+    
+        <script src="/libs/highlight/highlight.min.js"></script>
+<script>hljs.highlightAll();hljs.configure({tabReplace: '    '});</script>
+
+    
+  </body>
+</html>
