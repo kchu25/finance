@@ -10,3 +10,4 @@
 - [math](tag/math)
 - [time-series](tag/time-series)
 - [blockchains](tag/blockchains)
+- [algorithmic-trading](tag/algorithmic-trading)
