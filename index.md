@@ -12,3 +12,4 @@
 - [blockchains](tag/blockchains)
 - [algorithmic-trading](tag/algorithmic-trading)
 - [US-economy](tag/US-economy)
+- [crypto](tag/crypto)
