@@ -3,7 +3,7 @@
 
 <url>
     <loc>https://kchu25.github.io/index.html</loc>
-    <lastmod>2025-11-07</lastmod>
+    <lastmod>2025-11-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -39,7 +39,13 @@
 </url>
 <url>
     <loc>https://kchu25.github.io/blog/index.html</loc>
-    <lastmod>2025-10-06</lastmod>
+    <lastmod>2025-11-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://kchu25.github.io/blog/US_economy/dollar/index.html</loc>
+    <lastmod>2025-11-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -52,6 +58,12 @@
 <url>
     <loc>https://kchu25.github.io/blog/exit_strategies/optimal_stopping_discrete/index.html</loc>
     <lastmod>2025-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://kchu25.github.io/blog/alg_trading/jump_explain/index.html</loc>
+    <lastmod>2025-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>

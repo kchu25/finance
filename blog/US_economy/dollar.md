@@ -1,6 +1,6 @@
 @def title = "Why the US Values Dollar Dominance"
 @def published = "29 November 2025"
-@def tags = ["algorithmic-trading"]
+@def tags = ["US-economy"]
 
 # Why the US Values Dollar Dominance
 
@@ -23,11 +23,11 @@
 > 
 > Bond prices and interest rates move inversely. When there's high demand for US Treasury securities, buyers compete and drive up bond prices. Since bonds pay a fixed amount at maturity, paying more upfront for the same payout means lower returns (interest rates).
 > 
-> **Example:** A bond paying $1,000 at maturity:
-> - Buy for $900 → $100 profit → 11% return
-> - Buy for $950 → $50 profit → 5% return
+> **Example:** A bond paying \$1,000 at maturity:
+> - Buy for \$900 → \$100 profit → 11% return
+> - Buy for \$950 → \$50 profit → 5% return
 > 
-> **The Key:** Massive global demand drives prices up (to $950 instead of $900), which mathematically makes the interest rate lower (5% instead of 11%). This saves the US government hundreds of billions annually in interest payments.
+> **The Key:** Massive global demand drives prices up (to \$950 instead of \$900), which mathematically makes the interest rate lower (5% instead of 11%). This saves the US government hundreds of billions annually in interest payments.
 
 **Cheaper Imports**
 - A strong dollar reduces the cost of imported goods
@@ -39,11 +39,11 @@
 > When the dollar is strong, it can buy more foreign currency, which means you need fewer dollars to purchase the same foreign goods.
 > 
 > **Example:** Buying a product that costs €100 in Europe:
-> - **Weak dollar** (€1 = $1.20): You need $120 to buy €100 worth of goods
-> - **Strong dollar** (€1 = $1.00): You need only $100 to buy €100 worth of goods
-> - **Stronger dollar** (€1 = $0.90): You need only $90 to buy €100 worth of goods
+> - **Weak dollar** (€1 = \$1.20): You need \$120 to buy €100 worth of goods
+> - **Strong dollar** (€1 = \$1.00): You need only \$100 to buy €100 worth of goods
+> - **Stronger dollar** (€1 = \$0.90): You need only \$90 to buy €100 worth of goods
 > 
-> **The Math:** When the dollar strengthens from $1.20/€ to $0.90/€, the same European product becomes 25% cheaper for American buyers ($120 → $90). This applies to everything from electronics to cars to clothes imported into the US.
+> **The Math:** When the dollar strengthens from \$1.20/€ to \$0.90/€, the same European product becomes 25% cheaper for American buyers (\$120 → \$90). This applies to everything from electronics to cars to clothes imported into the US.
 
 **Financial Market Advantages**
 - Foreign banks maintain strong connections to the US financial system

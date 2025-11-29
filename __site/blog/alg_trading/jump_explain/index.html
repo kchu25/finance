@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="/libs/katex/katex.min.css">
+     
+   <link rel="stylesheet" href="/libs/highlight/styles/github.min.css">
+   
+  <link rel="stylesheet" href="/css/franklin.css">
+<link rel="stylesheet" href="/css/hypertext.css">
+<link rel="icon" href="/assets/favicon.png">
+
+   <title>Mathematical Description of Jump Detection Algorithm</title>  
+</head>
+<body>
+<header>
+  <h1 style="color:#283747">Finance</h1>
+  <nav>
+    <a href="/" class="current">Tags</a>
+  | <a href="/blog/" >Notes</a>
+  <hr/>
+  </nav>
+</header>
+
+
+<!-- Content appended here -->
+<div class="franklin-content"><h1 id="mathematical_description_of_jump_detection_algorithm"><a href="#mathematical_description_of_jump_detection_algorithm" class="header-anchor">Mathematical Description of Jump Detection Algorithm</a></h1>
+<h2 id="overview"><a href="#overview" class="header-anchor">Overview</a></h2>
+<p>This algorithm detects significant price jumps in time series data using magnitude-based thresholds and optional volume confirmation.</p>
+<h2 id="inputs"><a href="#inputs" class="header-anchor">Inputs</a></h2>
+<ul>
+<li><p>\(P = \{P_1, P_2, \ldots, P_n\}\): Price series</p>
+</li>
+<li><p>\(V = \{V_1, V_2, \ldots, V_n\}\): Volume series &#40;optional&#41;</p>
+</li>
+<li><p>\(\tau\): Threshold percentage &#40;default: 2.0&#37;&#41;</p>
+</li>
+<li><p>\(\nu\): Volume threshold multiplier &#40;default: 1.5&#41;</p>
+</li>
+<li><p>\(w\): Window size for moving average &#40;default: 20&#41;</p>
+</li>
+</ul>
+<pre><code class="language-julia">function detect_jumps_magnitude&#40;prices, volumes&#61;nothing; 
+                                threshold_pct&#61;2.0, 
+                                volume_threshold&#61;1.5, 
+                                window_size&#61;20&#41;</code></pre>
+<h2 id="hyperparameters"><a href="#hyperparameters" class="header-anchor">Hyperparameters</a></h2>
+<p>The algorithm has <strong>three key hyperparameters</strong> that control jump detection sensitivity:</p>
+<table><tr><th align="right">Hyperparameter</th><th align="right">Symbol</th><th align="right">Default</th><th align="right">Description</th><th align="right">Effect of Increasing</th></tr><tr><td align="right"><strong>Threshold percentage</strong></td><td align="right">\(\tau\)</td><td align="right">2.0&#37;</td><td align="right">Minimum absolute return to qualify as a jump candidate</td><td align="right">Fewer, larger jumps detected &#40;less sensitive&#41;</td></tr><tr><td align="right"><strong>Volume threshold</strong></td><td align="right">\(\nu\)</td><td align="right">1.5</td><td align="right">Minimum ratio of current volume to moving average</td><td align="right">Fewer jumps confirmed &#40;stricter volume requirement&#41;</td></tr><tr><td align="right"><strong>Window size</strong></td><td align="right">\(w\)</td><td align="right">20</td><td align="right">Lookback period for volume moving average</td><td align="right">Smoother volume baseline &#40;less sensitive to recent spikes&#41;</td></tr></table>
+<h3 id="tuning_guidelines"><a href="#tuning_guidelines" class="header-anchor">Tuning Guidelines</a></h3>
+<p><strong>Threshold percentage &#40;\(\tau\)&#41;:</strong></p>
+<ul>
+<li><p><strong>Lower values &#40;0.5-1&#37;&#41;</strong>: Detects many small movements; useful for high-frequency trading or volatile assets</p>
+</li>
+<li><p><strong>Medium values &#40;2-3&#37;&#41;</strong>: Balanced; catches significant moves while avoiding noise</p>
+</li>
+<li><p><strong>Higher values &#40;5&#37;&#43;&#41;</strong>: Only extreme events; useful for daily/weekly data or detecting major shocks</p>
+</li>
+</ul>
+<p><strong>Volume threshold &#40;\(\nu\)&#41;:</strong></p>
+<ul>
+<li><p><strong>Lower values &#40;1.2-1.3&#41;</strong>: More lenient; confirms jumps with modest volume increases</p>
+</li>
+<li><p><strong>Medium values &#40;1.5-2.0&#41;</strong>: Standard; requires noticeable volume spike</p>
+</li>
+<li><p><strong>Higher values &#40;2.5&#43;&#41;</strong>: Strict; only confirms jumps with exceptional volume</p>
+</li>
+</ul>
+<p><strong>Window size &#40;\(w\)&#41;:</strong></p>
+<ul>
+<li><p>See the note below on choosing appropriate window sizes for your data frequency</p>
+</li>
+<li><p>Longer windows → more stable baseline but slower adaptation to regime changes</p>
+</li>
+<li><p>Shorter windows → more responsive but may generate false positives during volatile periods</p>
+</li>
+</ul>
+<h3 id="hyperparameter_interactions"><a href="#hyperparameter_interactions" class="header-anchor">Hyperparameter Interactions</a></h3>
+<p>These parameters work together:</p>
+<ul>
+<li><p><strong>Loose price threshold &#43; strict volume threshold</strong>: Catches many price moves but only confirms those with strong volume &#40;conservative&#41;</p>
+</li>
+<li><p><strong>Strict price threshold &#43; loose volume threshold</strong>: Only looks at large moves, confirms most of them &#40;aggressive on big moves&#41;</p>
+</li>
+<li><p><strong>Both strict</strong>: Very high precision, low recall &#40;few but high-quality jump signals&#41;</p>
+</li>
+<li><p><strong>Both loose</strong>: High recall, lower precision &#40;many jump signals, some false positives&#41;</p>
+</li>
+</ul>
+<h2 id="step_1_calculate_percentage_returns"><a href="#step_1_calculate_percentage_returns" class="header-anchor">Step 1: Calculate Percentage Returns</a></h2>
+<p>For each time \(t = 2, 3, \ldots, n\):</p>
+\[r_t = \frac{P_t - P_{t-1}}{P_{t-1}} \times 100\]
+<p>This produces the returns series \(R = \{r_2, r_3, \ldots, r_n\}\).</p>
+<p><strong>Code:</strong></p>
+<pre><code class="language-julia">returns &#61; @views diff&#40;prices&#41; ./ prices&#91;1:end-1&#93; * 100</code></pre>
+<p><strong>Explanation:</strong></p>
+<ul>
+<li><p><code>diff&#40;prices&#41;</code> computes \(P_t - P_{t-1}\) for all \(t\)</p>
+</li>
+<li><p><code>prices&#91;1:end-1&#93;</code> gives \(P_{t-1}\)</p>
+</li>
+<li><p>Division and multiplication by 100 gives percentage returns</p>
+</li>
+</ul>
+<hr />
+<h2 id="step_2_identify_jump_candidates"><a href="#step_2_identify_jump_candidates" class="header-anchor">Step 2: Identify Jump Candidates</a></h2>
+<p>Jump candidates are identified as times where the absolute return exceeds the threshold:</p>
+\[\mathcal{J}_{\text{candidates}} = \{t : |r_t| > \tau\}\]
+<p><strong>Code:</strong></p>
+<pre><code class="language-julia">jump_candidates &#61; findall&#40;x -&gt; abs&#40;x&#41; &gt; threshold_pct, returns&#41; .&#43; 1</code></pre>
+<p><strong>Explanation:</strong></p>
+<ul>
+<li><p><code>findall&#40;x -&gt; abs&#40;x&#41; &gt; threshold_pct, returns&#41;</code> finds indices where \(|r_t| > \tau\)</p>
+</li>
+<li><p><code>.&#43; 1</code> adjusts indices because <code>returns</code> is one element shorter than <code>prices</code></p>
+</li>
+<li><p>Maps return indices back to price indices</p>
+</li>
+</ul>
+<hr />
+<h2 id="step_3_volume_confirmation_optional"><a href="#step_3_volume_confirmation_optional" class="header-anchor">Step 3: Volume Confirmation &#40;Optional&#41;</a></h2>
+<p>If volume data is provided:</p>
+<p><strong>Code:</strong></p>
+<pre><code class="language-julia">if volumes &#33;&#61;&#61; nothing &amp;&amp; length&#40;volumes&#41; &#61;&#61; length&#40;prices&#41;</code></pre>
+<h3 id="3a_volume_moving_average"><a href="#3a_volume_moving_average" class="header-anchor">3a. Volume Moving Average</a></h3>
+<p>For each time \(t = w+1, w+2, \ldots, n\):</p>
+\[\overline{V}_t = \frac{1}{w} \sum_{i=t-w}^{t} V_i\]
+<p><strong>Code:</strong></p>
+<pre><code class="language-julia">vol_ma &#61; @views &#91;mean&#40;volumes&#91;max&#40;1,i-window_size&#41;:i&#93;&#41; 
+                 for i in &#40;window_size&#43;1&#41;:length&#40;volumes&#41;&#93;</code></pre>
+<p><strong>Explanation:</strong></p>
+<ul>
+<li><p>For each index <code>i</code> from <code>window_size&#43;1</code> to <code>n</code></p>
+</li>
+<li><p><code>volumes&#91;max&#40;1,i-window_size&#41;:i&#93;</code> extracts the window \([V_{i-w}, \ldots, V_i]\)</p>
+</li>
+<li><p><code>mean&#40;...&#41;</code> computes \(\overline{V}_i\)</p>
+</li>
+<li><p><code>max&#40;1,...&#41;</code> handles edge cases at the start of the series</p>
+</li>
+</ul>
+<hr />
+<h3 id="3b_volume_spike_detection"><a href="#3b_volume_spike_detection" class="header-anchor">3b. Volume Spike Detection</a></h3>
+<p>Volume spikes occur when current volume exceeds the moving average by the volume threshold:</p>
+\[\mathcal{S}_{\text{volume}} = \left\{t : \frac{V_t}{\overline{V}_t} > \nu, \quad t \geq w+1\right\}\]
+<p><strong>Code:</strong></p>
+<pre><code class="language-julia">volume_spikes &#61; @views findall&#40;x -&gt; x &gt; volume_threshold, 
+                               volumes&#91;&#40;window_size&#43;1&#41;:end&#93; ./ vol_ma&#41; .&#43; window_size</code></pre>
+<p><strong>Explanation:</strong></p>
+<ul>
+<li><p><code>volumes&#91;&#40;window_size&#43;1&#41;:end&#93;</code> gets \(V_t\) for \(t \geq w+1\)</p>
+</li>
+<li><p><code>./ vol_ma</code> computes the ratio \(\frac{V_t}{\overline{V}_t}\)</p>
+</li>
+<li><p><code>findall&#40;x -&gt; x &gt; volume_threshold, ...&#41;</code> finds where ratio \(> \nu\)</p>
+</li>
+<li><p><code>.&#43; window_size</code> adjusts indices back to the original price series</p>
+</li>
+</ul>
+<hr />
+<h3 id="3c_confirmed_jumps"><a href="#3c_confirmed_jumps" class="header-anchor">3c. Confirmed Jumps</a></h3>
+<p>Jumps are confirmed when both magnitude and volume criteria are satisfied:</p>
+\[\mathcal{J}_{\text{confirmed}} = \mathcal{J}_{\text{candidates}} \cap \mathcal{S}_{\text{volume}}\]
+<p><strong>Code:</strong></p>
+<pre><code class="language-julia">jump_indices &#61; intersect&#40;jump_candidates, volume_spikes&#41;
+return jump_indices, returns, volume_spikes</code></pre>
+<p><strong>Explanation:</strong></p>
+<ul>
+<li><p><code>intersect&#40;...&#41;</code> finds common elements between the two sets</p>
+</li>
+<li><p>Returns confirmed jumps, all returns, and volume spikes</p>
+</li>
+</ul>
+<hr />
+<p><strong>When volume is not provided:</strong></p>
+<pre><code class="language-julia">else
+    return jump_candidates, returns, Int&#91;&#93;
+end</code></pre>
+<p>Returns all jump candidates without volume confirmation, and an empty array for volume spikes.</p>
+<hr />
+<h2 id="output"><a href="#output" class="header-anchor">Output</a></h2>
+<p>The algorithm returns:</p>
+<ol>
+<li><p><strong>Jump indices</strong>: \(\mathcal{J}_{\text{confirmed}}\) &#40;if volume provided&#41; or \(\mathcal{J}_{\text{candidates}}\) &#40;otherwise&#41;</p>
+</li>
+<li><p><strong>Returns series</strong>: \(R = \{r_2, r_3, \ldots, r_n\}\)</p>
+</li>
+<li><p><strong>Volume spike indices</strong>: \(\mathcal{S}_{\text{volume}}\) &#40;if volume provided, empty otherwise&#41;</p>
+</li>
+</ol>
+<h2 id="interpretation"><a href="#interpretation" class="header-anchor">Interpretation</a></h2>
+<ul>
+<li><p>A <strong>jump</strong> is a sudden, significant price movement detected when \(|r_t| > \tau\)</p>
+</li>
+<li><p><strong>Volume confirmation</strong> strengthens jump detection by requiring abnormally high trading activity</p>
+</li>
+<li><p>The moving average window \(w\) provides context for what constitutes &quot;abnormal&quot; volume</p>
+</li>
+<li><p>The algorithm is symmetric: it detects both upward jumps &#40;positive \(r_t\)&#41; and downward jumps &#40;negative \(r_t\)&#41;</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>Note on Window Size for Minute-by-Minute Data:</strong></p>
+<p>If your data is <strong>minute-by-minute</strong>, the default <code>window_size&#61;20</code> means looking back only <strong>20 minutes</strong>, which may be too short to establish a reliable baseline for &quot;normal&quot; volume.</p>
+<p><strong>Recommended window sizes for intraday minute data:</strong></p>
+<ul>
+<li><p><code>window_size &#61; 60</code> &#40;1 hour&#41;: Good for detecting unusual activity relative to recent intraday patterns</p>
+</li>
+<li><p><code>window_size &#61; 120</code> &#40;2 hours&#41;: More stable baseline, less sensitive to very recent fluctuations  </p>
+</li>
+<li><p><code>window_size &#61; 390</code> &#40;full trading day&#41;: Compares against today&#39;s typical volume</p>
+</li>
+<li><p><code>window_size &#61; 1950</code> &#40;~5 days&#41;: Multi-day context for more stable comparison</p>
+</li>
+</ul>
+<p><strong>Why this matters:</strong> Intraday volume has natural patterns &#40;high at open/close, low at midday&#41;. A 20-minute window might flag normal afternoon volume as &quot;spikes&quot; if calculated during a quiet midday period. Longer windows smooth out these intraday variations.</p>
+</blockquote>
+<blockquote>
+<p><strong>Connection to Exit Strategies: &quot;Taking profit now is at least as good as waiting&quot;</strong></p>
+<p>This intuition comes from optimal stopping theory in mean-reverting systems. Imagine you&#39;re holding a profitable position:</p>
+<p><strong>The comparison:</strong></p>
+<ul>
+<li><p><strong>Left side</strong> &#40;exit now&#41;: Lock in your current profit with certainty</p>
+</li>
+<li><p><strong>Right side</strong> &#40;wait&#41;: Expected profit from waiting minus the costs of holding &#40;fees, slippage, opportunity cost&#41;</p>
+</li>
+</ul>
+<p><strong>Three scenarios:</strong></p>
+<ol>
+<li><p><strong>Far from equilibrium</strong> &#40;stock oversold/overbought&#41;: Mean reversion will likely push prices further in your favor → expected future profit &gt; current profit → <strong>keep holding</strong></p>
+</li>
+<li><p><strong>Near equilibrium</strong> &#40;stock at fair value&#41;: Mean reversion pull is weak → expected future profit ≈ current profit → <strong>exit now</strong> &#40;why pay holding costs for minimal expected gain?&#41;</p>
+</li>
+<li><p><strong>Adverse conditions</strong>: Mean reversion suggests things will get worse → expected future profit &lt; current profit → <strong>exit immediately</strong></p>
+</li>
+</ol>
+<p><strong>Why this is powerful:</strong> The decision is <strong>automatic and data-driven</strong>. The parameter \(\theta\) &#40;reversion speed&#41; captures how strongly prices pull back to equilibrium:</p>
+<ul>
+<li><p>Large \(\theta\) → Strong reversion → Stay in positions longer &#40;prices snap back fast&#41;</p>
+</li>
+<li><p>Small \(\theta\) → Weak reversion → Exit earlier &#40;prices drift slowly&#41;</p>
+</li>
+</ul>
+<p>You don&#39;t need to manually judge &quot;is this far enough from fair value?&quot; — \(\theta\) quantifies exactly how much edge you have at each price level. The exit rule becomes mechanical: calculate expected profit, compare to current profit minus costs, done.</p>
+<p><strong>CRITICAL: What if θ is negative?</strong></p>
+<p>If your regression estimates \(\theta < 0\) &#40;so \(\kappa < 0\) in the OU process&#41;, <strong>the stock is NOT mean-reverting — it&#39;s trending/explosive&#33;</strong></p>
+<p>Consider the drift term \(\theta(\mu - X_t)\):</p>
+<ul>
+<li><p>When \(X_t < \mu\) &#40;below average&#41;: If \(\theta > 0\), drift pushes UP toward \(\mu\) ✓ &#40;mean reversion&#41;</p>
+</li>
+<li><p>When \(X_t < \mu\) &#40;below average&#41;: If \(\theta < 0\), drift pushes DOWN away from \(\mu\) ✗ &#40;explosive&#41;</p>
+</li>
+</ul>
+<p><strong>What negative θ means:</strong> Deviations from the mean get amplified, not corrected. The price trends away from equilibrium rather than reverting to it.</p>
+<p><strong>What to do:</strong> The optimal stopping framework doesn&#39;t apply&#33; You need a <strong>trend-following strategy</strong> instead of mean reversion. This is actually valuable information — it tells you the market regime has changed and you should trade accordingly &#40;or stay out&#41;.</p>
+<p><strong>Jump detection tie-in:</strong> Detecting jumps helps you identify when prices have moved far from equilibrium &#40;scenario 1&#41;, potentially signaling entry points for mean-reversion strategies, or exit points when jumps break the mean-reverting regime entirely &#40;regime shift to trending behavior&#41;.</p>
+</blockquote>
+<h2 id="alternative_approaches"><a href="#alternative_approaches" class="header-anchor">Alternative Approaches</a></h2>
+<p>While the magnitude-based approach above is practical and interpretable, more sophisticated methods exist:</p>
+<h3 id="statistical_jump_detection"><a href="#statistical_jump_detection" class="header-anchor">Statistical Jump Detection</a></h3>
+<p><strong>Lee-Mykland &#40;2008&#41; Test</strong>: Uses local volatility estimation</p>
+\[L_t = \frac{r_t}{\hat{\sigma}_t}\]
+<p>where \(\hat{\sigma}_t\) is a robust volatility estimate &#40;e.g., bipower variation&#41;. Jumps detected when \(|L_t|\) exceeds a critical value from extreme value theory.</p>
+<p><strong>Advantages</strong>: Adapts to changing volatility, statistical foundation   <strong>Disadvantages</strong>: More complex, requires careful parameter selection</p>
+<h3 id="barndorff-nielsen-shephard_2006"><a href="#barndorff-nielsen-shephard_2006" class="header-anchor">Barndorff-Nielsen-Shephard &#40;2006&#41;</a></h3>
+<p>Separates continuous and jump components using realized variance and bipower variation:</p>
+\[\text{Jump Component}_t = \text{RV}_t - \text{BV}_t\]
+<p>where BV is less sensitive to jumps than RV.</p>
+<h3 id="garch-jump_models"><a href="#garch-jump_models" class="header-anchor">GARCH-Jump Models</a></h3>
+<p>Models volatility dynamics explicitly:</p>
+\[r_t = \mu + \sigma_t \epsilon_t + J_t\]
+<p>where \(\sigma_t^2\) follows GARCH dynamics and \(J_t\) is a jump process.</p>
+<p><strong>Advantages</strong>: Captures volatility clustering, probabilistic jump identification   <strong>Disadvantages</strong>: Computationally intensive, requires estimation</p>
+<h3 id="when_simple_is_better"><a href="#when_simple_is_better" class="header-anchor">When Simple is Better</a></h3>
+<p>The magnitude &#43; volume approach is preferred when:</p>
+<ul>
+<li><p>Interpretability matters &#40;explaining to stakeholders&#41;</p>
+</li>
+<li><p>Real-time detection is needed &#40;low computational cost&#41;</p>
+</li>
+<li><p>Data is noisy or limited</p>
+</li>
+<li><p>You want actionable, clear signals</p>
+</li>
+</ul>
+<p>More sophisticated methods are better when:</p>
+<ul>
+<li><p>You need statistical inference about jump properties</p>
+</li>
+<li><p>Working with high-frequency data</p>
+</li>
+<li><p>Volatility varies significantly over time</p>
+</li>
+<li><p>Academic rigor is required</p>
+</li>
+</ul>
+<div class="page-foot">
+    Contact me by <a href="mailto:skchu@wustl.edu">E-mail</a> | <a href="https://github.com/kchu25">Github</a> | <a href="https://www.linkedin.com/in/kchu1/">Linkedin</a>
+    <br>
+    This work is licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.  Last modified: November 15, 2025.
+    <br>
+    Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia language</a>.
+</div>
+</div><!-- CONTENT ENDS HERE -->
+    
+        <script src="/libs/katex/katex.min.js"></script>
+<script src="/libs/katex/contrib/auto-render.min.js"></script>
+<script>renderMathInElement(document.body)</script>
+
+    
+    
+        <script src="/libs/highlight/highlight.min.js"></script>
+<script>hljs.highlightAll();hljs.configure({tabReplace: '    '});</script>
+
+    
+  </body>
+</html>
