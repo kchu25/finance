@@ -1,6 +1,6 @@
 @def title = "Why These Projects Actually Matter: The Deep Motivations (Genius act post)"
 @def published = "29 November 2025"
-@def tags = ["crypto"]
+@def tags = ["crypto", "stablecoins"]
 
 # Why These Projects Actually Matter: The Deep Motivations
 
