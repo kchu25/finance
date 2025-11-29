@@ -14,9 +14,11 @@ The act fundamentally transforms US financial infrastructure by allowing **non-b
 **Key constraint:** Lending remains isolated under traditional banking regulations.
 
 > **Is "hold user deposits" the biggest punch?**
->
+
+
 > **Yes—this is the nuclear option.** This single provision breaks the fundamental monopoly that has defined banking for centuries. Banks' entire business model rests on the exclusive right to hold deposits.
->
+
+
 > **"You don't need to be a bank to be a bank."**
 >
 > **The cascade effects:**
@@ -25,12 +27,12 @@ The act fundamentally transforms US financial infrastructure by allowing **non-b
 > - **Capital control:** Banks lose control of the deposits that fund their lending operations
 > - **Float income evaporates:** Banks make money on the spread between deposit rates and reserve earnings—gone
 > - **Switching costs disappear:** Moving stablecoins between providers is instant and free vs. the friction of changing banks
->
+
+
 > **Compare to other provisions:**
 > - Issue digital dollars: Important, but someone still needs to custody them
 > - 24/7 settlement: Great improvement, but incremental
 > - **Hold deposits: This is the existential threat to traditional banking**
->
 > Every other fintech innovation (payment apps, robo-advisors, neobanks) still required banks as underlying infrastructure. This provision makes them optional. This is why banks lobbied so hard against it.
 >
 > **Why banks are forced to play the crypto game now:**
@@ -40,33 +42,37 @@ The act fundamentally transforms US financial infrastructure by allowing **non-b
 > - **Embrace crypto:** Compete on stablecoin infrastructure, maintain customer relationships
 >
 > The smart banks (JPMorgan with JPM Coin, Goldman with digital assets) saw this coming and are building their own stablecoin/blockchain infrastructure. The slow banks will be disrupted.
->
+
+
 > **What about BlackRock? Why is it interested?**
->
-> **BlackRock is NOT a bank**—it's an asset manager (manages ~$10 trillion in investments). Here's why BlackRock is all-in on crypto:
->
+
+
+> **BlackRock is NOT a bank**—it's an asset manager (manages ~\$10 trillion in investments). Here's why BlackRock is all-in on crypto:
+
 > 1. **New product category:** Stablecoins and tokenized assets are massive new markets to manage
 > 2. **Fee opportunity:** BlackRock earns fees on assets under management—tokenized Treasuries, Bitcoin ETFs, stablecoin reserves all generate fees
 > 3. **Infrastructure play:** BlackRock launched BUIDL (tokenized Treasury fund on blockchain)—positioning as the institutional custody/management layer for stablecoins
 > 4. **No legacy burden:** Unlike banks, BlackRock has no deposit franchise to protect, no physical branches, no traditional infrastructure holding it back
 > 5. **Reserve backing:** Stablecoin issuers need someone to manage their Treasury reserves—BlackRock can be that manager at scale
->
+
+
 > **BlackRock's angle:** "Banks hold deposits and fight to survive. We'll manage the reserves backing the stablecoins that replace those deposits." Pure upside, no cannibalization risk.
->
 > **Does BlackRock have its own blockchain?**
->
 > **No.** BUIDL (BlackRock USD Institutional Digital Liquidity Fund) is built on **existing public blockchains**—primarily Ethereum, with expansion to Solana, Polygon, and others.
->
+
+
 > **BlackRock's chain-agnostic strategy:**
 > - Don't build/maintain their own blockchain (expensive, risky)
 > - Deploy on established chains where liquidity and users already exist
 > - BUIDL tokens work across multiple platforms and DeFi protocols
 > - Be the "rails-agnostic" infrastructure layer—wherever stablecoins operate, BlackRock provides the Treasury backing
->
+
+
 > **The smart move:** Let others build the chains, BlackRock just provides the tokenized Treasury products that run on top. Like being the oil supplier rather than building cars—you don't care which car wins, you supply them all.
->
+
+
 > **The composability unlock:**
->
+
 > **Yes—this is where it gets powerful.** Once assets are tokenized:
 > - **Tradeable:** BUIDL tokens can be bought/sold instantly 24/7 on-chain
 > - **Collateral:** Use tokenized Treasuries as collateral in DeFi lending protocols
@@ -142,14 +148,14 @@ The act fundamentally transforms US financial infrastructure by allowing **non-b
 
 > Before this act, non-banks faced brutal options:
 > - **Partner with banks:** Expensive fees, revenue sharing, limited control, tied to banking hours
-> - **Become a bank:** SoFi spent ~$750M+ acquiring a charter, years of approvals, massive compliance costs
+> - **Become a bank:** SoFi spent ~\$750M+ acquiring a charter, years of approvals, massive compliance costs
 > - **Stay limited:** Can't hold deposits, no 24/7 settlement, can't compete on core products
 >
-> The GENIUS Act removes the $750M+ barrier to entry—non-banks can now offer these services with code instead of bank charters. This commoditizes privileges that companies like SoFi paid dearly to obtain.
+> The GENIUS Act removes the \$750M+ barrier to entry—non-banks can now offer these services with code instead of bank charters. This commoditizes privileges that companies like SoFi paid dearly to obtain.
 >
 > **The competitive shift: Banks must evolve or die**
 >
-> **Before:** Banks had a regulatory moat. Non-banks paid them rent (revenue sharing, fees) to access deposit and payment infrastructure. Competition was limited by $750M+ barriers to entry.
+> **Before:** Banks had a regulatory moat. Non-banks paid them rent (revenue sharing, fees) to access deposit and payment infrastructure. Competition was limited by \$750M+ barriers to entry.
 >
 > **After:** Non-banks can bypass traditional banks entirely using stablecoin infrastructure. Banks can no longer extract rent just for having a charter—they must compete on actual value (better rates, service, products) or face extinction.
 >
@@ -171,8 +177,8 @@ Traditional banking functions are being separated:
 ## The Strategic Rationale
 
 ### The US Debt Trap
-- **Current debt:** ~$36 trillion federal debt
-- **Annual interest:** $1+ trillion
+- **Current debt:** ~\$36 trillion federal debt
+- **Annual interest:** \$1+ trillion
 - **Sustainability:** Only possible due to dollar's reserve currency status
 
 ### Why This Matters: Dollar Dominance
@@ -185,9 +191,9 @@ The act isn't about solving debt—it's about **preserving dollar hegemony in th
    - Global stablecoin adoption = structural bid for US debt
    
    **How the equivalence works:**
-   - Stablecoin issuers must back each $1 of stablecoin with real USD reserves
+   - Stablecoin issuers must back each \$1 of stablecoin with real USD reserves
    - These reserves are typically held in US Treasury bills (short-term government debt)
-   - Example: If $100B of stablecoins exist, issuers must hold ~$100B in Treasuries
+   - Example: If \$100B of stablecoins exist, issuers must hold ~\$100B in Treasuries
    - As stablecoin adoption grows globally, Treasury demand grows proportionally
    - This creates a **permanent, growing buyer** for US government debt
    - Unlike other Treasury buyers (China, Japan) who can sell, stablecoin reserves must remain as long as coins are in circulation
@@ -244,14 +250,14 @@ It's a high-stakes play to maintain dollar privilege in the digital era—becaus
 > **What officials ARE saying:**
 > - The White House explicitly states the GENIUS Act "will generate increased demand for U.S. debt and cement the dollar's status as the global reserve currency"
 > - Treasury Secretary Scott Bessent: "We are going to keep the US dollar the dominant reserve currency in the world, and we will use stablecoins to do that"
-> - Senator Bill Hagerty confirms it will preserve dollar's reserve status; Citibank forecasts $1.2T in Treasuries held by stablecoin issuers by 2030
+> - Senator Bill Hagerty confirms it will preserve dollar's reserve status; Citibank forecasts \$1.2T in Treasuries held by stablecoin issuers by 2030
 >
 > **What they're NOT saying (the quiet part):**
 > - "Our debt is unsustainable without this"
 > - "We're desperate to maintain borrowing privileges"
 > - "This is survival, not choice"
 >
-> **And it IS unsustainable and about survival:** With ~$36T federal debt and $1T+ annual interest payments, the US can only borrow affordably because of reserve currency status. If dollar dominance falls: Treasury buyers disappear → interest rates spike → debt spiral accelerates → forced austerity, massive inflation, or default. History shows countries that lose currency credibility (Argentina, Turkey, Venezuela) cannot borrow affordably anymore. The GENIUS Act is existential—without maintaining the structural advantage that creates global dollar demand, there is no path to service the debt.
+> **And it IS unsustainable and about survival:** With ~\$36T federal debt and \$1T+ annual interest payments, the US can only borrow affordably because of reserve currency status. If dollar dominance falls: Treasury buyers disappear → interest rates spike → debt spiral accelerates → forced austerity, massive inflation, or default. History shows countries that lose currency credibility (Argentina, Turkey, Venezuela) cannot borrow affordably anymore. The GENIUS Act is existential—without maintaining the structural advantage that creates global dollar demand, there is no path to service the debt.
 >
 > **The reality:** It's a **strategic half-truth**. The mechanism (stablecoins → Treasury demand → dollar dominance) is openly discussed. The desperation and existential stakes are implied but unstated. China understands the threat—their state media called for yuan-backed digital currencies "sooner rather than later," warning about increased dollarization.
 >
