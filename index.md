@@ -15,3 +15,4 @@
 - [crypto](tag/crypto)
 - [stablecoins](tag/stablecoins)
 - [eth](tag/eth)
+- [stocks](tag/stocks)
