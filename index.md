@@ -16,3 +16,4 @@
 - [stablecoins](tag/stablecoins)
 - [eth](tag/eth)
 - [stocks](tag/stocks)
+- [genius-act](tag/genius-act)

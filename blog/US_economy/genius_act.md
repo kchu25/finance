@@ -1,6 +1,6 @@
 @def title = "GENIUS Act: Strategic Analysis Summary"
 @def published = "29 November 2025"
-@def tags = ["US-economy", "crypto"]
+@def tags = ["US-economy", "crypto", "genius-act"]
 
 # GENIUS Act: Strategic Analysis Summary
 
