@@ -33,6 +33,7 @@ jobs:
       uses: julia-actions/setup-julia@v1
       with:
         version: '1.11'
+        arch: 'x64'
         
     - name: Cache Julia packages
       uses: actions/cache@v3
@@ -44,8 +45,7 @@ jobs:
         
     - name: Install dependencies
       run: |
-        julia --project=. -e 'using Pkg; Pkg.instantiate()'
-        julia --project=. -e 'using Pkg; Pkg.add("Franklin")'
+        julia --project=. -e 'using Pkg; Pkg.resolve(); Pkg.instantiate()'
       
     - name: Build site
       run: julia --project=. -e 'using Franklin; optimize(prepath="finance")'
