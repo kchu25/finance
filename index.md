@@ -17,3 +17,4 @@
 - [eth](tag/eth)
 - [stocks](tag/stocks)
 - [genius-act](tag/genius-act)
+- [chain-link](tag/chainlink)
