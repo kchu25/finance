@@ -1,6 +1,6 @@
-@def title = "GENIUS Act: What's Missing & Real-World Implications"
+@def title = "stake.link Tutorial Guide"
 @def published = "2 December 2025"
-@def tags = ["US-economy", "crypto", "genius-act"]
+@def tags = ["chainlink", "crypto"]
 
 # stake.link Tutorial Guide
 
