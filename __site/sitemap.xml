@@ -50,6 +50,12 @@
     <priority>0.5</priority>
 </url>
 <url>
+    <loc>https://kchu25.github.io/blog/chainlink/stake_link/index.html</loc>
+    <lastmod>2025-12-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
     <loc>https://kchu25.github.io/blog/crypto/projects/index.html</loc>
     <lastmod>2025-12-01</lastmod>
     <changefreq>monthly</changefreq>
@@ -81,7 +87,7 @@
 </url>
 <url>
     <loc>https://kchu25.github.io/index.html</loc>
-    <lastmod>2025-12-03</lastmod>
+    <lastmod>2025-12-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -118,6 +124,12 @@
 <url>
     <loc>https://kchu25.github.io/blog/alg_trading/jump_explain/index.html</loc>
     <lastmod>2025-12-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://kchu25.github.io/blog/hedge/hedge/index.html</loc>
+    <lastmod>2025-12-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
