@@ -16,6 +16,7 @@
 - [stablecoins](tag/stablecoins)
 - [eth](tag/eth)
 - [stocks](tag/stocks)
+- [finance](tag/finance)
 - [genius-act](tag/genius-act)
 - [chainlink](tag/chainlink)
 - [hedging](tag/hedging)
