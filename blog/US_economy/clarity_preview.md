@@ -629,6 +629,7 @@ But watch those amendments closely. The devil is in the details, and 48 hours is
 
 ---
 
+
 ## Tax Implications for Cold Wallet Staking
 
 > **Important**: This bill changes *securities law*, not tax law. So your tax situation likely stays the same as before.
