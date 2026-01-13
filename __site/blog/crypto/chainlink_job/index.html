@@ -1,74 +1,8 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-   <link rel="stylesheet" href="/libs/highlight/styles/github.min.css">
-   
-  <link rel="stylesheet" href="/css/franklin.css">
-<link rel="stylesheet" href="/css/hypertext.css">
-<link rel="icon" href="/assets/favicon.png">
-
-   <title>Chainlink Job Analysis:</title>  
-</head>
-<body>
-<header>
-  <h1 style="color:#283747">Finance</h1>
-  <nav>
-    <a href="/" class="current">Tags</a>
-  | <a href="/blog/" >Notes</a>
-  <hr/>
-  </nav>
-</header>
-
-
-<!-- Content appended here -->
-<div class="franklin-content"><h1 id="chainlink_job_analysis"><a href="#chainlink_job_analysis" class="header-anchor">Chainlink Job Analysis</a></h1>
-<h2 id="tldr_youre_4-6_weeks_away_not_months_behind"><a href="#tldr_youre_4-6_weeks_away_not_months_behind" class="header-anchor">TL;DR: You&#39;re 4-6 weeks away, not months behind</a></h2>
-<p>The job description looks intimidating, but <strong>you already have the hard skills</strong>. The DeFi-specific knowledge is the easy part—just domain vocabulary you&#39;ll learn quickly.</p>
-<hr />
-<h2 id="the_job_description_translated"><a href="#the_job_description_translated" class="header-anchor">The Job Description &#40;Translated&#41;</a></h2>
-<h3 id="what_they_say_vs_what_they_actually_mean"><a href="#what_they_say_vs_what_they_actually_mean" class="header-anchor">What They Say vs What They Actually Mean</a></h3>
-<h4 id="working_knowledge_of_core_defi_primitives_and_how_they_generate_on-chain_signals"><a href="#working_knowledge_of_core_defi_primitives_and_how_they_generate_on-chain_signals" class="header-anchor">&quot;Working knowledge of core DeFi primitives and how they generate on-chain signals&quot;</a></h4>
-<p><strong>What they mean:</strong> Understand how AMMs, lending protocols, and oracles work</p>
-<p><strong>Your current gap:</strong> 2-3 weeks of reading documentation</p>
-<p><strong>Why this is easy:</strong></p>
-<ul>
-<li><p>This is literally just learning APIs and protocols</p>
-</li>
-<li><p>You&#39;ve integrated way more complex biological databases &#40;NCBI, Ensembl, UCSC&#41;</p>
-</li>
-<li><p>DeFi primitives are <strong>simpler</strong> than genomic data pipelines</p>
-</li>
-<li><p>It&#39;s pattern recognition: tokens move, events fire, state changes</p>
-</li>
-<li><p>You&#39;ve modeled protein-DNA interactions—this is trivial in comparison</p>
-</li>
-</ul>
-<p><strong>What you&#39;d actually do:</strong></p>
-<pre><code class="language-python"># &quot;Understanding DeFi primitives&quot; &#61; reading events like this:
+<!doctype html> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/finance/libs/highlight/styles/github.min.css"> <link rel=stylesheet  href="/finance/css/franklin.css"> <link rel=stylesheet  href="/finance/css/hypertext.css"> <link rel=icon  href="/finance/assets/favicon.png"> <title>Chainlink Job Analysis:</title> <header> <h1 style="color:#283747">Finance</h1> <nav> <a href="/finance/" class=current >Tags</a> | <a href="/finance/blog/" >Notes</a> <hr/> </nav> </header> <div class=franklin-content ><h1 id=chainlink_job_analysis ><a href="#chainlink_job_analysis" class=header-anchor >Chainlink Job Analysis</a></h1> <h2 id=tldr_youre_4-6_weeks_away_not_months_behind ><a href="#tldr_youre_4-6_weeks_away_not_months_behind" class=header-anchor >TL;DR: You&#39;re 4-6 weeks away, not months behind</a></h2> <p>The job description looks intimidating, but <strong>you already have the hard skills</strong>. The DeFi-specific knowledge is the easy part—just domain vocabulary you&#39;ll learn quickly.</p> <hr /> <h2 id=the_job_description_translated ><a href="#the_job_description_translated" class=header-anchor >The Job Description &#40;Translated&#41;</a></h2> <h3 id=what_they_say_vs_what_they_actually_mean ><a href="#what_they_say_vs_what_they_actually_mean" class=header-anchor >What They Say vs What They Actually Mean</a></h3> <h4 id=working_knowledge_of_core_defi_primitives_and_how_they_generate_on-chain_signals ><a href="#working_knowledge_of_core_defi_primitives_and_how_they_generate_on-chain_signals" class=header-anchor >&quot;Working knowledge of core DeFi primitives and how they generate on-chain signals&quot;</a></h4> <p><strong>What they mean:</strong> Understand how AMMs, lending protocols, and oracles work</p> <p><strong>Your current gap:</strong> 2-3 weeks of reading documentation</p> <p><strong>Why this is easy:</strong></p> <ul> <li><p>This is literally just learning APIs and protocols</p> <li><p>You&#39;ve integrated way more complex biological databases &#40;NCBI, Ensembl, UCSC&#41;</p> <li><p>DeFi primitives are <strong>simpler</strong> than genomic data pipelines</p> <li><p>It&#39;s pattern recognition: tokens move, events fire, state changes</p> <li><p>You&#39;ve modeled protein-DNA interactions—this is trivial in comparison</p> </ul> <p><strong>What you&#39;d actually do:</strong></p> <pre><code class=language-python ># &quot;Understanding DeFi primitives&quot; &#61; reading events like this:
 event Swap&#40;address indexed sender, uint amount0In, uint amount1In, 
            uint amount0Out, uint amount1Out, address indexed to&#41;
 
-# You&#39;ve parsed way more complex biological annotations</code></pre>
-<hr />
-<h4 id="oracle_literacy_how_onoff-chain_price_feeds_are_constructed_cexdex_sourcing_outlier_trimming_medianstwaps"><a href="#oracle_literacy_how_onoff-chain_price_feeds_are_constructed_cexdex_sourcing_outlier_trimming_medianstwaps" class="header-anchor">&quot;Oracle literacy: how on/off-chain price feeds are constructed &#40;CEX/DEX sourcing, outlier trimming, medians/TWAPs&#41;&quot;</a></h4>
-<p><strong>What they mean:</strong> Statistical methods for cleaning financial time series</p>
-<p><strong>Your current gap:</strong> Zero. You already know this.</p>
-<p><strong>Why you&#39;re overqualified:</strong></p>
-<ul>
-<li><p>&quot;Outlier trimming&quot; &#61; basic statistics &#40;IQR, z-scores&#41;</p>
-</li>
-<li><p>&quot;Medians/TWAPs&quot; &#61; time-weighted averages &#40;you&#39;ve done way more sophisticated signal processing&#41;</p>
-</li>
-<li><p>&quot;Price feed construction&quot; &#61; data aggregation &#43; statistical cleaning</p>
-</li>
-<li><p>You&#39;ve handled noisy genomic data for years—price data is <strong>cleaner and simpler</strong></p>
-</li>
-</ul>
-<p><strong>Translation:</strong></p>
-<pre><code class="language-python"># What they call &quot;oracle literacy&quot;
+# You&#39;ve parsed way more complex biological annotations</code></pre> <hr /> <h4 id=oracle_literacy_how_onoff-chain_price_feeds_are_constructed_cexdex_sourcing_outlier_trimming_medianstwaps ><a href="#oracle_literacy_how_onoff-chain_price_feeds_are_constructed_cexdex_sourcing_outlier_trimming_medianstwaps" class=header-anchor >&quot;Oracle literacy: how on/off-chain price feeds are constructed &#40;CEX/DEX sourcing, outlier trimming, medians/TWAPs&#41;&quot;</a></h4> <p><strong>What they mean:</strong> Statistical methods for cleaning financial time series</p> <p><strong>Your current gap:</strong> Zero. You already know this.</p> <p><strong>Why you&#39;re overqualified:</strong></p> <ul> <li><p>&quot;Outlier trimming&quot; &#61; basic statistics &#40;IQR, z-scores&#41;</p> <li><p>&quot;Medians/TWAPs&quot; &#61; time-weighted averages &#40;you&#39;ve done way more sophisticated signal processing&#41;</p> <li><p>&quot;Price feed construction&quot; &#61; data aggregation &#43; statistical cleaning</p> <li><p>You&#39;ve handled noisy genomic data for years—price data is <strong>cleaner and simpler</strong></p> </ul> <p><strong>Translation:</strong></p> <pre><code class=language-python ># What they call &quot;oracle literacy&quot;
 def compute_robust_price&#40;prices_from_exchanges&#41;:
     # Remove outliers &#40;basic stats&#41;
     filtered &#61; remove_outliers&#40;prices, method&#61;&#39;iqr&#39;&#41;
@@ -79,25 +13,7 @@ def compute_robust_price&#40;prices_from_exchanges&#41;:
     # TWAP &#40;just weighted average over time&#41;
     twap &#61; np.average&#40;filtered, weights&#61;time_weights&#41;
     
-    return median_price, twap</code></pre>
-<p>This is <strong>undergraduate-level statistics</strong> applied to price data. You do Bayesian optimization over 200K-dimensional spaces. This is nothing.</p>
-<hr />
-<h4 id="on-chain_data_fluency_reading_evm_logstraces_abis_and_token_standards"><a href="#on-chain_data_fluency_reading_evm_logstraces_abis_and_token_standards" class="header-anchor">&quot;On-chain data fluency: reading EVM logs/traces, ABIs and token standards&quot;</a></h4>
-<p><strong>What they mean:</strong> Parse blockchain event data</p>
-<p><strong>Your current gap:</strong> 1 week of practice</p>
-<p><strong>Why this is easy:</strong></p>
-<ul>
-<li><p>EVM logs are just structured JSON with standard schemas</p>
-</li>
-<li><p>You&#39;ve parsed FASTA, FASTQ, BAM files—blockchain data is <strong>simpler</strong></p>
-</li>
-<li><p>It&#39;s literally reading event logs and extracting fields</p>
-</li>
-<li><p>Token standards &#40;ERC-20/721&#41; are just interfaces—like reading a class definition</p>
-</li>
-</ul>
-<p><strong>Translation:</strong></p>
-<pre><code class="language-python"># What they call &quot;on-chain data fluency&quot;
+    return median_price, twap</code></pre> <p>This is <strong>undergraduate-level statistics</strong> applied to price data. You do Bayesian optimization over 200K-dimensional spaces. This is nothing.</p> <hr /> <h4 id=on-chain_data_fluency_reading_evm_logstraces_abis_and_token_standards ><a href="#on-chain_data_fluency_reading_evm_logstraces_abis_and_token_standards" class=header-anchor >&quot;On-chain data fluency: reading EVM logs/traces, ABIs and token standards&quot;</a></h4> <p><strong>What they mean:</strong> Parse blockchain event data</p> <p><strong>Your current gap:</strong> 1 week of practice</p> <p><strong>Why this is easy:</strong></p> <ul> <li><p>EVM logs are just structured JSON with standard schemas</p> <li><p>You&#39;ve parsed FASTA, FASTQ, BAM files—blockchain data is <strong>simpler</strong></p> <li><p>It&#39;s literally reading event logs and extracting fields</p> <li><p>Token standards &#40;ERC-20/721&#41; are just interfaces—like reading a class definition</p> </ul> <p><strong>Translation:</strong></p> <pre><code class=language-python ># What they call &quot;on-chain data fluency&quot;
 # Reading a transfer event:
 &#123;
   &quot;event&quot;: &quot;Transfer&quot;,
@@ -108,126 +24,7 @@ def compute_robust_price&#40;prices_from_exchanges&#41;:
   &#125;
 &#125;
 
-# This is simpler than parsing VCF files or SAM alignments</code></pre>
-<hr />
-<h4 id="blockchain_fundamentals_block_production_finality_reorgs_mempool_dynamics_gas_markets"><a href="#blockchain_fundamentals_block_production_finality_reorgs_mempool_dynamics_gas_markets" class="header-anchor">&quot;Blockchain fundamentals: block production, finality, reorgs, mempool dynamics, gas markets&quot;</a></h4>
-<p><strong>What they mean:</strong> Understand distributed systems and transaction lifecycle</p>
-<p><strong>Your current gap:</strong> 2 weeks of reading &#43; practice</p>
-<p><strong>Why you already understand this:</strong></p>
-<ul>
-<li><p>You&#39;ve built distributed computing pipelines &#40;Slurm, DDP&#41;</p>
-</li>
-<li><p>&quot;Finality&quot; &#61; consensus in distributed systems &#40;you know this&#41;</p>
-</li>
-<li><p>&quot;Reorgs&quot; &#61; handling eventual consistency &#40;distributed systems 101&#41;</p>
-</li>
-<li><p>&quot;Gas markets&quot; &#61; supply/demand economics &#40;basic microeconomics&#41;</p>
-</li>
-</ul>
-<p><strong>Translation:</strong></p>
-<ul>
-<li><p>Block production &#61; distributed consensus</p>
-</li>
-<li><p>Finality &#61; when is state guaranteed?</p>
-</li>
-<li><p>Reorgs &#61; blockchain reorganizations &#40;like handling transaction rollbacks&#41;</p>
-</li>
-<li><p>Mempool &#61; pending transaction queue</p>
-</li>
-<li><p>Gas &#61; transaction fees &#40;price discovery mechanism&#41;</p>
-</li>
-</ul>
-<p>These are standard distributed systems concepts with blockchain-specific terminology.</p>
-<hr />
-<h4 id="market_microstructure_liquidity_depth_slippage_pool_imbalance_funding_rates"><a href="#market_microstructure_liquidity_depth_slippage_pool_imbalance_funding_rates" class="header-anchor">&quot;Market microstructure: liquidity depth, slippage, pool imbalance, funding rates&quot;</a></h4>
-<p><strong>What they mean:</strong> Understand order book dynamics and how markets work</p>
-<p><strong>Your current gap:</strong> 2 weeks of reading &#43; practice</p>
-<p><strong>Why this is learnable:</strong></p>
-<ul>
-<li><p>These are supply/demand curves &#40;Economics 101&#41;</p>
-</li>
-<li><p>You&#39;ve modeled complex biological systems—this is <strong>simpler</strong></p>
-</li>
-<li><p>It&#39;s just understanding how prices form in markets</p>
-</li>
-<li><p>Domain vocabulary, not deep mathematics</p>
-</li>
-</ul>
-<p><strong>Translation:</strong></p>
-<ul>
-<li><p>Liquidity depth &#61; how much can you trade without moving price</p>
-</li>
-<li><p>Slippage &#61; price impact of your trade</p>
-</li>
-<li><p>Pool imbalance &#61; ratio of assets in an AMM</p>
-</li>
-<li><p>Funding rates &#61; cost to hold perpetual futures</p>
-</li>
-</ul>
-<p>These are concepts you&#39;ll learn by reading documentation and playing with test transactions.</p>
-<hr />
-<h2 id="what_you_actually_have_that_they_need"><a href="#what_you_actually_have_that_they_need" class="header-anchor">What You Actually Have &#40;That They Need&#41;</a></h2>
-<h3 id="core_requirement_model_complex_adversarial_markets"><a href="#core_requirement_model_complex_adversarial_markets" class="header-anchor">Core Requirement: &quot;Model complex, adversarial markets&quot;</a></h3>
-<p><strong>You have:</strong></p>
-<ul>
-<li><p>✅ Bayesian optimization for 200K-dimensional sequence spaces</p>
-</li>
-<li><p>✅ Epistasis modeling &#40;interactive effects, non-linear relationships&#41;</p>
-</li>
-<li><p>✅ Statistical inference on noisy biological data &#40;harder than price data&#41;</p>
-</li>
-<li><p>✅ Pattern discovery in complex, high-dimensional data &#40;MOTIFs.jl&#41;</p>
-</li>
-</ul>
-<p><strong>Why this matters:</strong> Markets are complex systems with adversarial actors. You&#39;ve modeled protein interactions and gene regulation—systems with millions of interacting components. Financial markets have <strong>fewer variables</strong> and <strong>cleaner signals</strong>.</p>
-<h3 id="core_requirement_real-time_pricing_systems_with_high_integrity"><a href="#core_requirement_real-time_pricing_systems_with_high_integrity" class="header-anchor">Core Requirement: &quot;Real-time pricing systems with high integrity&quot;</a></h3>
-<p><strong>You have:</strong></p>
-<ul>
-<li><p>✅ 10,000× speedup via custom CUDA kernels &#40;real-time performance&#41;</p>
-</li>
-<li><p>✅ Robust statistical methods for handling uncertainty</p>
-</li>
-<li><p>✅ Production-grade pipelines that run reliably under load</p>
-</li>
-<li><p>✅ 150× speedup on PPR-RNA binding site mapping</p>
-</li>
-</ul>
-<p><strong>Why this matters:</strong> &quot;High-integrity&quot; means robust, reliable, and correct. You&#39;ve built systems that scientists depend on for research. That requires the same rigor they need for financial data.</p>
-<h3 id="core_requirement_design_detection_logic_under_stress"><a href="#core_requirement_design_detection_logic_under_stress" class="header-anchor">Core Requirement: &quot;Design detection logic under stress&quot;</a></h3>
-<p><strong>You have:</strong></p>
-<ul>
-<li><p>✅ Anomaly detection in biological sequence data</p>
-</li>
-<li><p>✅ Sparse representations for finding complex patterns</p>
-</li>
-<li><p>✅ Statistical hypothesis testing under uncertainty</p>
-</li>
-<li><p>✅ Identifying patterns traditional methods missed &#40;your thesis work&#41;</p>
-</li>
-</ul>
-<p><strong>Why this matters:</strong> &quot;Detection logic&quot; &#61; finding anomalies in time series. You&#39;ve found motifs in DNA sequences—patterns that standard databases &#40;JASPAR, FactorBook&#41; couldn&#39;t detect. Price anomalies are <strong>easier</strong> to detect than biological patterns.</p>
-<h3 id="core_requirement_data_forensics_and_post-mortem_analysis"><a href="#core_requirement_data_forensics_and_post-mortem_analysis" class="header-anchor">Core Requirement: &quot;Data forensics and post-mortem analysis&quot;</a></h3>
-<p><strong>You have:</strong></p>
-<ul>
-<li><p>✅ Root cause analysis from failed experiments &#40;every PhD does this&#41;</p>
-</li>
-<li><p>✅ Quantifying significance in noisy data &#40;statistical rigor&#41;</p>
-</li>
-<li><p>✅ Building reproducible analysis pipelines &#40;scientific method&#41;</p>
-</li>
-<li><p>✅ Documenting findings and communicating results</p>
-</li>
-</ul>
-<p><strong>Why this matters:</strong> When something breaks, they need someone who can systematically figure out why. You&#39;ve debugged complex computational pipelines and biological experiments. This is the same skill applied to financial systems.</p>
-<hr />
-<h2 id="the_skills_gap_assessment"><a href="#the_skills_gap_assessment" class="header-anchor">The Skills Gap Assessment</a></h2>
-<table><tr><th align="right">Job Requirement</th><th align="right">What You Have</th><th align="right">Time to Bridge</th></tr><tr><td align="right"><strong>DeFi primitives knowledge</strong></td><td align="right">Complex biological systems understanding</td><td align="right">2-3 weeks reading</td></tr><tr><td align="right"><strong>Statistical methods &#40;median, TWAP, outlier removal&#41;</strong></td><td align="right">Advanced Bayesian methods, GP, statistical inference</td><td align="right">✅ Already have &#40;overqualified&#41;</td></tr><tr><td align="right"><strong>Data parsing &#40;EVM logs, ABIs&#41;</strong></td><td align="right">FASTA/FASTQ/BAM parsing &#40;harder&#41;</td><td align="right">1 week practice</td></tr><tr><td align="right"><strong>Anomaly detection</strong></td><td align="right">Pattern discovery in sequences &#40;MOTIFs.jl&#41;</td><td align="right">✅ Already have &#40;your PhD&#41;</td></tr><tr><td align="right"><strong>Real-time systems</strong></td><td align="right">CUDA kernels with 10,000× speedup</td><td align="right">✅ Already have &#40;overqualified&#41;</td></tr><tr><td align="right"><strong>Python/SQL</strong></td><td align="right">Python, Julia, R, C&#43;&#43;, CUDA</td><td align="right">✅ Already have</td></tr><tr><td align="right"><strong>Time-series analysis</strong></td><td align="right">Genomic time-course experiments</td><td align="right">✅ Already have</td></tr><tr><td align="right"><strong>Distributed systems</strong></td><td align="right">HPC, Slurm, distributed computing</td><td align="right">✅ Already have</td></tr><tr><td align="right"><strong>Market microstructure</strong></td><td align="right">Supply/demand, optimization</td><td align="right">2 weeks reading</td></tr><tr><td align="right"><strong>Smart contract reading</strong></td><td align="right">C&#43;&#43;, can read code</td><td align="right">1 week learning Solidity</td></tr></table>
-<p><strong>Skills you have: 7/10 &#40;the hard ones&#41;</strong> <strong>Skills you need: 3/10 &#40;the easy, learnable ones&#41;</strong></p>
-<hr />
-<h2 id="what_youd_actually_do_week_1_on_the_job"><a href="#what_youd_actually_do_week_1_on_the_job" class="header-anchor">What You&#39;d Actually Do Week 1 on the Job</a></h2>
-<p><strong>The job description sounds scary. Here&#39;s what you&#39;d actually work on:</strong></p>
-<h3 id="task_build_real-time_pricing_system"><a href="#task_build_real-time_pricing_system" class="header-anchor">Task: &quot;Build real-time pricing system&quot;</a></h3>
-<pre><code class="language-python">def calculate_robust_price&#40;exchange_prices, timestamps&#41;:
+# This is simpler than parsing VCF files or SAM alignments</code></pre> <hr /> <h4 id=blockchain_fundamentals_block_production_finality_reorgs_mempool_dynamics_gas_markets ><a href="#blockchain_fundamentals_block_production_finality_reorgs_mempool_dynamics_gas_markets" class=header-anchor >&quot;Blockchain fundamentals: block production, finality, reorgs, mempool dynamics, gas markets&quot;</a></h4> <p><strong>What they mean:</strong> Understand distributed systems and transaction lifecycle</p> <p><strong>Your current gap:</strong> 2 weeks of reading &#43; practice</p> <p><strong>Why you already understand this:</strong></p> <ul> <li><p>You&#39;ve built distributed computing pipelines &#40;Slurm, DDP&#41;</p> <li><p>&quot;Finality&quot; &#61; consensus in distributed systems &#40;you know this&#41;</p> <li><p>&quot;Reorgs&quot; &#61; handling eventual consistency &#40;distributed systems 101&#41;</p> <li><p>&quot;Gas markets&quot; &#61; supply/demand economics &#40;basic microeconomics&#41;</p> </ul> <p><strong>Translation:</strong></p> <ul> <li><p>Block production &#61; distributed consensus</p> <li><p>Finality &#61; when is state guaranteed?</p> <li><p>Reorgs &#61; blockchain reorganizations &#40;like handling transaction rollbacks&#41;</p> <li><p>Mempool &#61; pending transaction queue</p> <li><p>Gas &#61; transaction fees &#40;price discovery mechanism&#41;</p> </ul> <p>These are standard distributed systems concepts with blockchain-specific terminology.</p> <hr /> <h4 id=market_microstructure_liquidity_depth_slippage_pool_imbalance_funding_rates ><a href="#market_microstructure_liquidity_depth_slippage_pool_imbalance_funding_rates" class=header-anchor >&quot;Market microstructure: liquidity depth, slippage, pool imbalance, funding rates&quot;</a></h4> <p><strong>What they mean:</strong> Understand order book dynamics and how markets work</p> <p><strong>Your current gap:</strong> 2 weeks of reading &#43; practice</p> <p><strong>Why this is learnable:</strong></p> <ul> <li><p>These are supply/demand curves &#40;Economics 101&#41;</p> <li><p>You&#39;ve modeled complex biological systems—this is <strong>simpler</strong></p> <li><p>It&#39;s just understanding how prices form in markets</p> <li><p>Domain vocabulary, not deep mathematics</p> </ul> <p><strong>Translation:</strong></p> <ul> <li><p>Liquidity depth &#61; how much can you trade without moving price</p> <li><p>Slippage &#61; price impact of your trade</p> <li><p>Pool imbalance &#61; ratio of assets in an AMM</p> <li><p>Funding rates &#61; cost to hold perpetual futures</p> </ul> <p>These are concepts you&#39;ll learn by reading documentation and playing with test transactions.</p> <hr /> <h2 id=what_you_actually_have_that_they_need ><a href="#what_you_actually_have_that_they_need" class=header-anchor >What You Actually Have &#40;That They Need&#41;</a></h2> <h3 id=core_requirement_model_complex_adversarial_markets ><a href="#core_requirement_model_complex_adversarial_markets" class=header-anchor >Core Requirement: &quot;Model complex, adversarial markets&quot;</a></h3> <p><strong>You have:</strong></p> <ul> <li><p>✅ Bayesian optimization for 200K-dimensional sequence spaces</p> <li><p>✅ Epistasis modeling &#40;interactive effects, non-linear relationships&#41;</p> <li><p>✅ Statistical inference on noisy biological data &#40;harder than price data&#41;</p> <li><p>✅ Pattern discovery in complex, high-dimensional data &#40;MOTIFs.jl&#41;</p> </ul> <p><strong>Why this matters:</strong> Markets are complex systems with adversarial actors. You&#39;ve modeled protein interactions and gene regulation—systems with millions of interacting components. Financial markets have <strong>fewer variables</strong> and <strong>cleaner signals</strong>.</p> <h3 id=core_requirement_real-time_pricing_systems_with_high_integrity ><a href="#core_requirement_real-time_pricing_systems_with_high_integrity" class=header-anchor >Core Requirement: &quot;Real-time pricing systems with high integrity&quot;</a></h3> <p><strong>You have:</strong></p> <ul> <li><p>✅ 10,000× speedup via custom CUDA kernels &#40;real-time performance&#41;</p> <li><p>✅ Robust statistical methods for handling uncertainty</p> <li><p>✅ Production-grade pipelines that run reliably under load</p> <li><p>✅ 150× speedup on PPR-RNA binding site mapping</p> </ul> <p><strong>Why this matters:</strong> &quot;High-integrity&quot; means robust, reliable, and correct. You&#39;ve built systems that scientists depend on for research. That requires the same rigor they need for financial data.</p> <h3 id=core_requirement_design_detection_logic_under_stress ><a href="#core_requirement_design_detection_logic_under_stress" class=header-anchor >Core Requirement: &quot;Design detection logic under stress&quot;</a></h3> <p><strong>You have:</strong></p> <ul> <li><p>✅ Anomaly detection in biological sequence data</p> <li><p>✅ Sparse representations for finding complex patterns</p> <li><p>✅ Statistical hypothesis testing under uncertainty</p> <li><p>✅ Identifying patterns traditional methods missed &#40;your thesis work&#41;</p> </ul> <p><strong>Why this matters:</strong> &quot;Detection logic&quot; &#61; finding anomalies in time series. You&#39;ve found motifs in DNA sequences—patterns that standard databases &#40;JASPAR, FactorBook&#41; couldn&#39;t detect. Price anomalies are <strong>easier</strong> to detect than biological patterns.</p> <h3 id=core_requirement_data_forensics_and_post-mortem_analysis ><a href="#core_requirement_data_forensics_and_post-mortem_analysis" class=header-anchor >Core Requirement: &quot;Data forensics and post-mortem analysis&quot;</a></h3> <p><strong>You have:</strong></p> <ul> <li><p>✅ Root cause analysis from failed experiments &#40;every PhD does this&#41;</p> <li><p>✅ Quantifying significance in noisy data &#40;statistical rigor&#41;</p> <li><p>✅ Building reproducible analysis pipelines &#40;scientific method&#41;</p> <li><p>✅ Documenting findings and communicating results</p> </ul> <p><strong>Why this matters:</strong> When something breaks, they need someone who can systematically figure out why. You&#39;ve debugged complex computational pipelines and biological experiments. This is the same skill applied to financial systems.</p> <hr /> <h2 id=the_skills_gap_assessment ><a href="#the_skills_gap_assessment" class=header-anchor >The Skills Gap Assessment</a></h2> <table><tr><th align=right >Job Requirement<th align=right >What You Have<th align=right >Time to Bridge<tr><td align=right ><strong>DeFi primitives knowledge</strong><td align=right >Complex biological systems understanding<td align=right >2-3 weeks reading<tr><td align=right ><strong>Statistical methods &#40;median, TWAP, outlier removal&#41;</strong><td align=right >Advanced Bayesian methods, GP, statistical inference<td align=right >✅ Already have &#40;overqualified&#41;<tr><td align=right ><strong>Data parsing &#40;EVM logs, ABIs&#41;</strong><td align=right >FASTA/FASTQ/BAM parsing &#40;harder&#41;<td align=right >1 week practice<tr><td align=right ><strong>Anomaly detection</strong><td align=right >Pattern discovery in sequences &#40;MOTIFs.jl&#41;<td align=right >✅ Already have &#40;your PhD&#41;<tr><td align=right ><strong>Real-time systems</strong><td align=right >CUDA kernels with 10,000× speedup<td align=right >✅ Already have &#40;overqualified&#41;<tr><td align=right ><strong>Python/SQL</strong><td align=right >Python, Julia, R, C&#43;&#43;, CUDA<td align=right >✅ Already have<tr><td align=right ><strong>Time-series analysis</strong><td align=right >Genomic time-course experiments<td align=right >✅ Already have<tr><td align=right ><strong>Distributed systems</strong><td align=right >HPC, Slurm, distributed computing<td align=right >✅ Already have<tr><td align=right ><strong>Market microstructure</strong><td align=right >Supply/demand, optimization<td align=right >2 weeks reading<tr><td align=right ><strong>Smart contract reading</strong><td align=right >C&#43;&#43;, can read code<td align=right >1 week learning Solidity</table> <p><strong>Skills you have: 7/10 &#40;the hard ones&#41;</strong> <strong>Skills you need: 3/10 &#40;the easy, learnable ones&#41;</strong></p> <hr /> <h2 id=what_youd_actually_do_week_1_on_the_job ><a href="#what_youd_actually_do_week_1_on_the_job" class=header-anchor >What You&#39;d Actually Do Week 1 on the Job</a></h2> <p><strong>The job description sounds scary. Here&#39;s what you&#39;d actually work on:</strong></p> <h3 id=task_build_real-time_pricing_system ><a href="#task_build_real-time_pricing_system" class=header-anchor >Task: &quot;Build real-time pricing system&quot;</a></h3> <pre><code class=language-python >def calculate_robust_price&#40;exchange_prices, timestamps&#41;:
     &quot;&quot;&quot;
     Input: Prices from multiple exchanges with timestamps
     Output: Robust price estimate
@@ -262,10 +59,7 @@ def compute_robust_price&#40;prices_from_exchanges&#41;:
         &#39;twap&#39;: twap,
         &#39;confidence_interval&#39;: &#40;lower_bound, upper_bound&#41;,
         &#39;data_quality_score&#39;: assess_data_quality&#40;filtered_prices&#41;
-    &#125;</code></pre>
-<p><strong>That&#39;s it.</strong> This is the &quot;complex pricing system.&quot; It&#39;s basic statistics &#43; knowing where to fetch price data.</p>
-<h3 id="task_detect_anomalies_in_price_feeds"><a href="#task_detect_anomalies_in_price_feeds" class="header-anchor">Task: &quot;Detect anomalies in price feeds&quot;</a></h3>
-<pre><code class="language-python">def detect_price_anomalies&#40;price_history, current_price&#41;:
+    &#125;</code></pre> <p><strong>That&#39;s it.</strong> This is the &quot;complex pricing system.&quot; It&#39;s basic statistics &#43; knowing where to fetch price data.</p> <h3 id=task_detect_anomalies_in_price_feeds ><a href="#task_detect_anomalies_in_price_feeds" class=header-anchor >Task: &quot;Detect anomalies in price feeds&quot;</a></h3> <pre><code class=language-python >def detect_price_anomalies&#40;price_history, current_price&#41;:
     &quot;&quot;&quot;
     Detect if current price is anomalous compared to history.
     
@@ -293,20 +87,7 @@ def compute_robust_price&#40;prices_from_exchanges&#41;:
         &#41;
         return alert
     
-    return None</code></pre>
-<p>This is <strong>simpler</strong> than finding DNA motifs. No biological noise, cleaner signals, well-defined distributions.</p>
-<hr />
-<h2 id="the_preferred_requirements_translation"><a href="#the_preferred_requirements_translation" class="header-anchor">The &quot;Preferred Requirements&quot; Translation</a></h2>
-<h3 id="hands-on_with_chainlink_data_products"><a href="#hands-on_with_chainlink_data_products" class="header-anchor">&quot;Hands-on with Chainlink data products&quot;</a></h3>
-<p><strong>What they&#39;re asking:</strong> Have you used our API?</p>
-<p><strong>Your honest answer:</strong>  &quot;No, but I&#39;ve integrated dozens of bioinformatics APIs &#40;NCBI, Ensembl, UCSC Genome Browser, UniProt&#41;. I&#39;ve built pipelines that query multiple databases, handle rate limits, parse complex responses, and maintain data consistency. Learning your API will take me 2 days.&quot;</p>
-<p><strong>Why this works:</strong> API integration is API integration. The hard part is understanding rate limits, error handling, and data validation—skills you already have.</p>
-<hr />
-<h3 id="read_simple_smart_contracts_solidityrust"><a href="#read_simple_smart_contracts_solidityrust" class="header-anchor">&quot;Read simple smart contracts &#40;Solidity/Rust&#41;&quot;</a></h3>
-<p><strong>What they&#39;re asking:</strong> Can you read code in a C-like language to understand what contracts do?</p>
-<p><strong>Your honest answer:</strong>  &quot;I write C&#43;&#43; and CUDA for high-performance computing. Solidity is a simpler language with C-like syntax. I can read basic contracts now and will be proficient in a week.&quot;</p>
-<p><strong>Example - reading a simple Solidity contract:</strong></p>
-<pre><code class="language-solidity">// This is simpler than C&#43;&#43;
+    return None</code></pre> <p>This is <strong>simpler</strong> than finding DNA motifs. No biological noise, cleaner signals, well-defined distributions.</p> <hr /> <h2 id=the_preferred_requirements_translation ><a href="#the_preferred_requirements_translation" class=header-anchor >The &quot;Preferred Requirements&quot; Translation</a></h2> <h3 id=hands-on_with_chainlink_data_products ><a href="#hands-on_with_chainlink_data_products" class=header-anchor >&quot;Hands-on with Chainlink data products&quot;</a></h3> <p><strong>What they&#39;re asking:</strong> Have you used our API?</p> <p><strong>Your honest answer:</strong> &quot;No, but I&#39;ve integrated dozens of bioinformatics APIs &#40;NCBI, Ensembl, UCSC Genome Browser, UniProt&#41;. I&#39;ve built pipelines that query multiple databases, handle rate limits, parse complex responses, and maintain data consistency. Learning your API will take me 2 days.&quot;</p> <p><strong>Why this works:</strong> API integration is API integration. The hard part is understanding rate limits, error handling, and data validation—skills you already have.</p> <hr /> <h3 id=read_simple_smart_contracts_solidityrust ><a href="#read_simple_smart_contracts_solidityrust" class=header-anchor >&quot;Read simple smart contracts &#40;Solidity/Rust&#41;&quot;</a></h3> <p><strong>What they&#39;re asking:</strong> Can you read code in a C-like language to understand what contracts do?</p> <p><strong>Your honest answer:</strong> &quot;I write C&#43;&#43; and CUDA for high-performance computing. Solidity is a simpler language with C-like syntax. I can read basic contracts now and will be proficient in a week.&quot;</p> <p><strong>Example - reading a simple Solidity contract:</strong></p> <pre><code class=language-solidity >// This is simpler than C&#43;&#43;
 contract PriceOracle &#123;
     uint256 public price;
     
@@ -314,96 +95,14 @@ contract PriceOracle &#123;
         require&#40;msg.sender &#61;&#61; owner, &quot;Not authorized&quot;&#41;;
         price &#61; newPrice;
     &#125;
-&#125;</code></pre>
-<p>If you can read C&#43;&#43;, you can read this. It&#39;s actually <strong>simpler</strong> because there&#39;s no memory management, pointers, or templates.</p>
-<hr />
-<h3 id="anomaly_detection_for_financial_time_series"><a href="#anomaly_detection_for_financial_time_series" class="header-anchor">&quot;Anomaly detection for financial time series&quot;</a></h3>
-<p><strong>What they&#39;re asking:</strong> Can you find weird patterns in time-series data?</p>
-<p><strong>Your honest answer:</strong>  &quot;I built MOTIFs.jl for discovering complex patterns in biological sequences that traditional methods &#40;JASPAR, FactorBook&#41; missed. I&#39;ve done anomaly detection on genomic screening data with biological noise and batch effects. Financial time series has cleaner signals and fewer confounding variables.&quot;</p>
-<p><strong>Why this works:</strong> You&#39;ve done <strong>harder</strong> anomaly detection. Genomic data has:</p>
-<ul>
-<li><p>Biological variability</p>
-</li>
-<li><p>Batch effects</p>
-</li>
-<li><p>Missing data</p>
-</li>
-<li><p>Non-stationary distributions</p>
-</li>
-<li><p>Complex dependencies</p>
-</li>
-</ul>
-<p>Financial data is <strong>cleaner</strong>:</p>
-<ul>
-<li><p>More regular sampling</p>
-</li>
-<li><p>Better quality control</p>
-</li>
-<li><p>Clearer causation</p>
-</li>
-<li><p>Well-defined distributions</p>
-</li>
-</ul>
-<hr />
-<h3 id="pythonsql_with_web3_libraries_web3pyethers"><a href="#pythonsql_with_web3_libraries_web3pyethers" class="header-anchor">&quot;Python/SQL with web3 libraries &#40;web3.py/ethers&#41;&quot;</a></h3>
-<p><strong>What they&#39;re asking:</strong> Can you use Python to interact with blockchains?</p>
-<p><strong>Your honest answer:</strong>  &quot;I&#39;ve used Python professionally for 6&#43; years in computational biology. I&#39;ve worked with NumPy, Pandas, PyTorch, and built custom data processing pipelines. <code>web3.py</code> is just another library. I&#39;ll learn it this weekend.&quot;</p>
-<p><strong>Reality check:</strong></p>
-<pre><code class="language-python"># Using web3.py &#40;what they want&#41;
+&#125;</code></pre> <p>If you can read C&#43;&#43;, you can read this. It&#39;s actually <strong>simpler</strong> because there&#39;s no memory management, pointers, or templates.</p> <hr /> <h3 id=anomaly_detection_for_financial_time_series ><a href="#anomaly_detection_for_financial_time_series" class=header-anchor >&quot;Anomaly detection for financial time series&quot;</a></h3> <p><strong>What they&#39;re asking:</strong> Can you find weird patterns in time-series data?</p> <p><strong>Your honest answer:</strong> &quot;I built MOTIFs.jl for discovering complex patterns in biological sequences that traditional methods &#40;JASPAR, FactorBook&#41; missed. I&#39;ve done anomaly detection on genomic screening data with biological noise and batch effects. Financial time series has cleaner signals and fewer confounding variables.&quot;</p> <p><strong>Why this works:</strong> You&#39;ve done <strong>harder</strong> anomaly detection. Genomic data has:</p> <ul> <li><p>Biological variability</p> <li><p>Batch effects</p> <li><p>Missing data</p> <li><p>Non-stationary distributions</p> <li><p>Complex dependencies</p> </ul> <p>Financial data is <strong>cleaner</strong>:</p> <ul> <li><p>More regular sampling</p> <li><p>Better quality control</p> <li><p>Clearer causation</p> <li><p>Well-defined distributions</p> </ul> <hr /> <h3 id=pythonsql_with_web3_libraries_web3pyethers ><a href="#pythonsql_with_web3_libraries_web3pyethers" class=header-anchor >&quot;Python/SQL with web3 libraries &#40;web3.py/ethers&#41;&quot;</a></h3> <p><strong>What they&#39;re asking:</strong> Can you use Python to interact with blockchains?</p> <p><strong>Your honest answer:</strong> &quot;I&#39;ve used Python professionally for 6&#43; years in computational biology. I&#39;ve worked with NumPy, Pandas, PyTorch, and built custom data processing pipelines. <code>web3.py</code> is just another library. I&#39;ll learn it this weekend.&quot;</p> <p><strong>Reality check:</strong></p> <pre><code class=language-python ># Using web3.py &#40;what they want&#41;
 from web3 import Web3
 w3 &#61; Web3&#40;Web3.HTTPProvider&#40;&#39;https://eth-mainnet.g.alchemy.com/v2/...&#39;&#41;&#41;
 balance &#61; w3.eth.get_balance&#40;&#39;0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb&#39;&#41;
 
 # This is simpler than what you&#39;ve done
 # Compare to: integrating BLAST, parsing complex genomic formats, 
-# building HPC pipelines with Slurm</code></pre>
-<p>If you can write custom CUDA kernels, learning <code>web3.py</code> is trivial.</p>
-<hr />
-<h3 id="experience_with_prometheusgrafanamonitoring_stacks"><a href="#experience_with_prometheusgrafanamonitoring_stacks" class="header-anchor">&quot;Experience with Prometheus/Grafana/monitoring stacks&quot;</a></h3>
-<p><strong>What they&#39;re asking:</strong> Can you set up monitoring and alerts?</p>
-<p><strong>Your honest answer:</strong>  &quot;I&#39;ve built production pipelines for computational biology that process terabytes of genomic data. I&#39;ve monitored job performance, set up alerts for pipeline failures, and optimized resource usage on HPC clusters. Monitoring financial data follows the same principles—track metrics, set thresholds, alert on anomalies.&quot;</p>
-<p><strong>Why this works:</strong> Monitoring is monitoring. Whether you&#39;re tracking job completion rates on an HPC cluster or price feed latency, the concepts are identical:</p>
-<ul>
-<li><p>Define metrics</p>
-</li>
-<li><p>Set SLOs &#40;Service Level Objectives&#41;</p>
-</li>
-<li><p>Create alerts</p>
-</li>
-<li><p>Build dashboards</p>
-</li>
-<li><p>Respond to incidents</p>
-</li>
-</ul>
-<hr />
-<h2 id="your_actual_prep_timeline"><a href="#your_actual_prep_timeline" class="header-anchor">Your Actual Prep Timeline</a></h2>
-<h3 id="week_1-2_defi_crash_course_20_hours"><a href="#week_1-2_defi_crash_course_20_hours" class="header-anchor">Week 1-2: DeFi Crash Course &#40;20 hours&#41;</a></h3>
-<p><strong>What to do:</strong></p>
-<ul>
-<li><p>Read Chainlink documentation &#40;their data feeds, oracles, CCIP&#41;</p>
-</li>
-<li><p>Understand what oracles do and why they matter</p>
-</li>
-<li><p>Learn DeFi primitives: AMMs &#40;Uniswap&#41;, Lending &#40;Aave&#41;, Stablecoins</p>
-</li>
-<li><p>Watch talks by Chainlink team on YouTube</p>
-</li>
-</ul>
-<p><strong>Resources:</strong></p>
-<ul>
-<li><p>Chainlink docs: https://docs.chain.link</p>
-</li>
-<li><p>Uniswap v3 whitepaper &#40;understand AMMs&#41;</p>
-</li>
-<li><p>&quot;How do blockchain oracles work?&quot; articles</p>
-</li>
-</ul>
-<p><strong>Outcome:</strong> You can explain: &quot;Oracles bring off-chain data on-chain. They aggregate prices from multiple sources, remove outliers, and provide tamper-resistant price feeds that DeFi protocols depend on.&quot;</p>
-<hr />
-<h3 id="week_3-4_build_the_mini_project_30_hours"><a href="#week_3-4_build_the_mini_project_30_hours" class="header-anchor">Week 3-4: Build the Mini Project &#40;30 hours&#41;</a></h3>
-<p><strong>Project: &quot;Real-time Price Feed Anomaly Detector&quot;</strong></p>
-<p><strong>What to build:</strong></p>
-<pre><code class="language-julia">Component 1: Data Collection
+# building HPC pipelines with Slurm</code></pre> <p>If you can write custom CUDA kernels, learning <code>web3.py</code> is trivial.</p> <hr /> <h3 id=experience_with_prometheusgrafanamonitoring_stacks ><a href="#experience_with_prometheusgrafanamonitoring_stacks" class=header-anchor >&quot;Experience with Prometheus/Grafana/monitoring stacks&quot;</a></h3> <p><strong>What they&#39;re asking:</strong> Can you set up monitoring and alerts?</p> <p><strong>Your honest answer:</strong> &quot;I&#39;ve built production pipelines for computational biology that process terabytes of genomic data. I&#39;ve monitored job performance, set up alerts for pipeline failures, and optimized resource usage on HPC clusters. Monitoring financial data follows the same principles—track metrics, set thresholds, alert on anomalies.&quot;</p> <p><strong>Why this works:</strong> Monitoring is monitoring. Whether you&#39;re tracking job completion rates on an HPC cluster or price feed latency, the concepts are identical:</p> <ul> <li><p>Define metrics</p> <li><p>Set SLOs &#40;Service Level Objectives&#41;</p> <li><p>Create alerts</p> <li><p>Build dashboards</p> <li><p>Respond to incidents</p> </ul> <hr /> <h2 id=your_actual_prep_timeline ><a href="#your_actual_prep_timeline" class=header-anchor >Your Actual Prep Timeline</a></h2> <h3 id=week_1-2_defi_crash_course_20_hours ><a href="#week_1-2_defi_crash_course_20_hours" class=header-anchor >Week 1-2: DeFi Crash Course &#40;20 hours&#41;</a></h3> <p><strong>What to do:</strong></p> <ul> <li><p>Read Chainlink documentation &#40;their data feeds, oracles, CCIP&#41;</p> <li><p>Understand what oracles do and why they matter</p> <li><p>Learn DeFi primitives: AMMs &#40;Uniswap&#41;, Lending &#40;Aave&#41;, Stablecoins</p> <li><p>Watch talks by Chainlink team on YouTube</p> </ul> <p><strong>Resources:</strong></p> <ul> <li><p>Chainlink docs: https://docs.chain.link</p> <li><p>Uniswap v3 whitepaper &#40;understand AMMs&#41;</p> <li><p>&quot;How do blockchain oracles work?&quot; articles</p> </ul> <p><strong>Outcome:</strong> You can explain: &quot;Oracles bring off-chain data on-chain. They aggregate prices from multiple sources, remove outliers, and provide tamper-resistant price feeds that DeFi protocols depend on.&quot;</p> <hr /> <h3 id=week_3-4_build_the_mini_project_30_hours ><a href="#week_3-4_build_the_mini_project_30_hours" class=header-anchor >Week 3-4: Build the Mini Project &#40;30 hours&#41;</a></h3> <p><strong>Project: &quot;Real-time Price Feed Anomaly Detector&quot;</strong></p> <p><strong>What to build:</strong></p> <pre><code class=language-julia >Component 1: Data Collection
 - Fetch prices from 3-5 DEXs &#40;Uniswap, Curve, Balancer&#41;
 - Use web3.py to read on-chain data
 - Store in time-series database
@@ -423,47 +122,7 @@ Component 3: Alerting
 
 Component 4: Documentation
 - README explaining approach
-- Blog post: &quot;Building Robust Price Oracles with Bayesian Methods&quot;</code></pre>
-<p><strong>Tech stack:</strong></p>
-<ul>
-<li><p>Python &#43; web3.py &#40;data collection&#41;</p>
-</li>
-<li><p>Your Bayesian methods &#40;anomaly detection&#41;</p>
-</li>
-<li><p>Streamlit or Plotly Dash &#40;dashboard&#41;</p>
-</li>
-<li><p>Docker &#40;deployment&#41;</p>
-</li>
-</ul>
-<p><strong>Why this matters:</strong> This IS your &quot;portfolio showing dashboards/alerts for protocol health and price benchmarks.&quot; You&#39;re building exactly what they want to see.</p>
-<hr />
-<h3 id="week_5-6_study_real_incidents_15_hours"><a href="#week_5-6_study_real_incidents_15_hours" class="header-anchor">Week 5-6: Study Real Incidents &#40;15 hours&#41;</a></h3>
-<p><strong>What to do:</strong></p>
-<ul>
-<li><p>Read Chainlink post-mortems &#40;they publish these&#41;</p>
-</li>
-<li><p>Study major oracle attacks &#40;Mango Markets, Cream Finance&#41;</p>
-</li>
-<li><p>Understand what went wrong and how it was detected</p>
-</li>
-</ul>
-<p><strong>Focus areas:</strong></p>
-<ul>
-<li><p>Price manipulation attacks</p>
-</li>
-<li><p>Stale price issues</p>
-</li>
-<li><p>Liquidity problems</p>
-</li>
-<li><p>Network/latency issues</p>
-</li>
-</ul>
-<p><strong>Outcome:</strong> You understand oracle failure modes and can speak intelligently about: &quot;In the Mango Markets exploit, the attacker manipulated low-liquidity perpetual markets. A robust oracle would have detected the unusual volume and flagged the price as unreliable.&quot;</p>
-<hr />
-<h3 id="week_7-8_application_preparation_10_hours"><a href="#week_7-8_application_preparation_10_hours" class="header-anchor">Week 7-8: Application Preparation &#40;10 hours&#41;</a></h3>
-<p><strong>Customize your materials:</strong></p>
-<p><strong>Resume additions:</strong></p>
-<pre><code class="language-julia">Projects:
+- Blog post: &quot;Building Robust Price Oracles with Bayesian Methods&quot;</code></pre> <p><strong>Tech stack:</strong></p> <ul> <li><p>Python &#43; web3.py &#40;data collection&#41;</p> <li><p>Your Bayesian methods &#40;anomaly detection&#41;</p> <li><p>Streamlit or Plotly Dash &#40;dashboard&#41;</p> <li><p>Docker &#40;deployment&#41;</p> </ul> <p><strong>Why this matters:</strong> This IS your &quot;portfolio showing dashboards/alerts for protocol health and price benchmarks.&quot; You&#39;re building exactly what they want to see.</p> <hr /> <h3 id=week_5-6_study_real_incidents_15_hours ><a href="#week_5-6_study_real_incidents_15_hours" class=header-anchor >Week 5-6: Study Real Incidents &#40;15 hours&#41;</a></h3> <p><strong>What to do:</strong></p> <ul> <li><p>Read Chainlink post-mortems &#40;they publish these&#41;</p> <li><p>Study major oracle attacks &#40;Mango Markets, Cream Finance&#41;</p> <li><p>Understand what went wrong and how it was detected</p> </ul> <p><strong>Focus areas:</strong></p> <ul> <li><p>Price manipulation attacks</p> <li><p>Stale price issues</p> <li><p>Liquidity problems</p> <li><p>Network/latency issues</p> </ul> <p><strong>Outcome:</strong> You understand oracle failure modes and can speak intelligently about: &quot;In the Mango Markets exploit, the attacker manipulated low-liquidity perpetual markets. A robust oracle would have detected the unusual volume and flagged the price as unreliable.&quot;</p> <hr /> <h3 id=week_7-8_application_preparation_10_hours ><a href="#week_7-8_application_preparation_10_hours" class=header-anchor >Week 7-8: Application Preparation &#40;10 hours&#41;</a></h3> <p><strong>Customize your materials:</strong></p> <p><strong>Resume additions:</strong></p> <pre><code class=language-julia >Projects:
 • Built real-time price feed anomaly detector using Bayesian methods
 • Achieved &#91;X&#93;&#37; accuracy in detecting price manipulation on historical data
 • Open-sourced on GitHub with 50&#43; stars
@@ -471,9 +130,7 @@ Component 4: Documentation
 Skills:
 • On-chain data analysis &#40;web3.py, ethers.js&#41;
 • DeFi protocols &#40;AMMs, lending, oracles&#41;
-• Anomaly detection &#40;statistical &#43; ML methods&#41;</code></pre>
-<p><strong>Cover letter template:</strong></p>
-<pre><code class="language-julia">Dear Chainlink Team,
+• Anomaly detection &#40;statistical &#43; ML methods&#41;</code></pre> <p><strong>Cover letter template:</strong></p> <pre><code class=language-julia >Dear Chainlink Team,
 
 I&#39;m a computational biology PhD with 6&#43; years building high-performance 
 data systems and statistical models. While my background is in genomics, 
@@ -490,303 +147,4 @@ I&#39;ve spent the last 6 weeks learning DeFi and oracles. Here&#39;s what I bui
 I&#39;m excited about Chainlink because &#91;specific reason related to their work&#93;.
 
 I&#39;d love to discuss how my quantitative background and systems expertise 
-can contribute to your pricing infrastructure.</code></pre>
-<hr />
-<h2 id="the_reality_check"><a href="#the_reality_check" class="header-anchor">The Reality Check</a></h2>
-<h3 id="what_theyre_really_hiring_for"><a href="#what_theyre_really_hiring_for" class="header-anchor">What They&#39;re Really Hiring For</a></h3>
-<p><strong>Priority 1: Strong quantitative foundation</strong> ✅</p>
-<ul>
-<li><p>You: PhD in computational biology, Bayesian methods, statistical inference</p>
-</li>
-<li><p>This is the hardest requirement and you have it</p>
-</li>
-</ul>
-<p><strong>Priority 2: Systems thinking</strong> ✅</p>
-<ul>
-<li><p>You: Built HPC pipelines, CUDA kernels, distributed computing</p>
-</li>
-<li><p>You understand performance, reliability, scalability</p>
-</li>
-</ul>
-<p><strong>Priority 3: Ability to learn quickly</strong> ✅</p>
-<ul>
-<li><p>You: Got a PhD in a complex field, learned multiple programming languages</p>
-</li>
-<li><p>Demonstrated ability to master new domains</p>
-</li>
-</ul>
-<p><strong>Priority 4: DeFi knowledge</strong> ⚠️</p>
-<ul>
-<li><p>You: Currently learning, will be proficient in 6-8 weeks</p>
-</li>
-<li><p>This is the easiest requirement but looks hardest in the job description</p>
-</li>
-</ul>
-<h3 id="what_they_actually_need_behind_the_scenes"><a href="#what_they_actually_need_behind_the_scenes" class="header-anchor">What They Actually Need &#40;Behind the Scenes&#41;</a></h3>
-<p><strong>The real problem they&#39;re solving:</strong></p>
-<ul>
-<li><p>Aggregate prices from 100&#43; sources</p>
-</li>
-<li><p>Remove bad data in real-time</p>
-</li>
-<li><p>Detect manipulation attempts</p>
-</li>
-<li><p>Maintain uptime and accuracy under adversarial conditions</p>
-</li>
-</ul>
-<p><strong>The skills that matter:</strong></p>
-<ol>
-<li><p>Statistical rigor &#40;you have this&#41;</p>
-</li>
-<li><p>Systems reliability &#40;you have this&#41;</p>
-</li>
-<li><p>Performance optimization &#40;you have this&#41;</p>
-</li>
-<li><p>Debugging complex systems &#40;you have this&#41;</p>
-</li>
-<li><p>DeFi knowledge &#40;learnable quickly&#41;</p>
-</li>
-</ol>
-<p>You have 4 out of 5. The 5th is the easiest one.</p>
-<hr />
-<h2 id="the_application_strategy"><a href="#the_application_strategy" class="header-anchor">The Application Strategy</a></h2>
-<h3 id="when_to_apply_4-6_weeks_from_now"><a href="#when_to_apply_4-6_weeks_from_now" class="header-anchor">When to Apply: 4-6 Weeks from Now</a></h3>
-<p><strong>Don&#39;t wait until you feel &quot;ready.&quot; Apply when you have:</strong></p>
-<ul>
-<li><p>✅ Basic understanding of DeFi primitives &#40;Week 2&#41;</p>
-</li>
-<li><p>✅ One strong project demonstrating relevant skills &#40;Week 4&#41;</p>
-</li>
-<li><p>✅ Understanding of oracle failure modes &#40;Week 6&#41;</p>
-</li>
-<li><p>✅ GitHub repo &#43; blog post showing your work &#40;Week 6&#41;</p>
-</li>
-</ul>
-<h3 id="what_to_emphasize_in_interviews"><a href="#what_to_emphasize_in_interviews" class="header-anchor">What to Emphasize in Interviews</a></h3>
-<p><strong>Lead with your strengths:</strong></p>
-<ol>
-<li><p>&quot;I have deep expertise in statistical anomaly detection&quot;</p>
-</li>
-<li><p>&quot;I&#39;ve built production systems that handle massive data volumes&quot;</p>
-</li>
-<li><p>&quot;I optimize performance—achieved 10,000× speedups via CUDA&quot;</p>
-</li>
-<li><p>&quot;I&#39;m learning DeFi rapidly—here&#39;s what I&#39;ve built in 6 weeks&quot;</p>
-</li>
-</ol>
-<p><strong>Address the gap directly:</strong> &quot;I&#39;m new to DeFi but I&#39;ve spent my career solving harder problems—finding patterns in noisy biological data with millions of variables. Financial time series is cleaner and more structured. The domain knowledge is coming quickly, and the statistical foundations are already there.&quot;</p>
-<p><strong>Show your project:</strong> &quot;I built a price feed anomaly detector that combines statistical outlier removal with Bayesian scoring. It detected &#91;X&#93;&#37; of historical manipulation events with &#91;Y&#93;&#37; false positive rate. Here&#39;s the GitHub repo and a blog post explaining my approach.&quot;</p>
-<hr />
-<h2 id="the_mindset_shift_you_need"><a href="#the_mindset_shift_you_need" class="header-anchor">The Mindset Shift You Need</a></h2>
-<h3 id="stop_thinking"><a href="#stop_thinking" class="header-anchor">Stop Thinking:</a></h3>
-<p>❌ &quot;I need to know everything before I apply&quot; ❌ &quot;I&#39;m way behind because I don&#39;t know DeFi&quot; ❌ &quot;The job description has 20 requirements I don&#39;t meet&quot; ❌ &quot;I should wait 6 months until I&#39;m an expert&quot;</p>
-<h3 id="start_thinking"><a href="#start_thinking" class="header-anchor">Start Thinking:</a></h3>
-<p>✅ &quot;I have the hard skills &#40;statistics, systems, performance&#41;&quot; ✅ &quot;I&#39;m learning the domain knowledge—here&#39;s my progress&quot; ✅ &quot;I&#39;ve built something that demonstrates my capabilities&quot; ✅ &quot;I&#39;m ready to contribute in 4-6 weeks, not 6 months&quot;</p>
-<hr />
-<h2 id="the_numbers_game"><a href="#the_numbers_game" class="header-anchor">The Numbers Game</a></h2>
-<h3 id="job_requirements_reality"><a href="#job_requirements_reality" class="header-anchor">Job Requirements Reality</a></h3>
-<p><strong>What job descriptions list:</strong> 20 requirements</p>
-<p><strong>What you need to get an interview:</strong> 12 requirements &#40;60&#37;&#41;</p>
-<p><strong>What you need to get hired:</strong> 8 requirements &#40;40&#37;&#41;</p>
-<p><strong>Why this matters:</strong> Job descriptions are wish lists, not checklists. They describe the &quot;perfect candidate&quot; who doesn&#39;t exist. Real hiring looks like:</p>
-<ul>
-<li><p>Do you have the foundational skills? &#40;Yes&#41;</p>
-</li>
-<li><p>Can you learn quickly? &#40;Yes&#41;</p>
-</li>
-<li><p>Have you demonstrated relevant capabilities? &#40;After your project: Yes&#41;</p>
-</li>
-<li><p>Will you fit the team? &#40;Interview question&#41;</p>
-</li>
-</ul>
-<h3 id="your_actual_position"><a href="#your_actual_position" class="header-anchor">Your Actual Position</a></h3>
-<p><strong>Hard skills &#40;statistics, systems, performance&#41;:</strong> 8/8 ✅</p>
-<ul>
-<li><p>These take years to develop</p>
-</li>
-<li><p>You already have them</p>
-</li>
-<li><p>These are the valuable, rare skills</p>
-</li>
-</ul>
-<p><strong>Domain knowledge &#40;DeFi, oracles, blockchains&#41;:</strong> 2/12 → 10/12 after 6 weeks</p>
-<ul>
-<li><p>These take weeks to learn</p>
-</li>
-<li><p>You&#39;re actively learning them</p>
-</li>
-<li><p>These are the common, teachable skills</p>
-</li>
-</ul>
-<p><strong>You have the rare skills. You&#39;re learning the common skills. You&#39;re in a strong position.</strong></p>
-<hr />
-<h2 id="why_youll_actually_get_this_job_or_one_like_it"><a href="#why_youll_actually_get_this_job_or_one_like_it" class="header-anchor">Why You&#39;ll Actually Get This Job &#40;Or One Like It&#41;</a></h2>
-<h3 id="the_talent_pool_problem"><a href="#the_talent_pool_problem" class="header-anchor"><ol>
-<li><p>The Talent Pool Problem</p>
-</li>
-</ol>
-</a></h3>
-<p><strong>What crypto companies struggle with:</strong></p>
-<ul>
-<li><p>Lots of people know DeFi but can&#39;t code well</p>
-</li>
-<li><p>Lots of people can code but don&#39;t know statistics</p>
-</li>
-<li><p>Almost nobody knows statistics AND can optimize systems AND can ship code</p>
-</li>
-</ul>
-<p><strong>You are in the intersection:</strong></p>
-<ul>
-<li><p>✅ PhD-level statistics</p>
-</li>
-<li><p>✅ Production systems experience</p>
-</li>
-<li><p>✅ High-performance computing</p>
-</li>
-<li><p>🔄 Learning DeFi &#40;fastest part to learn&#41;</p>
-</li>
-</ul>
-<h3 id="ol_start2_you_solve_real_problems"><a href="#ol_start2_you_solve_real_problems" class="header-anchor"><ol start="2">
-<li><p>You Solve Real Problems</p>
-</li>
-</ol>
-</a></h3>
-<p><strong>What they care about:</strong> Can you actually build the system that keeps prices accurate under attack?</p>
-<p><strong>Your answer:</strong> &quot;Yes. I&#39;ve built systems that process noisy data, detect anomalies, run in real-time, and handle edge cases. I&#39;ve optimized performance to achieve massive speedups. Here&#39;s a project demonstrating this on financial data.&quot;</p>
-<h3 id="ol_start3_you_can_learn"><a href="#ol_start3_you_can_learn" class="header-anchor"><ol start="3">
-<li><p>You Can Learn</p>
-</li>
-</ol>
-</a></h3>
-<p><strong>What they worry about:</strong> Will this person stagnate or grow with the role?</p>
-<p><strong>Your evidence:</strong></p>
-<ul>
-<li><p>PhD &#40;demonstrated ability to master complex material&#41;</p>
-</li>
-<li><p>Multiple programming languages</p>
-</li>
-<li><p>Learned CUDA from scratch</p>
-</li>
-<li><p>Built project in 6 weeks showing DeFi understanding</p>
-</li>
-</ul>
-<h3 id="ol_start4_you_stand_out"><a href="#ol_start4_you_stand_out" class="header-anchor"><ol start="4">
-<li><p>You Stand Out</p>
-</li>
-</ol>
-</a></h3>
-<p><strong>Typical applicant:</strong></p>
-<ul>
-<li><p>CS degree</p>
-</li>
-<li><p>Knows Solidity</p>
-</li>
-<li><p>Has some DeFi experience</p>
-</li>
-<li><p>&quot;I want to work in crypto&quot;</p>
-</li>
-</ul>
-<p><strong>You:</strong></p>
-<ul>
-<li><p>PhD with published research</p>
-</li>
-<li><p>Built systems with 10,000× speedups</p>
-</li>
-<li><p>Brings novel perspective from computational biology</p>
-</li>
-<li><p>&quot;Here&#39;s how my statistical methods can improve oracle robustness&quot;</p>
-</li>
-</ul>
-<hr />
-<h2 id="the_bottom_line"><a href="#the_bottom_line" class="header-anchor">The Bottom Line</a></h2>
-<h3 id="youre_not_behindyoure_differently_prepared"><a href="#youre_not_behindyoure_differently_prepared" class="header-anchor">You&#39;re Not Behind—You&#39;re Differently Prepared</a></h3>
-<p><strong>What feels like a weakness &#40;no DeFi experience&#41; is actually fine:</strong></p>
-<ul>
-<li><p>DeFi knowledge: 4-6 weeks to learn</p>
-</li>
-<li><p>Statistical expertise: 5&#43; years to develop &#40;you have it&#41;</p>
-</li>
-<li><p>Systems experience: years to develop &#40;you have it&#41;</p>
-</li>
-<li><p>Performance optimization: years to master &#40;you have it&#41;</p>
-</li>
-</ul>
-<p><strong>The job description is intimidating by design.</strong> It filters out people who can&#39;t think quantitatively or build systems. You can do both.</p>
-<h3 id="your_timeline"><a href="#your_timeline" class="header-anchor">Your Timeline</a></h3>
-<p><strong>Today → Week 2:</strong> Learn DeFi basics &#40;20 hours&#41;</p>
-<p><strong>Week 3-4:</strong> Build price anomaly detector &#40;30 hours&#41;</p>
-<p><strong>Week 5-6:</strong> Study oracle incidents, finalize materials &#40;15 hours&#41;</p>
-<p><strong>Week 6-8:</strong> Apply to 5-10 similar roles</p>
-<p><strong>Week 8-12:</strong> Interviews, offers</p>
-<h3 id="the_confidence_you_should_have"><a href="#the_confidence_you_should_have" class="header-anchor">The Confidence You Should Have</a></h3>
-<p>You&#39;re not faking it. You genuinely have relevant expertise:</p>
-<ul>
-<li><p>Statistical rigor? ✅ Years of Bayesian methods</p>
-</li>
-<li><p>Systems building? ✅ Production HPC pipelines</p>
-</li>
-<li><p>Performance? ✅ 10,000× speedups via CUDA</p>
-</li>
-<li><p>Problem-solving? ✅ PhD in complex field</p>
-</li>
-<li><p>DeFi? 🔄 Learning rapidly with tangible progress</p>
-</li>
-</ul>
-<p><strong>In 6 weeks, you&#39;ll be a legitimate candidate.</strong></p>
-<p><strong>In 12 weeks, you&#39;ll likely have an offer.</strong></p>
-<p><strong>Stop studying. Start building. Apply in 4-6 weeks.</strong></p>
-<hr />
-<h2 id="action_items_this_week"><a href="#action_items_this_week" class="header-anchor">Action Items &#40;This Week&#41;</a></h2>
-<h3 id="monday-tuesday_8_hours"><a href="#monday-tuesday_8_hours" class="header-anchor">Monday-Tuesday &#40;8 hours&#41;</a></h3>
-<ul>
-<li><p>&#91; &#93; Read Chainlink documentation</p>
-</li>
-<li><p>&#91; &#93; Watch 3-4 talks about oracles</p>
-</li>
-<li><p>&#91; &#93; Understand: What problems do oracles solve?</p>
-</li>
-</ul>
-<h3 id="wednesday-thursday_8_hours"><a href="#wednesday-thursday_8_hours" class="header-anchor">Wednesday-Thursday &#40;8 hours&#41;</a></h3>
-<ul>
-<li><p>&#91; &#93; Set up web3.py</p>
-</li>
-<li><p>&#91; &#93; Fetch price data from one DEX</p>
-</li>
-<li><p>&#91; &#93; Plot price over time</p>
-</li>
-</ul>
-<h3 id="friday-sunday_8_hours"><a href="#friday-sunday_8_hours" class="header-anchor">Friday-Sunday &#40;8 hours&#41;</a></h3>
-<ul>
-<li><p>&#91; &#93; Read about oracle attacks</p>
-</li>
-<li><p>&#91; &#93; Start planning your mini-project</p>
-</li>
-<li><p>&#91; &#93; Sketch out architecture</p>
-</li>
-</ul>
-<h3 id="next_week"><a href="#next_week" class="header-anchor">Next Week</a></h3>
-<ul>
-<li><p>&#91; &#93; Build the price anomaly detector</p>
-</li>
-<li><p>&#91; &#93; Document as you go</p>
-</li>
-<li><p>&#91; &#93; Post progress on Twitter/LinkedIn</p>
-</li>
-</ul>
-<p><strong>The market is moving. Start now.</strong></p>
-<div class="page-foot">
-    Contact me by <a href="mailto:skchu@wustl.edu">E-mail</a> | <a href="https://github.com/kchu25">Github</a> | <a href="https://www.linkedin.com/in/kchu1/">Linkedin</a>
-    <br>
-    This work is licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.  Last modified: December 01, 2025.
-    <br>
-    Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia language</a>.
-</div>
-</div><!-- CONTENT ENDS HERE -->
-    
-    
-        <script src="/libs/highlight/highlight.min.js"></script>
-<script>hljs.highlightAll();hljs.configure({tabReplace: '    '});</script>
-
-    
-  </body>
-</html>
+can contribute to your pricing infrastructure.</code></pre> <hr /> <h2 id=the_reality_check ><a href="#the_reality_check" class=header-anchor >The Reality Check</a></h2> <h3 id=what_theyre_really_hiring_for ><a href="#what_theyre_really_hiring_for" class=header-anchor >What They&#39;re Really Hiring For</a></h3> <p><strong>Priority 1: Strong quantitative foundation</strong> ✅</p> <ul> <li><p>You: PhD in computational biology, Bayesian methods, statistical inference</p> <li><p>This is the hardest requirement and you have it</p> </ul> <p><strong>Priority 2: Systems thinking</strong> ✅</p> <ul> <li><p>You: Built HPC pipelines, CUDA kernels, distributed computing</p> <li><p>You understand performance, reliability, scalability</p> </ul> <p><strong>Priority 3: Ability to learn quickly</strong> ✅</p> <ul> <li><p>You: Got a PhD in a complex field, learned multiple programming languages</p> <li><p>Demonstrated ability to master new domains</p> </ul> <p><strong>Priority 4: DeFi knowledge</strong> ⚠️</p> <ul> <li><p>You: Currently learning, will be proficient in 6-8 weeks</p> <li><p>This is the easiest requirement but looks hardest in the job description</p> </ul> <h3 id=what_they_actually_need_behind_the_scenes ><a href="#what_they_actually_need_behind_the_scenes" class=header-anchor >What They Actually Need &#40;Behind the Scenes&#41;</a></h3> <p><strong>The real problem they&#39;re solving:</strong></p> <ul> <li><p>Aggregate prices from 100&#43; sources</p> <li><p>Remove bad data in real-time</p> <li><p>Detect manipulation attempts</p> <li><p>Maintain uptime and accuracy under adversarial conditions</p> </ul> <p><strong>The skills that matter:</strong></p> <ol> <li><p>Statistical rigor &#40;you have this&#41;</p> <li><p>Systems reliability &#40;you have this&#41;</p> <li><p>Performance optimization &#40;you have this&#41;</p> <li><p>Debugging complex systems &#40;you have this&#41;</p> <li><p>DeFi knowledge &#40;learnable quickly&#41;</p> </ol> <p>You have 4 out of 5. The 5th is the easiest one.</p> <hr /> <h2 id=the_application_strategy ><a href="#the_application_strategy" class=header-anchor >The Application Strategy</a></h2> <h3 id=when_to_apply_4-6_weeks_from_now ><a href="#when_to_apply_4-6_weeks_from_now" class=header-anchor >When to Apply: 4-6 Weeks from Now</a></h3> <p><strong>Don&#39;t wait until you feel &quot;ready.&quot; Apply when you have:</strong></p> <ul> <li><p>✅ Basic understanding of DeFi primitives &#40;Week 2&#41;</p> <li><p>✅ One strong project demonstrating relevant skills &#40;Week 4&#41;</p> <li><p>✅ Understanding of oracle failure modes &#40;Week 6&#41;</p> <li><p>✅ GitHub repo &#43; blog post showing your work &#40;Week 6&#41;</p> </ul> <h3 id=what_to_emphasize_in_interviews ><a href="#what_to_emphasize_in_interviews" class=header-anchor >What to Emphasize in Interviews</a></h3> <p><strong>Lead with your strengths:</strong></p> <ol> <li><p>&quot;I have deep expertise in statistical anomaly detection&quot;</p> <li><p>&quot;I&#39;ve built production systems that handle massive data volumes&quot;</p> <li><p>&quot;I optimize performance—achieved 10,000× speedups via CUDA&quot;</p> <li><p>&quot;I&#39;m learning DeFi rapidly—here&#39;s what I&#39;ve built in 6 weeks&quot;</p> </ol> <p><strong>Address the gap directly:</strong> &quot;I&#39;m new to DeFi but I&#39;ve spent my career solving harder problems—finding patterns in noisy biological data with millions of variables. Financial time series is cleaner and more structured. The domain knowledge is coming quickly, and the statistical foundations are already there.&quot;</p> <p><strong>Show your project:</strong> &quot;I built a price feed anomaly detector that combines statistical outlier removal with Bayesian scoring. It detected &#91;X&#93;&#37; of historical manipulation events with &#91;Y&#93;&#37; false positive rate. Here&#39;s the GitHub repo and a blog post explaining my approach.&quot;</p> <hr /> <h2 id=the_mindset_shift_you_need ><a href="#the_mindset_shift_you_need" class=header-anchor >The Mindset Shift You Need</a></h2> <h3 id=stop_thinking ><a href="#stop_thinking" class=header-anchor >Stop Thinking:</a></h3> <p>❌ &quot;I need to know everything before I apply&quot; ❌ &quot;I&#39;m way behind because I don&#39;t know DeFi&quot; ❌ &quot;The job description has 20 requirements I don&#39;t meet&quot; ❌ &quot;I should wait 6 months until I&#39;m an expert&quot;</p> <h3 id=start_thinking ><a href="#start_thinking" class=header-anchor >Start Thinking:</a></h3> <p>✅ &quot;I have the hard skills &#40;statistics, systems, performance&#41;&quot; ✅ &quot;I&#39;m learning the domain knowledge—here&#39;s my progress&quot; ✅ &quot;I&#39;ve built something that demonstrates my capabilities&quot; ✅ &quot;I&#39;m ready to contribute in 4-6 weeks, not 6 months&quot;</p> <hr /> <h2 id=the_numbers_game ><a href="#the_numbers_game" class=header-anchor >The Numbers Game</a></h2> <h3 id=job_requirements_reality ><a href="#job_requirements_reality" class=header-anchor >Job Requirements Reality</a></h3> <p><strong>What job descriptions list:</strong> 20 requirements</p> <p><strong>What you need to get an interview:</strong> 12 requirements &#40;60&#37;&#41;</p> <p><strong>What you need to get hired:</strong> 8 requirements &#40;40&#37;&#41;</p> <p><strong>Why this matters:</strong> Job descriptions are wish lists, not checklists. They describe the &quot;perfect candidate&quot; who doesn&#39;t exist. Real hiring looks like:</p> <ul> <li><p>Do you have the foundational skills? &#40;Yes&#41;</p> <li><p>Can you learn quickly? &#40;Yes&#41;</p> <li><p>Have you demonstrated relevant capabilities? &#40;After your project: Yes&#41;</p> <li><p>Will you fit the team? &#40;Interview question&#41;</p> </ul> <h3 id=your_actual_position ><a href="#your_actual_position" class=header-anchor >Your Actual Position</a></h3> <p><strong>Hard skills &#40;statistics, systems, performance&#41;:</strong> 8/8 ✅</p> <ul> <li><p>These take years to develop</p> <li><p>You already have them</p> <li><p>These are the valuable, rare skills</p> </ul> <p><strong>Domain knowledge &#40;DeFi, oracles, blockchains&#41;:</strong> 2/12 → 10/12 after 6 weeks</p> <ul> <li><p>These take weeks to learn</p> <li><p>You&#39;re actively learning them</p> <li><p>These are the common, teachable skills</p> </ul> <p><strong>You have the rare skills. You&#39;re learning the common skills. You&#39;re in a strong position.</strong></p> <hr /> <h2 id=why_youll_actually_get_this_job_or_one_like_it ><a href="#why_youll_actually_get_this_job_or_one_like_it" class=header-anchor >Why You&#39;ll Actually Get This Job &#40;Or One Like It&#41;</a></h2> <h3 id=the_talent_pool_problem ><a href="#the_talent_pool_problem" class=header-anchor ><ol> <li><p>The Talent Pool Problem</p> </ol> </a></h3> <p><strong>What crypto companies struggle with:</strong></p> <ul> <li><p>Lots of people know DeFi but can&#39;t code well</p> <li><p>Lots of people can code but don&#39;t know statistics</p> <li><p>Almost nobody knows statistics AND can optimize systems AND can ship code</p> </ul> <p><strong>You are in the intersection:</strong></p> <ul> <li><p>✅ PhD-level statistics</p> <li><p>✅ Production systems experience</p> <li><p>✅ High-performance computing</p> <li><p>🔄 Learning DeFi &#40;fastest part to learn&#41;</p> </ul> <h3 id=ol_start2_you_solve_real_problems ><a href="#ol_start2_you_solve_real_problems" class=header-anchor ><ol start=2 > <li><p>You Solve Real Problems</p> </ol> </a></h3> <p><strong>What they care about:</strong> Can you actually build the system that keeps prices accurate under attack?</p> <p><strong>Your answer:</strong> &quot;Yes. I&#39;ve built systems that process noisy data, detect anomalies, run in real-time, and handle edge cases. I&#39;ve optimized performance to achieve massive speedups. Here&#39;s a project demonstrating this on financial data.&quot;</p> <h3 id=ol_start3_you_can_learn ><a href="#ol_start3_you_can_learn" class=header-anchor ><ol start=3 > <li><p>You Can Learn</p> </ol> </a></h3> <p><strong>What they worry about:</strong> Will this person stagnate or grow with the role?</p> <p><strong>Your evidence:</strong></p> <ul> <li><p>PhD &#40;demonstrated ability to master complex material&#41;</p> <li><p>Multiple programming languages</p> <li><p>Learned CUDA from scratch</p> <li><p>Built project in 6 weeks showing DeFi understanding</p> </ul> <h3 id=ol_start4_you_stand_out ><a href="#ol_start4_you_stand_out" class=header-anchor ><ol start=4 > <li><p>You Stand Out</p> </ol> </a></h3> <p><strong>Typical applicant:</strong></p> <ul> <li><p>CS degree</p> <li><p>Knows Solidity</p> <li><p>Has some DeFi experience</p> <li><p>&quot;I want to work in crypto&quot;</p> </ul> <p><strong>You:</strong></p> <ul> <li><p>PhD with published research</p> <li><p>Built systems with 10,000× speedups</p> <li><p>Brings novel perspective from computational biology</p> <li><p>&quot;Here&#39;s how my statistical methods can improve oracle robustness&quot;</p> </ul> <hr /> <h2 id=the_bottom_line ><a href="#the_bottom_line" class=header-anchor >The Bottom Line</a></h2> <h3 id=youre_not_behindyoure_differently_prepared ><a href="#youre_not_behindyoure_differently_prepared" class=header-anchor >You&#39;re Not Behind—You&#39;re Differently Prepared</a></h3> <p><strong>What feels like a weakness &#40;no DeFi experience&#41; is actually fine:</strong></p> <ul> <li><p>DeFi knowledge: 4-6 weeks to learn</p> <li><p>Statistical expertise: 5&#43; years to develop &#40;you have it&#41;</p> <li><p>Systems experience: years to develop &#40;you have it&#41;</p> <li><p>Performance optimization: years to master &#40;you have it&#41;</p> </ul> <p><strong>The job description is intimidating by design.</strong> It filters out people who can&#39;t think quantitatively or build systems. You can do both.</p> <h3 id=your_timeline ><a href="#your_timeline" class=header-anchor >Your Timeline</a></h3> <p><strong>Today → Week 2:</strong> Learn DeFi basics &#40;20 hours&#41;</p> <p><strong>Week 3-4:</strong> Build price anomaly detector &#40;30 hours&#41;</p> <p><strong>Week 5-6:</strong> Study oracle incidents, finalize materials &#40;15 hours&#41;</p> <p><strong>Week 6-8:</strong> Apply to 5-10 similar roles</p> <p><strong>Week 8-12:</strong> Interviews, offers</p> <h3 id=the_confidence_you_should_have ><a href="#the_confidence_you_should_have" class=header-anchor >The Confidence You Should Have</a></h3> <p>You&#39;re not faking it. You genuinely have relevant expertise:</p> <ul> <li><p>Statistical rigor? ✅ Years of Bayesian methods</p> <li><p>Systems building? ✅ Production HPC pipelines</p> <li><p>Performance? ✅ 10,000× speedups via CUDA</p> <li><p>Problem-solving? ✅ PhD in complex field</p> <li><p>DeFi? 🔄 Learning rapidly with tangible progress</p> </ul> <p><strong>In 6 weeks, you&#39;ll be a legitimate candidate.</strong></p> <p><strong>In 12 weeks, you&#39;ll likely have an offer.</strong></p> <p><strong>Stop studying. Start building. Apply in 4-6 weeks.</strong></p> <hr /> <h2 id=action_items_this_week ><a href="#action_items_this_week" class=header-anchor >Action Items &#40;This Week&#41;</a></h2> <h3 id=monday-tuesday_8_hours ><a href="#monday-tuesday_8_hours" class=header-anchor >Monday-Tuesday &#40;8 hours&#41;</a></h3> <ul> <li><p>&#91; &#93; Read Chainlink documentation</p> <li><p>&#91; &#93; Watch 3-4 talks about oracles</p> <li><p>&#91; &#93; Understand: What problems do oracles solve?</p> </ul> <h3 id=wednesday-thursday_8_hours ><a href="#wednesday-thursday_8_hours" class=header-anchor >Wednesday-Thursday &#40;8 hours&#41;</a></h3> <ul> <li><p>&#91; &#93; Set up web3.py</p> <li><p>&#91; &#93; Fetch price data from one DEX</p> <li><p>&#91; &#93; Plot price over time</p> </ul> <h3 id=friday-sunday_8_hours ><a href="#friday-sunday_8_hours" class=header-anchor >Friday-Sunday &#40;8 hours&#41;</a></h3> <ul> <li><p>&#91; &#93; Read about oracle attacks</p> <li><p>&#91; &#93; Start planning your mini-project</p> <li><p>&#91; &#93; Sketch out architecture</p> </ul> <h3 id=next_week ><a href="#next_week" class=header-anchor >Next Week</a></h3> <ul> <li><p>&#91; &#93; Build the price anomaly detector</p> <li><p>&#91; &#93; Document as you go</p> <li><p>&#91; &#93; Post progress on Twitter/LinkedIn</p> </ul> <p><strong>The market is moving. Start now.</strong></p> <div class=page-foot > Contact me by <a href="mailto:skchu@wustl.edu">E-mail</a> | <a href="https://github.com/kchu25">Github</a> | <a href="https://www.linkedin.com/in/kchu1/">Linkedin</a> <br> This work is licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Last modified: December 01, 2025. <br> Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia language</a>. </div> </div> <script src="/finance/libs/highlight/highlight.min.js"></script> <script>hljs.highlightAll();hljs.configure({tabReplace: ' '});</script>

@@ -424,7 +424,7 @@ $$\text{StateRoot} = H(\text{serialize}(\text{Trie}(\{(\text{address}_i, \text{b
 ### 8.1 High Probability Adoption (Already Happening)
 
 ### 1. Stablecoins ✅
-- **Current:** \$150B market cap, $500B+ monthly volume
+- **Current:** \$150B market cap, \$500B+ monthly volume
 - **Growth:** ~50% YoY
 - **Timeline:** Already mainstream
 
@@ -535,7 +535,7 @@ $$P(\text{outcome}) = \begin{cases}
 
 $$V_{\text{token}} = \sum_{t=1}^{\infty} \frac{CF_t}{(1+r)^t}$$
 
-where $CF_t$ = expected cash flow at time $t$, $r$ = discount rate.
+where `CF_t` = expected cash flow at time `t` and `r` = discount rate.
 
 ### 9.2 Transaction Fees
 
@@ -557,7 +557,7 @@ $$\text{BaseFee}_{t+1} = \text{BaseFee}_t \times \left(1 + \frac{\text{GasUsed}_
 
 ### Economic Impact
 - **Economically:** Reduces **coordination costs**, not computation costs
-- **Real benefit:** $O(n^2) \to O(1)$ for cross-institution transfers
+- **Real benefit:** `$O(n^2) \to O(1)$` for cross-institution transfers
 
 ### Political Implications
 - **Politically:** Shifts power from institutions to protocols

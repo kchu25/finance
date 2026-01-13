@@ -133,7 +133,7 @@ if abs(portfolio_gamma) > max_gamma_exposure:
 - **Always positive** for short options (you gain money daily)
 - **Accelerates** as expiration approaches
 - **Highest** for at-the-money options
-- Measured in dollars per day (e.g., Θ = -0.05 = lose $5/day on 100 shares)
+- Measured in dollars per day (e.g., Θ = -0.05 = lose \$5/day on 100 shares)
 
 ### Intuitive Understanding
 - "Every day you hold, you pay rent"
@@ -185,7 +185,7 @@ if theta_to_premium_ratio > 0.05:  # Losing 5%+ per day
 - **Always negative** for short options (hurt by IV increase)
 - **Highest** for at-the-money options
 - **Increases** with time to expiration (more time = more uncertainty)
-- Measured in dollars per 1% IV change (e.g., ν = 0.12 = gain $12 if IV rises 1%)
+- Measured in dollars per 1% IV change (e.g., ν = 0.12 = gain \$12 if IV rises 1%)
 
 ### Intuitive Understanding
 - Long vega = "Betting on uncertainty increasing" = Long options
