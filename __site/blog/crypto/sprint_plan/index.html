@@ -1,4 +1,50 @@
-<!doctype html> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/finance/libs/katex/katex.min.css"> <link rel=stylesheet  href="/finance/libs/highlight/styles/github.min.css"> <link rel=stylesheet  href="/finance/css/franklin.css"> <link rel=stylesheet  href="/finance/css/hypertext.css"> <link rel=icon  href="/finance/assets/favicon.png"> <title>30-Day Crypto Infrastructure Sprint Plan</title> <header> <h1 style="color:#283747">Finance</h1> <nav> <a href="/finance/" class=current >Tags</a> | <a href="/finance/blog/" >Notes</a> <hr/> </nav> </header> <div class=franklin-content ><h1 id=30-day_crypto_infrastructure_sprint_plan ><a href="#30-day_crypto_infrastructure_sprint_plan" class=header-anchor >30-Day Crypto Infrastructure Sprint Plan</a></h1> <p><strong>Goal:</strong> Build foundational knowledge &#43; one impressive project to land crypto infrastructure roles</p> <p><strong>Time Commitment:</strong> 22 hours/week &#40;2 hours weekdays, 6 hours weekends&#41;</p> <p><strong>Target Outcome:</strong> Ready to interview at Chainlink and similar companies</p> <hr /> <h2 id=week_1_core_concepts_10_hours_total ><a href="#week_1_core_concepts_10_hours_total" class=header-anchor >Week 1: Core Concepts &#40;10 hours total&#41;</a></h2> <h3 id=day_1-2_stablecoins_monday-tuesday_3_hours ><a href="#day_1-2_stablecoins_monday-tuesday_3_hours" class=header-anchor >Day 1-2: Stablecoins &#40;Monday-Tuesday, 3 hours&#41;</a></h3> <p><strong>Learning &#40;2 hours&#41;:</strong></p> <ul> <li><p>&#91; &#93; Read USDC documentation on Circle&#39;s website</p> <li><p>&#91; &#93; Read Tether transparency reports</p> <li><p>&#91; &#93; Understand: collateralization, reserves, minting/burning mechanics</p> <li><p>&#91; &#93; Key question: How does <span class=katex ><span class=katex-mathml ><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>U</mi><mi>S</mi><mi>D</mi><mi>C</mi><mo>=</mo></mrow><annotation encoding="application/x-tex">1 USDC = </annotation></semantics></math></span><span class=katex-html  aria-hidden=true ><span class=base ><span class=strut  style="height:0.6833em;"></span><span class=mord >1</span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class=mspace  style="margin-right:0.2778em;"></span><span class=mrel >=</span></span></span></span>1 in Treasuries?</p> </ul> <p><strong>Mini-project &#40;1 hour&#41;:</strong></p> <pre><code class=language-python ># File: week1-foundations/stablecoin_tracker.py
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="/libs/katex/katex.min.css">
+     
+   <link rel="stylesheet" href="/libs/highlight/styles/github.min.css">
+   
+  <link rel="stylesheet" href="/css/franklin.css">
+<link rel="stylesheet" href="/css/hypertext.css">
+<link rel="icon" href="/assets/favicon.png">
+
+   <title>30-Day Crypto Infrastructure Sprint Plan</title>  
+</head>
+<body>
+<header>
+  <h1 style="color:#283747">Finance</h1>
+  <nav>
+    <a href="/" class="current">Tags</a>
+  | <a href="/blog/" >Notes</a>
+  <hr/>
+  </nav>
+</header>
+
+
+<!-- Content appended here -->
+<div class="franklin-content"><h1 id="30-day_crypto_infrastructure_sprint_plan"><a href="#30-day_crypto_infrastructure_sprint_plan" class="header-anchor">30-Day Crypto Infrastructure Sprint Plan</a></h1>
+<p><strong>Goal:</strong> Build foundational knowledge &#43; one impressive project to land crypto infrastructure roles</p>
+<p><strong>Time Commitment:</strong> 22 hours/week &#40;2 hours weekdays, 6 hours weekends&#41;</p>
+<p><strong>Target Outcome:</strong> Ready to interview at Chainlink and similar companies</p>
+<hr />
+<h2 id="week_1_core_concepts_10_hours_total"><a href="#week_1_core_concepts_10_hours_total" class="header-anchor">Week 1: Core Concepts &#40;10 hours total&#41;</a></h2>
+<h3 id="day_1-2_stablecoins_monday-tuesday_3_hours"><a href="#day_1-2_stablecoins_monday-tuesday_3_hours" class="header-anchor">Day 1-2: Stablecoins &#40;Monday-Tuesday, 3 hours&#41;</a></h3>
+<p><strong>Learning &#40;2 hours&#41;:</strong></p>
+<ul>
+<li><p>&#91; &#93; Read USDC documentation on Circle&#39;s website</p>
+</li>
+<li><p>&#91; &#93; Read Tether transparency reports</p>
+</li>
+<li><p>&#91; &#93; Understand: collateralization, reserves, minting/burning mechanics</p>
+</li>
+<li><p>&#91; &#93; Key question: How does \(1 USDC = \)1 in Treasuries?</p>
+</li>
+</ul>
+<p><strong>Mini-project &#40;1 hour&#41;:</strong></p>
+<pre><code class="language-python"># File: week1-foundations/stablecoin_tracker.py
 # Fetch stablecoin supply data and correlate with Treasury holdings
 
 import requests
@@ -15,15 +61,101 @@ def get_treasury_holdings&#40;&#41;:
 
 def plot_correlation&#40;&#41;:
     # Plot supply vs Treasury holdings over time
-    pass</code></pre> <p><strong>Deliverable:</strong></p> <ul> <li><p>Chart showing USDC/USDT supply correlated with Treasury holdings</p> <li><p>Notes in <code>week1-foundations/day1-2-stablecoins.md</code></p> </ul> <p><strong>Key insight you&#39;ll gain:</strong> The GENIUS Act mechanism - stablecoins create structural Treasury demand</p> <hr /> <h3 id=day_3-4_smart_contracts_wednesday-thursday_4_hours ><a href="#day_3-4_smart_contracts_wednesday-thursday_4_hours" class=header-anchor >Day 3-4: Smart Contracts &#40;Wednesday-Thursday, 4 hours&#41;</a></h3> <p><strong>Learning &#40;3 hours&#41;:</strong></p> <ul> <li><p>&#91; &#93; Complete CryptoZombies tutorial &#40;Lessons 1-3&#41;: https://cryptozombies.io</p> <li><p>&#91; &#93; Read 3 simple smart contracts on Etherscan</p> <li><p>&#91; &#93; Understand: events, state variables, functions</p> <li><p>&#91; &#93; Key question: How does code run on a blockchain?</p> </ul> <p><strong>Mini-project &#40;1 hour&#41;:</strong></p> <ul> <li><p>&#91; &#93; Deploy a basic ERC-20 token on Sepolia testnet</p> <li><p>&#91; &#93; Use Remix IDE: https://remix.ethereum.org</p> <li><p>&#91; &#93; Follow tutorial: &quot;Deploy Your First Smart Contract&quot;</p> </ul> <p><strong>Deliverable:</strong></p> <ul> <li><p>Deployed contract address</p> <li><p>Screenshot of deployment</p> <li><p>Notes in <code>week1-foundations/day3-4-smart-contracts.md</code></p> </ul> <p><strong>Key insight you&#39;ll gain:</strong> Smart contracts are just code - simpler than you think</p> <hr /> <h3 id=day_5-7_defi_primitives_friday-sunday_6_hours ><a href="#day_5-7_defi_primitives_friday-sunday_6_hours" class=header-anchor >Day 5-7: DeFi Primitives &#40;Friday-Sunday, 6 hours&#41;</a></h3> <h4 id=day_5_amms_friday_2_hours ><a href="#day_5_amms_friday_2_hours" class=header-anchor >Day 5: AMMs &#40;Friday, 2 hours&#41;</a></h4> <p><strong>Learning:</strong></p> <ul> <li><p>&#91; &#93; Read Uniswap v2 docs: &quot;How Uniswap Works&quot;</p> <li><p>&#91; &#93; Watch Finematics video: &quot;How Uniswap Works&quot; &#40;YouTube&#41;</p> <li><p>&#91; &#93; Explore app.uniswap.org - examine ETH/USDC pool</p> <li><p>&#91; &#93; Understand: constant product formula &#40;x * y &#61; k&#41;</p> </ul> <p><strong>Notes to capture:</strong></p> <pre><code class=language-julia >Pool mechanics:
+    pass</code></pre>
+<p><strong>Deliverable:</strong></p>
+<ul>
+<li><p>Chart showing USDC/USDT supply correlated with Treasury holdings</p>
+</li>
+<li><p>Notes in <code>week1-foundations/day1-2-stablecoins.md</code></p>
+</li>
+</ul>
+<p><strong>Key insight you&#39;ll gain:</strong>  The GENIUS Act mechanism - stablecoins create structural Treasury demand</p>
+<hr />
+<h3 id="day_3-4_smart_contracts_wednesday-thursday_4_hours"><a href="#day_3-4_smart_contracts_wednesday-thursday_4_hours" class="header-anchor">Day 3-4: Smart Contracts &#40;Wednesday-Thursday, 4 hours&#41;</a></h3>
+<p><strong>Learning &#40;3 hours&#41;:</strong></p>
+<ul>
+<li><p>&#91; &#93; Complete CryptoZombies tutorial &#40;Lessons 1-3&#41;: https://cryptozombies.io</p>
+</li>
+<li><p>&#91; &#93; Read 3 simple smart contracts on Etherscan</p>
+</li>
+<li><p>&#91; &#93; Understand: events, state variables, functions</p>
+</li>
+<li><p>&#91; &#93; Key question: How does code run on a blockchain?</p>
+</li>
+</ul>
+<p><strong>Mini-project &#40;1 hour&#41;:</strong></p>
+<ul>
+<li><p>&#91; &#93; Deploy a basic ERC-20 token on Sepolia testnet</p>
+</li>
+<li><p>&#91; &#93; Use Remix IDE: https://remix.ethereum.org</p>
+</li>
+<li><p>&#91; &#93; Follow tutorial: &quot;Deploy Your First Smart Contract&quot;</p>
+</li>
+</ul>
+<p><strong>Deliverable:</strong></p>
+<ul>
+<li><p>Deployed contract address</p>
+</li>
+<li><p>Screenshot of deployment</p>
+</li>
+<li><p>Notes in <code>week1-foundations/day3-4-smart-contracts.md</code></p>
+</li>
+</ul>
+<p><strong>Key insight you&#39;ll gain:</strong> Smart contracts are just code - simpler than you think</p>
+<hr />
+<h3 id="day_5-7_defi_primitives_friday-sunday_6_hours"><a href="#day_5-7_defi_primitives_friday-sunday_6_hours" class="header-anchor">Day 5-7: DeFi Primitives &#40;Friday-Sunday, 6 hours&#41;</a></h3>
+<h4 id="day_5_amms_friday_2_hours"><a href="#day_5_amms_friday_2_hours" class="header-anchor">Day 5: AMMs &#40;Friday, 2 hours&#41;</a></h4>
+<p><strong>Learning:</strong></p>
+<ul>
+<li><p>&#91; &#93; Read Uniswap v2 docs: &quot;How Uniswap Works&quot;</p>
+</li>
+<li><p>&#91; &#93; Watch Finematics video: &quot;How Uniswap Works&quot; &#40;YouTube&#41;</p>
+</li>
+<li><p>&#91; &#93; Explore app.uniswap.org - examine ETH/USDC pool</p>
+</li>
+<li><p>&#91; &#93; Understand: constant product formula &#40;x * y &#61; k&#41;</p>
+</li>
+</ul>
+<p><strong>Notes to capture:</strong></p>
+<pre><code class="language-julia">Pool mechanics:
 - Current pool: X ETH and Y USDC
 - Constant k &#61; X * Y
 - When you swap, ratio changes, price adjusts
-- Liquidity providers earn fees</code></pre> <hr /> <h4 id=day_6_lending_saturday_2_hours ><a href="#day_6_lending_saturday_2_hours" class=header-anchor >Day 6: Lending &#40;Saturday, 2 hours&#41;</a></h4> <p><strong>Learning:</strong></p> <ul> <li><p>&#91; &#93; Read Aave documentation: &quot;How does it work?&quot;</p> <li><p>&#91; &#93; Watch Finematics video: &quot;How Aave Works&quot;</p> <li><p>&#91; &#93; Explore app.aave.com - look at markets, rates</p> <li><p>&#91; &#93; Understand: collateral ratios, liquidations, interest rates</p> </ul> <p><strong>Notes to capture:</strong></p> <pre><code class=language-julia >Lending mechanics:
+- Liquidity providers earn fees</code></pre>
+<hr />
+<h4 id="day_6_lending_saturday_2_hours"><a href="#day_6_lending_saturday_2_hours" class="header-anchor">Day 6: Lending &#40;Saturday, 2 hours&#41;</a></h4>
+<p><strong>Learning:</strong></p>
+<ul>
+<li><p>&#91; &#93; Read Aave documentation: &quot;How does it work?&quot;</p>
+</li>
+<li><p>&#91; &#93; Watch Finematics video: &quot;How Aave Works&quot;</p>
+</li>
+<li><p>&#91; &#93; Explore app.aave.com - look at markets, rates</p>
+</li>
+<li><p>&#91; &#93; Understand: collateral ratios, liquidations, interest rates</p>
+</li>
+</ul>
+<p><strong>Notes to capture:</strong></p>
+<pre><code class="language-julia">Lending mechanics:
 - Deposit collateral &#40;e.g., 1 ETH &#61; &#36;2,000&#41;
 - Borrow up to ~75&#37; of value &#40;&#36;1,500&#41;
 - If collateral value drops → liquidation
-- Interest rates adjust based on utilization</code></pre> <hr /> <h4 id=day_7_oracles_sunday_2_hours ><a href="#day_7_oracles_sunday_2_hours" class=header-anchor >Day 7: Oracles &#40;Sunday, 2 hours&#41;</a></h4> <p><strong>Learning:</strong></p> <ul> <li><p>&#91; &#93; Read Chainlink Data Feeds intro: https://docs.chain.link/data-feeds</p> <li><p>&#91; &#93; Watch &quot;What is Chainlink?&quot; &#40;official video&#41;</p> <li><p>&#91; &#93; Explore data.chain.link - examine ETH/USD feed</p> <li><p>&#91; &#93; Click &quot;View Details&quot; - see oracle node responses</p> </ul> <p><strong>Mini-project &#40;2 hours&#41;:</strong></p> <pre><code class=language-python ># File: week1-foundations/impermanent_loss.py
+- Interest rates adjust based on utilization</code></pre>
+<hr />
+<h4 id="day_7_oracles_sunday_2_hours"><a href="#day_7_oracles_sunday_2_hours" class="header-anchor">Day 7: Oracles &#40;Sunday, 2 hours&#41;</a></h4>
+<p><strong>Learning:</strong></p>
+<ul>
+<li><p>&#91; &#93; Read Chainlink Data Feeds intro: https://docs.chain.link/data-feeds</p>
+</li>
+<li><p>&#91; &#93; Watch &quot;What is Chainlink?&quot; &#40;official video&#41;</p>
+</li>
+<li><p>&#91; &#93; Explore data.chain.link - examine ETH/USD feed</p>
+</li>
+<li><p>&#91; &#93; Click &quot;View Details&quot; - see oracle node responses</p>
+</li>
+</ul>
+<p><strong>Mini-project &#40;2 hours&#41;:</strong></p>
+<pre><code class="language-python"># File: week1-foundations/impermanent_loss.py
 # Calculate impermanent loss for different price movements
 
 def calculate_IL&#40;initial_price, final_price, amount&#41;:
@@ -37,15 +169,72 @@ def calculate_IL&#40;initial_price, final_price, amount&#41;:
 
 def plot_IL_curve&#40;&#41;:
     # Show IL for different price changes
-    pass</code></pre> <p><strong>Deliverable:</strong></p> <ul> <li><p>Working IL calculator</p> <li><p>Chart showing IL at different price movements</p> <li><p>Notes in <code>week1-foundations/day5-7-defi-primitives.md</code></p> </ul> <p><strong>Key insight you&#39;ll gain:</strong> DeFi primitives are interconnected - AMMs provide liquidity, lending needs oracles, oracles aggregate from multiple sources</p> <hr /> <h2 id=week_2_infrastructure_deep_dive_15_hours_total ><a href="#week_2_infrastructure_deep_dive_15_hours_total" class=header-anchor >Week 2: Infrastructure Deep Dive &#40;15 hours total&#41;</a></h2> <h3 id=day_8-10_blockchain_architecture_monday-wednesday_6_hours ><a href="#day_8-10_blockchain_architecture_monday-wednesday_6_hours" class=header-anchor >Day 8-10: Blockchain Architecture &#40;Monday-Wednesday, 6 hours&#41;</a></h3> <h4 id=day_8_ethereum_monday_2_hours ><a href="#day_8_ethereum_monday_2_hours" class=header-anchor >Day 8: Ethereum &#40;Monday, 2 hours&#41;</a></h4> <p><strong>Learning:</strong></p> <ul> <li><p>&#91; &#93; Read ethereum.org: &quot;What is Ethereum?&quot;</p> <li><p>&#91; &#93; Understand: blocks, transactions, gas, EVM</p> <li><p>&#91; &#93; Read: &quot;Introduction to Smart Contracts&quot;</p> <li><p>&#91; &#93; Key concepts: state, execution, consensus</p> </ul> <p><strong>Notes to capture:</strong></p> <pre><code class=language-julia >Ethereum architecture:
+    pass</code></pre>
+<p><strong>Deliverable:</strong></p>
+<ul>
+<li><p>Working IL calculator</p>
+</li>
+<li><p>Chart showing IL at different price movements</p>
+</li>
+<li><p>Notes in <code>week1-foundations/day5-7-defi-primitives.md</code></p>
+</li>
+</ul>
+<p><strong>Key insight you&#39;ll gain:</strong> DeFi primitives are interconnected - AMMs provide liquidity, lending needs oracles, oracles aggregate from multiple sources</p>
+<hr />
+<h2 id="week_2_infrastructure_deep_dive_15_hours_total"><a href="#week_2_infrastructure_deep_dive_15_hours_total" class="header-anchor">Week 2: Infrastructure Deep Dive &#40;15 hours total&#41;</a></h2>
+<h3 id="day_8-10_blockchain_architecture_monday-wednesday_6_hours"><a href="#day_8-10_blockchain_architecture_monday-wednesday_6_hours" class="header-anchor">Day 8-10: Blockchain Architecture &#40;Monday-Wednesday, 6 hours&#41;</a></h3>
+<h4 id="day_8_ethereum_monday_2_hours"><a href="#day_8_ethereum_monday_2_hours" class="header-anchor">Day 8: Ethereum &#40;Monday, 2 hours&#41;</a></h4>
+<p><strong>Learning:</strong></p>
+<ul>
+<li><p>&#91; &#93; Read ethereum.org: &quot;What is Ethereum?&quot;</p>
+</li>
+<li><p>&#91; &#93; Understand: blocks, transactions, gas, EVM</p>
+</li>
+<li><p>&#91; &#93; Read: &quot;Introduction to Smart Contracts&quot;</p>
+</li>
+<li><p>&#91; &#93; Key concepts: state, execution, consensus</p>
+</li>
+</ul>
+<p><strong>Notes to capture:</strong></p>
+<pre><code class="language-julia">Ethereum architecture:
 - Block time: ~12 seconds
 - Gas: computational cost of operations
 - EVM: virtual machine that executes contracts
-- State: current snapshot of all balances/contracts</code></pre> <hr /> <h4 id=day_9_alternative_chains_tuesday_2_hours ><a href="#day_9_alternative_chains_tuesday_2_hours" class=header-anchor >Day 9: Alternative Chains &#40;Tuesday, 2 hours&#41;</a></h4> <p><strong>Learning:</strong></p> <ul> <li><p>&#91; &#93; Read Solana documentation overview</p> <li><p>&#91; &#93; Understand: Proof of History, parallel execution</p> <li><p>&#91; &#93; Compare: Ethereum &#40;sequential&#41; vs Solana &#40;parallel&#41;</p> <li><p>&#91; &#93; Read about Layer 2s: Arbitrum, Optimism</p> </ul> <p><strong>Notes to capture:</strong></p> <pre><code class=language-julia >Performance comparison:
+- State: current snapshot of all balances/contracts</code></pre>
+<hr />
+<h4 id="day_9_alternative_chains_tuesday_2_hours"><a href="#day_9_alternative_chains_tuesday_2_hours" class="header-anchor">Day 9: Alternative Chains &#40;Tuesday, 2 hours&#41;</a></h4>
+<p><strong>Learning:</strong></p>
+<ul>
+<li><p>&#91; &#93; Read Solana documentation overview</p>
+</li>
+<li><p>&#91; &#93; Understand: Proof of History, parallel execution</p>
+</li>
+<li><p>&#91; &#93; Compare: Ethereum &#40;sequential&#41; vs Solana &#40;parallel&#41;</p>
+</li>
+<li><p>&#91; &#93; Read about Layer 2s: Arbitrum, Optimism</p>
+</li>
+</ul>
+<p><strong>Notes to capture:</strong></p>
+<pre><code class="language-julia">Performance comparison:
 - Ethereum: ~15 TPS, high gas fees
 - Solana: ~2,000 TPS, low fees
 - L2s &#40;Arbitrum&#41;: ~4,000 TPS, lower fees
-- Trade-offs: decentralization vs. performance</code></pre> <hr /> <h4 id=day_10_transaction_lifecycle_wednesday_2_hours ><a href="#day_10_transaction_lifecycle_wednesday_2_hours" class=header-anchor >Day 10: Transaction Lifecycle &#40;Wednesday, 2 hours&#41;</a></h4> <p><strong>Learning:</strong></p> <ul> <li><p>&#91; &#93; Read about mempools &#40;pending transaction queue&#41;</p> <li><p>&#91; &#93; Understand: how transactions get included in blocks</p> <li><p>&#91; &#93; Read about finality &#40;when is TX confirmed?&#41;</p> <li><p>&#91; &#93; Understand: reorgs, confirmation depth</p> </ul> <p><strong>Mini-project:</strong></p> <pre><code class=language-python ># File: week2-infrastructure/chain_profiler.py
+- Trade-offs: decentralization vs. performance</code></pre>
+<hr />
+<h4 id="day_10_transaction_lifecycle_wednesday_2_hours"><a href="#day_10_transaction_lifecycle_wednesday_2_hours" class="header-anchor">Day 10: Transaction Lifecycle &#40;Wednesday, 2 hours&#41;</a></h4>
+<p><strong>Learning:</strong></p>
+<ul>
+<li><p>&#91; &#93; Read about mempools &#40;pending transaction queue&#41;</p>
+</li>
+<li><p>&#91; &#93; Understand: how transactions get included in blocks</p>
+</li>
+<li><p>&#91; &#93; Read about finality &#40;when is TX confirmed?&#41;</p>
+</li>
+<li><p>&#91; &#93; Understand: reorgs, confirmation depth</p>
+</li>
+</ul>
+<p><strong>Mini-project:</strong></p>
+<pre><code class="language-python"># File: week2-infrastructure/chain_profiler.py
 # Profile transaction throughput across chains
 
 import requests
@@ -62,11 +251,49 @@ def measure_latency&#40;chain_rpc_url&#41;:
 def compare_chains&#40;&#41;:
     # Compare Ethereum, Arbitrum, Solana
     # Chart: TPS, latency, cost per transaction
-    pass</code></pre> <p><strong>Deliverable:</strong></p> <ul> <li><p>Performance comparison chart</p> <li><p>Notes in <code>week2-infrastructure/day8-10-blockchain-arch.md</code></p> </ul> <hr /> <h3 id=day_11-12_mev_thursday-friday_4_hours ><a href="#day_11-12_mev_thursday-friday_4_hours" class=header-anchor >Day 11-12: MEV &#40;Thursday-Friday, 4 hours&#41;</a></h3> <h4 id=day_11_mev_concepts_thursday_2_hours ><a href="#day_11_mev_concepts_thursday_2_hours" class=header-anchor >Day 11: MEV Concepts &#40;Thursday, 2 hours&#41;</a></h4> <p><strong>Learning:</strong></p> <ul> <li><p>&#91; &#93; Read Flashbots documentation: flashbots.net</p> <li><p>&#91; &#93; Understand: front-running, sandwich attacks, arbitrage</p> <li><p>&#91; &#93; Read: &quot;Ethereum is a Dark Forest&quot; article</p> <li><p>&#91; &#93; Explore: flashbots.net/transparency</p> </ul> <p><strong>Notes to capture:</strong></p> <pre><code class=language-julia >MEV attack types:
+    pass</code></pre>
+<p><strong>Deliverable:</strong></p>
+<ul>
+<li><p>Performance comparison chart</p>
+</li>
+<li><p>Notes in <code>week2-infrastructure/day8-10-blockchain-arch.md</code></p>
+</li>
+</ul>
+<hr />
+<h3 id="day_11-12_mev_thursday-friday_4_hours"><a href="#day_11-12_mev_thursday-friday_4_hours" class="header-anchor">Day 11-12: MEV &#40;Thursday-Friday, 4 hours&#41;</a></h3>
+<h4 id="day_11_mev_concepts_thursday_2_hours"><a href="#day_11_mev_concepts_thursday_2_hours" class="header-anchor">Day 11: MEV Concepts &#40;Thursday, 2 hours&#41;</a></h4>
+<p><strong>Learning:</strong></p>
+<ul>
+<li><p>&#91; &#93; Read Flashbots documentation: flashbots.net</p>
+</li>
+<li><p>&#91; &#93; Understand: front-running, sandwich attacks, arbitrage</p>
+</li>
+<li><p>&#91; &#93; Read: &quot;Ethereum is a Dark Forest&quot; article</p>
+</li>
+<li><p>&#91; &#93; Explore: flashbots.net/transparency</p>
+</li>
+</ul>
+<p><strong>Notes to capture:</strong></p>
+<pre><code class="language-julia">MEV attack types:
 - Front-running: see TX, submit yours first
 - Sandwich attack: front-run &#43; back-run user TX
 - Arbitrage: profit from price differences
-- Liquidation: trigger liquidations for profit</code></pre> <hr /> <h4 id=day_12_mev_in_practice_friday_2_hours ><a href="#day_12_mev_in_practice_friday_2_hours" class=header-anchor >Day 12: MEV in Practice &#40;Friday, 2 hours&#41;</a></h4> <p><strong>Learning:</strong></p> <ul> <li><p>&#91; &#93; Explore eigenphi.io &#40;MEV analytics&#41;</p> <li><p>&#91; &#93; Look at recent MEV transactions on Etherscan</p> <li><p>&#91; &#93; Read 2-3 case studies of major MEV exploits</p> <li><p>&#91; &#93; Understand: how bots find opportunities</p> </ul> <p><strong>Mini-project:</strong></p> <pre><code class=language-python ># File: week2-infrastructure/mev_scanner.py
+- Liquidation: trigger liquidations for profit</code></pre>
+<hr />
+<h4 id="day_12_mev_in_practice_friday_2_hours"><a href="#day_12_mev_in_practice_friday_2_hours" class="header-anchor">Day 12: MEV in Practice &#40;Friday, 2 hours&#41;</a></h4>
+<p><strong>Learning:</strong></p>
+<ul>
+<li><p>&#91; &#93; Explore eigenphi.io &#40;MEV analytics&#41;</p>
+</li>
+<li><p>&#91; &#93; Look at recent MEV transactions on Etherscan</p>
+</li>
+<li><p>&#91; &#93; Read 2-3 case studies of major MEV exploits</p>
+</li>
+<li><p>&#91; &#93; Understand: how bots find opportunities</p>
+</li>
+</ul>
+<p><strong>Mini-project:</strong></p>
+<pre><code class="language-python"># File: week2-infrastructure/mev_scanner.py
 # Find historical arbitrage opportunities
 
 def scan_dex_prices&#40;block_number&#41;:
@@ -79,7 +306,32 @@ def find_arbitrage&#40;prices&#41;:
 
 def calculate_profit&#40;opportunity&#41;:
     # Account for gas costs, slippage
-    pass</code></pre> <p><strong>Deliverable:</strong></p> <ul> <li><p>List of historical arbitrage opportunities</p> <li><p>Analysis: how much was extractable?</p> <li><p>Notes in <code>week2-infrastructure/day11-12-mev.md</code></p> </ul> <hr /> <h3 id=day_13-14_cryptographic_primitives_weekend_5_hours ><a href="#day_13-14_cryptographic_primitives_weekend_5_hours" class=header-anchor >Day 13-14: Cryptographic Primitives &#40;Weekend, 5 hours&#41;</a></h3> <h4 id=day_13_signatures_hashing_saturday_3_hours ><a href="#day_13_signatures_hashing_saturday_3_hours" class=header-anchor >Day 13: Signatures &amp; Hashing &#40;Saturday, 3 hours&#41;</a></h4> <p><strong>Learning &#40;2 hours&#41;:</strong></p> <ul> <li><p>&#91; &#93; Understand ECDSA &#40;Ethereum&#39;s signature scheme&#41;</p> <li><p>&#91; &#93; Read about signature verification</p> <li><p>&#91; &#93; Understand keccak256 hash function</p> <li><p>&#91; &#93; Why signatures are computationally expensive</p> </ul> <p><strong>Mini-project &#40;1 hour&#41;:</strong></p> <pre><code class=language-python ># File: week2-infrastructure/signature_benchmark.py
+    pass</code></pre>
+<p><strong>Deliverable:</strong></p>
+<ul>
+<li><p>List of historical arbitrage opportunities</p>
+</li>
+<li><p>Analysis: how much was extractable?</p>
+</li>
+<li><p>Notes in <code>week2-infrastructure/day11-12-mev.md</code></p>
+</li>
+</ul>
+<hr />
+<h3 id="day_13-14_cryptographic_primitives_weekend_5_hours"><a href="#day_13-14_cryptographic_primitives_weekend_5_hours" class="header-anchor">Day 13-14: Cryptographic Primitives &#40;Weekend, 5 hours&#41;</a></h3>
+<h4 id="day_13_signatures_hashing_saturday_3_hours"><a href="#day_13_signatures_hashing_saturday_3_hours" class="header-anchor">Day 13: Signatures &amp; Hashing &#40;Saturday, 3 hours&#41;</a></h4>
+<p><strong>Learning &#40;2 hours&#41;:</strong></p>
+<ul>
+<li><p>&#91; &#93; Understand ECDSA &#40;Ethereum&#39;s signature scheme&#41;</p>
+</li>
+<li><p>&#91; &#93; Read about signature verification</p>
+</li>
+<li><p>&#91; &#93; Understand keccak256 hash function</p>
+</li>
+<li><p>&#91; &#93; Why signatures are computationally expensive</p>
+</li>
+</ul>
+<p><strong>Mini-project &#40;1 hour&#41;:</strong></p>
+<pre><code class="language-python"># File: week2-infrastructure/signature_benchmark.py
 # Benchmark signature verification
 
 import time
@@ -97,11 +349,56 @@ def verify_signatures_batch_cpu&#40;signatures&#41;:
 def benchmark&#40;&#41;:
     # Test 1000, 10000, 100000 signatures
     # Measure throughput &#40;sigs/second&#41;
-    pass</code></pre> <p><strong>Deliverable:</strong></p> <ul> <li><p>CPU benchmark results</p> <li><p>Chart: single vs multi-threaded performance</p> </ul> <hr /> <h4 id=day_14_zero-knowledge_proofs_sunday_2_hours ><a href="#day_14_zero-knowledge_proofs_sunday_2_hours" class=header-anchor >Day 14: Zero-Knowledge Proofs &#40;Sunday, 2 hours&#41;</a></h4> <p><strong>Learning:</strong></p> <ul> <li><p>&#91; &#93; Read &quot;zkSNARKs in a nutshell&quot;</p> <li><p>&#91; &#93; Watch video: &quot;Zero Knowledge Proofs Explained&quot;</p> <li><p>&#91; &#93; Understand applications: zkRollups, privacy</p> <li><p>&#91; &#93; Don&#39;t worry about deep math - just concepts</p> </ul> <p><strong>Notes to capture:</strong></p> <pre><code class=language-julia >ZK-proofs use cases:
+    pass</code></pre>
+<p><strong>Deliverable:</strong></p>
+<ul>
+<li><p>CPU benchmark results</p>
+</li>
+<li><p>Chart: single vs multi-threaded performance</p>
+</li>
+</ul>
+<hr />
+<h4 id="day_14_zero-knowledge_proofs_sunday_2_hours"><a href="#day_14_zero-knowledge_proofs_sunday_2_hours" class="header-anchor">Day 14: Zero-Knowledge Proofs &#40;Sunday, 2 hours&#41;</a></h4>
+<p><strong>Learning:</strong></p>
+<ul>
+<li><p>&#91; &#93; Read &quot;zkSNARKs in a nutshell&quot;</p>
+</li>
+<li><p>&#91; &#93; Watch video: &quot;Zero Knowledge Proofs Explained&quot;</p>
+</li>
+<li><p>&#91; &#93; Understand applications: zkRollups, privacy</p>
+</li>
+<li><p>&#91; &#93; Don&#39;t worry about deep math - just concepts</p>
+</li>
+</ul>
+<p><strong>Notes to capture:</strong></p>
+<pre><code class="language-julia">ZK-proofs use cases:
 - Prove you know something without revealing it
 - Prove computation was done correctly
 - zkRollups: batch many TXs into one proof
-- Privacy: transact without revealing details</code></pre> <p><strong>Deliverable:</strong></p> <ul> <li><p>Notes in <code>week2-infrastructure/day13-14-cryptography.md</code></p> </ul> <hr /> <h2 id=week_3-4_build_your_main_project_40_hours_total ><a href="#week_3-4_build_your_main_project_40_hours_total" class=header-anchor >Week 3-4: Build Your Main Project &#40;40 hours total&#41;</a></h2> <p><strong>Choose ONE project. Recommendation: Option A &#40;GPU acceleration&#41;</strong></p> <h3 id=option_a_gpu-accelerated_signature_verification_recommended ><a href="#option_a_gpu-accelerated_signature_verification_recommended" class=header-anchor >Option A: GPU-Accelerated Signature Verification ⭐ RECOMMENDED</a></h3> <p><strong>Why this one:</strong></p> <ul> <li><p>Plays to your unique strength &#40;CUDA expertise&#41;</p> <li><p>Demonstrates immediate value &#40;performance optimization&#41;</p> <li><p>Highly relevant to infrastructure companies</p> <li><p>Fastest path to impressive results</p> </ul> <h4 id=week_3_core_implementation_20_hours ><a href="#week_3_core_implementation_20_hours" class=header-anchor >Week 3: Core Implementation &#40;20 hours&#41;</a></h4> <p><strong>Day 15-16: CPU Baseline &#40;Monday-Tuesday, 6 hours&#41;</strong></p> <pre><code class=language-python ># File: week3-4-project/signature_verifier/cpu_baseline.py
+- Privacy: transact without revealing details</code></pre>
+<p><strong>Deliverable:</strong></p>
+<ul>
+<li><p>Notes in <code>week2-infrastructure/day13-14-cryptography.md</code></p>
+</li>
+</ul>
+<hr />
+<h2 id="week_3-4_build_your_main_project_40_hours_total"><a href="#week_3-4_build_your_main_project_40_hours_total" class="header-anchor">Week 3-4: Build Your Main Project &#40;40 hours total&#41;</a></h2>
+<p><strong>Choose ONE project. Recommendation: Option A &#40;GPU acceleration&#41;</strong></p>
+<h3 id="option_a_gpu-accelerated_signature_verification_recommended"><a href="#option_a_gpu-accelerated_signature_verification_recommended" class="header-anchor">Option A: GPU-Accelerated Signature Verification ⭐ RECOMMENDED</a></h3>
+<p><strong>Why this one:</strong></p>
+<ul>
+<li><p>Plays to your unique strength &#40;CUDA expertise&#41;</p>
+</li>
+<li><p>Demonstrates immediate value &#40;performance optimization&#41;</p>
+</li>
+<li><p>Highly relevant to infrastructure companies</p>
+</li>
+<li><p>Fastest path to impressive results</p>
+</li>
+</ul>
+<h4 id="week_3_core_implementation_20_hours"><a href="#week_3_core_implementation_20_hours" class="header-anchor">Week 3: Core Implementation &#40;20 hours&#41;</a></h4>
+<p><strong>Day 15-16: CPU Baseline &#40;Monday-Tuesday, 6 hours&#41;</strong></p>
+<pre><code class="language-python"># File: week3-4-project/signature_verifier/cpu_baseline.py
 
 import time
 from eth_account import Account
@@ -119,7 +416,28 @@ class CPUSignatureVerifier:
     
     def benchmark&#40;self, n_signatures&#41;:
         &quot;&quot;&quot;Benchmark single vs multi-threaded&quot;&quot;&quot;
-        pass</code></pre> <p><strong>Tasks:</strong></p> <ul> <li><p>&#91; &#93; Implement single-threaded verification</p> <li><p>&#91; &#93; Implement multi-threaded version</p> <li><p>&#91; &#93; Generate test dataset &#40;10K, 100K, 1M signatures&#41;</p> <li><p>&#91; &#93; Benchmark and record baseline performance</p> </ul> <p><strong>Deliverable:</strong></p> <ul> <li><p>Working CPU implementation</p> <li><p>Baseline benchmarks documented</p> </ul> <hr /> <p><strong>Day 17-19: CUDA Implementation &#40;Wednesday-Friday, 8 hours&#41;</strong></p> <pre><code class=language-cuda >// File: week3-4-project/signature_verifier/gpu_kernel.cu
+        pass</code></pre>
+<p><strong>Tasks:</strong></p>
+<ul>
+<li><p>&#91; &#93; Implement single-threaded verification</p>
+</li>
+<li><p>&#91; &#93; Implement multi-threaded version</p>
+</li>
+<li><p>&#91; &#93; Generate test dataset &#40;10K, 100K, 1M signatures&#41;</p>
+</li>
+<li><p>&#91; &#93; Benchmark and record baseline performance</p>
+</li>
+</ul>
+<p><strong>Deliverable:</strong></p>
+<ul>
+<li><p>Working CPU implementation</p>
+</li>
+<li><p>Baseline benchmarks documented</p>
+</li>
+</ul>
+<hr />
+<p><strong>Day 17-19: CUDA Implementation &#40;Wednesday-Friday, 8 hours&#41;</strong></p>
+<pre><code class="language-cuda">// File: week3-4-project/signature_verifier/gpu_kernel.cu
 
 __global__ void batch_verify_signatures&#40;
     const uint8_t* messages,
@@ -134,7 +452,40 @@ __global__ void batch_verify_signatures&#40;
         // Use ECDSA verification on GPU
         results&#91;idx&#93; &#61; verify_ecdsa&#40;...&#41;;
     &#125;
-&#125;</code></pre> <p><strong>Tasks:</strong></p> <ul> <li><p>&#91; &#93; Write CUDA kernel for batch signature verification</p> <li><p>&#91; &#93; Handle memory transfers &#40;host ↔ device&#41;</p> <li><p>&#91; &#93; Optimize: use shared memory, coalesced access</p> <li><p>&#91; &#93; Test correctness against CPU baseline</p> </ul> <p><strong>Deliverable:</strong></p> <ul> <li><p>Working CUDA implementation</p> <li><p>Correctness tests pass</p> </ul> <hr /> <p><strong>Day 20-21: Optimization &amp; Benchmarking &#40;Weekend, 6 hours&#41;</strong></p> <p><strong>Tasks:</strong></p> <ul> <li><p>&#91; &#93; Optimize kernel: tune block size, grid size</p> <li><p>&#91; &#93; Profile with nvprof/Nsight</p> <li><p>&#91; &#93; Identify bottlenecks &#40;memory vs compute&#41;</p> <li><p>&#91; &#93; Run comprehensive benchmarks</p> </ul> <p><strong>Benchmark matrix:</strong></p> <pre><code class=language-julia >Test configurations:
+&#125;</code></pre>
+<p><strong>Tasks:</strong></p>
+<ul>
+<li><p>&#91; &#93; Write CUDA kernel for batch signature verification</p>
+</li>
+<li><p>&#91; &#93; Handle memory transfers &#40;host ↔ device&#41;</p>
+</li>
+<li><p>&#91; &#93; Optimize: use shared memory, coalesced access</p>
+</li>
+<li><p>&#91; &#93; Test correctness against CPU baseline</p>
+</li>
+</ul>
+<p><strong>Deliverable:</strong></p>
+<ul>
+<li><p>Working CUDA implementation</p>
+</li>
+<li><p>Correctness tests pass</p>
+</li>
+</ul>
+<hr />
+<p><strong>Day 20-21: Optimization &amp; Benchmarking &#40;Weekend, 6 hours&#41;</strong></p>
+<p><strong>Tasks:</strong></p>
+<ul>
+<li><p>&#91; &#93; Optimize kernel: tune block size, grid size</p>
+</li>
+<li><p>&#91; &#93; Profile with nvprof/Nsight</p>
+</li>
+<li><p>&#91; &#93; Identify bottlenecks &#40;memory vs compute&#41;</p>
+</li>
+<li><p>&#91; &#93; Run comprehensive benchmarks</p>
+</li>
+</ul>
+<p><strong>Benchmark matrix:</strong></p>
+<pre><code class="language-julia">Test configurations:
 - Batch sizes: 1K, 10K, 100K, 1M signatures
 - CPU: single-thread, multi-thread &#40;8 cores&#41;
 - GPU: your CUDA kernel
@@ -142,7 +493,31 @@ __global__ void batch_verify_signatures&#40;
 Metrics:
 - Throughput &#40;signatures/second&#41;
 - Latency &#40;time per batch&#41;
-- Speedup &#40;GPU vs CPU&#41;</code></pre> <p><strong>Deliverable:</strong></p> <ul> <li><p>Optimized CUDA code</p> <li><p>Complete benchmark results</p> <li><p>Performance charts</p> </ul> <hr /> <h4 id=week_4_polish_documentation_20_hours ><a href="#week_4_polish_documentation_20_hours" class=header-anchor >Week 4: Polish &amp; Documentation &#40;20 hours&#41;</a></h4> <p><strong>Day 22-24: Real-World Testing &#40;Monday-Wednesday, 8 hours&#41;</strong></p> <p><strong>Tasks:</strong></p> <ul> <li><p>&#91; &#93; Fetch real transaction data from Ethereum</p> <li><p>&#91; &#93; Extract signatures from actual transactions</p> <li><p>&#91; &#93; Run verifier on real data</p> <li><p>&#91; &#93; Validate: all signatures verify correctly</p> </ul> <pre><code class=language-python ># File: week3-4-project/signature_verifier/real_world_test.py
+- Speedup &#40;GPU vs CPU&#41;</code></pre>
+<p><strong>Deliverable:</strong></p>
+<ul>
+<li><p>Optimized CUDA code</p>
+</li>
+<li><p>Complete benchmark results</p>
+</li>
+<li><p>Performance charts</p>
+</li>
+</ul>
+<hr />
+<h4 id="week_4_polish_documentation_20_hours"><a href="#week_4_polish_documentation_20_hours" class="header-anchor">Week 4: Polish &amp; Documentation &#40;20 hours&#41;</a></h4>
+<p><strong>Day 22-24: Real-World Testing &#40;Monday-Wednesday, 8 hours&#41;</strong></p>
+<p><strong>Tasks:</strong></p>
+<ul>
+<li><p>&#91; &#93; Fetch real transaction data from Ethereum</p>
+</li>
+<li><p>&#91; &#93; Extract signatures from actual transactions</p>
+</li>
+<li><p>&#91; &#93; Run verifier on real data</p>
+</li>
+<li><p>&#91; &#93; Validate: all signatures verify correctly</p>
+</li>
+</ul>
+<pre><code class="language-python"># File: week3-4-project/signature_verifier/real_world_test.py
 
 from web3 import Web3
 
@@ -156,7 +531,18 @@ def extract_signatures&#40;transactions&#41;:
 
 def verify_against_real_data&#40;&#41;:
     &quot;&quot;&quot;Run GPU verifier on real Ethereum TXs&quot;&quot;&quot;
-    pass</code></pre> <p><strong>Deliverable:</strong></p> <ul> <li><p>Successfully verifies real Ethereum transactions</p> <li><p>Test report documenting results</p> </ul> <hr /> <p><strong>Day 25-26: Documentation &#40;Thursday-Friday, 6 hours&#41;</strong></p> <p><strong>README.md structure:</strong></p> <pre><code class=language-markdown ># GPU-Accelerated Signature Verification for Blockchain Nodes
+    pass</code></pre>
+<p><strong>Deliverable:</strong></p>
+<ul>
+<li><p>Successfully verifies real Ethereum transactions</p>
+</li>
+<li><p>Test report documenting results</p>
+</li>
+</ul>
+<hr />
+<p><strong>Day 25-26: Documentation &#40;Thursday-Friday, 6 hours&#41;</strong></p>
+<p><strong>README.md structure:</strong></p>
+<pre><code class="language-markdown"># GPU-Accelerated Signature Verification for Blockchain Nodes
 
 ## Problem
 Blockchain nodes verify thousands of signatures per second. 
@@ -182,7 +568,22 @@ CUDA kernel for batch signature verification.
 ## Future Work
 - Support for other signature schemes
 - Multi-GPU scaling
-- Integration with node software</code></pre> <p><strong>Tasks:</strong></p> <ul> <li><p>&#91; &#93; Write comprehensive README</p> <li><p>&#91; &#93; Add code comments</p> <li><p>&#91; &#93; Create architecture diagrams</p> <li><p>&#91; &#93; Document build/run instructions</p> </ul> <hr /> <p><strong>Day 27-28: Blog Post &#40;Weekend, 6 hours&#41;</strong></p> <p><strong>Blog post outline:</strong></p> <pre><code class=language-markdown ># GPU-Accelerating Blockchain Signature Verification: 
+- Integration with node software</code></pre>
+<p><strong>Tasks:</strong></p>
+<ul>
+<li><p>&#91; &#93; Write comprehensive README</p>
+</li>
+<li><p>&#91; &#93; Add code comments</p>
+</li>
+<li><p>&#91; &#93; Create architecture diagrams</p>
+</li>
+<li><p>&#91; &#93; Document build/run instructions</p>
+</li>
+</ul>
+<hr />
+<p><strong>Day 27-28: Blog Post &#40;Weekend, 6 hours&#41;</strong></p>
+<p><strong>Blog post outline:</strong></p>
+<pre><code class="language-markdown"># GPU-Accelerating Blockchain Signature Verification: 
 # From Genomics to Crypto Infrastructure
 
 ## The Problem
@@ -213,7 +614,181 @@ Directly impacts node operators, validators, bridges
 &#91;Link to GitHub repo&#93;
 
 ## What I Learned
-&#91;Honest reflection on the process&#93;</code></pre> <p><strong>Tasks:</strong></p> <ul> <li><p>&#91; &#93; Write blog post</p> <li><p>&#91; &#93; Create visualizations</p> <li><p>&#91; &#93; Publish on Medium/personal blog</p> <li><p>&#91; &#93; Share on Twitter/LinkedIn</p> </ul> <p><strong>Deliverable:</strong></p> <ul> <li><p>Published blog post</p> <li><p>Social media posts with traction</p> </ul> <hr /> <h3 id=option_b_ml-based_mev_detection ><a href="#option_b_ml-based_mev_detection" class=header-anchor >Option B: ML-Based MEV Detection</a></h3> <p><strong>If you prefer ML over GPU work</strong></p> <h4 id=week_3_data_model_20_hours ><a href="#week_3_data_model_20_hours" class=header-anchor >Week 3: Data &amp; Model &#40;20 hours&#41;</a></h4> <p><strong>Day 15-17: Data Collection &#40;6 hours&#41;</strong></p> <ul> <li><p>&#91; &#93; Label MEV transactions &#40;use eigenphi.io data&#41;</p> <li><p>&#91; &#93; Extract features: gas price, value, sender patterns</p> <li><p>&#91; &#93; Build graph features: transaction flow patterns</p> <li><p>&#91; &#93; Create train/validation/test split</p> </ul> <p><strong>Day 18-19: Model Training &#40;6 hours&#41;</strong></p> <ul> <li><p>&#91; &#93; Build GNN for transaction classification</p> <li><p>&#91; &#93; Train: MEV vs normal transactions</p> <li><p>&#91; &#93; Evaluate: accuracy, precision, recall</p> <li><p>&#91; &#93; Optimize hyperparameters</p> </ul> <p><strong>Day 20-21: Evaluation &#40;8 hours&#41;</strong></p> <ul> <li><p>&#91; &#93; Test on held-out data</p> <li><p>&#91; &#93; Analyze false positives/negatives</p> <li><p>&#91; &#93; Feature importance analysis</p> <li><p>&#91; &#93; Generate confusion matrix</p> </ul> <h4 id=week_4_api_documentation_20_hours ><a href="#week_4_api_documentation_20_hours" class=header-anchor >Week 4: API &amp; Documentation &#40;20 hours&#41;</a></h4> <p><strong>Day 22-24: Build API &#40;8 hours&#41;</strong></p> <ul> <li><p>&#91; &#93; Flask/FastAPI endpoint</p> <li><p>&#91; &#93; Input: transaction data</p> <li><p>&#91; &#93; Output: MEV probability score</p> <li><p>&#91; &#93; Deploy with Docker</p> </ul> <p><strong>Day 25-28: Documentation &amp; Blog &#40;12 hours&#41;</strong></p> <ul> <li><p>&#91; &#93; Write README</p> <li><p>&#91; &#93; Jupyter notebook walkthrough</p> <li><p>&#91; &#93; Blog post explaining approach</p> <li><p>&#91; &#93; Publish and share</p> </ul> <hr /> <h3 id=option_c_bayesian_yield_optimizer ><a href="#option_c_bayesian_yield_optimizer" class=header-anchor >Option C: Bayesian Yield Optimizer</a></h3> <p><strong>If you want product-market fit</strong></p> <h4 id=week_3_core_engine_20_hours ><a href="#week_3_core_engine_20_hours" class=header-anchor >Week 3: Core Engine &#40;20 hours&#41;</a></h4> <p><strong>Day 15-17: Data Pipeline &#40;6 hours&#41;</strong></p> <ul> <li><p>&#91; &#93; Fetch yields from Aave, Compound, Curve</p> <li><p>&#91; &#93; Historical yield data</p> <li><p>&#91; &#93; Risk metrics for each protocol</p> <li><p>&#91; &#93; Build time-series database</p> </ul> <p><strong>Day 18-19: Optimization &#40;6 hours&#41;</strong></p> <ul> <li><p>&#91; &#93; Bayesian optimization for allocation</p> <li><p>&#91; &#93; Objective: maximize yield given risk tolerance</p> <li><p>&#91; &#93; Constraints: gas costs, liquidity limits</p> <li><p>&#91; &#93; Output: optimal portfolio weights</p> </ul> <p><strong>Day 20-21: Backtesting &#40;8 hours&#41;</strong></p> <ul> <li><p>&#91; &#93; Backtest on historical data</p> <li><p>&#91; &#93; Compare: optimized vs naive strategies</p> <li><p>&#91; &#93; Calculate: Sharpe ratio, max drawdown</p> <li><p>&#91; &#93; Sensitivity analysis</p> </ul> <h4 id=week_4_dashboard_polish_20_hours ><a href="#week_4_dashboard_polish_20_hours" class=header-anchor >Week 4: Dashboard &amp; Polish &#40;20 hours&#41;</a></h4> <p><strong>Day 22-24: Build Dashboard &#40;8 hours&#41;</strong></p> <ul> <li><p>&#91; &#93; Streamlit app</p> <li><p>&#91; &#93; Input: portfolio size, risk tolerance</p> <li><p>&#91; &#93; Output: recommended allocation</p> <li><p>&#91; &#93; Show: expected return, confidence intervals</p> </ul> <p><strong>Day 25-28: Documentation &amp; Launch &#40;12 hours&#41;</strong></p> <ul> <li><p>&#91; &#93; Write comprehensive docs</p> <li><p>&#91; &#93; Blog post: &quot;Bayesian Portfolio Optimization for DeFi&quot;</p> <li><p>&#91; &#93; Post on crypto Twitter</p> <li><p>&#91; &#93; Get feedback from DAOs</p> </ul> <hr /> <h2 id=daily_routine ><a href="#daily_routine" class=header-anchor >Daily Routine</a></h2> <h3 id=weekdays_2_hoursday ><a href="#weekdays_2_hoursday" class=header-anchor >Weekdays &#40;2 hours/day&#41;</a></h3> <p><strong>Morning &#40;1 hour before work&#41;:</strong></p> <ul> <li><p>Focus: Reading, learning, conceptual work</p> <li><p>Example: Read documentation, watch videos, take notes</p> </ul> <p><strong>Evening &#40;1 hour after work&#41;:</strong></p> <ul> <li><p>Focus: Coding, building, hands-on work</p> <li><p>Example: Write code, run tests, debug</p> </ul> <h3 id=weekends_6_hoursday ><a href="#weekends_6_hoursday" class=header-anchor >Weekends &#40;6 hours/day&#41;</a></h3> <p><strong>Saturday:</strong></p> <ul> <li><p>Morning &#40;3 hours&#41;: Deep work on main project</p> <li><p>Afternoon &#40;3 hours&#41;: Continue coding or catch up</p> </ul> <p><strong>Sunday:</strong></p> <ul> <li><p>Morning &#40;3 hours&#41;: Finish weekly goals</p> <li><p>Afternoon &#40;3 hours&#41;: Document, write notes, plan next week</p> </ul> <hr /> <h2 id=progress_tracking ><a href="#progress_tracking" class=header-anchor >Progress Tracking</a></h2> <h3 id=github_repo_structure ><a href="#github_repo_structure" class=header-anchor >GitHub Repo Structure</a></h3> <pre><code class=language-julia >30-day-crypto-sprint/
+&#91;Honest reflection on the process&#93;</code></pre>
+<p><strong>Tasks:</strong></p>
+<ul>
+<li><p>&#91; &#93; Write blog post</p>
+</li>
+<li><p>&#91; &#93; Create visualizations</p>
+</li>
+<li><p>&#91; &#93; Publish on Medium/personal blog</p>
+</li>
+<li><p>&#91; &#93; Share on Twitter/LinkedIn</p>
+</li>
+</ul>
+<p><strong>Deliverable:</strong></p>
+<ul>
+<li><p>Published blog post</p>
+</li>
+<li><p>Social media posts with traction</p>
+</li>
+</ul>
+<hr />
+<h3 id="option_b_ml-based_mev_detection"><a href="#option_b_ml-based_mev_detection" class="header-anchor">Option B: ML-Based MEV Detection</a></h3>
+<p><strong>If you prefer ML over GPU work</strong></p>
+<h4 id="week_3_data_model_20_hours"><a href="#week_3_data_model_20_hours" class="header-anchor">Week 3: Data &amp; Model &#40;20 hours&#41;</a></h4>
+<p><strong>Day 15-17: Data Collection &#40;6 hours&#41;</strong></p>
+<ul>
+<li><p>&#91; &#93; Label MEV transactions &#40;use eigenphi.io data&#41;</p>
+</li>
+<li><p>&#91; &#93; Extract features: gas price, value, sender patterns</p>
+</li>
+<li><p>&#91; &#93; Build graph features: transaction flow patterns</p>
+</li>
+<li><p>&#91; &#93; Create train/validation/test split</p>
+</li>
+</ul>
+<p><strong>Day 18-19: Model Training &#40;6 hours&#41;</strong></p>
+<ul>
+<li><p>&#91; &#93; Build GNN for transaction classification</p>
+</li>
+<li><p>&#91; &#93; Train: MEV vs normal transactions</p>
+</li>
+<li><p>&#91; &#93; Evaluate: accuracy, precision, recall</p>
+</li>
+<li><p>&#91; &#93; Optimize hyperparameters</p>
+</li>
+</ul>
+<p><strong>Day 20-21: Evaluation &#40;8 hours&#41;</strong></p>
+<ul>
+<li><p>&#91; &#93; Test on held-out data</p>
+</li>
+<li><p>&#91; &#93; Analyze false positives/negatives</p>
+</li>
+<li><p>&#91; &#93; Feature importance analysis</p>
+</li>
+<li><p>&#91; &#93; Generate confusion matrix</p>
+</li>
+</ul>
+<h4 id="week_4_api_documentation_20_hours"><a href="#week_4_api_documentation_20_hours" class="header-anchor">Week 4: API &amp; Documentation &#40;20 hours&#41;</a></h4>
+<p><strong>Day 22-24: Build API &#40;8 hours&#41;</strong></p>
+<ul>
+<li><p>&#91; &#93; Flask/FastAPI endpoint</p>
+</li>
+<li><p>&#91; &#93; Input: transaction data</p>
+</li>
+<li><p>&#91; &#93; Output: MEV probability score</p>
+</li>
+<li><p>&#91; &#93; Deploy with Docker</p>
+</li>
+</ul>
+<p><strong>Day 25-28: Documentation &amp; Blog &#40;12 hours&#41;</strong></p>
+<ul>
+<li><p>&#91; &#93; Write README</p>
+</li>
+<li><p>&#91; &#93; Jupyter notebook walkthrough</p>
+</li>
+<li><p>&#91; &#93; Blog post explaining approach</p>
+</li>
+<li><p>&#91; &#93; Publish and share</p>
+</li>
+</ul>
+<hr />
+<h3 id="option_c_bayesian_yield_optimizer"><a href="#option_c_bayesian_yield_optimizer" class="header-anchor">Option C: Bayesian Yield Optimizer</a></h3>
+<p><strong>If you want product-market fit</strong></p>
+<h4 id="week_3_core_engine_20_hours"><a href="#week_3_core_engine_20_hours" class="header-anchor">Week 3: Core Engine &#40;20 hours&#41;</a></h4>
+<p><strong>Day 15-17: Data Pipeline &#40;6 hours&#41;</strong></p>
+<ul>
+<li><p>&#91; &#93; Fetch yields from Aave, Compound, Curve</p>
+</li>
+<li><p>&#91; &#93; Historical yield data</p>
+</li>
+<li><p>&#91; &#93; Risk metrics for each protocol</p>
+</li>
+<li><p>&#91; &#93; Build time-series database</p>
+</li>
+</ul>
+<p><strong>Day 18-19: Optimization &#40;6 hours&#41;</strong></p>
+<ul>
+<li><p>&#91; &#93; Bayesian optimization for allocation</p>
+</li>
+<li><p>&#91; &#93; Objective: maximize yield given risk tolerance</p>
+</li>
+<li><p>&#91; &#93; Constraints: gas costs, liquidity limits</p>
+</li>
+<li><p>&#91; &#93; Output: optimal portfolio weights</p>
+</li>
+</ul>
+<p><strong>Day 20-21: Backtesting &#40;8 hours&#41;</strong></p>
+<ul>
+<li><p>&#91; &#93; Backtest on historical data</p>
+</li>
+<li><p>&#91; &#93; Compare: optimized vs naive strategies</p>
+</li>
+<li><p>&#91; &#93; Calculate: Sharpe ratio, max drawdown</p>
+</li>
+<li><p>&#91; &#93; Sensitivity analysis</p>
+</li>
+</ul>
+<h4 id="week_4_dashboard_polish_20_hours"><a href="#week_4_dashboard_polish_20_hours" class="header-anchor">Week 4: Dashboard &amp; Polish &#40;20 hours&#41;</a></h4>
+<p><strong>Day 22-24: Build Dashboard &#40;8 hours&#41;</strong></p>
+<ul>
+<li><p>&#91; &#93; Streamlit app</p>
+</li>
+<li><p>&#91; &#93; Input: portfolio size, risk tolerance</p>
+</li>
+<li><p>&#91; &#93; Output: recommended allocation</p>
+</li>
+<li><p>&#91; &#93; Show: expected return, confidence intervals</p>
+</li>
+</ul>
+<p><strong>Day 25-28: Documentation &amp; Launch &#40;12 hours&#41;</strong></p>
+<ul>
+<li><p>&#91; &#93; Write comprehensive docs</p>
+</li>
+<li><p>&#91; &#93; Blog post: &quot;Bayesian Portfolio Optimization for DeFi&quot;</p>
+</li>
+<li><p>&#91; &#93; Post on crypto Twitter</p>
+</li>
+<li><p>&#91; &#93; Get feedback from DAOs</p>
+</li>
+</ul>
+<hr />
+<h2 id="daily_routine"><a href="#daily_routine" class="header-anchor">Daily Routine</a></h2>
+<h3 id="weekdays_2_hoursday"><a href="#weekdays_2_hoursday" class="header-anchor">Weekdays &#40;2 hours/day&#41;</a></h3>
+<p><strong>Morning &#40;1 hour before work&#41;:</strong></p>
+<ul>
+<li><p>Focus: Reading, learning, conceptual work</p>
+</li>
+<li><p>Example: Read documentation, watch videos, take notes</p>
+</li>
+</ul>
+<p><strong>Evening &#40;1 hour after work&#41;:</strong></p>
+<ul>
+<li><p>Focus: Coding, building, hands-on work</p>
+</li>
+<li><p>Example: Write code, run tests, debug</p>
+</li>
+</ul>
+<h3 id="weekends_6_hoursday"><a href="#weekends_6_hoursday" class="header-anchor">Weekends &#40;6 hours/day&#41;</a></h3>
+<p><strong>Saturday:</strong></p>
+<ul>
+<li><p>Morning &#40;3 hours&#41;: Deep work on main project</p>
+</li>
+<li><p>Afternoon &#40;3 hours&#41;: Continue coding or catch up</p>
+</li>
+</ul>
+<p><strong>Sunday:</strong></p>
+<ul>
+<li><p>Morning &#40;3 hours&#41;: Finish weekly goals</p>
+</li>
+<li><p>Afternoon &#40;3 hours&#41;: Document, write notes, plan next week</p>
+</li>
+</ul>
+<hr />
+<h2 id="progress_tracking"><a href="#progress_tracking" class="header-anchor">Progress Tracking</a></h2>
+<h3 id="github_repo_structure"><a href="#github_repo_structure" class="header-anchor">GitHub Repo Structure</a></h3>
+<pre><code class="language-julia">30-day-crypto-sprint/
 ├── README.md
 ├── week1-foundations/
 │   ├── day1-2-stablecoins.md
@@ -236,14 +811,20 @@ Directly impacts node operators, validators, bridges
 │   │   ├── benchmarks/
 │   │   └── tests/
 │   └── blog_post.md
-└── learning_log.md</code></pre> <h3 id=daily_commits ><a href="#daily_commits" class=header-anchor >Daily Commits</a></h3> <p><strong>Template for commit messages:</strong></p> <pre><code class=language-julia >Day X: &#91;Topic&#93; - &#91;What you accomplished&#93;
+└── learning_log.md</code></pre>
+<h3 id="daily_commits"><a href="#daily_commits" class="header-anchor">Daily Commits</a></h3>
+<p><strong>Template for commit messages:</strong></p>
+<pre><code class="language-julia">Day X: &#91;Topic&#93; - &#91;What you accomplished&#93;
 
 Example:
 Day 1: Stablecoins - Completed research on USDC reserves, 
 started correlation tracker script
 
 Day 15: GPU Verifier - Implemented CPU baseline, 
-benchmarked single vs multi-threaded</code></pre> <h3 id=weekly_summaries ><a href="#weekly_summaries" class=header-anchor >Weekly Summaries</a></h3> <p><strong>Every Sunday, write in <code>learning_log.md</code>:</strong></p> <pre><code class=language-markdown >## Week 1 Summary
+benchmarked single vs multi-threaded</code></pre>
+<h3 id="weekly_summaries"><a href="#weekly_summaries" class="header-anchor">Weekly Summaries</a></h3>
+<p><strong>Every Sunday, write in <code>learning_log.md</code>:</strong></p>
+<pre><code class="language-markdown">## Week 1 Summary
 
 **What I learned:**
 - Stablecoins are backed 1:1 with Treasuries
@@ -261,7 +842,215 @@ benchmarked single vs multi-threaded</code></pre> <h3 id=weekly_summaries ><a hr
 
 **Next week:**
 - Dive deeper into blockchain architecture
-- Start MEV research</code></pre> <hr /> <h2 id=success_metrics ><a href="#success_metrics" class=header-anchor >Success Metrics</a></h2> <h3 id=after_week_1_knowledge ><a href="#after_week_1_knowledge" class=header-anchor >After Week 1 &#40;Knowledge&#41;</a></h3> <ul> <li><p>&#91; &#93; Can explain stablecoins, AMMs, lending, oracles</p> <li><p>&#91; &#93; Deployed first smart contract</p> <li><p>&#91; &#93; Calculated impermanent loss</p> <li><p>&#91; &#93; Fetched on-chain data with Python</p> </ul> <h3 id=after_week_2_infrastructure ><a href="#after_week_2_infrastructure" class=header-anchor >After Week 2 &#40;Infrastructure&#41;</a></h3> <ul> <li><p>&#91; &#93; Understand blockchain architecture differences</p> <li><p>&#91; &#93; Can explain MEV attack types</p> <li><p>&#91; &#93; Benchmarked signature verification</p> <li><p>&#91; &#93; Know what makes systems fast/slow</p> </ul> <h3 id=after_week_4_portfolio ><a href="#after_week_4_portfolio" class=header-anchor >After Week 4 &#40;Portfolio&#41;</a></h3> <ul> <li><p>&#91; &#93; One substantial project on GitHub &#40;with README, docs, tests&#41;</p> <li><p>&#91; &#93; Blog post explaining your work &#40;published and shared&#41;</p> <li><p>&#91; &#93; 3-5 mini-projects demonstrating concepts</p> <li><p>&#91; &#93; Can speak confidently about crypto infrastructure</p> </ul> <h3 id=ready_to_interview ><a href="#ready_to_interview" class=header-anchor >Ready to Interview</a></h3> <ul> <li><p>&#91; &#93; Applied to 10-15 companies</p> <li><p>&#91; &#93; Can discuss your project in depth</p> <li><p>&#91; &#93; Understand common interview topics</p> <li><p>&#91; &#93; Have concrete examples for every question</p> </ul> <hr /> <h2 id=accountability_support ><a href="#accountability_support" class=header-anchor >Accountability &amp; Support</a></h2> <h3 id=share_your_progress ><a href="#share_your_progress" class=header-anchor >Share Your Progress</a></h3> <p><strong>Twitter/LinkedIn posts:</strong></p> <ul> <li><p>Day 1: &quot;Starting 30-day crypto infrastructure sprint. Goal: transition from computational biology to DeFi. Day 1: stablecoins ✅&quot;</p> <li><p>Day 7: &quot;Week 1 complete. Built stablecoin tracker, deployed first smart contract, learned DeFi primitives. Week 2: blockchain architecture.&quot;</p> <li><p>Day 21: &quot;Building GPU-accelerated signature verifier. Achieved 50× speedup so far. CUDA skills from genomics → crypto infrastructure.&quot;</p> <li><p>Day 30: &quot;30-day sprint complete&#33; Built &#91;project&#93;, learned &#91;concepts&#93;, ready to contribute to crypto infrastructure. Blog post: &#91;link&#93;&quot;</p> </ul> <p><strong>Why share publicly:</strong></p> <ul> <li><p>Creates accountability</p> <li><p>Builds your brand</p> <li><p>Attracts opportunities</p> <li><p>Gets you feedback</p> </ul> <h3 id=join_communities ><a href="#join_communities" class=header-anchor >Join Communities</a></h3> <p><strong>Discords to join:</strong></p> <ul> <li><p>Flashbots</p> <li><p>BuilderDAO </p> <li><p>DeveloperDAO</p> <li><p>Chainlink &#40;if they have one&#41;</p> </ul> <p><strong>Engage:</strong></p> <ul> <li><p>Ask questions</p> <li><p>Share your learnings</p> <li><p>Help others when you can</p> <li><p>Network with builders</p> </ul> <hr /> <h2 id=contingency_plans ><a href="#contingency_plans" class=header-anchor >Contingency Plans</a></h2> <h3 id=if_you_fall_behind ><a href="#if_you_fall_behind" class=header-anchor >If You Fall Behind</a></h3> <p><strong>Don&#39;t panic. Adjust:</strong></p> <ul> <li><p>Skip some mini-projects &#40;focus on main project&#41;</p> <li><p>Extend timeline to 6 weeks instead of 4</p> <li><p>Reduce scope of main project</p> <li><p>Keep going - progress &gt; perfection</p> </ul> <h3 id=if_you_get_stuck ><a href="#if_you_get_stuck" class=header-anchor >If You Get Stuck</a></h3> <p><strong>Problem-solving steps:</strong></p> <ol> <li><p>Google the error message</p> <li><p>Read documentation more carefully</p> <li><p>Ask in Discord communities</p> <li><p>Simplify the problem</p> <li><p>Move on and come back later</p> </ol> <p><strong>Remember:</strong> Everyone gets stuck. The difference is whether you push through.</p> <h3 id=if_motivation_drops ><a href="#if_motivation_drops" class=header-anchor >If Motivation Drops</a></h3> <p><strong>Strategies:</strong></p> <ul> <li><p>Reread why you&#39;re doing this &#40;career transition, lucrative opportunities&#41;</p> <li><p>Look at your progress &#40;you&#39;ve learned so much already&#41;</p> <li><p>Share progress publicly &#40;external motivation&#41;</p> <li><p>Change what you&#39;re working on &#40;switch between learning and building&#41;</p> <li><p>Take a day off &#40;recovery is productive&#41;</p> </ul> <hr /> <h2 id=after_day_30_whats_next ><a href="#after_day_30_whats_next" class=header-anchor >After Day 30: What&#39;s Next?</a></h2> <h3 id=week_5-6_job_applications ><a href="#week_5-6_job_applications" class=header-anchor >Week 5-6: Job Applications</a></h3> <p><strong>Apply to 15-20 companies:</strong></p> <ul> <li><p>&#91; &#93; Chainlink &#40;you&#39;re ready now&#41;</p> <li><p>&#91; &#93; 5 protocol data/analytics roles</p> <li><p>&#91; &#93; 5 infrastructure/performance roles </p> <li><p>&#91; &#93; 5 research/optimization roles</p> </ul> <p><strong>Materials:</strong></p> <ul> <li><p>Updated resume &#40;with crypto project&#41;</p> <li><p>Cover letter template &#40;emphasize transferable skills&#41;</p> <li><p>Portfolio &#40;GitHub &#43; blog&#41;</p> </ul> <h3 id=week_7-8_interview_prep ><a href="#week_7-8_interview_prep" class=header-anchor >Week 7-8: Interview Prep</a></h3> <p><strong>Technical preparation:</strong></p> <ul> <li><p>&#91; &#93; Review your project thoroughly</p> <li><p>&#91; &#93; Practice explaining your approach</p> <li><p>&#91; &#93; Prepare answers to common questions</p> <li><p>&#91; &#93; Do mock interviews</p> </ul> <p><strong>Behavioral preparation:</strong></p> <ul> <li><p>&#91; &#93; &quot;Why crypto?&quot; story</p> <li><p>&#91; &#93; &quot;Why this company?&quot; research</p> <li><p>&#91; &#93; Questions to ask them</p> </ul> <h3 id=week_9-12_interview_loop ><a href="#week_9-12_interview_loop" class=header-anchor >Week 9-12: Interview Loop</a></h3> <p><strong>Timeline varies:</strong></p> <ul> <li><p>Some companies respond in days</p> <li><p>Others take weeks</p> <li><p>Keep building while interviewing</p> <li><p>Each interview makes you better</p> </ul> <p><strong>Expected outcome:</strong></p> <ul> <li><p>5-10 phone screens</p> <li><p>3-5 technical interviews</p> <li><p>1-3 final rounds</p> <li><p>1-2 offers</p> </ul> <hr /> <h2 id=the_first_action_right_now ><a href="#the_first_action_right_now" class=header-anchor >The First Action &#40;Right Now&#41;</a></h2> <h3 id=create_your_repo ><a href="#create_your_repo" class=header-anchor >Create Your Repo</a></h3> <pre><code class=language-bash ># In terminal
+- Start MEV research</code></pre>
+<hr />
+<h2 id="success_metrics"><a href="#success_metrics" class="header-anchor">Success Metrics</a></h2>
+<h3 id="after_week_1_knowledge"><a href="#after_week_1_knowledge" class="header-anchor">After Week 1 &#40;Knowledge&#41;</a></h3>
+<ul>
+<li><p>&#91; &#93; Can explain stablecoins, AMMs, lending, oracles</p>
+</li>
+<li><p>&#91; &#93; Deployed first smart contract</p>
+</li>
+<li><p>&#91; &#93; Calculated impermanent loss</p>
+</li>
+<li><p>&#91; &#93; Fetched on-chain data with Python</p>
+</li>
+</ul>
+<h3 id="after_week_2_infrastructure"><a href="#after_week_2_infrastructure" class="header-anchor">After Week 2 &#40;Infrastructure&#41;</a></h3>
+<ul>
+<li><p>&#91; &#93; Understand blockchain architecture differences</p>
+</li>
+<li><p>&#91; &#93; Can explain MEV attack types</p>
+</li>
+<li><p>&#91; &#93; Benchmarked signature verification</p>
+</li>
+<li><p>&#91; &#93; Know what makes systems fast/slow</p>
+</li>
+</ul>
+<h3 id="after_week_4_portfolio"><a href="#after_week_4_portfolio" class="header-anchor">After Week 4 &#40;Portfolio&#41;</a></h3>
+<ul>
+<li><p>&#91; &#93; One substantial project on GitHub &#40;with README, docs, tests&#41;</p>
+</li>
+<li><p>&#91; &#93; Blog post explaining your work &#40;published and shared&#41;</p>
+</li>
+<li><p>&#91; &#93; 3-5 mini-projects demonstrating concepts</p>
+</li>
+<li><p>&#91; &#93; Can speak confidently about crypto infrastructure</p>
+</li>
+</ul>
+<h3 id="ready_to_interview"><a href="#ready_to_interview" class="header-anchor">Ready to Interview</a></h3>
+<ul>
+<li><p>&#91; &#93; Applied to 10-15 companies</p>
+</li>
+<li><p>&#91; &#93; Can discuss your project in depth</p>
+</li>
+<li><p>&#91; &#93; Understand common interview topics</p>
+</li>
+<li><p>&#91; &#93; Have concrete examples for every question</p>
+</li>
+</ul>
+<hr />
+<h2 id="accountability_support"><a href="#accountability_support" class="header-anchor">Accountability &amp; Support</a></h2>
+<h3 id="share_your_progress"><a href="#share_your_progress" class="header-anchor">Share Your Progress</a></h3>
+<p><strong>Twitter/LinkedIn posts:</strong></p>
+<ul>
+<li><p>Day 1: &quot;Starting 30-day crypto infrastructure sprint. Goal: transition from computational biology to DeFi. Day 1: stablecoins ✅&quot;</p>
+</li>
+<li><p>Day 7: &quot;Week 1 complete. Built stablecoin tracker, deployed first smart contract, learned DeFi primitives. Week 2: blockchain architecture.&quot;</p>
+</li>
+<li><p>Day 21: &quot;Building GPU-accelerated signature verifier. Achieved 50× speedup so far. CUDA skills from genomics → crypto infrastructure.&quot;</p>
+</li>
+<li><p>Day 30: &quot;30-day sprint complete&#33; Built &#91;project&#93;, learned &#91;concepts&#93;, ready to contribute to crypto infrastructure. Blog post: &#91;link&#93;&quot;</p>
+</li>
+</ul>
+<p><strong>Why share publicly:</strong></p>
+<ul>
+<li><p>Creates accountability</p>
+</li>
+<li><p>Builds your brand</p>
+</li>
+<li><p>Attracts opportunities</p>
+</li>
+<li><p>Gets you feedback</p>
+</li>
+</ul>
+<h3 id="join_communities"><a href="#join_communities" class="header-anchor">Join Communities</a></h3>
+<p><strong>Discords to join:</strong></p>
+<ul>
+<li><p>Flashbots</p>
+</li>
+<li><p>BuilderDAO  </p>
+</li>
+<li><p>DeveloperDAO</p>
+</li>
+<li><p>Chainlink &#40;if they have one&#41;</p>
+</li>
+</ul>
+<p><strong>Engage:</strong></p>
+<ul>
+<li><p>Ask questions</p>
+</li>
+<li><p>Share your learnings</p>
+</li>
+<li><p>Help others when you can</p>
+</li>
+<li><p>Network with builders</p>
+</li>
+</ul>
+<hr />
+<h2 id="contingency_plans"><a href="#contingency_plans" class="header-anchor">Contingency Plans</a></h2>
+<h3 id="if_you_fall_behind"><a href="#if_you_fall_behind" class="header-anchor">If You Fall Behind</a></h3>
+<p><strong>Don&#39;t panic. Adjust:</strong></p>
+<ul>
+<li><p>Skip some mini-projects &#40;focus on main project&#41;</p>
+</li>
+<li><p>Extend timeline to 6 weeks instead of 4</p>
+</li>
+<li><p>Reduce scope of main project</p>
+</li>
+<li><p>Keep going - progress &gt; perfection</p>
+</li>
+</ul>
+<h3 id="if_you_get_stuck"><a href="#if_you_get_stuck" class="header-anchor">If You Get Stuck</a></h3>
+<p><strong>Problem-solving steps:</strong></p>
+<ol>
+<li><p>Google the error message</p>
+</li>
+<li><p>Read documentation more carefully</p>
+</li>
+<li><p>Ask in Discord communities</p>
+</li>
+<li><p>Simplify the problem</p>
+</li>
+<li><p>Move on and come back later</p>
+</li>
+</ol>
+<p><strong>Remember:</strong> Everyone gets stuck. The difference is whether you push through.</p>
+<h3 id="if_motivation_drops"><a href="#if_motivation_drops" class="header-anchor">If Motivation Drops</a></h3>
+<p><strong>Strategies:</strong></p>
+<ul>
+<li><p>Reread why you&#39;re doing this &#40;career transition, lucrative opportunities&#41;</p>
+</li>
+<li><p>Look at your progress &#40;you&#39;ve learned so much already&#41;</p>
+</li>
+<li><p>Share progress publicly &#40;external motivation&#41;</p>
+</li>
+<li><p>Change what you&#39;re working on &#40;switch between learning and building&#41;</p>
+</li>
+<li><p>Take a day off &#40;recovery is productive&#41;</p>
+</li>
+</ul>
+<hr />
+<h2 id="after_day_30_whats_next"><a href="#after_day_30_whats_next" class="header-anchor">After Day 30: What&#39;s Next?</a></h2>
+<h3 id="week_5-6_job_applications"><a href="#week_5-6_job_applications" class="header-anchor">Week 5-6: Job Applications</a></h3>
+<p><strong>Apply to 15-20 companies:</strong></p>
+<ul>
+<li><p>&#91; &#93; Chainlink &#40;you&#39;re ready now&#41;</p>
+</li>
+<li><p>&#91; &#93; 5 protocol data/analytics roles</p>
+</li>
+<li><p>&#91; &#93; 5 infrastructure/performance roles  </p>
+</li>
+<li><p>&#91; &#93; 5 research/optimization roles</p>
+</li>
+</ul>
+<p><strong>Materials:</strong></p>
+<ul>
+<li><p>Updated resume &#40;with crypto project&#41;</p>
+</li>
+<li><p>Cover letter template &#40;emphasize transferable skills&#41;</p>
+</li>
+<li><p>Portfolio &#40;GitHub &#43; blog&#41;</p>
+</li>
+</ul>
+<h3 id="week_7-8_interview_prep"><a href="#week_7-8_interview_prep" class="header-anchor">Week 7-8: Interview Prep</a></h3>
+<p><strong>Technical preparation:</strong></p>
+<ul>
+<li><p>&#91; &#93; Review your project thoroughly</p>
+</li>
+<li><p>&#91; &#93; Practice explaining your approach</p>
+</li>
+<li><p>&#91; &#93; Prepare answers to common questions</p>
+</li>
+<li><p>&#91; &#93; Do mock interviews</p>
+</li>
+</ul>
+<p><strong>Behavioral preparation:</strong></p>
+<ul>
+<li><p>&#91; &#93; &quot;Why crypto?&quot; story</p>
+</li>
+<li><p>&#91; &#93; &quot;Why this company?&quot; research</p>
+</li>
+<li><p>&#91; &#93; Questions to ask them</p>
+</li>
+</ul>
+<h3 id="week_9-12_interview_loop"><a href="#week_9-12_interview_loop" class="header-anchor">Week 9-12: Interview Loop</a></h3>
+<p><strong>Timeline varies:</strong></p>
+<ul>
+<li><p>Some companies respond in days</p>
+</li>
+<li><p>Others take weeks</p>
+</li>
+<li><p>Keep building while interviewing</p>
+</li>
+<li><p>Each interview makes you better</p>
+</li>
+</ul>
+<p><strong>Expected outcome:</strong></p>
+<ul>
+<li><p>5-10 phone screens</p>
+</li>
+<li><p>3-5 technical interviews</p>
+</li>
+<li><p>1-3 final rounds</p>
+</li>
+<li><p>1-2 offers</p>
+</li>
+</ul>
+<hr />
+<h2 id="the_first_action_right_now"><a href="#the_first_action_right_now" class="header-anchor">The First Action &#40;Right Now&#41;</a></h2>
+<h3 id="create_your_repo"><a href="#create_your_repo" class="header-anchor">Create Your Repo</a></h3>
+<pre><code class="language-bash"># In terminal
 mkdir 30-day-crypto-sprint
 cd 30-day-crypto-sprint
 git init
@@ -312,4 +1101,68 @@ git commit -m &quot;Day 0: Initialize 30-day sprint&quot;
 
 # Push to GitHub &#40;create repo first on github.com&#41;
 git remote add origin https://github.com/YOUR_USERNAME/30-day-crypto-sprint.git
-git push -u origin main</code></pre> <h3 id=start_learning_next_2_hours ><a href="#start_learning_next_2_hours" class=header-anchor >Start Learning &#40;Next 2 Hours&#41;</a></h3> <p><strong>Hour 1: Stablecoins</strong></p> <ol> <li><p>Go to circle.com</p> <li><p>Read &quot;What is USDC?&quot;</p> <li><p>Click &quot;Transparency&quot; → see reserve attestations</p> <li><p>Take notes in <code>day1-stablecoins.md</code></p> </ol> <p><strong>Hour 2: Start Coding</strong></p> <ol> <li><p>Install web3.py: <code>pip install web3</code></p> <li><p>Find USDC supply API or on-chain data</p> <li><p>Write first version of tracker script</p> <li><p>Commit: &quot;Day 1: Started stablecoin tracker&quot;</p> </ol> <hr /> <h2 id=remember ><a href="#remember" class=header-anchor >Remember</a></h2> <p><strong>You&#39;re not starting from zero.</strong></p> <p>You have:</p> <ul> <li><p>✅ PhD-level statistics and ML</p> <li><p>✅ Production systems experience </p> <li><p>✅ CUDA optimization expertise</p> <li><p>✅ 6&#43; years of coding</p> <li><p>✅ Proven ability to learn hard things</p> </ul> <p><strong>You&#39;re learning domain knowledge, not rebuilding yourself.</strong></p> <p>The 30-day sprint is structured, achievable, and will get you ready.</p> <p><strong>Stop planning. Start doing.</strong></p> <p><strong>Day 1 begins now. ⏱️</strong></p> <div class=page-foot > Contact me by <a href="mailto:skchu@wustl.edu">E-mail</a> | <a href="https://github.com/kchu25">Github</a> | <a href="https://www.linkedin.com/in/kchu1/">Linkedin</a> <br> This work is licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Last modified: December 01, 2025. <br> Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia language</a>. </div> </div> <script src="/finance/libs/highlight/highlight.min.js"></script> <script>hljs.highlightAll();hljs.configure({tabReplace: ' '});</script>
+git push -u origin main</code></pre>
+<h3 id="start_learning_next_2_hours"><a href="#start_learning_next_2_hours" class="header-anchor">Start Learning &#40;Next 2 Hours&#41;</a></h3>
+<p><strong>Hour 1: Stablecoins</strong></p>
+<ol>
+<li><p>Go to circle.com</p>
+</li>
+<li><p>Read &quot;What is USDC?&quot;</p>
+</li>
+<li><p>Click &quot;Transparency&quot; → see reserve attestations</p>
+</li>
+<li><p>Take notes in <code>day1-stablecoins.md</code></p>
+</li>
+</ol>
+<p><strong>Hour 2: Start Coding</strong></p>
+<ol>
+<li><p>Install web3.py: <code>pip install web3</code></p>
+</li>
+<li><p>Find USDC supply API or on-chain data</p>
+</li>
+<li><p>Write first version of tracker script</p>
+</li>
+<li><p>Commit: &quot;Day 1: Started stablecoin tracker&quot;</p>
+</li>
+</ol>
+<hr />
+<h2 id="remember"><a href="#remember" class="header-anchor">Remember</a></h2>
+<p><strong>You&#39;re not starting from zero.</strong></p>
+<p>You have:</p>
+<ul>
+<li><p>✅ PhD-level statistics and ML</p>
+</li>
+<li><p>✅ Production systems experience  </p>
+</li>
+<li><p>✅ CUDA optimization expertise</p>
+</li>
+<li><p>✅ 6&#43; years of coding</p>
+</li>
+<li><p>✅ Proven ability to learn hard things</p>
+</li>
+</ul>
+<p><strong>You&#39;re learning domain knowledge, not rebuilding yourself.</strong></p>
+<p>The 30-day sprint is structured, achievable, and will get you ready.</p>
+<p><strong>Stop planning. Start doing.</strong></p>
+<p><strong>Day 1 begins now. ⏱️</strong></p>
+<div class="page-foot">
+    Contact me by <a href="mailto:skchu@wustl.edu">E-mail</a> | <a href="https://github.com/kchu25">Github</a> | <a href="https://www.linkedin.com/in/kchu1/">Linkedin</a>
+    <br>
+    This work is licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.  Last modified: December 01, 2025.
+    <br>
+    Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia language</a>.
+</div>
+</div><!-- CONTENT ENDS HERE -->
+    
+        <script src="/libs/katex/katex.min.js"></script>
+<script src="/libs/katex/contrib/auto-render.min.js"></script>
+<script>renderMathInElement(document.body)</script>
+
+    
+    
+        <script src="/libs/highlight/highlight.min.js"></script>
+<script>hljs.highlightAll();hljs.configure({tabReplace: '    '});</script>
+
+    
+  </body>
+</html>

@@ -1,12 +1,508 @@
-<!doctype html> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/finance/libs/highlight/styles/github.min.css"> <link rel=stylesheet  href="/finance/css/franklin.css"> <link rel=stylesheet  href="/finance/css/hypertext.css"> <link rel=icon  href="/finance/assets/favicon.png"> <title>Stablecoin Deep Dive: USDC & Tether</title> <header> <h1 style="color:#283747">Finance</h1> <nav> <a href="/finance/" class=current >Tags</a> | <a href="/finance/blog/" >Notes</a> <hr/> </nav> </header> <div class=franklin-content ><h1 id=stablecoin_deep_dive_usdc_tether ><a href="#stablecoin_deep_dive_usdc_tether" class=header-anchor >🪙 Stablecoin Deep Dive: USDC &amp; Tether</a></h1> <h2 id=quick_start_-_essential_links ><a href="#quick_start_-_essential_links" class=header-anchor >Quick Start - Essential Links</a></h2> <h3 id=official_documentation ><a href="#official_documentation" class=header-anchor ><strong>Official Documentation</strong></a></h3> <ul> <li><p><strong>USDC &#40;Circle&#41;:</strong> https://www.circle.com/usdc</p> <li><p><strong>USDC Transparency Reports:</strong> https://www.circle.com/transparency</p> <li><p><strong>Tether &#40;USDT&#41;:</strong> https://tether.to/</p> <li><p><strong>Tether Transparency:</strong> https://tether.to/transparency/</p> </ul> <hr /> <h2 id=core_concepts_explained ><a href="#core_concepts_explained" class=header-anchor >Core Concepts Explained</a></h2> <h3 id=collateralization ><a href="#collateralization" class=header-anchor >🔒 Collateralization</a></h3> <blockquote> <p><strong>Why such an esoteric name?</strong></p> <p>It&#39;s actually a traditional finance term, not crypto jargon&#33;</p> <p><strong>Collateral</strong> &#61; something of value you pledge as backup/security for a promise</p> <p><strong>Examples you already know:</strong></p> <ul> <li><p><strong>Car loan:</strong> The car is <em>collateral</em> - if you don&#39;t pay, bank takes the car</p> <li><p><strong>Mortgage:</strong> Your house is <em>collateral</em> - if you default, bank forecloses</p> <li><p><strong>Pawn shop:</strong> You leave your watch as <em>collateral</em> for a loan</p> </ul> <p><strong>In stablecoins:</strong> The reserves &#40;Treasuries, cash, etc.&#41; are the <strong>collateral</strong> backing the promise that your digital token &#61; &#36;1</p> <p><strong>&quot;Collateralization&quot;</strong> just means <em>&quot;the act of backing something with collateral&quot;</em></p> <p><strong>Simpler ways to say it:</strong></p> <ul> <li><p>&quot;What&#39;s backing it?&quot;</p> <li><p>&quot;What assets support this?&quot;</p> <li><p>&quot;What&#39;s in the vault?&quot;</p> </ul> <p>The finance world loves fancy Latin-rooted words when simple ones would do. &quot;Collateralization&quot; sounds more professional than &quot;stuff we keep in case you want your money back&quot; 😄</p> </blockquote> <p><strong>What it means:</strong> For every &#36;1 stablecoin in circulation, there should be &#36;1 worth of assets backing it.</p> <p><strong>Key Difference:</strong></p> <p><strong>USDC &#40;Circle&#41;</strong></p> <ul> <li><p>~80&#37; US Treasury securities &#40;short-term, highly liquid&#41;</p> <li><p>~20&#37; Cash in regulated banks</p> <li><p>Conservative, transparent approach</p> </ul> <p><strong>USDT &#40;Tether&#41;</strong></p> <ul> <li><p>~85&#37; US Treasury bills &#40;&#36;113B&#43; as of Q4 2024&#41;</p> <li><p>~4&#37; Bitcoin &#40;82,000&#43; BTC, ~&#36;5.5B&#41;</p> <li><p>~3&#37; Gold &#40;48 metric tons&#41;</p> <li><p>~8&#37; Other assets &#40;commercial paper, loans, etc.&#41;</p> </ul> <p><strong>Why it matters:</strong> The composition determines risk, liquidity, and how easily you can redeem your stablecoins for actual USD.</p> <hr /> <h3 id=reserves_where_the_money_actually_sits ><a href="#reserves_where_the_money_actually_sits" class=header-anchor >💰 Reserves: Where the Money Actually Sits</a></h3> <h4 id=usdc_reserve_structure ><a href="#usdc_reserve_structure" class=header-anchor ><strong>USDC Reserve Structure</strong></a></h4> <p>Circle uses the <strong>Circle Reserve Fund</strong> - an SEC-registered government money market fund containing:</p> <ul> <li><p>Short-term US Treasury bills</p> <li><p>Overnight Treasury repurchase agreements &#40;repos&#41;</p> <li><p>Cash deposits in regulated financial institutions</p> </ul> <blockquote> <p><strong>Wait, what&#39;s a &quot;fund&quot;?</strong></p> <p><strong>A fund is NOT money itself</strong> - it&#39;s a <strong>container</strong> or <strong>collection</strong> of different assets.</p> <p><strong>Think of it like:</strong></p> <ul> <li><p><strong>The fund</strong> &#61; a backpack 🎒</p> <li><p><strong>The assets</strong> &#61; what&#39;s inside &#40;books, laptop, water bottle&#41;</p> <li><p>You don&#39;t own &quot;a backpack&quot; - you own &quot;a backpack <em>containing stuff</em>&quot;</p> </ul> <p><strong>A Money Market Fund is like a basket containing:</strong></p> <ul> <li><p>50&#37; US Treasury bills &#40;government IOUs&#41;</p> <li><p>30&#37; Overnight repos &#40;super short-term loans&#41;</p> <li><p>20&#37; Cash in bank accounts</p> </ul> <p><strong>Why use a fund instead of just cash?</strong></p> <table><tr><th align=right >Just Holding Cash<th align=right >Using a Money Market Fund<tr><td align=right >&#36;1M in bank account<td align=right >&#36;1M in Treasuries &#43; cash mix<tr><td align=right >Earns ~0.5&#37; interest<td align=right >Earns ~5&#37; interest &#40;2024&#41;<tr><td align=right >FDIC insured up to &#36;250k<td align=right >SEC-regulated, highly liquid<tr><td align=right >Simple but inefficient<td align=right >Complex but profitable</table> <p><strong>Circle&#39;s Strategy:</strong></p> <ol> <li><p>You give them &#36;1M USDC</p> <li><p>They put it in the Circle Reserve Fund</p> <li><p>Fund buys &#36;800k Treasury bills &#43; &#36;200k cash</p> <li><p>Fund earns ~5&#37; &#61; &#36;50,000/year</p> <li><p>You get stability, Circle keeps the profit 💰</p> </ol> <p><strong>Key takeaway:</strong> When you see &quot;SEC-registered government money market fund&quot; - just think: <em>&quot;A professionally managed basket of super-safe, government-backed assets that earns interest&quot;</em></p> </blockquote> <p><strong>Management:</strong> BlackRock manages the fund, with daily public reporting and monthly attestations by Grant Thornton LLP &#40;Big 4 accounting firm&#41;.</p> <h4 id=tether_reserve_structure ><a href="#tether_reserve_structure" class=header-anchor ><strong>Tether Reserve Structure</strong></a></h4> <p>More diversified and complex:</p> <ul> <li><p><strong>&#36;100B&#43; in US Treasuries</strong> - makes Tether one of the world&#39;s largest Treasury holders</p> <li><p><strong>82,000&#43; Bitcoin</strong> - adds crypto exposure &#40;controversial&#41;</p> <li><p><strong>48 metric tons of gold</strong> - traditional safe haven</p> <li><p><strong>Other investments</strong> - secured loans, corporate bonds, money market funds</p> </ul> <p><strong>Transparency:</strong> Quarterly attestations &#40;not full audits&#41;, less frequent than USDC.</p> <hr /> <h3 id=minting_burning_process ><a href="#minting_burning_process" class=header-anchor >🔄 Minting &amp; Burning Process</a></h3> <blockquote> <p><strong>Why is it called &quot;minting&quot;?</strong></p> <p><strong>Minting</strong> comes from <strong>literally making coins</strong> - like at a government mint&#33;</p> <p><strong>Historical Origins:</strong></p> <ul> <li><p>The Royal Mint &#40;or US Mint&#41; takes raw metal &#40;gold, silver, copper&#41;</p> <li><p>Stamps it into coins</p> <li><p>Creates new money that enters circulation</p> <li><p>&quot;Mint condition&quot; &#61; freshly made, perfect</p> </ul> <p><strong>The Metaphor in Crypto:</strong></p> <table><tr><th align=right >Physical Mint &#40;1800s&#41;<th align=right >Digital Mint &#40;2024&#41;<tr><td align=right >You bring gold →<td align=right >You send USD →<tr><td align=right >They melt it down →<td align=right >They verify deposit →<tr><td align=right >They stamp coins →<td align=right >They create tokens →<tr><td align=right >New coins circulate →<td align=right >New stablecoins circulate →<tr><td align=right >Metal stays in vault →<td align=right >USD stays in reserves →</table> <p><strong>Why this term stuck:</strong></p> <ul> <li><p><strong>NFTs popularized it</strong> - &quot;Minting an NFT&quot; &#61; creating it for the first time</p> <li><p><strong>Sounds official</strong> - more legitimate than just &quot;creating&quot; or &quot;making&quot;</p> <li><p><strong>Historical weight</strong> - connects digital currency to thousands of years of coin-making</p> <li><p><strong>Smart contract terminology</strong> - Ethereum&#39;s code literally has a <code>mint&#40;&#41;</code> function</p> </ul> <p><strong>Alternative terms &#40;same meaning&#41;:</strong></p> <ul> <li><p>Issuing &#40;more formal&#41;</p> <li><p>Creating &#40;more casual&#41;</p> <li><p>Generating &#40;more technical&#41;</p> <li><p>~~Printing~~ &#40;sounds inflationary, avoided&#41;</p> </ul> <p><strong>The opposite: &quot;Burning&quot;</strong></p> <p>If minting &#61; creating coins at the mint... burning &#61; melting them back down&#33;</p> <p>Historically, governments would recall old/damaged coins, melt them down, and remove them from circulation. In crypto, tokens are sent to a &quot;burn address&quot; &#40;unrecoverable&#41; or the smart contract literally deletes them.</p> <p><strong>Quick answer:</strong> &quot;Minting&quot; &#61; borrowing the ancient word for &quot;making coins&quot; because it sounds official and connects crypto to the long history of money creation. It&#39;s just fancy language for &quot;creating new tokens&quot;&#33; 🪙</p> </blockquote> <h4 id=minting_creating_new_tokens ><a href="#minting_creating_new_tokens" class=header-anchor ><strong>Minting &#40;Creating New Tokens&#41;</strong></a></h4> <p><strong>How it works:</strong></p> <ol> <li><p>You send &#36;1,000 USD to Circle/Tether</p> <li><p>They verify the deposit</p> <li><p>They create &#40;mint&#41; 1,000 new stablecoin tokens</p> <li><p>Tokens appear in your wallet</p> <li><p>Your &#36;1,000 goes into reserves</p> </ol> <p><strong>What this signals:</strong></p> <ul> <li><p><strong>High minting</strong> &#61; Capital flowing into crypto &#40;bullish&#41;</p> <li><p><strong>Institutional interest</strong> &#61; Large mints &#40;&#36;100M&#43;&#41;</p> </ul> <h4 id=burning_destroying_tokens ><a href="#burning_destroying_tokens" class=header-anchor ><strong>Burning &#40;Destroying Tokens&#41;</strong></a></h4> <p><strong>How it works:</strong></p> <ol> <li><p>You send 1,000 tokens back to issuer</p> <li><p>They verify and burn &#40;destroy&#41; the tokens</p> <li><p>They send you &#36;1,000 USD from reserves</p> <li><p>Total supply decreases by 1,000</p> </ol> <p><strong>What this signals:</strong></p> <ul> <li><p><strong>High burning</strong> &#61; Capital leaving crypto &#40;bearish/risk-off&#41;</p> <li><p><strong>Market stress</strong> &#61; People want USD, not stablecoins</p> </ul> <blockquote> <p><strong>Minting &amp; Burning &#61; The Thermodynamics of Crypto 🌡️</strong></p> <p>This is actually a brilliant observation&#33; Here&#39;s why:</p> <p><strong>In Thermodynamics:</strong></p> <ul> <li><p>Energy flows from hot → cold</p> <li><p>You can&#39;t create or destroy energy, only transform it</p> <li><p>The direction of flow tells you about the system&#39;s state</p> </ul> <p><strong>In Crypto &#40;Stablecoins&#41;:</strong></p> <ul> <li><p>Capital flows between traditional finance ↔ crypto</p> <li><p>You can&#39;t create money from nothing, only transform USD ↔ tokens</p> <li><p>The direction of flow tells you about market sentiment</p> </ul> <p><strong>The Parallel:</strong></p> <table><tr><th align=right >Thermodynamics<th align=right >Stablecoin Minting/Burning<tr><td align=right >Heat flows hot → cold<td align=right >Money flows where opportunity is<tr><td align=right >Entropy measures disorder<td align=right >Supply changes measure market stress<tr><td align=right >Equilibrium &#61; balanced temps<td align=right >Equilibrium &#61; stable supply<tr><td align=right >Exothermic &#61; releases energy<td align=right >Burning &#61; releases USD to market<tr><td align=right >Endothermic &#61; absorbs energy<td align=right >Minting &#61; absorbs USD from market</table> <p><strong>Why this matters:</strong></p> <p>Just like thermodynamics, <strong>stablecoin flows are a leading indicator</strong>:</p> <ul> <li><p><strong>Net minting</strong> &#61; System heating up &#40;energy/capital entering&#41;</p> <ul> <li><p>Confidence rising</p> <li><p>Risk-on sentiment</p> <li><p>Crypto bull market signal</p> </ul> <li><p><strong>Net burning</strong> &#61; System cooling down &#40;energy/capital leaving&#41;</p> <ul> <li><p>Fear increasing</p> <li><p>Risk-off sentiment </p> <li><p>Crypto bear market signal</p> </ul> <li><p><strong>Equilibrium</strong> &#61; Stable supply &#40;minimal minting/burning&#41;</p> <ul> <li><p>Market sideways</p> <li><p>Uncertainty or waiting period</p> </ul> </ul> <p><strong>The Conservation Law:</strong></p> <p>In physics: Energy cannot be created or destroyed In stablecoins: Every token minted &#61; &#36;1 USD locked up In stablecoins: Every token burned &#61; &#36;1 USD released</p> <p><strong>You can literally measure &quot;crypto&#39;s temperature&quot; by watching stablecoin supply&#33;</strong></p> <p>When &#36;2B of USDC gets minted in a week → That&#39;s &#36;2B of &quot;hot money&quot; flowing into crypto. The system is heating up. Bulls incoming. 🚀</p> <p>When &#36;1B of USDT gets burned in a day → That&#39;s &#36;1B of capital fleeing to safety. The system is cooling. Bears at the door. 🐻</p> <p><strong>Pro traders watch this religiously</strong> - it&#39;s like reading the market&#39;s vital signs before the price even moves&#33;</p> </blockquote> <hr /> <h2 id=the_business_model_how_they_make_money ><a href="#the_business_model_how_they_make_money" class=header-anchor >The Business Model: How They Make Money</a></h2> <h3 id=revenue_generation ><a href="#revenue_generation" class=header-anchor ><strong>Revenue Generation</strong></a></h3> <p><strong>USDC &#40;2024 Numbers&#41;:</strong></p> <ul> <li><p>Reserve income: <strong>&#36;1.6 billion</strong> &#40;99&#37; of total revenue&#41;</p> <li><p>Source: Interest earned on US Treasury holdings</p> <li><p>Model: Keep 100&#37; backing, profit from interest spread</p> </ul> <p><strong>Example:</strong></p> <ul> <li><p>You hold 1M USDC → Circle holds &#36;1M in reserves</p> <li><p>US Treasury yields 5&#37; → Circle earns &#36;50,000/year</p> <li><p>You get: Stability &#43; utility</p> <li><p>Circle gets: Interest income</p> </ul> <p><strong>Tether:</strong></p> <ul> <li><p>Similar model but less transparent</p> <li><p>Estimated billions in annual profit from Treasury yields</p> <li><p>Additional income from Bitcoin appreciation and gold holdings</p> </ul> <hr /> <h2 id=trust_transparency ><a href="#trust_transparency" class=header-anchor >Trust &amp; Transparency</a></h2> <h3 id=the_audit_gap ><a href="#the_audit_gap" class=header-anchor ><strong>The Audit Gap</strong></a></h3> <p><strong>USDC:</strong> ✅ Monthly third-party attestations by Grant Thornton ✅ Daily reserve fund reporting ✅ SEC-registered money market fund ✅ Regulated by US financial authorities ⚠️ Not a &quot;full audit&quot; but closest in industry</p> <p><strong>Tether:</strong> ✅ Quarterly attestations by BDO Italia ❌ No full audits since 2017 ❌ Less frequent reporting ⚠️ History of regulatory concerns ⚠️ More opaque reserve composition</p> <h3 id=why_it_matters ><a href="#why_it_matters" class=header-anchor ><strong>Why It Matters</strong></a></h3> <p>Stablecoins are <strong>systemically important</strong> to crypto:</p> <ul> <li><p>Used for trading pairs on exchanges</p> <li><p>Bridge between traditional finance and crypto</p> <li><p>Combined market cap: &#36;150B&#43;</p> <li><p>Total Treasury holdings: &#36;115B&#43; &#40;larger than many countries&#41;</p> </ul> <p><strong>If reserves aren&#39;t real → bank run scenario → crypto market crash</strong></p> <hr /> <h2 id=real-world_impact ><a href="#real-world_impact" class=header-anchor >Real-World Impact</a></h2> <h3 id=macro_significance ><a href="#macro_significance" class=header-anchor ><strong>Macro Significance</strong></a></h3> <p><strong>US Treasury Market:</strong></p> <ul> <li><p>Tether &#43; Circle collectively hold <strong>&#36;115B&#43;</strong> in US Treasuries</p> <li><p>This makes them among the <strong>top 20 holders globally</strong></p> <li><p>Larger than many sovereign nations</p> <li><p>Provides consistent demand for short-term US debt</p> </ul> <p><strong>2024 Context:</strong></p> <ul> <li><p>As interest rates remained elevated, stablecoin issuers earned record profits</p> <li><p>USDC reserve income: &#36;1.6B</p> <li><p>Estimated Tether profit: &#36;5B&#43; &#40;unofficial&#41;</p> </ul> <hr /> <h2 id=python_mini-project_guide ><a href="#python_mini-project_guide" class=header-anchor >Python Mini-Project Guide</a></h2> <h3 id=what_the_script_does ><a href="#what_the_script_does" class=header-anchor ><strong>What the Script Does</strong></a></h3> <ol> <li><p><strong>Fetches Live Data</strong></p> <ul> <li><p>Current supply of USDC, USDT, DAI</p> <li><p>24-hour volume and price changes</p> <li><p>Circulation changes &#40;minting/burning&#41;</p> </ul> <li><p><strong>Calculates Reserve Estimates</strong></p> <ul> <li><p>Based on known reserve compositions</p> <li><p>Estimates Treasury holdings</p> <li><p>Shows cash vs. securities breakdown</p> </ul> <li><p><strong>Analyzes Market Activity</strong></p> <ul> <li><p>Net minting &#61; capital inflow &#40;bullish&#41;</p> <li><p>Net burning &#61; capital outflow &#40;bearish&#41;</p> <li><p>Trend identification</p> </ul> </ol> <h3 id=installation_setup ><a href="#installation_setup" class=header-anchor ><strong>Installation &amp; Setup</strong></a></h3> <pre><code class=language-bash ># Install required packages
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+   <link rel="stylesheet" href="/libs/highlight/styles/github.min.css">
+   
+  <link rel="stylesheet" href="/css/franklin.css">
+<link rel="stylesheet" href="/css/hypertext.css">
+<link rel="icon" href="/assets/favicon.png">
+
+   <title>Stablecoin Deep Dive: USDC & Tether</title>  
+</head>
+<body>
+<header>
+  <h1 style="color:#283747">Finance</h1>
+  <nav>
+    <a href="/" class="current">Tags</a>
+  | <a href="/blog/" >Notes</a>
+  <hr/>
+  </nav>
+</header>
+
+
+<!-- Content appended here -->
+<div class="franklin-content"><h1 id="stablecoin_deep_dive_usdc_tether"><a href="#stablecoin_deep_dive_usdc_tether" class="header-anchor">🪙 Stablecoin Deep Dive: USDC &amp; Tether</a></h1>
+<h2 id="quick_start_-_essential_links"><a href="#quick_start_-_essential_links" class="header-anchor">Quick Start - Essential Links</a></h2>
+<h3 id="official_documentation"><a href="#official_documentation" class="header-anchor"><strong>Official Documentation</strong></a></h3>
+<ul>
+<li><p><strong>USDC &#40;Circle&#41;:</strong> https://www.circle.com/usdc</p>
+</li>
+<li><p><strong>USDC Transparency Reports:</strong> https://www.circle.com/transparency</p>
+</li>
+<li><p><strong>Tether &#40;USDT&#41;:</strong> https://tether.to/</p>
+</li>
+<li><p><strong>Tether Transparency:</strong> https://tether.to/transparency/</p>
+</li>
+</ul>
+<hr />
+<h2 id="core_concepts_explained"><a href="#core_concepts_explained" class="header-anchor">Core Concepts Explained</a></h2>
+<h3 id="collateralization"><a href="#collateralization" class="header-anchor">🔒 Collateralization</a></h3>
+<blockquote>
+<p><strong>Why such an esoteric name?</strong></p>
+<p>It&#39;s actually a traditional finance term, not crypto jargon&#33;</p>
+<p><strong>Collateral</strong> &#61; something of value you pledge as backup/security for a promise</p>
+<p><strong>Examples you already know:</strong></p>
+<ul>
+<li><p><strong>Car loan:</strong> The car is <em>collateral</em> - if you don&#39;t pay, bank takes the car</p>
+</li>
+<li><p><strong>Mortgage:</strong> Your house is <em>collateral</em> - if you default, bank forecloses</p>
+</li>
+<li><p><strong>Pawn shop:</strong> You leave your watch as <em>collateral</em> for a loan</p>
+</li>
+</ul>
+<p><strong>In stablecoins:</strong> The reserves &#40;Treasuries, cash, etc.&#41; are the <strong>collateral</strong> backing the promise that your digital token &#61; &#36;1</p>
+<p><strong>&quot;Collateralization&quot;</strong> just means <em>&quot;the act of backing something with collateral&quot;</em></p>
+<p><strong>Simpler ways to say it:</strong></p>
+<ul>
+<li><p>&quot;What&#39;s backing it?&quot;</p>
+</li>
+<li><p>&quot;What assets support this?&quot;</p>
+</li>
+<li><p>&quot;What&#39;s in the vault?&quot;</p>
+</li>
+</ul>
+<p>The finance world loves fancy Latin-rooted words when simple ones would do. &quot;Collateralization&quot; sounds more professional than &quot;stuff we keep in case you want your money back&quot; 😄</p>
+</blockquote>
+<p><strong>What it means:</strong> For every &#36;1 stablecoin in circulation, there should be &#36;1 worth of assets backing it.</p>
+<p><strong>Key Difference:</strong></p>
+<p><strong>USDC &#40;Circle&#41;</strong></p>
+<ul>
+<li><p>~80&#37; US Treasury securities &#40;short-term, highly liquid&#41;</p>
+</li>
+<li><p>~20&#37; Cash in regulated banks</p>
+</li>
+<li><p>Conservative, transparent approach</p>
+</li>
+</ul>
+<p><strong>USDT &#40;Tether&#41;</strong></p>
+<ul>
+<li><p>~85&#37; US Treasury bills &#40;&#36;113B&#43; as of Q4 2024&#41;</p>
+</li>
+<li><p>~4&#37; Bitcoin &#40;82,000&#43; BTC, ~&#36;5.5B&#41;</p>
+</li>
+<li><p>~3&#37; Gold &#40;48 metric tons&#41;</p>
+</li>
+<li><p>~8&#37; Other assets &#40;commercial paper, loans, etc.&#41;</p>
+</li>
+</ul>
+<p><strong>Why it matters:</strong> The composition determines risk, liquidity, and how easily you can redeem your stablecoins for actual USD.</p>
+<hr />
+<h3 id="reserves_where_the_money_actually_sits"><a href="#reserves_where_the_money_actually_sits" class="header-anchor">💰 Reserves: Where the Money Actually Sits</a></h3>
+<h4 id="usdc_reserve_structure"><a href="#usdc_reserve_structure" class="header-anchor"><strong>USDC Reserve Structure</strong></a></h4>
+<p>Circle uses the <strong>Circle Reserve Fund</strong> - an SEC-registered government money market fund containing:</p>
+<ul>
+<li><p>Short-term US Treasury bills</p>
+</li>
+<li><p>Overnight Treasury repurchase agreements &#40;repos&#41;</p>
+</li>
+<li><p>Cash deposits in regulated financial institutions</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>Wait, what&#39;s a &quot;fund&quot;?</strong></p>
+<p><strong>A fund is NOT money itself</strong> - it&#39;s a <strong>container</strong> or <strong>collection</strong> of different assets.</p>
+<p><strong>Think of it like:</strong></p>
+<ul>
+<li><p><strong>The fund</strong> &#61; a backpack 🎒</p>
+</li>
+<li><p><strong>The assets</strong> &#61; what&#39;s inside &#40;books, laptop, water bottle&#41;</p>
+</li>
+<li><p>You don&#39;t own &quot;a backpack&quot; - you own &quot;a backpack <em>containing stuff</em>&quot;</p>
+</li>
+</ul>
+<p><strong>A Money Market Fund is like a basket containing:</strong></p>
+<ul>
+<li><p>50&#37; US Treasury bills &#40;government IOUs&#41;</p>
+</li>
+<li><p>30&#37; Overnight repos &#40;super short-term loans&#41;</p>
+</li>
+<li><p>20&#37; Cash in bank accounts</p>
+</li>
+</ul>
+<p><strong>Why use a fund instead of just cash?</strong></p>
+<table><tr><th align="right">Just Holding Cash</th><th align="right">Using a Money Market Fund</th></tr><tr><td align="right">&#36;1M in bank account</td><td align="right">&#36;1M in Treasuries &#43; cash mix</td></tr><tr><td align="right">Earns ~0.5&#37; interest</td><td align="right">Earns ~5&#37; interest &#40;2024&#41;</td></tr><tr><td align="right">FDIC insured up to &#36;250k</td><td align="right">SEC-regulated, highly liquid</td></tr><tr><td align="right">Simple but inefficient</td><td align="right">Complex but profitable</td></tr></table>
+<p><strong>Circle&#39;s Strategy:</strong></p>
+<ol>
+<li><p>You give them &#36;1M USDC</p>
+</li>
+<li><p>They put it in the Circle Reserve Fund</p>
+</li>
+<li><p>Fund buys &#36;800k Treasury bills &#43; &#36;200k cash</p>
+</li>
+<li><p>Fund earns ~5&#37; &#61; &#36;50,000/year</p>
+</li>
+<li><p>You get stability, Circle keeps the profit 💰</p>
+</li>
+</ol>
+<p><strong>Key takeaway:</strong> When you see &quot;SEC-registered government money market fund&quot; - just think: <em>&quot;A professionally managed basket of super-safe, government-backed assets that earns interest&quot;</em></p>
+</blockquote>
+<p><strong>Management:</strong> BlackRock manages the fund, with daily public reporting and monthly attestations by Grant Thornton LLP &#40;Big 4 accounting firm&#41;.</p>
+<h4 id="tether_reserve_structure"><a href="#tether_reserve_structure" class="header-anchor"><strong>Tether Reserve Structure</strong></a></h4>
+<p>More diversified and complex:</p>
+<ul>
+<li><p><strong>&#36;100B&#43; in US Treasuries</strong> - makes Tether one of the world&#39;s largest Treasury holders</p>
+</li>
+<li><p><strong>82,000&#43; Bitcoin</strong> - adds crypto exposure &#40;controversial&#41;</p>
+</li>
+<li><p><strong>48 metric tons of gold</strong> - traditional safe haven</p>
+</li>
+<li><p><strong>Other investments</strong> - secured loans, corporate bonds, money market funds</p>
+</li>
+</ul>
+<p><strong>Transparency:</strong> Quarterly attestations &#40;not full audits&#41;, less frequent than USDC.</p>
+<hr />
+<h3 id="minting_burning_process"><a href="#minting_burning_process" class="header-anchor">🔄 Minting &amp; Burning Process</a></h3>
+<blockquote>
+<p><strong>Why is it called &quot;minting&quot;?</strong></p>
+<p><strong>Minting</strong> comes from <strong>literally making coins</strong> - like at a government mint&#33;</p>
+<p><strong>Historical Origins:</strong></p>
+<ul>
+<li><p>The Royal Mint &#40;or US Mint&#41; takes raw metal &#40;gold, silver, copper&#41;</p>
+</li>
+<li><p>Stamps it into coins</p>
+</li>
+<li><p>Creates new money that enters circulation</p>
+</li>
+<li><p>&quot;Mint condition&quot; &#61; freshly made, perfect</p>
+</li>
+</ul>
+<p><strong>The Metaphor in Crypto:</strong></p>
+<table><tr><th align="right">Physical Mint &#40;1800s&#41;</th><th align="right">Digital Mint &#40;2024&#41;</th></tr><tr><td align="right">You bring gold →</td><td align="right">You send USD →</td></tr><tr><td align="right">They melt it down →</td><td align="right">They verify deposit →</td></tr><tr><td align="right">They stamp coins →</td><td align="right">They create tokens →</td></tr><tr><td align="right">New coins circulate →</td><td align="right">New stablecoins circulate →</td></tr><tr><td align="right">Metal stays in vault →</td><td align="right">USD stays in reserves →</td></tr></table>
+<p><strong>Why this term stuck:</strong></p>
+<ul>
+<li><p><strong>NFTs popularized it</strong> - &quot;Minting an NFT&quot; &#61; creating it for the first time</p>
+</li>
+<li><p><strong>Sounds official</strong> - more legitimate than just &quot;creating&quot; or &quot;making&quot;</p>
+</li>
+<li><p><strong>Historical weight</strong> - connects digital currency to thousands of years of coin-making</p>
+</li>
+<li><p><strong>Smart contract terminology</strong> - Ethereum&#39;s code literally has a <code>mint&#40;&#41;</code> function</p>
+</li>
+</ul>
+<p><strong>Alternative terms &#40;same meaning&#41;:</strong></p>
+<ul>
+<li><p>Issuing &#40;more formal&#41;</p>
+</li>
+<li><p>Creating &#40;more casual&#41;</p>
+</li>
+<li><p>Generating &#40;more technical&#41;</p>
+</li>
+<li><p>~~Printing~~ &#40;sounds inflationary, avoided&#41;</p>
+</li>
+</ul>
+<p><strong>The opposite: &quot;Burning&quot;</strong></p>
+<p>If minting &#61; creating coins at the mint... burning &#61; melting them back down&#33;</p>
+<p>Historically, governments would recall old/damaged coins, melt them down, and remove them from circulation. In crypto, tokens are sent to a &quot;burn address&quot; &#40;unrecoverable&#41; or the smart contract literally deletes them.</p>
+<p><strong>Quick answer:</strong> &quot;Minting&quot; &#61; borrowing the ancient word for &quot;making coins&quot; because it sounds official and connects crypto to the long history of money creation. It&#39;s just fancy language for &quot;creating new tokens&quot;&#33; 🪙</p>
+</blockquote>
+<h4 id="minting_creating_new_tokens"><a href="#minting_creating_new_tokens" class="header-anchor"><strong>Minting &#40;Creating New Tokens&#41;</strong></a></h4>
+<p><strong>How it works:</strong></p>
+<ol>
+<li><p>You send &#36;1,000 USD to Circle/Tether</p>
+</li>
+<li><p>They verify the deposit</p>
+</li>
+<li><p>They create &#40;mint&#41; 1,000 new stablecoin tokens</p>
+</li>
+<li><p>Tokens appear in your wallet</p>
+</li>
+<li><p>Your &#36;1,000 goes into reserves</p>
+</li>
+</ol>
+<p><strong>What this signals:</strong></p>
+<ul>
+<li><p><strong>High minting</strong> &#61; Capital flowing into crypto &#40;bullish&#41;</p>
+</li>
+<li><p><strong>Institutional interest</strong> &#61; Large mints &#40;&#36;100M&#43;&#41;</p>
+</li>
+</ul>
+<h4 id="burning_destroying_tokens"><a href="#burning_destroying_tokens" class="header-anchor"><strong>Burning &#40;Destroying Tokens&#41;</strong></a></h4>
+<p><strong>How it works:</strong></p>
+<ol>
+<li><p>You send 1,000 tokens back to issuer</p>
+</li>
+<li><p>They verify and burn &#40;destroy&#41; the tokens</p>
+</li>
+<li><p>They send you &#36;1,000 USD from reserves</p>
+</li>
+<li><p>Total supply decreases by 1,000</p>
+</li>
+</ol>
+<p><strong>What this signals:</strong></p>
+<ul>
+<li><p><strong>High burning</strong> &#61; Capital leaving crypto &#40;bearish/risk-off&#41;</p>
+</li>
+<li><p><strong>Market stress</strong> &#61; People want USD, not stablecoins</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>Minting &amp; Burning &#61; The Thermodynamics of Crypto 🌡️</strong></p>
+<p>This is actually a brilliant observation&#33; Here&#39;s why:</p>
+<p><strong>In Thermodynamics:</strong></p>
+<ul>
+<li><p>Energy flows from hot → cold</p>
+</li>
+<li><p>You can&#39;t create or destroy energy, only transform it</p>
+</li>
+<li><p>The direction of flow tells you about the system&#39;s state</p>
+</li>
+</ul>
+<p><strong>In Crypto &#40;Stablecoins&#41;:</strong></p>
+<ul>
+<li><p>Capital flows between traditional finance ↔ crypto</p>
+</li>
+<li><p>You can&#39;t create money from nothing, only transform USD ↔ tokens</p>
+</li>
+<li><p>The direction of flow tells you about market sentiment</p>
+</li>
+</ul>
+<p><strong>The Parallel:</strong></p>
+<table><tr><th align="right">Thermodynamics</th><th align="right">Stablecoin Minting/Burning</th></tr><tr><td align="right">Heat flows hot → cold</td><td align="right">Money flows where opportunity is</td></tr><tr><td align="right">Entropy measures disorder</td><td align="right">Supply changes measure market stress</td></tr><tr><td align="right">Equilibrium &#61; balanced temps</td><td align="right">Equilibrium &#61; stable supply</td></tr><tr><td align="right">Exothermic &#61; releases energy</td><td align="right">Burning &#61; releases USD to market</td></tr><tr><td align="right">Endothermic &#61; absorbs energy</td><td align="right">Minting &#61; absorbs USD from market</td></tr></table>
+<p><strong>Why this matters:</strong></p>
+<p>Just like thermodynamics, <strong>stablecoin flows are a leading indicator</strong>:</p>
+<ul>
+<li><p><strong>Net minting</strong> &#61; System heating up &#40;energy/capital entering&#41;</p>
+<ul>
+<li><p>Confidence rising</p>
+</li>
+<li><p>Risk-on sentiment</p>
+</li>
+<li><p>Crypto bull market signal</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Net burning</strong> &#61; System cooling down &#40;energy/capital leaving&#41;</p>
+<ul>
+<li><p>Fear increasing</p>
+</li>
+<li><p>Risk-off sentiment  </p>
+</li>
+<li><p>Crypto bear market signal</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Equilibrium</strong> &#61; Stable supply &#40;minimal minting/burning&#41;</p>
+<ul>
+<li><p>Market sideways</p>
+</li>
+<li><p>Uncertainty or waiting period</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>The Conservation Law:</strong></p>
+<p>In physics: Energy cannot be created or destroyed   In stablecoins: Every token minted &#61; &#36;1 USD locked up   In stablecoins: Every token burned &#61; &#36;1 USD released</p>
+<p><strong>You can literally measure &quot;crypto&#39;s temperature&quot; by watching stablecoin supply&#33;</strong></p>
+<p>When &#36;2B of USDC gets minted in a week → That&#39;s &#36;2B of &quot;hot money&quot; flowing into crypto. The system is heating up. Bulls incoming. 🚀</p>
+<p>When &#36;1B of USDT gets burned in a day → That&#39;s &#36;1B of capital fleeing to safety. The system is cooling. Bears at the door. 🐻</p>
+<p><strong>Pro traders watch this religiously</strong> - it&#39;s like reading the market&#39;s vital signs before the price even moves&#33;</p>
+</blockquote>
+<hr />
+<h2 id="the_business_model_how_they_make_money"><a href="#the_business_model_how_they_make_money" class="header-anchor">The Business Model: How They Make Money</a></h2>
+<h3 id="revenue_generation"><a href="#revenue_generation" class="header-anchor"><strong>Revenue Generation</strong></a></h3>
+<p><strong>USDC &#40;2024 Numbers&#41;:</strong></p>
+<ul>
+<li><p>Reserve income: <strong>&#36;1.6 billion</strong> &#40;99&#37; of total revenue&#41;</p>
+</li>
+<li><p>Source: Interest earned on US Treasury holdings</p>
+</li>
+<li><p>Model: Keep 100&#37; backing, profit from interest spread</p>
+</li>
+</ul>
+<p><strong>Example:</strong></p>
+<ul>
+<li><p>You hold 1M USDC → Circle holds &#36;1M in reserves</p>
+</li>
+<li><p>US Treasury yields 5&#37; → Circle earns &#36;50,000/year</p>
+</li>
+<li><p>You get: Stability &#43; utility</p>
+</li>
+<li><p>Circle gets: Interest income</p>
+</li>
+</ul>
+<p><strong>Tether:</strong></p>
+<ul>
+<li><p>Similar model but less transparent</p>
+</li>
+<li><p>Estimated billions in annual profit from Treasury yields</p>
+</li>
+<li><p>Additional income from Bitcoin appreciation and gold holdings</p>
+</li>
+</ul>
+<hr />
+<h2 id="trust_transparency"><a href="#trust_transparency" class="header-anchor">Trust &amp; Transparency</a></h2>
+<h3 id="the_audit_gap"><a href="#the_audit_gap" class="header-anchor"><strong>The Audit Gap</strong></a></h3>
+<p><strong>USDC:</strong> ✅ Monthly third-party attestations by Grant Thornton   ✅ Daily reserve fund reporting   ✅ SEC-registered money market fund   ✅ Regulated by US financial authorities   ⚠️ Not a &quot;full audit&quot; but closest in industry</p>
+<p><strong>Tether:</strong> ✅ Quarterly attestations by BDO Italia   ❌ No full audits since 2017   ❌ Less frequent reporting   ⚠️ History of regulatory concerns   ⚠️ More opaque reserve composition</p>
+<h3 id="why_it_matters"><a href="#why_it_matters" class="header-anchor"><strong>Why It Matters</strong></a></h3>
+<p>Stablecoins are <strong>systemically important</strong> to crypto:</p>
+<ul>
+<li><p>Used for trading pairs on exchanges</p>
+</li>
+<li><p>Bridge between traditional finance and crypto</p>
+</li>
+<li><p>Combined market cap: &#36;150B&#43;</p>
+</li>
+<li><p>Total Treasury holdings: &#36;115B&#43; &#40;larger than many countries&#41;</p>
+</li>
+</ul>
+<p><strong>If reserves aren&#39;t real → bank run scenario → crypto market crash</strong></p>
+<hr />
+<h2 id="real-world_impact"><a href="#real-world_impact" class="header-anchor">Real-World Impact</a></h2>
+<h3 id="macro_significance"><a href="#macro_significance" class="header-anchor"><strong>Macro Significance</strong></a></h3>
+<p><strong>US Treasury Market:</strong></p>
+<ul>
+<li><p>Tether &#43; Circle collectively hold <strong>&#36;115B&#43;</strong> in US Treasuries</p>
+</li>
+<li><p>This makes them among the <strong>top 20 holders globally</strong></p>
+</li>
+<li><p>Larger than many sovereign nations</p>
+</li>
+<li><p>Provides consistent demand for short-term US debt</p>
+</li>
+</ul>
+<p><strong>2024 Context:</strong></p>
+<ul>
+<li><p>As interest rates remained elevated, stablecoin issuers earned record profits</p>
+</li>
+<li><p>USDC reserve income: &#36;1.6B</p>
+</li>
+<li><p>Estimated Tether profit: &#36;5B&#43; &#40;unofficial&#41;</p>
+</li>
+</ul>
+<hr />
+<h2 id="python_mini-project_guide"><a href="#python_mini-project_guide" class="header-anchor">Python Mini-Project Guide</a></h2>
+<h3 id="what_the_script_does"><a href="#what_the_script_does" class="header-anchor"><strong>What the Script Does</strong></a></h3>
+<ol>
+<li><p><strong>Fetches Live Data</strong></p>
+<ul>
+<li><p>Current supply of USDC, USDT, DAI</p>
+</li>
+<li><p>24-hour volume and price changes</p>
+</li>
+<li><p>Circulation changes &#40;minting/burning&#41;</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Calculates Reserve Estimates</strong></p>
+<ul>
+<li><p>Based on known reserve compositions</p>
+</li>
+<li><p>Estimates Treasury holdings</p>
+</li>
+<li><p>Shows cash vs. securities breakdown</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Analyzes Market Activity</strong></p>
+<ul>
+<li><p>Net minting &#61; capital inflow &#40;bullish&#41;</p>
+</li>
+<li><p>Net burning &#61; capital outflow &#40;bearish&#41;</p>
+</li>
+<li><p>Trend identification</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="installation_setup"><a href="#installation_setup" class="header-anchor"><strong>Installation &amp; Setup</strong></a></h3>
+<pre><code class="language-bash"># Install required packages
 pip install requests pandas
 
 # Run the script
-python stablecoin_analyzer.py</code></pre> <h3 id=sample_output_interpretation ><a href="#sample_output_interpretation" class=header-anchor ><strong>Sample Output Interpretation</strong></a></h3> <pre><code class=language-julia >USDC: Net Minting &#43;\&#36;500M &#40;24h&#41;
+python stablecoin_analyzer.py</code></pre>
+<h3 id="sample_output_interpretation"><a href="#sample_output_interpretation" class="header-anchor"><strong>Sample Output Interpretation</strong></a></h3>
+<pre><code class="language-julia">USDC: Net Minting &#43;\&#36;500M &#40;24h&#41;
 → Interpretation: Strong demand, capital flowing into crypto
 
 USDT: Net Burning -\&#36;200M &#40;24h&#41;  
 → Interpretation: Moderate redemptions, possible risk-off sentiment
 
 Estimated Total Treasury Holdings: \&#36;115B
-→ Context: Among world&#39;s largest Treasury holders</code></pre> <hr /> <h2 id=key_takeaways ><a href="#key_takeaways" class=header-anchor >Key Takeaways</a></h2> <ol> <li><p><strong>Stablecoins aren&#39;t just &quot;digital dollars&quot;</strong> - they&#39;re massive financial entities with real-world impact</p> <li><p><strong>Reserve composition matters</strong> - USDC is more conservative/transparent, Tether is more diversified/opaque</p> <li><p><strong>Minting/burning is a market signal</strong> - tracks capital flows in/out of crypto</p> <li><p><strong>Treasury holdings are huge</strong> - stablecoins are now major players in US debt markets</p> <li><p><strong>Trust is everything</strong> - without provable reserves, the whole system could collapse</p> </ol> <hr /> <h2 id=further_learning ><a href="#further_learning" class=header-anchor >Further Learning</a></h2> <p><strong>Want to go deeper?</strong></p> <ul> <li><p>Explore Circle&#39;s attestation reports</p> <li><p>Track real-time supply on https://stablecoinstats.com</p> <li><p>Follow Tether&#39;s quarterly transparency updates</p> <li><p>Study the 2023 USDC depeg event &#40;Silicon Valley Bank crisis&#41;</p> <li><p>Research algorithmic stablecoins &#40;UST collapse case study&#41;</p> </ul> <p><strong>Advanced Topics:</strong></p> <ul> <li><p>Regulatory frameworks &#40;MiCA in EU, upcoming US legislation&#41;</p> <li><p>DeFi integration and yield generation</p> <li><p>Cross-chain bridging mechanisms</p> <li><p>Redemption mechanics during market stress</p> </ul> <hr /> <h2 id=your_next_steps ><a href="#your_next_steps" class=header-anchor >🎯 Your Next Steps</a></h2> <ol> <li><p>✅ Run the Python script to see live data</p> <li><p>📊 Compare USDC vs USDT reserve reports</p> <li><p>🔍 Track minting/burning trends over a week</p> <li><p>📈 Correlate activity with Bitcoin price movements</p> <li><p>🧪 Extend the script with additional features</p> </ol> <p><strong>Script Enhancement Ideas:</strong></p> <ul> <li><p>Add historical data tracking</p> <li><p>Create visualization charts &#40;matplotlib&#41;</p> <li><p>Set up alerts for large mints/burns</p> <li><p>Compare stablecoin dominance ratios</p> <li><p>Calculate yield from reserve holdings</p> </ul> <div class=page-foot > Contact me by <a href="mailto:skchu@wustl.edu">E-mail</a> | <a href="https://github.com/kchu25">Github</a> | <a href="https://www.linkedin.com/in/kchu1/">Linkedin</a> <br> This work is licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Last modified: December 01, 2025. <br> Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia language</a>. </div> </div> <script src="/finance/libs/highlight/highlight.min.js"></script> <script>hljs.highlightAll();hljs.configure({tabReplace: ' '});</script>
+→ Context: Among world&#39;s largest Treasury holders</code></pre>
+<hr />
+<h2 id="key_takeaways"><a href="#key_takeaways" class="header-anchor">Key Takeaways</a></h2>
+<ol>
+<li><p><strong>Stablecoins aren&#39;t just &quot;digital dollars&quot;</strong> - they&#39;re massive financial entities with real-world impact</p>
+</li>
+<li><p><strong>Reserve composition matters</strong> - USDC is more conservative/transparent, Tether is more diversified/opaque</p>
+</li>
+<li><p><strong>Minting/burning is a market signal</strong> - tracks capital flows in/out of crypto</p>
+</li>
+<li><p><strong>Treasury holdings are huge</strong> - stablecoins are now major players in US debt markets</p>
+</li>
+<li><p><strong>Trust is everything</strong> - without provable reserves, the whole system could collapse</p>
+</li>
+</ol>
+<hr />
+<h2 id="further_learning"><a href="#further_learning" class="header-anchor">Further Learning</a></h2>
+<p><strong>Want to go deeper?</strong></p>
+<ul>
+<li><p>Explore Circle&#39;s attestation reports</p>
+</li>
+<li><p>Track real-time supply on https://stablecoinstats.com</p>
+</li>
+<li><p>Follow Tether&#39;s quarterly transparency updates</p>
+</li>
+<li><p>Study the 2023 USDC depeg event &#40;Silicon Valley Bank crisis&#41;</p>
+</li>
+<li><p>Research algorithmic stablecoins &#40;UST collapse case study&#41;</p>
+</li>
+</ul>
+<p><strong>Advanced Topics:</strong></p>
+<ul>
+<li><p>Regulatory frameworks &#40;MiCA in EU, upcoming US legislation&#41;</p>
+</li>
+<li><p>DeFi integration and yield generation</p>
+</li>
+<li><p>Cross-chain bridging mechanisms</p>
+</li>
+<li><p>Redemption mechanics during market stress</p>
+</li>
+</ul>
+<hr />
+<h2 id="your_next_steps"><a href="#your_next_steps" class="header-anchor">🎯 Your Next Steps</a></h2>
+<ol>
+<li><p>✅ Run the Python script to see live data</p>
+</li>
+<li><p>📊 Compare USDC vs USDT reserve reports</p>
+</li>
+<li><p>🔍 Track minting/burning trends over a week</p>
+</li>
+<li><p>📈 Correlate activity with Bitcoin price movements</p>
+</li>
+<li><p>🧪 Extend the script with additional features</p>
+</li>
+</ol>
+<p><strong>Script Enhancement Ideas:</strong></p>
+<ul>
+<li><p>Add historical data tracking</p>
+</li>
+<li><p>Create visualization charts &#40;matplotlib&#41;</p>
+</li>
+<li><p>Set up alerts for large mints/burns</p>
+</li>
+<li><p>Compare stablecoin dominance ratios</p>
+</li>
+<li><p>Calculate yield from reserve holdings</p>
+</li>
+</ul>
+<div class="page-foot">
+    Contact me by <a href="mailto:skchu@wustl.edu">E-mail</a> | <a href="https://github.com/kchu25">Github</a> | <a href="https://www.linkedin.com/in/kchu1/">Linkedin</a>
+    <br>
+    This work is licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.  Last modified: December 01, 2025.
+    <br>
+    Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia language</a>.
+</div>
+</div><!-- CONTENT ENDS HERE -->
+    
+    
+        <script src="/libs/highlight/highlight.min.js"></script>
+<script>hljs.highlightAll();hljs.configure({tabReplace: '    '});</script>
+
+    
+  </body>
+</html>

@@ -491,7 +491,7 @@ def regulatory_status(token):
 
 **Problems:**
 - Self-custody of private keys (lose key = lose everything)
-- High gas fees ($5-50 per transaction)
+- High gas fees (\$5-50 per transaction)
 - Complexity vs Venmo/traditional apps
 
 **Reality:** Until UX matches consumer apps, adoption stays <5% of population

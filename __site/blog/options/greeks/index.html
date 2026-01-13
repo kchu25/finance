@@ -1,5 +1,63 @@
-<!doctype html> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/finance/libs/katex/katex.min.css"> <link rel=stylesheet  href="/finance/libs/highlight/styles/github.min.css"> <link rel=stylesheet  href="/finance/css/franklin.css"> <link rel=stylesheet  href="/finance/css/hypertext.css"> <link rel=icon  href="/finance/assets/favicon.png"> <title>Options Greeks: The Complete Guide</title> <header> <h1 style="color:#283747">Finance</h1> <nav> <a href="/finance/" class=current >Tags</a> | <a href="/finance/blog/" >Notes</a> <hr/> </nav> </header> <div class=franklin-content ><h1 id=options_greeks_the_complete_guide ><a href="#options_greeks_the_complete_guide" class=header-anchor >Options Greeks: The Complete Guide</a></h1> <h2 id=quick_reference_table ><a href="#quick_reference_table" class=header-anchor >Quick Reference Table</a></h2> <table><tr><th align=right >Greek<th align=right >Catchphrase<th align=right >Measures<th align=right >Typical Range<tr><td align=right ><strong>Delta &#40;Δ&#41;</strong><td align=right >&quot;Speed of profit&quot;<td align=right >Price sensitivity<td align=right >-1 to &#43;1<tr><td align=right ><strong>Gamma &#40;Γ&#41;</strong><td align=right >&quot;Acceleration of delta&quot;<td align=right >Delta&#39;s rate of change<td align=right >0 to ~0.1<tr><td align=right ><strong>Theta &#40;Θ&#41;</strong><td align=right >&quot;Time is money &#40;bleeding&#41;&quot;<td align=right >Time decay per day<td align=right >Negative for long<tr><td align=right ><strong>Vega &#40;ν&#41;</strong><td align=right >&quot;Volatility appetite&quot;<td align=right >IV sensitivity<td align=right >0 to ~1&#43;<tr><td align=right ><strong>Rho &#40;ρ&#41;</strong><td align=right >&quot;Interest rate whisper&quot;<td align=right >Rate sensitivity<td align=right >Small values</table> <hr /> <h2 id="delta_δ_the_directional_compass"><a href="#delta_δ_the_directional_compass" class=header-anchor >Delta &#40;Δ&#41;: The Directional Compass</a></h2> <h3 id=mathematical_definition ><a href="#mathematical_definition" class=header-anchor >Mathematical Definition</a></h3> <pre><code class=language-julia >Δ &#61; ∂V/∂S
-&#40;Change in option value per &#36;1 change in underlying&#41;</code></pre> <h3 id=catchphrase_speed_of_profit ><a href="#catchphrase_speed_of_profit" class=header-anchor >Catchphrase: <strong>&quot;Speed of Profit&quot;</strong></a></h3> <h3 id=key_concepts ><a href="#key_concepts" class=header-anchor >Key Concepts</a></h3> <ul> <li><p><strong>Calls</strong>: 0 to &#43;1.00 &#40;usually 0.01 to 0.99&#41;</p> <li><p><strong>Puts</strong>: -1.00 to 0 &#40;usually -0.99 to -0.01&#41;</p> <li><p><strong>At-the-money &#40;ATM&#41;</strong>: ~0.50 for calls, ~-0.50 for puts</p> <li><p><strong>Deep in-the-money &#40;ITM&#41;</strong>: approaches ±1.00</p> <li><p><strong>Out-of-the-money &#40;OTM&#41;</strong>: approaches 0</p> </ul> <h3 id=intuitive_understanding ><a href="#intuitive_understanding" class=header-anchor >Intuitive Understanding</a></h3> <ul> <li><p>Delta of 0.30 &#61; &quot;30&#37; probability of expiring ITM&quot; &#40;rough approximation&#41;</p> <li><p>Delta of 0.50 call &#61; &quot;Move <span class=katex ><span class=katex-mathml ><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>50</mn><mi>w</mi><mi>h</mi><mi>e</mi><mi>n</mi><mi>s</mi><mi>t</mi><mi>o</mi><mi>c</mi><mi>k</mi><mi>m</mi><mi>o</mi><mi>v</mi><mi>e</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">50 when stock moves </annotation></semantics></math></span><span class=katex-html  aria-hidden=true ><span class=base ><span class=strut  style="height:0.6944em;"></span><span class=mord >50</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mord mathnormal">h</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mord mathnormal">oc</span><span class="mord mathnormal">km</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">es</span></span></span></span>100&quot;</p> <li><p>Delta of -0.25 put &#61; &quot;Gain <span class=katex ><span class=katex-mathml ><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>25</mn><mi>w</mi><mi>h</mi><mi>e</mi><mi>n</mi><mi>s</mi><mi>t</mi><mi>o</mi><mi>c</mi><mi>k</mi><mi>d</mi><mi>r</mi><mi>o</mi><mi>p</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">25 when stock drops </annotation></semantics></math></span><span class=katex-html  aria-hidden=true ><span class=base ><span class=strut  style="height:0.8889em;vertical-align:-0.1944em;"></span><span class=mord >25</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mord mathnormal">h</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mord mathnormal">oc</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal">d</span><span class="mord mathnormal">ro</span><span class="mord mathnormal">p</span><span class="mord mathnormal">s</span></span></span></span>100&quot;</p> </ul> <h3 id=algo-trading_applications ><a href="#algo-trading_applications" class=header-anchor >Algo-Trading Applications</a></h3> <pre><code class=language-python ># Delta-neutral strategies
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="/libs/katex/katex.min.css">
+     
+   <link rel="stylesheet" href="/libs/highlight/styles/github.min.css">
+   
+  <link rel="stylesheet" href="/css/franklin.css">
+<link rel="stylesheet" href="/css/hypertext.css">
+<link rel="icon" href="/assets/favicon.png">
+
+   <title>Options Greeks: The Complete Guide</title>  
+</head>
+<body>
+<header>
+  <h1 style="color:#283747">Finance</h1>
+  <nav>
+    <a href="/" class="current">Tags</a>
+  | <a href="/blog/" >Notes</a>
+  <hr/>
+  </nav>
+</header>
+
+
+<!-- Content appended here -->
+<div class="franklin-content"><h1 id="options_greeks_the_complete_guide"><a href="#options_greeks_the_complete_guide" class="header-anchor">Options Greeks: The Complete Guide</a></h1>
+<h2 id="quick_reference_table"><a href="#quick_reference_table" class="header-anchor">Quick Reference Table</a></h2>
+<table><tr><th align="right">Greek</th><th align="right">Catchphrase</th><th align="right">Measures</th><th align="right">Typical Range</th></tr><tr><td align="right"><strong>Delta &#40;Δ&#41;</strong></td><td align="right">&quot;Speed of profit&quot;</td><td align="right">Price sensitivity</td><td align="right">-1 to &#43;1</td></tr><tr><td align="right"><strong>Gamma &#40;Γ&#41;</strong></td><td align="right">&quot;Acceleration of delta&quot;</td><td align="right">Delta&#39;s rate of change</td><td align="right">0 to ~0.1</td></tr><tr><td align="right"><strong>Theta &#40;Θ&#41;</strong></td><td align="right">&quot;Time is money &#40;bleeding&#41;&quot;</td><td align="right">Time decay per day</td><td align="right">Negative for long</td></tr><tr><td align="right"><strong>Vega &#40;ν&#41;</strong></td><td align="right">&quot;Volatility appetite&quot;</td><td align="right">IV sensitivity</td><td align="right">0 to ~1&#43;</td></tr><tr><td align="right"><strong>Rho &#40;ρ&#41;</strong></td><td align="right">&quot;Interest rate whisper&quot;</td><td align="right">Rate sensitivity</td><td align="right">Small values</td></tr></table>
+<hr />
+<h2 id="delta_δ_the_directional_compass"><a href="#delta_δ_the_directional_compass" class="header-anchor">Delta &#40;Δ&#41;: The Directional Compass</a></h2>
+<h3 id="mathematical_definition"><a href="#mathematical_definition" class="header-anchor">Mathematical Definition</a></h3>
+<pre><code class="language-julia">Δ &#61; ∂V/∂S
+&#40;Change in option value per &#36;1 change in underlying&#41;</code></pre>
+<h3 id="catchphrase_speed_of_profit"><a href="#catchphrase_speed_of_profit" class="header-anchor">Catchphrase: <strong>&quot;Speed of Profit&quot;</strong></a></h3>
+<h3 id="key_concepts"><a href="#key_concepts" class="header-anchor">Key Concepts</a></h3>
+<ul>
+<li><p><strong>Calls</strong>: 0 to &#43;1.00 &#40;usually 0.01 to 0.99&#41;</p>
+</li>
+<li><p><strong>Puts</strong>: -1.00 to 0 &#40;usually -0.99 to -0.01&#41;</p>
+</li>
+<li><p><strong>At-the-money &#40;ATM&#41;</strong>: ~0.50 for calls, ~-0.50 for puts</p>
+</li>
+<li><p><strong>Deep in-the-money &#40;ITM&#41;</strong>: approaches ±1.00</p>
+</li>
+<li><p><strong>Out-of-the-money &#40;OTM&#41;</strong>: approaches 0</p>
+</li>
+</ul>
+<h3 id="intuitive_understanding"><a href="#intuitive_understanding" class="header-anchor">Intuitive Understanding</a></h3>
+<ul>
+<li><p>Delta of 0.30 &#61; &quot;30&#37; probability of expiring ITM&quot; &#40;rough approximation&#41;</p>
+</li>
+<li><p>Delta of 0.50 call &#61; &quot;Move \(50 when stock moves \)100&quot;</p>
+</li>
+<li><p>Delta of -0.25 put &#61; &quot;Gain \(25 when stock drops \)100&quot;</p>
+</li>
+</ul>
+<h3 id="algo-trading_applications"><a href="#algo-trading_applications" class="header-anchor">Algo-Trading Applications</a></h3>
+<pre><code class="language-python"># Delta-neutral strategies
 portfolio_delta &#61; sum&#40;position.quantity * position.delta&#41;
 
 # Dynamic hedging
@@ -8,8 +66,59 @@ if abs&#40;portfolio_delta&#41; &gt; threshold:
     execute_hedge&#40;hedge_quantity&#41;
 
 # Delta-based position sizing
-position_size &#61; target_delta_exposure / option_delta</code></pre> <p><strong>Common Strategies:</strong></p> <ul> <li><p><strong>Delta hedging</strong>: Keep portfolio delta near zero</p> <li><p><strong>Directional trading</strong>: Accumulate positive/negative delta</p> <li><p><strong>Delta-weighted portfolios</strong>: Balance exposure across positions</p> </ul> <hr /> <h2 id="gamma_γ_the_curvature_monster"><a href="#gamma_γ_the_curvature_monster" class=header-anchor >Gamma &#40;Γ&#41;: The Curvature Monster</a></h2> <h3 id=mathematical_definition__2 ><a href="#mathematical_definition__2" class=header-anchor >Mathematical Definition</a></h3> <pre><code class=language-julia >Γ &#61; ∂²V/∂S² &#61; ∂Δ/∂S
-&#40;Change in delta per &#36;1 change in underlying&#41;</code></pre> <h3 id=catchphrase_acceleration_of_delta ><a href="#catchphrase_acceleration_of_delta" class=header-anchor >Catchphrase: <strong>&quot;Acceleration of Delta&quot;</strong></a></h3> <h3 id=key_concepts__2 ><a href="#key_concepts__2" class=header-anchor >Key Concepts</a></h3> <ul> <li><p><strong>Always positive</strong> for long options &#40;both calls and puts&#41;</p> <li><p><strong>Highest at-the-money</strong> and near expiration</p> <li><p><strong>Decreases</strong> as you move ITM or OTM</p> <li><p><strong>Explodes</strong> in the final days before expiry</p> </ul> <h3 id=intuitive_understanding__2 ><a href="#intuitive_understanding__2" class=header-anchor >Intuitive Understanding</a></h3> <ul> <li><p>High gamma &#61; &quot;Delta changes rapidly&quot; &#61; More dynamic hedging needed</p> <li><p>Low gamma &#61; &quot;Delta is stable&quot; &#61; Less rebalancing required</p> <li><p>Gamma scalping &#61; Profiting from realized volatility exceeding implied volatility</p> </ul> <h3 id=the_gamma_trap ><a href="#the_gamma_trap" class=header-anchor >The Gamma Trap</a></h3> <p><strong>Long gamma</strong> &#40;long options&#41;:</p> <ul> <li><p>✅ Benefits from big moves &#40;convexity&#41;</p> <li><p>❌ Pays theta for the privilege</p> </ul> <p><strong>Short gamma</strong> &#40;short options&#41;:</p> <ul> <li><p>✅ Collects theta</p> <li><p>❌ Gets hurt by big moves &#40;negative convexity&#41;</p> </ul> <h3 id=algo-trading_applications__2 ><a href="#algo-trading_applications__2" class=header-anchor >Algo-Trading Applications</a></h3> <pre><code class=language-python ># Gamma scalping
+position_size &#61; target_delta_exposure / option_delta</code></pre>
+<p><strong>Common Strategies:</strong></p>
+<ul>
+<li><p><strong>Delta hedging</strong>: Keep portfolio delta near zero</p>
+</li>
+<li><p><strong>Directional trading</strong>: Accumulate positive/negative delta</p>
+</li>
+<li><p><strong>Delta-weighted portfolios</strong>: Balance exposure across positions</p>
+</li>
+</ul>
+<hr />
+<h2 id="gamma_γ_the_curvature_monster"><a href="#gamma_γ_the_curvature_monster" class="header-anchor">Gamma &#40;Γ&#41;: The Curvature Monster</a></h2>
+<h3 id="mathematical_definition__2"><a href="#mathematical_definition__2" class="header-anchor">Mathematical Definition</a></h3>
+<pre><code class="language-julia">Γ &#61; ∂²V/∂S² &#61; ∂Δ/∂S
+&#40;Change in delta per &#36;1 change in underlying&#41;</code></pre>
+<h3 id="catchphrase_acceleration_of_delta"><a href="#catchphrase_acceleration_of_delta" class="header-anchor">Catchphrase: <strong>&quot;Acceleration of Delta&quot;</strong></a></h3>
+<h3 id="key_concepts__2"><a href="#key_concepts__2" class="header-anchor">Key Concepts</a></h3>
+<ul>
+<li><p><strong>Always positive</strong> for long options &#40;both calls and puts&#41;</p>
+</li>
+<li><p><strong>Highest at-the-money</strong> and near expiration</p>
+</li>
+<li><p><strong>Decreases</strong> as you move ITM or OTM</p>
+</li>
+<li><p><strong>Explodes</strong> in the final days before expiry</p>
+</li>
+</ul>
+<h3 id="intuitive_understanding__2"><a href="#intuitive_understanding__2" class="header-anchor">Intuitive Understanding</a></h3>
+<ul>
+<li><p>High gamma &#61; &quot;Delta changes rapidly&quot; &#61; More dynamic hedging needed</p>
+</li>
+<li><p>Low gamma &#61; &quot;Delta is stable&quot; &#61; Less rebalancing required</p>
+</li>
+<li><p>Gamma scalping &#61; Profiting from realized volatility exceeding implied volatility</p>
+</li>
+</ul>
+<h3 id="the_gamma_trap"><a href="#the_gamma_trap" class="header-anchor">The Gamma Trap</a></h3>
+<p><strong>Long gamma</strong> &#40;long options&#41;:</p>
+<ul>
+<li><p>✅ Benefits from big moves &#40;convexity&#41;</p>
+</li>
+<li><p>❌ Pays theta for the privilege</p>
+</li>
+</ul>
+<p><strong>Short gamma</strong> &#40;short options&#41;:</p>
+<ul>
+<li><p>✅ Collects theta</p>
+</li>
+<li><p>❌ Gets hurt by big moves &#40;negative convexity&#41;</p>
+</li>
+</ul>
+<h3 id="algo-trading_applications__2"><a href="#algo-trading_applications__2" class="header-anchor">Algo-Trading Applications</a></h3>
+<pre><code class="language-python"># Gamma scalping
 if position.gamma &gt; 0:  # Long gamma
     # When stock moves up, delta increases
     # Sell stock to rebalance &#40;sell high&#41;
@@ -26,10 +135,50 @@ if position.gamma &gt; 0:  # Long gamma
 # Gamma risk management
 max_gamma_exposure &#61; account_size * risk_factor
 if abs&#40;portfolio_gamma&#41; &gt; max_gamma_exposure:
-    reduce_positions&#40;&#41;</code></pre> <p><strong>Common Strategies:</strong></p> <ul> <li><p><strong>Gamma scalping</strong>: Profit from rebalancing a delta-hedged position</p> <li><p><strong>Pin risk management</strong>: Monitor gamma near strike prices at expiration</p> <li><p><strong>Zero-gamma portfolios</strong>: Combine different strikes to neutralize gamma</p> </ul> <hr /> <h2 id="theta_θ_the_silent_killer"><a href="#theta_θ_the_silent_killer" class=header-anchor >Theta &#40;Θ&#41;: The Silent Killer</a></h2> <h3 id=mathematical_definition__3 ><a href="#mathematical_definition__3" class=header-anchor >Mathematical Definition</a></h3> <pre><code class=language-julia >Θ &#61; ∂V/∂t
-&#40;Change in option value per day passing&#41;</code></pre> <h3 id=catchphrase_time_is_money_bleeding ><a href="#catchphrase_time_is_money_bleeding" class=header-anchor >Catchphrase: <strong>&quot;Time is Money Bleeding&quot;</strong></a></h3> <h3 id=key_concepts__3 ><a href="#key_concepts__3" class=header-anchor >Key Concepts</a></h3> <ul> <li><p><strong>Always negative</strong> for long options &#40;you lose money daily&#41;</p> <li><p><strong>Always positive</strong> for short options &#40;you gain money daily&#41;</p> <li><p><strong>Accelerates</strong> as expiration approaches</p> <li><p><strong>Highest</strong> for at-the-money options</p> <li><p>Measured in dollars per day &#40;e.g., Θ &#61; -0.05 &#61; lose &#36;5/day on 100 shares&#41;</p> </ul> <h3 id=intuitive_understanding__3 ><a href="#intuitive_understanding__3" class=header-anchor >Intuitive Understanding</a></h3> <ul> <li><p>&quot;Every day you hold, you pay rent&quot;</p> <li><p>ATM options decay fastest in the final 30 days</p> <li><p>Weekend theta: Some brokers charge 3 days on Friday</p> </ul> <h3 id=the_theta_curve ><a href="#the_theta_curve" class=header-anchor >The Theta Curve</a></h3> <pre><code class=language-julia >High θ decay  →  📉📉📉  ← Final 30 days
+    reduce_positions&#40;&#41;</code></pre>
+<p><strong>Common Strategies:</strong></p>
+<ul>
+<li><p><strong>Gamma scalping</strong>: Profit from rebalancing a delta-hedged position</p>
+</li>
+<li><p><strong>Pin risk management</strong>: Monitor gamma near strike prices at expiration</p>
+</li>
+<li><p><strong>Zero-gamma portfolios</strong>: Combine different strikes to neutralize gamma</p>
+</li>
+</ul>
+<hr />
+<h2 id="theta_θ_the_silent_killer"><a href="#theta_θ_the_silent_killer" class="header-anchor">Theta &#40;Θ&#41;: The Silent Killer</a></h2>
+<h3 id="mathematical_definition__3"><a href="#mathematical_definition__3" class="header-anchor">Mathematical Definition</a></h3>
+<pre><code class="language-julia">Θ &#61; ∂V/∂t
+&#40;Change in option value per day passing&#41;</code></pre>
+<h3 id="catchphrase_time_is_money_bleeding"><a href="#catchphrase_time_is_money_bleeding" class="header-anchor">Catchphrase: <strong>&quot;Time is Money Bleeding&quot;</strong></a></h3>
+<h3 id="key_concepts__3"><a href="#key_concepts__3" class="header-anchor">Key Concepts</a></h3>
+<ul>
+<li><p><strong>Always negative</strong> for long options &#40;you lose money daily&#41;</p>
+</li>
+<li><p><strong>Always positive</strong> for short options &#40;you gain money daily&#41;</p>
+</li>
+<li><p><strong>Accelerates</strong> as expiration approaches</p>
+</li>
+<li><p><strong>Highest</strong> for at-the-money options</p>
+</li>
+<li><p>Measured in dollars per day &#40;e.g., Θ &#61; -0.05 &#61; lose &#36;5/day on 100 shares&#41;</p>
+</li>
+</ul>
+<h3 id="intuitive_understanding__3"><a href="#intuitive_understanding__3" class="header-anchor">Intuitive Understanding</a></h3>
+<ul>
+<li><p>&quot;Every day you hold, you pay rent&quot;</p>
+</li>
+<li><p>ATM options decay fastest in the final 30 days</p>
+</li>
+<li><p>Weekend theta: Some brokers charge 3 days on Friday</p>
+</li>
+</ul>
+<h3 id="the_theta_curve"><a href="#the_theta_curve" class="header-anchor">The Theta Curve</a></h3>
+<pre><code class="language-julia">High θ decay  →  📉📉📉  ← Final 30 days
 Medium θ      →  📉📉    ← 30-60 days
-Low θ         →  📉     ← 60&#43; days</code></pre> <h3 id=algo-trading_applications__3 ><a href="#algo-trading_applications__3" class=header-anchor >Algo-Trading Applications</a></h3> <pre><code class=language-python ># Theta decay strategies
+Low θ         →  📉     ← 60&#43; days</code></pre>
+<h3 id="algo-trading_applications__3"><a href="#algo-trading_applications__3" class="header-anchor">Algo-Trading Applications</a></h3>
+<pre><code class="language-python"># Theta decay strategies
 daily_theta_income &#61; sum&#40;pos.theta * pos.quantity for pos in portfolio&#41;
 
 # Roll timing optimization
@@ -40,8 +189,56 @@ if days_to_expiry &lt; theta_roll_threshold and theta_decay_accelerating:
 # Time-based position management
 theta_to_premium_ratio &#61; abs&#40;theta&#41; / option_price
 if theta_to_premium_ratio &gt; 0.05:  # Losing 5&#37;&#43; per day
-    consider_closing_position&#40;&#41;</code></pre> <p><strong>Common Strategies:</strong></p> <ul> <li><p><strong>Theta harvesting</strong>: Sell options to collect decay &#40;iron condors, credit spreads&#41;</p> <li><p><strong>Theta avoidance</strong>: Close long options before heavy decay period</p> <li><p><strong>Calendar spreads</strong>: Exploit differences in theta between expirations</p> </ul> <hr /> <h2 id="vega_ν_the_volatility_surfer"><a href="#vega_ν_the_volatility_surfer" class=header-anchor >Vega &#40;ν&#41;: The Volatility Surfer</a></h2> <h3 id=mathematical_definition__4 ><a href="#mathematical_definition__4" class=header-anchor >Mathematical Definition</a></h3> <pre><code class=language-julia >ν &#61; ∂V/∂σ
-&#40;Change in option value per 1&#37; change in implied volatility&#41;</code></pre> <h3 id=catchphrase_volatility_appetite ><a href="#catchphrase_volatility_appetite" class=header-anchor >Catchphrase: <strong>&quot;Volatility Appetite&quot;</strong></a></h3> <h3 id=key_concepts__4 ><a href="#key_concepts__4" class=header-anchor >Key Concepts</a></h3> <ul> <li><p><strong>Always positive</strong> for long options &#40;benefit from IV increase&#41;</p> <li><p><strong>Always negative</strong> for short options &#40;hurt by IV increase&#41;</p> <li><p><strong>Highest</strong> for at-the-money options</p> <li><p><strong>Increases</strong> with time to expiration &#40;more time &#61; more uncertainty&#41;</p> <li><p>Measured in dollars per 1&#37; IV change &#40;e.g., ν &#61; 0.12 &#61; gain &#36;12 if IV rises 1&#37;&#41;</p> </ul> <h3 id=intuitive_understanding__4 ><a href="#intuitive_understanding__4" class=header-anchor >Intuitive Understanding</a></h3> <ul> <li><p>Long vega &#61; &quot;Betting on uncertainty increasing&quot; &#61; Long options</p> <li><p>Short vega &#61; &quot;Betting on calm markets&quot; &#61; Short options</p> <li><p>Vega and theta trade-off: High vega usually means high theta cost</p> </ul> <h3 id=the_iv_crush ><a href="#the_iv_crush" class=header-anchor >The IV Crush</a></h3> <p><strong>Earnings events:</strong></p> <ul> <li><p>Before: IV inflated &#40;high vega&#41;</p> <li><p>After: IV collapses &#40;vega value evaporates&#41;</p> <li><p>Long options lose even if directionally correct&#33;</p> </ul> <h3 id=algo-trading_applications__4 ><a href="#algo-trading_applications__4" class=header-anchor >Algo-Trading Applications</a></h3> <pre><code class=language-python ># Volatility regime detection
+    consider_closing_position&#40;&#41;</code></pre>
+<p><strong>Common Strategies:</strong></p>
+<ul>
+<li><p><strong>Theta harvesting</strong>: Sell options to collect decay &#40;iron condors, credit spreads&#41;</p>
+</li>
+<li><p><strong>Theta avoidance</strong>: Close long options before heavy decay period</p>
+</li>
+<li><p><strong>Calendar spreads</strong>: Exploit differences in theta between expirations</p>
+</li>
+</ul>
+<hr />
+<h2 id="vega_ν_the_volatility_surfer"><a href="#vega_ν_the_volatility_surfer" class="header-anchor">Vega &#40;ν&#41;: The Volatility Surfer</a></h2>
+<h3 id="mathematical_definition__4"><a href="#mathematical_definition__4" class="header-anchor">Mathematical Definition</a></h3>
+<pre><code class="language-julia">ν &#61; ∂V/∂σ
+&#40;Change in option value per 1&#37; change in implied volatility&#41;</code></pre>
+<h3 id="catchphrase_volatility_appetite"><a href="#catchphrase_volatility_appetite" class="header-anchor">Catchphrase: <strong>&quot;Volatility Appetite&quot;</strong></a></h3>
+<h3 id="key_concepts__4"><a href="#key_concepts__4" class="header-anchor">Key Concepts</a></h3>
+<ul>
+<li><p><strong>Always positive</strong> for long options &#40;benefit from IV increase&#41;</p>
+</li>
+<li><p><strong>Always negative</strong> for short options &#40;hurt by IV increase&#41;</p>
+</li>
+<li><p><strong>Highest</strong> for at-the-money options</p>
+</li>
+<li><p><strong>Increases</strong> with time to expiration &#40;more time &#61; more uncertainty&#41;</p>
+</li>
+<li><p>Measured in dollars per 1&#37; IV change &#40;e.g., ν &#61; 0.12 &#61; gain &#36;12 if IV rises 1&#37;&#41;</p>
+</li>
+</ul>
+<h3 id="intuitive_understanding__4"><a href="#intuitive_understanding__4" class="header-anchor">Intuitive Understanding</a></h3>
+<ul>
+<li><p>Long vega &#61; &quot;Betting on uncertainty increasing&quot; &#61; Long options</p>
+</li>
+<li><p>Short vega &#61; &quot;Betting on calm markets&quot; &#61; Short options</p>
+</li>
+<li><p>Vega and theta trade-off: High vega usually means high theta cost</p>
+</li>
+</ul>
+<h3 id="the_iv_crush"><a href="#the_iv_crush" class="header-anchor">The IV Crush</a></h3>
+<p><strong>Earnings events:</strong></p>
+<ul>
+<li><p>Before: IV inflated &#40;high vega&#41;</p>
+</li>
+<li><p>After: IV collapses &#40;vega value evaporates&#41;</p>
+</li>
+<li><p>Long options lose even if directionally correct&#33;</p>
+</li>
+</ul>
+<h3 id="algo-trading_applications__4"><a href="#algo-trading_applications__4" class="header-anchor">Algo-Trading Applications</a></h3>
+<pre><code class="language-python"># Volatility regime detection
 current_iv &#61; option.implied_volatility
 historical_iv_percentile &#61; get_percentile&#40;current_iv, lookback&#61;252&#41;
 
@@ -61,8 +258,46 @@ if abs&#40;portfolio_vega&#41; &gt; threshold:
 # Event-based vega trading
 if earnings_date_approaching and iv_rank &lt; 50:
     # Buy volatility before it spikes
-    buy_options_before_event&#40;&#41;</code></pre> <p><strong>Common Strategies:</strong></p> <ul> <li><p><strong>Vega arbitrage</strong>: Exploit IV differences across strikes/expirations</p> <li><p><strong>Vol selling</strong>: Short vega in high IV percentile environments</p> <li><p><strong>Vol buying</strong>: Long vega before expected volatility expansion</p> <li><p><strong>Dispersion trading</strong>: Trade realized vs implied vol differences</p> </ul> <hr /> <h2 id="rho_ρ_the_forgotten_greek"><a href="#rho_ρ_the_forgotten_greek" class=header-anchor >Rho &#40;ρ&#41;: The Forgotten Greek</a></h2> <h3 id=mathematical_definition__5 ><a href="#mathematical_definition__5" class=header-anchor >Mathematical Definition</a></h3> <pre><code class=language-julia >ρ &#61; ∂V/∂r
-&#40;Change in option value per 1&#37; change in risk-free rate&#41;</code></pre> <h3 id=catchphrase_interest_rate_whisper ><a href="#catchphrase_interest_rate_whisper" class=header-anchor >Catchphrase: <strong>&quot;Interest Rate Whisper&quot;</strong></a></h3> <h3 id=key_concepts__5 ><a href="#key_concepts__5" class=header-anchor >Key Concepts</a></h3> <ul> <li><p><strong>Usually the smallest Greek</strong> in terms of impact</p> <li><p><strong>Positive for calls</strong>, <strong>negative for puts</strong></p> <li><p><strong>Matters more</strong> for long-dated options &#40;LEAPS&#41;</p> <li><p><strong>Mostly ignored</strong> for short-term trading</p> </ul> <h3 id=intuitive_understanding__5 ><a href="#intuitive_understanding__5" class=header-anchor >Intuitive Understanding</a></h3> <ul> <li><p>Higher rates → Calls worth more &#40;opportunity cost of capital&#41;</p> <li><p>Higher rates → Puts worth less</p> <li><p>Only really matters when Fed is actively changing rates</p> </ul> <h3 id=algo-trading_applications__5 ><a href="#algo-trading_applications__5" class=header-anchor >Algo-Trading Applications</a></h3> <pre><code class=language-python ># Mostly ignored in short-term trading, but for LEAPS:
+    buy_options_before_event&#40;&#41;</code></pre>
+<p><strong>Common Strategies:</strong></p>
+<ul>
+<li><p><strong>Vega arbitrage</strong>: Exploit IV differences across strikes/expirations</p>
+</li>
+<li><p><strong>Vol selling</strong>: Short vega in high IV percentile environments</p>
+</li>
+<li><p><strong>Vol buying</strong>: Long vega before expected volatility expansion</p>
+</li>
+<li><p><strong>Dispersion trading</strong>: Trade realized vs implied vol differences</p>
+</li>
+</ul>
+<hr />
+<h2 id="rho_ρ_the_forgotten_greek"><a href="#rho_ρ_the_forgotten_greek" class="header-anchor">Rho &#40;ρ&#41;: The Forgotten Greek</a></h2>
+<h3 id="mathematical_definition__5"><a href="#mathematical_definition__5" class="header-anchor">Mathematical Definition</a></h3>
+<pre><code class="language-julia">ρ &#61; ∂V/∂r
+&#40;Change in option value per 1&#37; change in risk-free rate&#41;</code></pre>
+<h3 id="catchphrase_interest_rate_whisper"><a href="#catchphrase_interest_rate_whisper" class="header-anchor">Catchphrase: <strong>&quot;Interest Rate Whisper&quot;</strong></a></h3>
+<h3 id="key_concepts__5"><a href="#key_concepts__5" class="header-anchor">Key Concepts</a></h3>
+<ul>
+<li><p><strong>Usually the smallest Greek</strong> in terms of impact</p>
+</li>
+<li><p><strong>Positive for calls</strong>, <strong>negative for puts</strong></p>
+</li>
+<li><p><strong>Matters more</strong> for long-dated options &#40;LEAPS&#41;</p>
+</li>
+<li><p><strong>Mostly ignored</strong> for short-term trading</p>
+</li>
+</ul>
+<h3 id="intuitive_understanding__5"><a href="#intuitive_understanding__5" class="header-anchor">Intuitive Understanding</a></h3>
+<ul>
+<li><p>Higher rates → Calls worth more &#40;opportunity cost of capital&#41;</p>
+</li>
+<li><p>Higher rates → Puts worth less</p>
+</li>
+<li><p>Only really matters when Fed is actively changing rates</p>
+</li>
+</ul>
+<h3 id="algo-trading_applications__5"><a href="#algo-trading_applications__5" class="header-anchor">Algo-Trading Applications</a></h3>
+<pre><code class="language-python"># Mostly ignored in short-term trading, but for LEAPS:
 if option.days_to_expiry &gt; 365:
     # Monitor Fed policy changes
     if fed_rate_change_expected:
@@ -71,7 +306,44 @@ if option.days_to_expiry &gt; 365:
 # Interest rate environment positioning
 if rising_rate_environment and holding_long_dated_calls:
     rho_benefit &#61; position.rho * expected_rate_change
-    # Factor into position valuation</code></pre> <hr /> <h2 id=second-order_greeks_advanced ><a href="#second-order_greeks_advanced" class=header-anchor >Second-Order Greeks &#40;Advanced&#41;</a></h2> <h3 id="vanna_δσ"><a href="#vanna_δσ" class=header-anchor >Vanna: ∂Δ/∂σ</a></h3> <p><strong>&quot;Delta&#39;s volatility sensitivity&quot;</strong></p> <ul> <li><p>How much delta changes when IV changes</p> <li><p>Important for volatility skew trading</p> </ul> <h3 id="charm_δt"><a href="#charm_δt" class=header-anchor >Charm: ∂Δ/∂t</a></h3> <p><strong>&quot;Delta decay&quot;</strong></p> <ul> <li><p>How much delta changes as time passes</p> <li><p>Critical for pin risk near expiration</p> </ul> <h3 id="vomma_volga_νσ"><a href="#vomma_volga_νσ" class=header-anchor >Vomma &#40;Volga&#41;: ∂ν/∂σ</a></h3> <p><strong>&quot;Vega&#39;s volatility sensitivity&quot;</strong></p> <ul> <li><p>How vega changes with IV changes</p> <li><p>Important for volatility of volatility trading</p> </ul> <h3 id="zomma_γσ"><a href="#zomma_γσ" class=header-anchor >Zomma: ∂Γ/∂σ</a></h3> <p><strong>&quot;Gamma&#39;s volatility sensitivity&quot;</strong></p> <ul> <li><p>How gamma changes when IV changes</p> </ul> <hr /> <h2 id=greeks_in_api_responses ><a href="#greeks_in_api_responses" class=header-anchor >Greeks in API Responses</a></h2> <p>Yes, most options data providers include Greeks in their API responses:</p> <h3 id=typical_json_response_structure ><a href="#typical_json_response_structure" class=header-anchor >Typical JSON Response Structure</a></h3> <pre><code class=language-json >&#123;
+    # Factor into position valuation</code></pre>
+<hr />
+<h2 id="second-order_greeks_advanced"><a href="#second-order_greeks_advanced" class="header-anchor">Second-Order Greeks &#40;Advanced&#41;</a></h2>
+<h3 id="vanna_δσ"><a href="#vanna_δσ" class="header-anchor">Vanna: ∂Δ/∂σ</a></h3>
+<p><strong>&quot;Delta&#39;s volatility sensitivity&quot;</strong></p>
+<ul>
+<li><p>How much delta changes when IV changes</p>
+</li>
+<li><p>Important for volatility skew trading</p>
+</li>
+</ul>
+<h3 id="charm_δt"><a href="#charm_δt" class="header-anchor">Charm: ∂Δ/∂t</a></h3>
+<p><strong>&quot;Delta decay&quot;</strong></p>
+<ul>
+<li><p>How much delta changes as time passes</p>
+</li>
+<li><p>Critical for pin risk near expiration</p>
+</li>
+</ul>
+<h3 id="vomma_volga_νσ"><a href="#vomma_volga_νσ" class="header-anchor">Vomma &#40;Volga&#41;: ∂ν/∂σ</a></h3>
+<p><strong>&quot;Vega&#39;s volatility sensitivity&quot;</strong></p>
+<ul>
+<li><p>How vega changes with IV changes</p>
+</li>
+<li><p>Important for volatility of volatility trading</p>
+</li>
+</ul>
+<h3 id="zomma_γσ"><a href="#zomma_γσ" class="header-anchor">Zomma: ∂Γ/∂σ</a></h3>
+<p><strong>&quot;Gamma&#39;s volatility sensitivity&quot;</strong></p>
+<ul>
+<li><p>How gamma changes when IV changes</p>
+</li>
+</ul>
+<hr />
+<h2 id="greeks_in_api_responses"><a href="#greeks_in_api_responses" class="header-anchor">Greeks in API Responses</a></h2>
+<p>Yes, most options data providers include Greeks in their API responses:</p>
+<h3 id="typical_json_response_structure"><a href="#typical_json_response_structure" class="header-anchor">Typical JSON Response Structure</a></h3>
+<pre><code class="language-json">&#123;
   &quot;symbol&quot;: &quot;AAPL250117C00150000&quot;,
   &quot;underlying&quot;: &quot;AAPL&quot;,
   &quot;strike&quot;: 150,
@@ -91,7 +363,25 @@ if rising_rate_environment and holding_long_dated_calls:
     &quot;rho&quot;: 0.0234
   &#125;,
   &quot;underlying_price&quot;: 148.75
-&#125;</code></pre> <h3 id=popular_data_providers ><a href="#popular_data_providers" class=header-anchor >Popular Data Providers</a></h3> <ul> <li><p><strong>Interactive Brokers API</strong>: Yes, includes Greeks</p> <li><p><strong>TD Ameritrade API</strong>: Yes, includes Greeks</p> <li><p><strong>Tradier</strong>: Yes, includes Greeks</p> <li><p><strong>Polygon.io</strong>: Yes, includes Greeks</p> <li><p><strong>CBOE Data</strong>: Yes, includes Greeks</p> <li><p><strong>Bloomberg Terminal</strong>: Yes, extensive Greeks</p> </ul> <h3 id=calculating_greeks_yourself ><a href="#calculating_greeks_yourself" class=header-anchor >Calculating Greeks Yourself</a></h3> <p>If your data source doesn&#39;t provide Greeks, you can calculate them using Black-Scholes:</p> <pre><code class=language-python >from scipy.stats import norm
+&#125;</code></pre>
+<h3 id="popular_data_providers"><a href="#popular_data_providers" class="header-anchor">Popular Data Providers</a></h3>
+<ul>
+<li><p><strong>Interactive Brokers API</strong>: Yes, includes Greeks</p>
+</li>
+<li><p><strong>TD Ameritrade API</strong>: Yes, includes Greeks</p>
+</li>
+<li><p><strong>Tradier</strong>: Yes, includes Greeks</p>
+</li>
+<li><p><strong>Polygon.io</strong>: Yes, includes Greeks</p>
+</li>
+<li><p><strong>CBOE Data</strong>: Yes, includes Greeks</p>
+</li>
+<li><p><strong>Bloomberg Terminal</strong>: Yes, extensive Greeks</p>
+</li>
+</ul>
+<h3 id="calculating_greeks_yourself"><a href="#calculating_greeks_yourself" class="header-anchor">Calculating Greeks Yourself</a></h3>
+<p>If your data source doesn&#39;t provide Greeks, you can calculate them using Black-Scholes:</p>
+<pre><code class="language-python">from scipy.stats import norm
 import numpy as np
 
 def black_scholes_greeks&#40;S, K, T, r, sigma, option_type&#61;&#39;call&#39;&#41;:
@@ -125,7 +415,15 @@ def black_scholes_greeks&#40;S, K, T, r, sigma, option_type&#61;&#39;call&#39;&#
         &#39;theta&#39;: theta,
         &#39;vega&#39;: vega,
         &#39;rho&#39;: rho
-    &#125;</code></pre> <hr /> <h2 id=practical_algo-trading_framework ><a href="#practical_algo-trading_framework" class=header-anchor >Practical Algo-Trading Framework</a></h2> <h3 id=risk_management_using_greeks ><a href="#risk_management_using_greeks" class=header-anchor ><ol> <li><p>Risk Management Using Greeks</p> </ol> </a></h3> <pre><code class=language-python >class GreeksRiskManager:
+    &#125;</code></pre>
+<hr />
+<h2 id="practical_algo-trading_framework"><a href="#practical_algo-trading_framework" class="header-anchor">Practical Algo-Trading Framework</a></h2>
+<h3 id="risk_management_using_greeks"><a href="#risk_management_using_greeks" class="header-anchor"><ol>
+<li><p>Risk Management Using Greeks</p>
+</li>
+</ol>
+</a></h3>
+<pre><code class="language-python">class GreeksRiskManager:
     def __init__&#40;self, portfolio&#41;:
         self.portfolio &#61; portfolio
     
@@ -145,7 +443,13 @@ def black_scholes_greeks&#40;S, K, T, r, sigma, option_type&#61;&#39;call&#39;&#
             if abs&#40;value&#41; &gt; limits.get&#40;greek, float&#40;&#39;inf&#39;&#41;&#41;:
                 violations.append&#40;f&quot;&#123;greek&#125;: &#123;value:.2f&#125; exceeds &#123;limits&#91;greek&#93;&#125;&quot;&#41;
         
-        return violations</code></pre> <h3 id=ol_start2_greeks-based_position_sizing ><a href="#ol_start2_greeks-based_position_sizing" class=header-anchor ><ol start=2 > <li><p>Greeks-Based Position Sizing</p> </ol> </a></h3> <pre><code class=language-python >def size_position_by_greeks&#40;target_exposure, option_greeks, risk_limits&#41;:
+        return violations</code></pre>
+<h3 id="ol_start2_greeks-based_position_sizing"><a href="#ol_start2_greeks-based_position_sizing" class="header-anchor"><ol start="2">
+<li><p>Greeks-Based Position Sizing</p>
+</li>
+</ol>
+</a></h3>
+<pre><code class="language-python">def size_position_by_greeks&#40;target_exposure, option_greeks, risk_limits&#41;:
     &quot;&quot;&quot;
     Determine position size based on Greek exposures
     &quot;&quot;&quot;
@@ -161,7 +465,13 @@ def black_scholes_greeks&#40;S, K, T, r, sigma, option_type&#61;&#39;call&#39;&#
     # Take minimum to respect all constraints
     position_size &#61; min&#40;max_by_delta, max_by_gamma, max_by_vega&#41;
     
-    return int&#40;position_size&#41;</code></pre> <h3 id=ol_start3_dynamic_hedging_algorithm ><a href="#ol_start3_dynamic_hedging_algorithm" class=header-anchor ><ol start=3 > <li><p>Dynamic Hedging Algorithm</p> </ol> </a></h3> <pre><code class=language-python >class DynamicHedger:
+    return int&#40;position_size&#41;</code></pre>
+<h3 id="ol_start3_dynamic_hedging_algorithm"><a href="#ol_start3_dynamic_hedging_algorithm" class="header-anchor"><ol start="3">
+<li><p>Dynamic Hedging Algorithm</p>
+</li>
+</ol>
+</a></h3>
+<pre><code class="language-python">class DynamicHedger:
     def __init__&#40;self, rehedge_threshold&#61;100&#41;:
         self.rehedge_threshold &#61; rehedge_threshold  # Delta threshold
     
@@ -180,7 +490,13 @@ def black_scholes_greeks&#40;S, K, T, r, sigma, option_type&#61;&#39;call&#39;&#
     
     def execute_hedge&#40;self, hedge_order&#41;:
         # Execute the hedge trade
-        print&#40;f&quot;Hedging: &#123;hedge_order&#91;&#39;action&#39;&#93;&#125; &#123;hedge_order&#91;&#39;quantity&#39;&#93;&#125; shares&quot;&#41;</code></pre> <h3 id=ol_start4_greeks-based_signal_generation ><a href="#ol_start4_greeks-based_signal_generation" class=header-anchor ><ol start=4 > <li><p>Greeks-Based Signal Generation</p> </ol> </a></h3> <pre><code class=language-python >def generate_signals&#40;option_chain, market_conditions&#41;:
+        print&#40;f&quot;Hedging: &#123;hedge_order&#91;&#39;action&#39;&#93;&#125; &#123;hedge_order&#91;&#39;quantity&#39;&#93;&#125; shares&quot;&#41;</code></pre>
+<h3 id="ol_start4_greeks-based_signal_generation"><a href="#ol_start4_greeks-based_signal_generation" class="header-anchor"><ol start="4">
+<li><p>Greeks-Based Signal Generation</p>
+</li>
+</ol>
+</a></h3>
+<pre><code class="language-python">def generate_signals&#40;option_chain, market_conditions&#41;:
     signals &#61; &#91;&#93;
     
     for option in option_chain:
@@ -211,14 +527,100 @@ def black_scholes_greeks&#40;S, K, T, r, sigma, option_type&#61;&#39;call&#39;&#
                 &#39;reason&#39;: &#39;High gamma &#43; near expiry&#39;
             &#125;&#41;
     
-    return signals</code></pre> <hr /> <h2 id=common_greek-based_strategies ><a href="#common_greek-based_strategies" class=header-anchor >Common Greek-Based Strategies</a></h2> <h3 id=delta-neutral_portfolio ><a href="#delta-neutral_portfolio" class=header-anchor ><ol> <li><p>Delta-Neutral Portfolio</p> </ol> </a></h3> <p><strong>Goal:</strong> Zero delta, profit from other Greeks</p> <pre><code class=language-julia >Long 100 shares of stock &#40;&#43;100 delta&#41;
+    return signals</code></pre>
+<hr />
+<h2 id="common_greek-based_strategies"><a href="#common_greek-based_strategies" class="header-anchor">Common Greek-Based Strategies</a></h2>
+<h3 id="delta-neutral_portfolio"><a href="#delta-neutral_portfolio" class="header-anchor"><ol>
+<li><p>Delta-Neutral Portfolio</p>
+</li>
+</ol>
+</a></h3>
+<p><strong>Goal:</strong> Zero delta, profit from other Greeks</p>
+<pre><code class="language-julia">Long 100 shares of stock &#40;&#43;100 delta&#41;
 Short 2 ATM calls &#40;-100 delta&#41;
-&#61; 0 net delta, positive theta, short gamma/vega</code></pre> <h3 id=ol_start2_gamma_scalping ><a href="#ol_start2_gamma_scalping" class=header-anchor ><ol start=2 > <li><p>Gamma Scalping</p> </ol> </a></h3> <p><strong>Goal:</strong> Profit from realized volatility &gt; implied volatility</p> <pre><code class=language-julia >Long straddle &#40;long gamma, short theta&#41;
+&#61; 0 net delta, positive theta, short gamma/vega</code></pre>
+<h3 id="ol_start2_gamma_scalping"><a href="#ol_start2_gamma_scalping" class="header-anchor"><ol start="2">
+<li><p>Gamma Scalping</p>
+</li>
+</ol>
+</a></h3>
+<p><strong>Goal:</strong> Profit from realized volatility &gt; implied volatility</p>
+<pre><code class="language-julia">Long straddle &#40;long gamma, short theta&#41;
 Continuously rebalance delta by trading underlying
-Profit if realized vol &gt; implied vol</code></pre> <h3 id=ol_start3_iron_condor_theta_harvesting ><a href="#ol_start3_iron_condor_theta_harvesting" class=header-anchor ><ol start=3 > <li><p>Iron Condor &#40;Theta Harvesting&#41;</p> </ol> </a></h3> <p><strong>Goal:</strong> Collect theta, stay within range</p> <pre><code class=language-julia >Short OTM call &#43; Short OTM put &#40;collect theta&#41;
+Profit if realized vol &gt; implied vol</code></pre>
+<h3 id="ol_start3_iron_condor_theta_harvesting"><a href="#ol_start3_iron_condor_theta_harvesting" class="header-anchor"><ol start="3">
+<li><p>Iron Condor &#40;Theta Harvesting&#41;</p>
+</li>
+</ol>
+</a></h3>
+<p><strong>Goal:</strong> Collect theta, stay within range</p>
+<pre><code class="language-julia">Short OTM call &#43; Short OTM put &#40;collect theta&#41;
 Long further OTM call &#43; Long further OTM put &#40;define risk&#41;
-&#61; Positive theta, negative gamma/vega, near-zero delta</code></pre> <h3 id=ol_start4_calendar_spread_vega_theta_play ><a href="#ol_start4_calendar_spread_vega_theta_play" class=header-anchor ><ol start=4 > <li><p>Calendar Spread &#40;Vega &amp; Theta Play&#41;</p> </ol> </a></h3> <p><strong>Goal:</strong> Exploit different decay rates</p> <pre><code class=language-julia >Sell near-term option &#40;high theta decay&#41;
+&#61; Positive theta, negative gamma/vega, near-zero delta</code></pre>
+<h3 id="ol_start4_calendar_spread_vega_theta_play"><a href="#ol_start4_calendar_spread_vega_theta_play" class="header-anchor"><ol start="4">
+<li><p>Calendar Spread &#40;Vega &amp; Theta Play&#41;</p>
+</li>
+</ol>
+</a></h3>
+<p><strong>Goal:</strong> Exploit different decay rates</p>
+<pre><code class="language-julia">Sell near-term option &#40;high theta decay&#41;
 Buy longer-term option &#40;lower theta decay&#41;
-&#61; Positive vega, small positive theta</code></pre> <h3 id=ol_start5_diagonal_spread_delta_theta ><a href="#ol_start5_diagonal_spread_delta_theta" class=header-anchor ><ol start=5 > <li><p>Diagonal Spread &#40;Delta &#43; Theta&#41;</p> </ol> </a></h3> <p><strong>Goal:</strong> Directional &#43; income</p> <pre><code class=language-julia >Sell near-term OTM option
+&#61; Positive vega, small positive theta</code></pre>
+<h3 id="ol_start5_diagonal_spread_delta_theta"><a href="#ol_start5_diagonal_spread_delta_theta" class="header-anchor"><ol start="5">
+<li><p>Diagonal Spread &#40;Delta &#43; Theta&#41;</p>
+</li>
+</ol>
+</a></h3>
+<p><strong>Goal:</strong> Directional &#43; income</p>
+<pre><code class="language-julia">Sell near-term OTM option
 Buy longer-term closer-to-ATM option
-&#61; Directional delta &#43; theta collection</code></pre> <hr /> <h2 id=key_takeaways_for_algo-trading ><a href="#key_takeaways_for_algo-trading" class=header-anchor >Key Takeaways for Algo-Trading</a></h2> <ol> <li><p><strong>Monitor all Greeks continuously</strong> - They change with price, time, and volatility</p> <li><p><strong>Greeks interact</strong> - Changing one affects others &#40;delta-gamma, vega-theta relationships&#41;</p> <li><p><strong>Scale matters</strong> - 1 contract vs 100 contracts &#61; 100x the Greek exposure</p> <li><p><strong>Greeks are estimates</strong> - Models &#40;Black-Scholes&#41; have assumptions that don&#39;t always hold</p> <li><p><strong>Execution matters</strong> - Slippage can eat up theoretical Greek advantages</p> <li><p><strong>Combine Greeks for signals</strong> - Multi-dimensional analysis is more robust</p> <li><p><strong>Hedge dynamically</strong> - Greeks change constantly, static hedges degrade</p> <li><p><strong>Watch for Greek explosions</strong> - Near expiry, Greeks become extreme and less predictable</p> <li><p><strong>Use Greeks for risk limits</strong> - Set maximum portfolio Greek exposures</p> <li><p><strong>Backtest with Greeks</strong> - Don&#39;t just simulate P&amp;L, track Greek evolution</p> </ol> <hr /> <h2 id=the_ultimate_greek_cheat_sheet ><a href="#the_ultimate_greek_cheat_sheet" class=header-anchor >The Ultimate Greek Cheat Sheet</a></h2> <table><tr><th align=right >Situation<th align=right >Primary Greek<th align=right >Action<tr><td align=right >Expecting big move<td align=right >Gamma<td align=right >Buy straddle/strangle<tr><td align=right >Expecting low volatility<td align=right >Theta<td align=right >Sell iron condor<tr><td align=right >IV extremely high<td align=right >Vega<td align=right >Sell premium<tr><td align=right >IV extremely low<td align=right >Vega<td align=right >Buy premium<tr><td align=right >Need directional exposure<td align=right >Delta<td align=right >Buy calls/puts<tr><td align=right >Time is running out<td align=right >Theta<td align=right >Close long options<tr><td align=right >Near expiration at strike<td align=right >Gamma<td align=right >Close or roll position<tr><td align=right >Rates rising &#40;rare concern&#41;<td align=right >Rho<td align=right >Consider for LEAPS only</table> <p><strong>Final Wisdom:</strong> Greeks are your navigation instruments. You wouldn&#39;t fly a plane without checking your instruments constantly—don&#39;t trade options without monitoring your Greeks.</p> <div class=page-foot > Contact me by <a href="mailto:skchu@wustl.edu">E-mail</a> | <a href="https://github.com/kchu25">Github</a> | <a href="https://www.linkedin.com/in/kchu1/">Linkedin</a> <br> This work is licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Last modified: January 13, 2026. <br> Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia language</a>. </div> </div> <script src="/finance/libs/highlight/highlight.min.js"></script> <script>hljs.highlightAll();hljs.configure({tabReplace: ' '});</script>
+&#61; Directional delta &#43; theta collection</code></pre>
+<hr />
+<h2 id="key_takeaways_for_algo-trading"><a href="#key_takeaways_for_algo-trading" class="header-anchor">Key Takeaways for Algo-Trading</a></h2>
+<ol>
+<li><p><strong>Monitor all Greeks continuously</strong> - They change with price, time, and volatility</p>
+</li>
+<li><p><strong>Greeks interact</strong> - Changing one affects others &#40;delta-gamma, vega-theta relationships&#41;</p>
+</li>
+<li><p><strong>Scale matters</strong> - 1 contract vs 100 contracts &#61; 100x the Greek exposure</p>
+</li>
+<li><p><strong>Greeks are estimates</strong> - Models &#40;Black-Scholes&#41; have assumptions that don&#39;t always hold</p>
+</li>
+<li><p><strong>Execution matters</strong> - Slippage can eat up theoretical Greek advantages</p>
+</li>
+<li><p><strong>Combine Greeks for signals</strong> - Multi-dimensional analysis is more robust</p>
+</li>
+<li><p><strong>Hedge dynamically</strong> - Greeks change constantly, static hedges degrade</p>
+</li>
+<li><p><strong>Watch for Greek explosions</strong> - Near expiry, Greeks become extreme and less predictable</p>
+</li>
+<li><p><strong>Use Greeks for risk limits</strong> - Set maximum portfolio Greek exposures</p>
+</li>
+<li><p><strong>Backtest with Greeks</strong> - Don&#39;t just simulate P&amp;L, track Greek evolution</p>
+</li>
+</ol>
+<hr />
+<h2 id="the_ultimate_greek_cheat_sheet"><a href="#the_ultimate_greek_cheat_sheet" class="header-anchor">The Ultimate Greek Cheat Sheet</a></h2>
+<table><tr><th align="right">Situation</th><th align="right">Primary Greek</th><th align="right">Action</th></tr><tr><td align="right">Expecting big move</td><td align="right">Gamma</td><td align="right">Buy straddle/strangle</td></tr><tr><td align="right">Expecting low volatility</td><td align="right">Theta</td><td align="right">Sell iron condor</td></tr><tr><td align="right">IV extremely high</td><td align="right">Vega</td><td align="right">Sell premium</td></tr><tr><td align="right">IV extremely low</td><td align="right">Vega</td><td align="right">Buy premium</td></tr><tr><td align="right">Need directional exposure</td><td align="right">Delta</td><td align="right">Buy calls/puts</td></tr><tr><td align="right">Time is running out</td><td align="right">Theta</td><td align="right">Close long options</td></tr><tr><td align="right">Near expiration at strike</td><td align="right">Gamma</td><td align="right">Close or roll position</td></tr><tr><td align="right">Rates rising &#40;rare concern&#41;</td><td align="right">Rho</td><td align="right">Consider for LEAPS only</td></tr></table>
+<p><strong>Final Wisdom:</strong> Greeks are your navigation instruments. You wouldn&#39;t fly a plane without checking your instruments constantly—don&#39;t trade options without monitoring your Greeks.</p>
+<div class="page-foot">
+    Contact me by <a href="mailto:skchu@wustl.edu">E-mail</a> | <a href="https://github.com/kchu25">Github</a> | <a href="https://www.linkedin.com/in/kchu1/">Linkedin</a>
+    <br>
+    This work is licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.  Last modified: January 13, 2026.
+    <br>
+    Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia language</a>.
+</div>
+</div><!-- CONTENT ENDS HERE -->
+    
+        <script src="/libs/katex/katex.min.js"></script>
+<script src="/libs/katex/contrib/auto-render.min.js"></script>
+<script>renderMathInElement(document.body)</script>
+
+    
+    
+        <script src="/libs/highlight/highlight.min.js"></script>
+<script>hljs.highlightAll();hljs.configure({tabReplace: '    '});</script>
+
+    
+  </body>
+</html>

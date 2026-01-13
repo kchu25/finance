@@ -1,4 +1,52 @@
-<!doctype html> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/finance/libs/highlight/styles/github.min.css"> <link rel=stylesheet  href="/finance/css/franklin.css"> <link rel=stylesheet  href="/finance/css/hypertext.css"> <link rel=icon  href="/finance/assets/favicon.png"> <title>Comprehensive Introduction to ERC-20 Tokens</title> <header> <h1 style="color:#283747">Finance</h1> <nav> <a href="/finance/" class=current >Tags</a> | <a href="/finance/blog/" >Notes</a> <hr/> </nav> </header> <div class=franklin-content ><h1 id=comprehensive_introduction_to_erc-20_tokens ><a href="#comprehensive_introduction_to_erc-20_tokens" class=header-anchor >Comprehensive Introduction to ERC-20 Tokens</a></h1> <h2 id=what_is_erc-20 ><a href="#what_is_erc-20" class=header-anchor >What is ERC-20?</a></h2> <p>ERC-20 &#40;Ethereum Request for Comments 20&#41; is a technical standard used for smart contracts on the Ethereum blockchain for implementing tokens. Proposed by Fabian Vogelsteller in November 2015, it has become the most widely adopted token standard in the cryptocurrency ecosystem.</p> <p>The &quot;ERC&quot; stands for &quot;Ethereum Request for Comments,&quot; and the number &quot;20&quot; is the proposal identifier. This standard defines a common set of rules that Ethereum tokens must follow, enabling seamless interaction between different tokens and applications.</p> <h2 id=why_erc-20_matters ><a href="#why_erc-20_matters" class=header-anchor >Why ERC-20 Matters</a></h2> <p>Before ERC-20, every token project had its own unique implementation, making it extremely difficult for wallets, exchanges, and other smart contracts to support multiple tokens. ERC-20 solved this by creating a universal standard that:</p> <ul> <li><p><strong>Enables Interoperability</strong>: Any wallet, exchange, or dApp that supports ERC-20 can work with all ERC-20 tokens</p> <li><p><strong>Simplifies Development</strong>: Developers can build on a proven standard rather than creating custom implementations</p> <li><p><strong>Reduces Errors</strong>: A well-tested standard minimizes security vulnerabilities</p> <li><p><strong>Facilitates Adoption</strong>: New tokens gain immediate compatibility with existing infrastructure</p> </ul> <h2 id=erc-20_and_solidity ><a href="#erc-20_and_solidity" class=header-anchor >ERC-20 and Solidity</a></h2> <p>ERC-20 tokens are implemented using <strong>Solidity</strong>, the primary programming language for writing smart contracts on Ethereum. Understanding the relationship between ERC-20 and Solidity is crucial for anyone looking to create or work with tokens.</p> <h3 id=what_is_solidity ><a href="#what_is_solidity" class=header-anchor >What is Solidity?</a></h3> <p>Solidity is a high-level, object-oriented programming language designed specifically for implementing smart contracts on blockchain platforms, primarily Ethereum. It was developed by the Ethereum team and has syntax similar to JavaScript, making it relatively accessible to web developers.</p> <h3 id=how_solidity_implements_erc-20 ><a href="#how_solidity_implements_erc-20" class=header-anchor >How Solidity Implements ERC-20</a></h3> <p>An ERC-20 token is essentially a Solidity smart contract that implements a specific interface. Here&#39;s a simplified example of what an ERC-20 token looks like in Solidity:</p> <pre><code class=language-solidity >// SPDX-License-Identifier: MIT
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+   <link rel="stylesheet" href="/libs/highlight/styles/github.min.css">
+   
+  <link rel="stylesheet" href="/css/franklin.css">
+<link rel="stylesheet" href="/css/hypertext.css">
+<link rel="icon" href="/assets/favicon.png">
+
+   <title>Comprehensive Introduction to ERC-20 Tokens</title>  
+</head>
+<body>
+<header>
+  <h1 style="color:#283747">Finance</h1>
+  <nav>
+    <a href="/" class="current">Tags</a>
+  | <a href="/blog/" >Notes</a>
+  <hr/>
+  </nav>
+</header>
+
+
+<!-- Content appended here -->
+<div class="franklin-content"><h1 id="comprehensive_introduction_to_erc-20_tokens"><a href="#comprehensive_introduction_to_erc-20_tokens" class="header-anchor">Comprehensive Introduction to ERC-20 Tokens</a></h1>
+<h2 id="what_is_erc-20"><a href="#what_is_erc-20" class="header-anchor">What is ERC-20?</a></h2>
+<p>ERC-20 &#40;Ethereum Request for Comments 20&#41; is a technical standard used for smart contracts on the Ethereum blockchain for implementing tokens. Proposed by Fabian Vogelsteller in November 2015, it has become the most widely adopted token standard in the cryptocurrency ecosystem.</p>
+<p>The &quot;ERC&quot; stands for &quot;Ethereum Request for Comments,&quot; and the number &quot;20&quot; is the proposal identifier. This standard defines a common set of rules that Ethereum tokens must follow, enabling seamless interaction between different tokens and applications.</p>
+<h2 id="why_erc-20_matters"><a href="#why_erc-20_matters" class="header-anchor">Why ERC-20 Matters</a></h2>
+<p>Before ERC-20, every token project had its own unique implementation, making it extremely difficult for wallets, exchanges, and other smart contracts to support multiple tokens. ERC-20 solved this by creating a universal standard that:</p>
+<ul>
+<li><p><strong>Enables Interoperability</strong>: Any wallet, exchange, or dApp that supports ERC-20 can work with all ERC-20 tokens</p>
+</li>
+<li><p><strong>Simplifies Development</strong>: Developers can build on a proven standard rather than creating custom implementations</p>
+</li>
+<li><p><strong>Reduces Errors</strong>: A well-tested standard minimizes security vulnerabilities</p>
+</li>
+<li><p><strong>Facilitates Adoption</strong>: New tokens gain immediate compatibility with existing infrastructure</p>
+</li>
+</ul>
+<h2 id="erc-20_and_solidity"><a href="#erc-20_and_solidity" class="header-anchor">ERC-20 and Solidity</a></h2>
+<p>ERC-20 tokens are implemented using <strong>Solidity</strong>, the primary programming language for writing smart contracts on Ethereum. Understanding the relationship between ERC-20 and Solidity is crucial for anyone looking to create or work with tokens.</p>
+<h3 id="what_is_solidity"><a href="#what_is_solidity" class="header-anchor">What is Solidity?</a></h3>
+<p>Solidity is a high-level, object-oriented programming language designed specifically for implementing smart contracts on blockchain platforms, primarily Ethereum. It was developed by the Ethereum team and has syntax similar to JavaScript, making it relatively accessible to web developers.</p>
+<h3 id="how_solidity_implements_erc-20"><a href="#how_solidity_implements_erc-20" class="header-anchor">How Solidity Implements ERC-20</a></h3>
+<p>An ERC-20 token is essentially a Solidity smart contract that implements a specific interface. Here&#39;s a simplified example of what an ERC-20 token looks like in Solidity:</p>
+<pre><code class="language-solidity">// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
 interface IERC20 &#123;
@@ -11,4 +59,182 @@ interface IERC20 &#123;
     
     event Transfer&#40;address indexed from, address indexed to, uint256 value&#41;;
     event Approval&#40;address indexed owner, address indexed spender, uint256 value&#41;;
-&#125;</code></pre> <h3 id=key_solidity_concepts_in_erc-20 ><a href="#key_solidity_concepts_in_erc-20" class=header-anchor >Key Solidity Concepts in ERC-20</a></h3> <p><strong>Interfaces</strong>: The ERC-20 standard is defined as an interface in Solidity, which other contracts must implement.</p> <p><strong>Mappings</strong>: Token balances are typically stored using Solidity&#39;s mapping data structure &#40;e.g., <code>mapping&#40;address &#61;&gt; uint256&#41; private _balances</code>&#41;.</p> <p><strong>Modifiers</strong>: Solidity modifiers are used to add access control and validation logic to token functions.</p> <p><strong>Events</strong>: Solidity&#39;s event system is used to emit Transfer and Approval events that can be tracked off-chain.</p> <p><strong>State Variables</strong>: Token metadata &#40;name, symbol, decimals&#41; and supply information are stored as contract state variables.</p> <h3 id=solidity_versions_and_erc-20 ><a href="#solidity_versions_and_erc-20" class=header-anchor >Solidity Versions and ERC-20</a></h3> <p>Different versions of Solidity have brought improvements to ERC-20 implementations:</p> <ul> <li><p><strong>Solidity 0.4.x</strong>: Early ERC-20 implementations</p> <li><p><strong>Solidity 0.5.x</strong>: Introduced stricter type checking and better security</p> <li><p><strong>Solidity 0.6.x&#43;</strong>: Added more features and improved gas optimization</p> <li><p><strong>Solidity 0.8.x&#43;</strong>: Built-in overflow protection, eliminating need for SafeMath libraries</p> </ul> <h3 id=why_this_relationship_matters ><a href="#why_this_relationship_matters" class=header-anchor >Why This Relationship Matters</a></h3> <p><strong>Development</strong>: To create an ERC-20 token, you must write Solidity code that implements the standard</p> <p><strong>Customization</strong>: Solidity allows you to extend basic ERC-20 functionality with additional features like minting, burning, pausing, or governance mechanisms</p> <p><strong>Security</strong>: Understanding Solidity is essential for identifying vulnerabilities in token contracts</p> <p><strong>Auditing</strong>: Smart contract auditors review Solidity code to ensure ERC-20 tokens are implemented correctly and securely</p> <p><strong>Interaction</strong>: DApps use Solidity to write contracts that interact with ERC-20 tokens</p> <h2 id=core_functions ><a href="#core_functions" class=header-anchor >Core Functions</a></h2> <p>Every ERC-20 token must implement six mandatory functions:</p> <h3 id=totalsupply ><a href="#totalsupply" class=header-anchor ><ol> <li><p><strong>totalSupply&#40;&#41;</strong></p> </ol> </a></h3> <p>Returns the total token supply in circulation.</p> <h3 id=ol_start2_balanceofaddress_account ><a href="#ol_start2_balanceofaddress_account" class=header-anchor ><ol start=2 > <li><p><strong>balanceOf&#40;address account&#41;</strong></p> </ol> </a></h3> <p>Returns the token balance of a specific address.</p> <h3 id=ol_start3_transferaddress_recipient_uint256_amount ><a href="#ol_start3_transferaddress_recipient_uint256_amount" class=header-anchor ><ol start=3 > <li><p><strong>transfer&#40;address recipient, uint256 amount&#41;</strong></p> </ol> </a></h3> <p>Transfers tokens from the caller&#39;s address to the recipient.</p> <h3 id=ol_start4_allowanceaddress_owner_address_spender ><a href="#ol_start4_allowanceaddress_owner_address_spender" class=header-anchor ><ol start=4 > <li><p><strong>allowance&#40;address owner, address spender&#41;</strong></p> </ol> </a></h3> <p>Returns the remaining number of tokens that the spender is allowed to spend on behalf of the owner.</p> <h3 id=ol_start5_approveaddress_spender_uint256_amount ><a href="#ol_start5_approveaddress_spender_uint256_amount" class=header-anchor ><ol start=5 > <li><p><strong>approve&#40;address spender, uint256 amount&#41;</strong></p> </ol> </a></h3> <p>Sets the amount of tokens that a spender is allowed to withdraw from your account.</p> <h3 id=ol_start6_transferfromaddress_sender_address_recipient_uint256_amount ><a href="#ol_start6_transferfromaddress_sender_address_recipient_uint256_amount" class=header-anchor ><ol start=6 > <li><p><strong>transferFrom&#40;address sender, address recipient, uint256 amount&#41;</strong></p> </ol> </a></h3> <p>Transfers tokens on behalf of another address &#40;used in conjunction with approve&#41;.</p> <h2 id=standard_events ><a href="#standard_events" class=header-anchor >Standard Events</a></h2> <p>ERC-20 also defines two events that must be emitted:</p> <h3 id=transfer_event ><a href="#transfer_event" class=header-anchor ><strong>Transfer Event</strong></a></h3> <p>Triggered whenever tokens are transferred, including zero-value transfers.</p> <h3 id=approval_event ><a href="#approval_event" class=header-anchor ><strong>Approval Event</strong></a></h3> <p>Triggered whenever the approve function is successfully called.</p> <h2 id=how_erc-20_tokens_work ><a href="#how_erc-20_tokens_work" class=header-anchor >How ERC-20 Tokens Work</a></h2> <h3 id=token_creation ><a href="#token_creation" class=header-anchor >Token Creation</a></h3> <p>When a new ERC-20 token is created, the smart contract defines:</p> <ul> <li><p>Token name &#40;e.g., &quot;MyToken&quot;&#41;</p> <li><p>Token symbol &#40;e.g., &quot;MTK&quot;&#41;</p> <li><p>Decimal places &#40;usually 18, like Ether&#41;</p> <li><p>Total supply</p> <li><p>Distribution rules</p> </ul> <h3 id=transfer_mechanism ><a href="#transfer_mechanism" class=header-anchor >Transfer Mechanism</a></h3> <p>There are two ways to transfer ERC-20 tokens:</p> <p><strong>Direct Transfer</strong>: The token holder calls the <code>transfer&#40;&#41;</code> function to send tokens directly to another address.</p> <p><strong>Delegated Transfer</strong>: Using <code>approve&#40;&#41;</code> and <code>transferFrom&#40;&#41;</code>, a token holder can authorize another address &#40;like a smart contract&#41; to spend tokens on their behalf. This is crucial for decentralized exchanges and DeFi protocols.</p> <h2 id=popular_erc-20_tokens ><a href="#popular_erc-20_tokens" class=header-anchor >Popular ERC-20 Tokens</a></h2> <p>Many of the most valuable cryptocurrencies are ERC-20 tokens:</p> <ul> <li><p><strong>USDT &#40;Tether&#41;</strong>: Stablecoin pegged to the US dollar</p> <li><p><strong>USDC &#40;USD Coin&#41;</strong>: Regulated stablecoin</p> <li><p><strong>LINK &#40;Chainlink&#41;</strong>: Decentralized oracle network token</p> <li><p><strong>UNI &#40;Uniswap&#41;</strong>: Governance token for Uniswap DEX</p> <li><p><strong>DAI</strong>: Decentralized stablecoin</p> </ul> <h2 id=advantages_of_erc-20 ><a href="#advantages_of_erc-20" class=header-anchor >Advantages of ERC-20</a></h2> <p><strong>Standardization</strong>: Universal compatibility across the Ethereum ecosystem</p> <p><strong>Liquidity</strong>: Easy listing on exchanges and integration with DeFi protocols</p> <p><strong>Security</strong>: Battle-tested standard with known best practices</p> <p><strong>Development Speed</strong>: Faster time-to-market using existing frameworks</p> <p><strong>Community Support</strong>: Extensive documentation, tools, and developer resources</p> <h2 id=limitations_and_considerations ><a href="#limitations_and_considerations" class=header-anchor >Limitations and Considerations</a></h2> <h3 id=gas_fees ><a href="#gas_fees" class=header-anchor >Gas Fees</a></h3> <p>All ERC-20 transactions require gas fees paid in ETH, which can be expensive during network congestion.</p> <h3 id=token_loss_risk ><a href="#token_loss_risk" class=header-anchor >Token Loss Risk</a></h3> <p>Accidentally sending tokens to a contract address that doesn&#39;t support them can result in permanent loss.</p> <h3 id=approval_vulnerabilities ><a href="#approval_vulnerabilities" class=header-anchor >Approval Vulnerabilities</a></h3> <p>The approve/transferFrom pattern can create security risks if not implemented carefully, as malicious contracts could drain approved tokens.</p> <h3 id=no_built-in_features ><a href="#no_built-in_features" class=header-anchor >No Built-in Features</a></h3> <p>ERC-20 is a minimal standard. Advanced features like burning, minting controls, or pausability require additional implementation.</p> <h2 id=erc-20_vs_other_token_standards ><a href="#erc-20_vs_other_token_standards" class=header-anchor >ERC-20 vs Other Token Standards</a></h2> <p><strong>ERC-721</strong>: Non-fungible tokens &#40;NFTs&#41; where each token is unique</p> <p><strong>ERC-777</strong>: Advanced token standard with more features but less adoption</p> <p><strong>ERC-1155</strong>: Multi-token standard supporting both fungible and non-fungible tokens</p> <p><strong>BEP-20</strong>: Similar standard on Binance Smart Chain</p> <h2 id=creating_an_erc-20_token ><a href="#creating_an_erc-20_token" class=header-anchor >Creating an ERC-20 Token</a></h2> <p>Creating a basic ERC-20 token involves:</p> <ol> <li><p>Writing a smart contract that implements the ERC-20 interface</p> <li><p>Deploying the contract to Ethereum &#40;mainnet or testnet&#41;</p> <li><p>Verifying the contract on Etherscan</p> <li><p>Distributing tokens according to your tokenomics</p> </ol> <p>Many developers use OpenZeppelin&#39;s audited implementations as a starting point, which include additional safety features and common extensions.</p> <h2 id=use_cases ><a href="#use_cases" class=header-anchor >Use Cases</a></h2> <p><strong>Cryptocurrencies</strong>: Digital currencies for payments and value transfer</p> <p><strong>Governance Tokens</strong>: Voting rights in decentralized organizations &#40;DAOs&#41;</p> <p><strong>Utility Tokens</strong>: Access to services within a platform or ecosystem</p> <p><strong>Security Tokens</strong>: Tokens representing ownership in real-world assets</p> <p><strong>Stablecoins</strong>: Cryptocurrency pegged to stable assets like fiat currency</p> <p><strong>Reward Tokens</strong>: Incentivization mechanisms in DeFi protocols</p> <h2 id=security_best_practices ><a href="#security_best_practices" class=header-anchor >Security Best Practices</a></h2> <ul> <li><p>Always use well-audited implementations like OpenZeppelin</p> <li><p>Implement proper access controls for minting and burning</p> <li><p>Consider using SafeERC20 libraries for token transfers</p> <li><p>Be cautious with the approve mechanism</p> <li><p>Include pause functionality for emergency situations</p> <li><p>Conduct thorough security audits before mainnet deployment</p> </ul> <h2 id=the_future_of_erc-20 ><a href="#the_future_of_erc-20" class=header-anchor >The Future of ERC-20</a></h2> <p>While ERC-20 remains the dominant token standard, the Ethereum ecosystem continues to evolve. Newer standards address some of ERC-20&#39;s limitations, but its widespread adoption and simple design ensure it will remain relevant for years to come.</p> <p>Layer 2 solutions and Ethereum upgrades are making ERC-20 transactions faster and cheaper, further solidifying its position as the foundation of the token economy.</p> <h2 id=conclusion ><a href="#conclusion" class=header-anchor >Conclusion</a></h2> <p>ERC-20 has fundamentally shaped the blockchain and cryptocurrency landscape by providing a simple, effective standard for creating and managing tokens on Ethereum. Its success demonstrates the power of standardization in enabling innovation and interoperability in decentralized systems.</p> <p>Whether you&#39;re a developer building the next DeFi protocol, an entrepreneur launching a token, or simply a crypto enthusiast, understanding ERC-20 is essential for navigating the modern blockchain ecosystem.</p> <div class=page-foot > Contact me by <a href="mailto:skchu@wustl.edu">E-mail</a> | <a href="https://github.com/kchu25">Github</a> | <a href="https://www.linkedin.com/in/kchu1/">Linkedin</a> <br> This work is licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Last modified: December 01, 2025. <br> Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia language</a>. </div> </div> <script src="/finance/libs/highlight/highlight.min.js"></script> <script>hljs.highlightAll();hljs.configure({tabReplace: ' '});</script>
+&#125;</code></pre>
+<h3 id="key_solidity_concepts_in_erc-20"><a href="#key_solidity_concepts_in_erc-20" class="header-anchor">Key Solidity Concepts in ERC-20</a></h3>
+<p><strong>Interfaces</strong>: The ERC-20 standard is defined as an interface in Solidity, which other contracts must implement.</p>
+<p><strong>Mappings</strong>: Token balances are typically stored using Solidity&#39;s mapping data structure &#40;e.g., <code>mapping&#40;address &#61;&gt; uint256&#41; private _balances</code>&#41;.</p>
+<p><strong>Modifiers</strong>: Solidity modifiers are used to add access control and validation logic to token functions.</p>
+<p><strong>Events</strong>: Solidity&#39;s event system is used to emit Transfer and Approval events that can be tracked off-chain.</p>
+<p><strong>State Variables</strong>: Token metadata &#40;name, symbol, decimals&#41; and supply information are stored as contract state variables.</p>
+<h3 id="solidity_versions_and_erc-20"><a href="#solidity_versions_and_erc-20" class="header-anchor">Solidity Versions and ERC-20</a></h3>
+<p>Different versions of Solidity have brought improvements to ERC-20 implementations:</p>
+<ul>
+<li><p><strong>Solidity 0.4.x</strong>: Early ERC-20 implementations</p>
+</li>
+<li><p><strong>Solidity 0.5.x</strong>: Introduced stricter type checking and better security</p>
+</li>
+<li><p><strong>Solidity 0.6.x&#43;</strong>: Added more features and improved gas optimization</p>
+</li>
+<li><p><strong>Solidity 0.8.x&#43;</strong>: Built-in overflow protection, eliminating need for SafeMath libraries</p>
+</li>
+</ul>
+<h3 id="why_this_relationship_matters"><a href="#why_this_relationship_matters" class="header-anchor">Why This Relationship Matters</a></h3>
+<p><strong>Development</strong>: To create an ERC-20 token, you must write Solidity code that implements the standard</p>
+<p><strong>Customization</strong>: Solidity allows you to extend basic ERC-20 functionality with additional features like minting, burning, pausing, or governance mechanisms</p>
+<p><strong>Security</strong>: Understanding Solidity is essential for identifying vulnerabilities in token contracts</p>
+<p><strong>Auditing</strong>: Smart contract auditors review Solidity code to ensure ERC-20 tokens are implemented correctly and securely</p>
+<p><strong>Interaction</strong>: DApps use Solidity to write contracts that interact with ERC-20 tokens</p>
+<h2 id="core_functions"><a href="#core_functions" class="header-anchor">Core Functions</a></h2>
+<p>Every ERC-20 token must implement six mandatory functions:</p>
+<h3 id="totalsupply"><a href="#totalsupply" class="header-anchor"><ol>
+<li><p><strong>totalSupply&#40;&#41;</strong></p>
+</li>
+</ol>
+</a></h3>
+<p>Returns the total token supply in circulation.</p>
+<h3 id="ol_start2_balanceofaddress_account"><a href="#ol_start2_balanceofaddress_account" class="header-anchor"><ol start="2">
+<li><p><strong>balanceOf&#40;address account&#41;</strong></p>
+</li>
+</ol>
+</a></h3>
+<p>Returns the token balance of a specific address.</p>
+<h3 id="ol_start3_transferaddress_recipient_uint256_amount"><a href="#ol_start3_transferaddress_recipient_uint256_amount" class="header-anchor"><ol start="3">
+<li><p><strong>transfer&#40;address recipient, uint256 amount&#41;</strong></p>
+</li>
+</ol>
+</a></h3>
+<p>Transfers tokens from the caller&#39;s address to the recipient.</p>
+<h3 id="ol_start4_allowanceaddress_owner_address_spender"><a href="#ol_start4_allowanceaddress_owner_address_spender" class="header-anchor"><ol start="4">
+<li><p><strong>allowance&#40;address owner, address spender&#41;</strong></p>
+</li>
+</ol>
+</a></h3>
+<p>Returns the remaining number of tokens that the spender is allowed to spend on behalf of the owner.</p>
+<h3 id="ol_start5_approveaddress_spender_uint256_amount"><a href="#ol_start5_approveaddress_spender_uint256_amount" class="header-anchor"><ol start="5">
+<li><p><strong>approve&#40;address spender, uint256 amount&#41;</strong></p>
+</li>
+</ol>
+</a></h3>
+<p>Sets the amount of tokens that a spender is allowed to withdraw from your account.</p>
+<h3 id="ol_start6_transferfromaddress_sender_address_recipient_uint256_amount"><a href="#ol_start6_transferfromaddress_sender_address_recipient_uint256_amount" class="header-anchor"><ol start="6">
+<li><p><strong>transferFrom&#40;address sender, address recipient, uint256 amount&#41;</strong></p>
+</li>
+</ol>
+</a></h3>
+<p>Transfers tokens on behalf of another address &#40;used in conjunction with approve&#41;.</p>
+<h2 id="standard_events"><a href="#standard_events" class="header-anchor">Standard Events</a></h2>
+<p>ERC-20 also defines two events that must be emitted:</p>
+<h3 id="transfer_event"><a href="#transfer_event" class="header-anchor"><strong>Transfer Event</strong></a></h3>
+<p>Triggered whenever tokens are transferred, including zero-value transfers.</p>
+<h3 id="approval_event"><a href="#approval_event" class="header-anchor"><strong>Approval Event</strong></a></h3>
+<p>Triggered whenever the approve function is successfully called.</p>
+<h2 id="how_erc-20_tokens_work"><a href="#how_erc-20_tokens_work" class="header-anchor">How ERC-20 Tokens Work</a></h2>
+<h3 id="token_creation"><a href="#token_creation" class="header-anchor">Token Creation</a></h3>
+<p>When a new ERC-20 token is created, the smart contract defines:</p>
+<ul>
+<li><p>Token name &#40;e.g., &quot;MyToken&quot;&#41;</p>
+</li>
+<li><p>Token symbol &#40;e.g., &quot;MTK&quot;&#41;</p>
+</li>
+<li><p>Decimal places &#40;usually 18, like Ether&#41;</p>
+</li>
+<li><p>Total supply</p>
+</li>
+<li><p>Distribution rules</p>
+</li>
+</ul>
+<h3 id="transfer_mechanism"><a href="#transfer_mechanism" class="header-anchor">Transfer Mechanism</a></h3>
+<p>There are two ways to transfer ERC-20 tokens:</p>
+<p><strong>Direct Transfer</strong>: The token holder calls the <code>transfer&#40;&#41;</code> function to send tokens directly to another address.</p>
+<p><strong>Delegated Transfer</strong>: Using <code>approve&#40;&#41;</code> and <code>transferFrom&#40;&#41;</code>, a token holder can authorize another address &#40;like a smart contract&#41; to spend tokens on their behalf. This is crucial for decentralized exchanges and DeFi protocols.</p>
+<h2 id="popular_erc-20_tokens"><a href="#popular_erc-20_tokens" class="header-anchor">Popular ERC-20 Tokens</a></h2>
+<p>Many of the most valuable cryptocurrencies are ERC-20 tokens:</p>
+<ul>
+<li><p><strong>USDT &#40;Tether&#41;</strong>: Stablecoin pegged to the US dollar</p>
+</li>
+<li><p><strong>USDC &#40;USD Coin&#41;</strong>: Regulated stablecoin</p>
+</li>
+<li><p><strong>LINK &#40;Chainlink&#41;</strong>: Decentralized oracle network token</p>
+</li>
+<li><p><strong>UNI &#40;Uniswap&#41;</strong>: Governance token for Uniswap DEX</p>
+</li>
+<li><p><strong>DAI</strong>: Decentralized stablecoin</p>
+</li>
+</ul>
+<h2 id="advantages_of_erc-20"><a href="#advantages_of_erc-20" class="header-anchor">Advantages of ERC-20</a></h2>
+<p><strong>Standardization</strong>: Universal compatibility across the Ethereum ecosystem</p>
+<p><strong>Liquidity</strong>: Easy listing on exchanges and integration with DeFi protocols</p>
+<p><strong>Security</strong>: Battle-tested standard with known best practices</p>
+<p><strong>Development Speed</strong>: Faster time-to-market using existing frameworks</p>
+<p><strong>Community Support</strong>: Extensive documentation, tools, and developer resources</p>
+<h2 id="limitations_and_considerations"><a href="#limitations_and_considerations" class="header-anchor">Limitations and Considerations</a></h2>
+<h3 id="gas_fees"><a href="#gas_fees" class="header-anchor">Gas Fees</a></h3>
+<p>All ERC-20 transactions require gas fees paid in ETH, which can be expensive during network congestion.</p>
+<h3 id="token_loss_risk"><a href="#token_loss_risk" class="header-anchor">Token Loss Risk</a></h3>
+<p>Accidentally sending tokens to a contract address that doesn&#39;t support them can result in permanent loss.</p>
+<h3 id="approval_vulnerabilities"><a href="#approval_vulnerabilities" class="header-anchor">Approval Vulnerabilities</a></h3>
+<p>The approve/transferFrom pattern can create security risks if not implemented carefully, as malicious contracts could drain approved tokens.</p>
+<h3 id="no_built-in_features"><a href="#no_built-in_features" class="header-anchor">No Built-in Features</a></h3>
+<p>ERC-20 is a minimal standard. Advanced features like burning, minting controls, or pausability require additional implementation.</p>
+<h2 id="erc-20_vs_other_token_standards"><a href="#erc-20_vs_other_token_standards" class="header-anchor">ERC-20 vs Other Token Standards</a></h2>
+<p><strong>ERC-721</strong>: Non-fungible tokens &#40;NFTs&#41; where each token is unique</p>
+<p><strong>ERC-777</strong>: Advanced token standard with more features but less adoption</p>
+<p><strong>ERC-1155</strong>: Multi-token standard supporting both fungible and non-fungible tokens</p>
+<p><strong>BEP-20</strong>: Similar standard on Binance Smart Chain</p>
+<h2 id="creating_an_erc-20_token"><a href="#creating_an_erc-20_token" class="header-anchor">Creating an ERC-20 Token</a></h2>
+<p>Creating a basic ERC-20 token involves:</p>
+<ol>
+<li><p>Writing a smart contract that implements the ERC-20 interface</p>
+</li>
+<li><p>Deploying the contract to Ethereum &#40;mainnet or testnet&#41;</p>
+</li>
+<li><p>Verifying the contract on Etherscan</p>
+</li>
+<li><p>Distributing tokens according to your tokenomics</p>
+</li>
+</ol>
+<p>Many developers use OpenZeppelin&#39;s audited implementations as a starting point, which include additional safety features and common extensions.</p>
+<h2 id="use_cases"><a href="#use_cases" class="header-anchor">Use Cases</a></h2>
+<p><strong>Cryptocurrencies</strong>: Digital currencies for payments and value transfer</p>
+<p><strong>Governance Tokens</strong>: Voting rights in decentralized organizations &#40;DAOs&#41;</p>
+<p><strong>Utility Tokens</strong>: Access to services within a platform or ecosystem</p>
+<p><strong>Security Tokens</strong>: Tokens representing ownership in real-world assets</p>
+<p><strong>Stablecoins</strong>: Cryptocurrency pegged to stable assets like fiat currency</p>
+<p><strong>Reward Tokens</strong>: Incentivization mechanisms in DeFi protocols</p>
+<h2 id="security_best_practices"><a href="#security_best_practices" class="header-anchor">Security Best Practices</a></h2>
+<ul>
+<li><p>Always use well-audited implementations like OpenZeppelin</p>
+</li>
+<li><p>Implement proper access controls for minting and burning</p>
+</li>
+<li><p>Consider using SafeERC20 libraries for token transfers</p>
+</li>
+<li><p>Be cautious with the approve mechanism</p>
+</li>
+<li><p>Include pause functionality for emergency situations</p>
+</li>
+<li><p>Conduct thorough security audits before mainnet deployment</p>
+</li>
+</ul>
+<h2 id="the_future_of_erc-20"><a href="#the_future_of_erc-20" class="header-anchor">The Future of ERC-20</a></h2>
+<p>While ERC-20 remains the dominant token standard, the Ethereum ecosystem continues to evolve. Newer standards address some of ERC-20&#39;s limitations, but its widespread adoption and simple design ensure it will remain relevant for years to come.</p>
+<p>Layer 2 solutions and Ethereum upgrades are making ERC-20 transactions faster and cheaper, further solidifying its position as the foundation of the token economy.</p>
+<h2 id="conclusion"><a href="#conclusion" class="header-anchor">Conclusion</a></h2>
+<p>ERC-20 has fundamentally shaped the blockchain and cryptocurrency landscape by providing a simple, effective standard for creating and managing tokens on Ethereum. Its success demonstrates the power of standardization in enabling innovation and interoperability in decentralized systems.</p>
+<p>Whether you&#39;re a developer building the next DeFi protocol, an entrepreneur launching a token, or simply a crypto enthusiast, understanding ERC-20 is essential for navigating the modern blockchain ecosystem.</p>
+<div class="page-foot">
+    Contact me by <a href="mailto:skchu@wustl.edu">E-mail</a> | <a href="https://github.com/kchu25">Github</a> | <a href="https://www.linkedin.com/in/kchu1/">Linkedin</a>
+    <br>
+    This work is licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.  Last modified: December 01, 2025.
+    <br>
+    Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia language</a>.
+</div>
+</div><!-- CONTENT ENDS HERE -->
+    
+    
+        <script src="/libs/highlight/highlight.min.js"></script>
+<script>hljs.highlightAll();hljs.configure({tabReplace: '    '});</script>
+
+    
+  </body>
+</html>
