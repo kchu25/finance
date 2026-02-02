@@ -38,7 +38,7 @@ $$\text{Lower Demand} + \text{Same Supply} = \text{Stable/Falling Prices}$$
 
 ### 4. **Saving Becomes More Attractive**
 
-There's a flip side: when interest rates rise, savings accounts and bonds pay better returns. So instead of spending that $1,000, you might save it to earn 5% rather than 1%. Money sitting in savings isn't chasing goods, which reduces demand pressure.
+There's a flip side: when interest rates rise, savings accounts and bonds pay better returns. So instead of spending that \$1,000, you might save it to earn 5% rather than 1%. Money sitting in savings isn't chasing goods, which reduces demand pressure.
 
 ## The Complete Loop
 
