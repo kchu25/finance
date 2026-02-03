@@ -1,4 +1,4 @@
-@def title = "The "Hidden in Plain Sight" Arbitrage: Chainlink 2025 Report"
+@def title = "The Hidden in Plain Sight Arbitrage: Chainlink 2025 Report"
 @def published = "3 February 2026"
 @def tags = ["finance", "chainlink"]
 
