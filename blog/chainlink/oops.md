@@ -44,7 +44,7 @@ Retail still prices LINK as a "data feed for DeFi."
 * **The Fact:** The **CRE (Chainlink Runtime Environment)** and **ACE (Automated Compliance Engine)** are mentioned as the new standard for the \$16 Trillion tokenization market.
 * **The Retail Miss:** Retail is valuing a "component." Banks are paying for the **"Infrastructure."** You don't price the internet by the cost of one email; you price it by the value of the commerce it enables.
 
-### 5. Your 20,519 LINK: The "Settlement Asset"
+### 5. Your - LINK: The "Settlement Asset"
 
 * **Retail View:** LINK is a volatile utility token.
 * **Institutional View (Page 3):** LINK is the **Collateral and Settlement Fuel** for the **Unified Golden Record**.
