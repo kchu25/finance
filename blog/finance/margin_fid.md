@@ -201,63 +201,63 @@ $$\text{Margin Loan} = \$20,000 - \$40 = \$19,960$$
 
 **Your Account Right After Purchase:**
 
-| Item | Value |
-|------|-------|
-| Stock A (existing) | \$15,000 |
-| Stock B (new) | \$20,000 |
-| **Total Securities** | **\$35,000** |
-| Margin Loan | \$19,960 |
-| **Your Equity** | **\$15,040** |
+| Item | Value | Formula |
+|------|-------|--------|
+| Stock A (existing) | \$15,000 | |
+| Stock B (new) | \$20,000 | |
+| **Total Securities** ($V_{\text{total}}$) | **\$35,000** | $\$15,000 + \$20,000$ |
+| Margin Loan ($L$) | \$19,960 | $\$20,000 - \$40$ |
+| **Your Equity** ($E$) | **\$15,040** | $V_{\text{total}} - L = \$35,000 - \$19,960$ |
 
-$$\text{Equity} = \$35,000 - \$19,960 = \$15,040$$
+**Check Margin Requirement:**
 
-Maintenance requirement (30%):
+$$E_{\text{required}} = V_{\text{total}} \times 0.30 = \$35,000 \times 0.30 = \$10,500$$
 
-$$\text{Required Equity} = \$35,000 \times 0.30 = \$10,500$$
+$$E = \$15,040 > \$10,500 = E_{\text{required}}$$
 
-You're safe! (\$15,040 > \$10,500) ✅
+You're safe! ✅
 
 ---
 
 **Now Stock B Drops 30% (from \$20,000 to \$14,000):**
 
-| Item | Value |
-|------|-------|
-| Stock A (unchanged) | \$15,000 |
-| Stock B (dropped) | \$14,000 |
-| **Total Securities** | **\$29,000** |
-| Margin Loan (unchanged) | \$19,960 |
-| **Your Equity** | **\$9,040** |
+| Item | Value | Formula |
+|------|-------|--------|
+| Stock A (unchanged) | \$15,000 | |
+| Stock B (dropped) | \$14,000 | $\$20,000 \times 0.70$ |
+| **Total Securities** ($V_{\text{total}}$) | **\$29,000** | $\$15,000 + \$14,000$ |
+| Margin Loan ($L$) | \$19,960 | unchanged |
+| **Your Equity** ($E$) | **\$9,040** | $V_{\text{total}} - L = \$29,000 - \$19,960$ |
 
-$$\text{Your Equity} = \$29,000 - \$19,960 = \$9,040$$
+**Check Margin Requirement:**
 
-Required equity:
+$$E_{\text{required}} = V_{\text{total}} \times 0.30 = \$29,000 \times 0.30 = \$8,700$$
 
-$$\text{Required Equity} = \$29,000 \times 0.30 = \$8,700$$
+$$E = \$9,040 > \$8,700 = E_{\text{required}}$$
 
-Still okay! (\$9,040 > \$8,700) ✅
+Still okay! ✅
 
 ---
 
 **But What if Stock A ALSO Drops 20% (from \$15,000 to \$12,000)?**
 
-| Item | Value |
-|------|-------|
-| Stock A (dropped) | \$12,000 |
-| Stock B (dropped) | \$14,000 |
-| **Total Securities** | **\$26,000** |
-| Margin Loan (unchanged) | \$19,960 |
-| **Your Equity** | **\$6,040** |
+| Item | Value | Formula |
+|------|-------|--------|
+| Stock A (dropped) | \$12,000 | $\$15,000 \times 0.80$ |
+| Stock B (dropped) | \$14,000 | $\$20,000 \times 0.70$ |
+| **Total Securities** ($V_{\text{total}}$) | **\$26,000** | $\$12,000 + \$14,000$ |
+| Margin Loan ($L$) | \$19,960 | unchanged |
+| **Your Equity** ($E$) | **\$6,040** | $V_{\text{total}} - L = \$26,000 - \$19,960$ |
 
-$$\text{Your Equity} = \$26,000 - \$19,960 = \$6,040$$
+**Check Margin Requirement:**
 
-Required equity:
+$$E_{\text{required}} = V_{\text{total}} \times 0.30 = \$26,000 \times 0.30 = \$7,800$$
 
-$$\text{Required Equity} = \$26,000 \times 0.30 = \$7,800$$
+$$E = \$6,040 < \$7,800 = E_{\text{required}}$$
 
 **MARGIN CALL!** ⚠️
 
-$$\text{Shortfall} = \$7,800 - \$6,040 = \$1,760$$
+$$\text{Shortfall} = E_{\text{required}} - E = \$7,800 - \$6,040 = \$1,760$$
 
 ### **Summary in Symbolic Form**
 
@@ -426,6 +426,209 @@ Charged monthly (21st to 20th cycle).
 > **Example:** If you have a \$10,000 margin loan and deposit \$3,000 cash, your loan instantly drops to \$7,000. If you sell \$5,000 worth of stock, your loan becomes \$2,000.
 > 
 > **Important:** There's no monthly "payment" like a credit card—you can pay it back anytime, in any amount. The loan stays open until you reduce it to zero or close your margin account.
+
+---
+
+## How Much Should You Margin? The Risk-Based Approach
+
+### **The Core Question**
+
+*"If I expect the stock could drop by X%, how much can I safely borrow without triggering a margin call?"*
+
+This is the **right** way to think about margin—working backwards from your risk tolerance.
+
+### **The Math**
+
+Let's say you're buying \$10,000 worth of stock and want to protect against a drop of $x$ percent (expressed as a decimal, e.g., 0.30 for 30%).
+
+**Variables:**
+- $V_0$ = Initial value of securities **you're purchasing** = \$10,000
+  - *Note: This is just the new purchase amount, NOT including any existing securities you already own*
+  - *The formula calculates how much you can safely borrow for THIS purchase specifically*
+- $x$ = Maximum expected drop (as decimal)
+- $m$ = Maintenance margin rate = 0.30 (Fidelity's requirement)
+- $L$ = Maximum safe margin loan **for this purchase** (what we're solving for)
+
+> **Important Clarification:** This analysis assumes you're starting fresh or analyzing this purchase in isolation. If you already own marginable securities with existing margin loans, the total margin call risk depends on your **entire portfolio**. The formula below helps you determine safe borrowing for a specific new purchase, assuming that purchase could drop independently.
+
+**After the drop:**
+
+$$V_{\text{after}} = V_0(1 - x)$$
+
+**Your equity after the drop:**
+
+$$E_{\text{after}} = V_{\text{after}} - L = V_0(1 - x) - L$$
+
+**To avoid a margin call, you need:**
+
+$$E_{\text{after}} \geq V_{\text{after}} \times m$$
+
+$$V_0(1 - x) - L \geq V_0(1 - x) \times m$$
+
+$$V_0(1 - x) - L \geq V_0(1 - x) \times 0.30$$
+
+$$V_0(1 - x)(1 - 0.30) \geq L$$
+
+$$L \leq V_0(1 - x) \times 0.70$$
+
+### **The Formula**
+
+$$\boxed{L_{\text{max}} = V_0 \times (1 - x) \times 0.70}$$
+
+Or as a percentage of your initial purchase:
+
+$$\boxed{\text{Max Loan as % of Purchase} = (1 - x) \times 70\%}$$
+
+### **Practical Examples**
+
+Let's calculate the maximum safe loan for a \$10,000 stock purchase under different drop scenarios:
+
+| Expected Max Drop | $(1 - x)$ | Max Safe Loan | % of Purchase | Your Cash Needed |
+|------------------|-----------|---------------|---------------|------------------|
+| 10% | 0.90 | \$6,300 | 63% | \$3,700 |
+| 20% | 0.80 | \$5,600 | 56% | \$4,400 |
+| 30% | 0.70 | \$4,900 | 49% | \$5,100 |
+| 40% | 0.60 | \$4,200 | 42% | \$5,800 |
+| 50% | 0.50 | \$3,500 | 35% | \$6,500 |
+
+**Key Insight:** The more the stock could drop, the less you should borrow!
+
+### **Detailed Walkthrough: 30% Drop Scenario**
+
+You want to buy \$10,000 of stock and protect against a 30% drop.
+
+**Maximum safe loan:**
+
+$$L_{\text{max}} = \$10,000 \times (1 - 0.30) \times 0.70 = \$10,000 \times 0.70 \times 0.70 = \$4,900$$
+
+**Your investment structure:**
+- Total purchase: \$10,000
+- Your cash: \$5,100
+- Margin loan: \$4,900
+
+**Verification—what happens if stock drops 30%?**
+
+After drop:
+
+$$V_{\text{after}} = \$10,000 \times 0.70 = \$7,000$$
+
+Your equity:
+
+$$E = V_{\text{after}} - L = \$7,000 - \$4,900 = \$2,100$$
+
+Required equity:
+
+$$E_{\text{required}} = V_{\text{after}} \times 0.30 = \$7,000 \times 0.30 = \$2,100$$
+
+**Exactly at the margin requirement!** ✅ (Any more borrowing would trigger a call)
+
+### **Converting to Leverage Ratios**
+
+Some investors think in terms of leverage (how much you're buying vs. your own money):
+
+$$\text{Leverage Ratio} = \frac{V_0}{\text{Your Cash}} = \frac{V_0}{V_0 - L}$$
+
+Using our formula $L = V_0(1-x) \times 0.70$:
+
+$$\text{Leverage Ratio} = \frac{1}{1 - (1-x) \times 0.70}$$
+
+| Expected Max Drop | Max Safe Loan % | Leverage Ratio |
+|------------------|----------------|----------------|
+| 10% | 63% | 2.7× |
+| 20% | 56% | 2.3× |
+| 30% | 49% | 2.0× |
+| 40% | 42% | 1.7× |
+| 50% | 35% | 1.5× |
+
+**Example:** With a 30% max drop tolerance, you can safely use 2.0× leverage (buy \$10,000 with \$5,000 of your own money).
+
+### **What About Existing Securities?**
+
+**The short answer:** If you already own marginable securities, they provide additional collateral that can help absorb losses, but they also introduce correlation risk.
+
+**Scenario: You own \$15,000 in Stock A (fully paid, no loan) and want to buy \$10,000 of Stock B on margin**
+
+**Option 1: Conservative (Treat as isolated)**
+- Use the formula above: Max loan = \$10,000 × (1 - x) × 0.70
+- For 30% drop protection on Stock B: Max loan = \$4,900
+- **Assumes Stock B could drop 30% while Stock A stays stable**
+
+**Option 2: Aggressive (Leverage existing securities)**
+- Your existing \$15,000 provides margin capacity
+- Available margin surplus from Stock A: \$15,000 - (\$15,000 × 0.30) = \$10,500
+- You could theoretically borrow more against Stock A to fund Stock B
+
+**The Hidden Risk: Correlation**
+If Stock A and Stock B are correlated (e.g., both tech stocks), they could drop together:
+
+**What happens if BOTH drop 20%?**
+
+| Item | Value | Formula |
+|------|-------|---------|
+| Stock A (dropped) | \$12,000 | \$15,000 × 0.80 |
+| Stock B (dropped) | \$8,000 | \$10,000 × 0.80 |
+| **Total Securities** ($V_{\text{total}}$) | **\$20,000** | \$12,000 + \$8,000 |
+| Margin Loan | \$4,900 | unchanged |
+| **Your Equity** ($E$) | **\$15,100** | \$20,000 - \$4,900 |
+
+**Check requirement:**
+
+$$E_{\text{required}} = \$20,000 \times 0.30 = \$6,000$$
+
+$$E = \$15,100 > \$6,000$$ ✅ Still safe!
+
+**But what if BOTH drop 30%?**
+
+| Item | Value | Formula |
+|------|-------|---------|
+| Stock A (dropped) | \$10,500 | \$15,000 × 0.70 |
+| Stock B (dropped) | \$7,000 | \$10,000 × 0.70 |
+| **Total Securities** ($V_{\text{total}}$) | **\$17,500** | \$10,500 + \$7,000 |
+| Margin Loan | \$4,900 | unchanged |
+| **Your Equity** ($E$) | **\$12,600** | \$17,500 - \$4,900 |
+
+**Check requirement:**
+
+$$E_{\text{required}} = \$17,500 \times 0.30 = \$5,250$$
+
+$$E = \$12,600 > \$5,250$$ ✅ Still safe because Stock A provides cushion!
+
+**Key Insight:** Your existing equity in Stock A acts as a buffer. Even though you calculated the max loan based on Stock B alone, your fully-paid Stock A provides extra protection.
+
+**Practical Guidance:**
+
+1. **If your holdings are diversified** (low correlation): Your existing securities provide a real safety buffer
+2. **If your holdings are correlated** (same sector/style): Don't count on existing securities for protection—use the conservative formula
+3. **Best practice**: Calculate the max loan for each new purchase assuming it could drop independently, but monitor your **total account** equity regularly
+
+### **Reality Check & Safety Margins**
+
+**This formula assumes you're exactly at the margin call threshold after the drop.** In practice, you want a buffer:
+
+**Conservative approach:** Use 80-90% of the calculated max loan
+
+$$L_{\text{conservative}} = V_0 \times (1 - x) \times 0.70 \times 0.85$$
+
+For a 30% drop scenario with \$10,000 purchase:
+
+$$L_{\text{conservative}} = \$10,000 \times 0.70 \times 0.70 \times 0.85 = \$4,165$$
+
+This gives you a cushion above the maintenance requirement even if the stock drops the full 30%.
+
+### **Quick Reference Calculator**
+
+**Step 1:** Estimate maximum realistic drop percentage  
+**Step 2:** Calculate safe loan percentage: $(1 - \text{drop%}) \times 70\%$  
+**Step 3:** Apply safety factor if desired (multiply by 0.85)  
+**Step 4:** Calculate loan amount: $\text{Purchase Price} \times \text{Safe Loan %}$
+
+**Example:** Buying \$5,000 of SPY, expecting max 25% drop with 15% safety cushion:
+
+$$\text{Safe Loan %} = (1 - 0.25) \times 0.70 \times 0.85 = 0.75 \times 0.70 \times 0.85 = 44.6\%$$
+
+$$\text{Max Safe Loan} = \$5,000 \times 0.446 = \$2,230$$
+
+$$\text{Your Cash Needed} = \$5,000 - \$2,230 = \$2,770$$
 
 ---
 
