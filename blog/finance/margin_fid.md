@@ -402,6 +402,31 @@ $$\text{Daily Interest} = \frac{\text{Margin Loan} \times \text{Annual Rate}}{36
 
 Charged monthly (21st to 20th cycle).
 
+### **How to Pay Back Your Margin Loan**
+
+> **Paying Down Your Margin Loan: The Basics**
+> 
+> Your margin loan gets paid back automatically in these situations:
+> 
+> **1. Deposit Cash**
+> - Transfer money into your account
+> - The cash immediately reduces your margin loan balance
+> - Interest stops accruing on the amount you paid back
+> 
+> **2. Sell Securities**
+> - When you sell stocks/ETFs in your margin account
+> - Proceeds automatically go toward paying down your margin loan first
+> - Any excess becomes available cash
+> 
+> **3. Dividends & Interest Payments**
+> - Dividends from stocks you own
+> - Interest from bonds or money market funds
+> - These automatically reduce your margin loan balance
+> 
+> **Example:** If you have a \$10,000 margin loan and deposit \$3,000 cash, your loan instantly drops to \$7,000. If you sell \$5,000 worth of stock, your loan becomes \$2,000.
+> 
+> **Important:** There's no monthly "payment" like a credit card—you can pay it back anytime, in any amount. The loan stays open until you reduce it to zero or close your margin account.
+
 ---
 
 ## Pattern Day Trading (PDT) Rules
