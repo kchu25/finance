@@ -180,23 +180,23 @@ The probability of margin call depends on:
 ### 4.5 Numerical Example
 
 Suppose:
-- $V_0 = \$18,900$ (your marginable securities)
-- $L = \$5,300$ (your margin loan)
+- $V_0 = \$V$ (your marginable securities)
+- $L = \$L$ (your margin loan)
 - $m = 0.30$
 - $\sigma = 25\%$ annualized
 - $\mu = 8\%$ annualized
 
 Margin call barrier:
 
-$$V_{\text{call}} = \frac{L}{1 - m} = \frac{\$5,300}{0.70} = \$7,571$$
+$$V_{\text{call}} = \frac{L}{1 - m}$$
 
 The collateral would need to drop by:
 
-$$\frac{V_0 - V_{\text{call}}}{V_0} = \frac{\$18,900 - \$7,571}{\$18,900} = 59.9\%$$
+$$\frac{V_0 - V_{\text{call}}}{V_0} = 1 - \frac{L/0.70}{V_0}$$
 
-Your collateral has to drop ~60% before a margin call. That's a massive buffer.
+For a reasonably conservative loan ratio (e.g., $L/V_0 \approx 0.25$-$0.35$), your collateral would need to drop 50-65% before a margin call. That's a massive buffer.
 
-Over a 1-year horizon with 25% volatility, the probability of a 60% drop is **extremely low** (less than 1% for most equity portfolios). The math confirms what the simple inequality suggested — but now you can quantify it.
+Over a 1-year horizon with 25% volatility, the probability of such a large drop is **extremely low** (less than 1% for most equity portfolios). The math confirms what the simple inequality suggested — but now you can quantify it.
 
 ### 4.6 The Practical Takeaway
 
@@ -204,11 +204,11 @@ For a time horizon of $T$ years, a rough approximation for the probability of hi
 
 $$P(\text{call}) \approx \Phi\left(\frac{\ln(V_{\text{call}}/V_0)}{\sigma\sqrt{T}}\right)$$
 
-This is just the left-tail probability of the log-normal distribution. For our example:
+This is just the left-tail probability of the log-normal distribution. For a typical conservative margin position:
 
-$$P \approx \Phi\left(\frac{\ln(7571/18900)}{0.25 \times 1}\right) = \Phi\left(\frac{-0.916}{0.25}\right) = \Phi(-3.66) \approx 0.013\%$$
+$$P \approx \Phi\left(\frac{\ln(V_{\text{call}}/V_0)}{\sigma\sqrt{T}}\right)$$
 
-> **Translation**: With a 60% buffer, 25% annual volatility, and 1-year horizon, you have roughly a **0.01%** chance of margin call. The position is very safe.
+> **Translation**: With a substantial buffer (50-65% drop required), 25% annual volatility, and 1-year horizon, you typically have less than **0.1%** chance of margin call. Conservative positions are very safe.
 
 ---
 
@@ -232,13 +232,13 @@ $$\mu_{\text{asset}} > r_{\text{margin}} \times \frac{L}{V_{\text{total}}}$$
 
 ### 5.3 Example
 
-You own \$15,000 of SOXX (expected return ~10%/yr) and borrow \$5,300 to buy LINK.
+You own $V$ of diversified securities (expected return ~10%/yr) and borrow $L$ to buy a high-conviction asymmetric bet.
 
 | Component | Value | Notes |
 | --- | --- | --- |
-| Interest cost | $\$5,300 \times 0.105 = \$557$/yr | Fixed cost |
-| Required LINK return to break even | $\$557 / \$5,300 = 10.5\%$ | Just to cover interest |
-| Required LINK return for it to be worthwhile | $> 10.5\%$ + risk premium | At least ~15-20% |
+| Interest cost | $L \times 0.105$ per year | Fixed cost |
+| Required asset return to break even | $10.5\%$ | Just to cover interest |
+| Required asset return for it to be worthwhile | $> 10.5\%$ + risk premium | At least ~15-20% |
 
 > **If you expect LINK to return 30-50%/yr** (which the [investment thesis](/blog/chainlink/oracle_platform/) suggests), the math is strongly positive. But for a stock expected to return 8%, margin at 10.5% is **negative expected value**.
 
@@ -279,7 +279,7 @@ $$\sigma_P = \frac{\sqrt{\sigma_1^2 V_1^2 + \sigma_2^2 V_2^2 + 2\rho \sigma_1 \s
 | Different sectors (tech + energy) | 0.3 | ~moderate | Lower |
 | Negative correlation (stocks + bonds) | −0.2 | ~low | Much lower |
 
-> **Practical implication**: If your collateral is SOXX (semiconductor ETF) and UAN (fertilizer/energy), $\rho$ is relatively low. This is good — they're unlikely to crash simultaneously, so your effective margin buffer is larger than analyzing each in isolation suggests.
+> **Practical implication**: If your collateral spans different sectors (e.g., technology and commodities/energy), $\rho$ is relatively low. This is good — they're unlikely to crash simultaneously, so your effective margin buffer is larger than analyzing each in isolation suggests.
 
 ### 6.3 The Optimal Collateral Portfolio
 
