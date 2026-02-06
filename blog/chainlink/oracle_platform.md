@@ -61,7 +61,7 @@ The OCR protocol is the core consensus mechanism. Instead of each node submittin
 
 **Pseudocode: OCR Round**:
 
-```
+```julia
 PROTOCOL OCR_Round:
     // Phase 1: Leader Election
     leader ← elect_leader(round_number, node_set)
@@ -97,7 +97,7 @@ PROTOCOL OCR_Round:
 
 **On-chain verification**:
 
-```
+```julia
 CONTRACT Aggregator:
     FUNCTION verify_report(report, signatures[]):
         // Check signature count meets quorum
@@ -138,7 +138,7 @@ CCIP is Chainlink's cross-chain messaging and asset transfer protocol. Think of 
 
 CCIP uses **three independent layers** that must all agree:
 
-```
+```text
 ┌──────────────────────────────────────────────────────────┐
 │                    SOURCE CHAIN                          │
 │  User → OnRamp Contract → Lock/Burn tokens               │
@@ -174,7 +174,7 @@ CCIP uses **three independent layers** that must all agree:
 
 **Layer 2: Risk Management Network** — Independent set of nodes (separate operator set from DON) that checks:
 
-```
+```julia
 FUNCTION risk_check(message):
     // Rate limiting: max tokens per time window
     REQUIRE cumulative_volume(token, time_window) + message.amount 
@@ -206,8 +206,6 @@ If each has a 1% chance of compromise independently:
 
 $$P(\text{breach}) = 0.01^3 = 0.000001 = 0.0001\%$$
 
-This is why no CCIP exploit has occurred since launch—the layered architecture makes simultaneous compromise extremely difficult.
-
 > **Comparison**: Most bridge hacks (Ronin, Wormhole, Nomad) used a single validation layer. CCIP's three-layer design addresses this fundamental weakness.
 
 ---
@@ -218,7 +216,7 @@ PoR provides cryptographic proof that an asset issuer holds the reserves they cl
 
 ### 4.1 The Mechanism
 
-```
+```julia
 PROTOCOL Proof_of_Reserve:
     // Step 1: Oracle nodes independently query reserve wallets
     FOR each oracle_node_i:
@@ -258,7 +256,7 @@ $$R = \frac{\sum_{w \in \text{wallets}} \text{balance}(w)}{\text{totalSupply}(\t
 3. TrueUSD restored reserves before next DeFi protocol re-check
 4. System auto-resumed after reserves confirmed $\geq$ 100%
 
-**Without PoR**: Users would have continued minting unbacked stablecoins until a manual audit caught the deficit—potentially months later.
+> **Without PoR**: Users would have continued minting unbacked stablecoins until a manual audit caught the deficit—potentially months later.
 
 ---
 
@@ -285,7 +283,7 @@ $$\text{Verify}(PK, \text{seed}, R, \pi) \rightarrow \{\text{true}, \text{false}
 
 ### 5.2 Why It's Unforgeable
 
-```
+```julia
 SECURITY ANALYSIS:
     
     Oracle knows: SK (secret key)
@@ -307,7 +305,7 @@ SECURITY ANALYSIS:
         c) Predicting the blockhash (requires controlling block production)
 ```
 
-**The guarantee**: For a given $(PK, \text{seed})$ pair, there is exactly ONE valid $(R, \pi)$. The oracle cannot choose a different random number without being caught.
+> **The guarantee**: For a given $(PK, \text{seed})$ pair, there is exactly ONE valid $(R, \pi)$. The oracle cannot choose a different random number without being caught.
 
 ### 5.3 Attack Surface
 
@@ -328,7 +326,7 @@ CRE is the orchestration layer that ties everything together—it's how institut
 
 ### 6.1 What CRE Does
 
-```
+```julia
 TRADITIONAL APPROACH (Without CRE):
     Bank → Learn Solidity → Deploy contract → Manage gas tokens 
          → Handle key management → Build oracle integrations
@@ -382,7 +380,7 @@ CRE APPROACH:
 
 CRE includes **Confidential Compute**—enabling private transactions on public blockchains:
 
-```
+```julia
 PRIVACY FLOW:
     1. Bank encrypts workflow + data with threshold encryption
     2. Chainlink DON distributes decryption shares (no single node 
@@ -426,7 +424,7 @@ $$\text{Attack cost} = \Omega(n^2 \cdot s)$$
 - An attacker must corrupt enough nodes that no honest alerter remains
 - The cost of silencing all potential alerters grows quadratically
 
-```
+```julia
 INTUITION:
     n = 31 nodes, each staking 100,000 LINK
     
@@ -439,7 +437,7 @@ INTUITION:
 
 ### 7.3 Two-Tier Adjudication
 
-```
+```julia
 DISPUTE RESOLUTION:
     
     Tier 1: Automated (fast, cheap)
@@ -472,27 +470,24 @@ DISPUTE RESOLUTION:
 
 ### 8.2 Historical Track Record
 
-- **\$28+ trillion** in transaction value enabled
-- **Zero CCIP exploits** since launch
-- **Zero critical oracle failures** on major feeds
-- Primary incidents have been **liveness** (delayed updates during extreme congestion), not **correctness** (wrong values)
+> **Track record**: \$28+ trillion in transaction value enabled, zero CCIP exploits since launch, zero critical oracle failures on major feeds. Primary incidents have been **liveness** (delayed updates during extreme congestion), not **correctness** (wrong values).
 
 ### 8.3 Honest Assessment
 
-**Strong points**:
-- Defense-in-depth across all services
-- Byzantine fault tolerance with $n \geq 3f+1$
-- Super-linear staking makes economic attacks prohibitively expensive
-- Three independent validation layers for CCIP
-- Extensive audit history and bug bounty program
+> **Strong points**:
+> - Defense-in-depth across all services
+> - Byzantine fault tolerance with $n \geq 3f+1$
+> - Super-linear staking makes economic attacks prohibitively expensive
+> - Three independent validation layers for CCIP
+> - Extensive audit history and bug bounty program
 
-**Remaining risks**:
-- **Smart contract bugs**: No amount of architecture prevents a bug in the Solidity code itself. Mitigated by audits but never eliminated.
-- **Data source quality**: Oracle is only as good as its data sources. If all underlying APIs are wrong, the oracle faithfully reports wrong data.
-- **Centralization concerns**: Some DONs have fewer nodes than ideal. The network is decentralizing over time but isn't fully there yet.
-- **Key management**: If node operators' private keys are compromised, the attacker can sign false reports. Mitigated by requiring > 1/3 compromise.
+> **Remaining risks**:
+> - **Smart contract bugs**: No amount of architecture prevents a bug in the Solidity code itself. Mitigated by audits but never eliminated.
+> - **Data source quality**: Oracle is only as good as its data sources. If all underlying APIs are wrong, the oracle faithfully reports wrong data.
+> - **Centralization concerns**: Some DONs have fewer nodes than ideal. The network is decentralizing over time but isn't fully there yet.
+> - **Key management**: If node operators' private keys are compromised, the attacker can sign false reports. Mitigated by requiring > 1/3 compromise.
 
-**Verdict**: The attack surface is **small but non-zero**. For institutional use cases (which is the thesis), the security model is robust enough—comparable to or exceeding traditional financial infrastructure. The main risk is unknown smart contract vulnerabilities, not architectural weaknesses.
+> **Verdict**: The attack surface is **small but non-zero**. For institutional use cases (which is the thesis), the security model is robust enough—comparable to or exceeding traditional financial infrastructure. The main risk is unknown smart contract vulnerabilities, not architectural weaknesses.
 
 ---
 
@@ -502,7 +497,7 @@ DISPUTE RESOLUTION:
 
 The core economic innovation: **institutions pay in USD/stablecoins, but LINK is bought programmatically**.
 
-```
+```julia
 PAYMENT ABSTRACTION FLOW:
     
     1. UBS pays \$50,000 USDC for CCIP service
@@ -519,6 +514,8 @@ PAYMENT ABSTRACTION FLOW:
     UBS never sees, holds, or reports LINK.
 ```
 
+> **Key insight**: UBS pays in USD, Chainlink automatically buys LINK on the open market. Institutions never touch crypto, but every transaction creates programmatic buy pressure.
+
 ### 9.2 Structural Demand Model
 
 $$D_{\text{LINK}} = \sum_{s \in \text{services}} \text{volume}(s) \times \text{fee}(s) \div P_{\text{LINK}}$$
@@ -533,7 +530,7 @@ As service usage grows, LINK demand grows **structurally** (not speculatively):
 | VRF requests | ~200K/day | ~\$1 | \$73M/yr |
 | **Total** | | | **~\$1.26B/yr** |
 
-> These are rough estimates. The actual demand depends on adoption trajectory and fee structures, but the model shows how **usage translates to programmatic buy pressure**.
+> **Note**: These are rough estimates. The actual demand depends on adoption trajectory and fee structures, but the model shows how **usage translates to programmatic buy pressure**.
 
 ### 9.3 The Virtuous Cycle
 
@@ -550,7 +547,7 @@ This section connects three seemingly separate narratives into one coherent inve
 
 ### 10.1 The Causal Chain
 
-```
+```text
 US FISCAL CRISIS                    STABLECOIN GROWTH
     │                                    │
     │  \$38T debt                          │  GENIUS Act: stablecoins MUST
@@ -615,10 +612,10 @@ If Chainlink captures value proportionally to stablecoin/tokenization growth, se
 | Token economics capture value | Payment Abstraction, staking | ⚠️ Scaling, but unproven at \$T scale |
 | No viable competitor emerges | Network effects, SWIFT integration | ⚠️ Possible but moats are deep |
 
-**The honest conclusion**: The first five premises are factual. The last two are the actual bet. You're not betting on whether the infrastructure is needed—that's settled. You're betting that:
-
-1. **LINK token economics actually capture value** from usage (Payment Abstraction working as designed)
-2. **No competitor displaces Chainlink** in the next 3-5 years (SWIFT integration and 67% share create significant moat)
+> **The honest conclusion**: The first five premises are factual. The last two are the actual bet. You're not betting on whether the infrastructure is needed—that's settled. You're betting that:
+> 
+> 1. **LINK token economics actually capture value** from usage (Payment Abstraction working as designed)
+> 2. **No competitor displaces Chainlink** in the next 3-5 years (SWIFT integration and 67% share create significant moat)
 
 ### 10.4 Risk Matrix
 
