@@ -48,6 +48,48 @@ The liquidation threshold is typically 75-85% (meaning you can borrow up to that
 
 ---
 
+## Loan-to-Value Ratio (LTV)
+
+LTV is the **inverse perspective** of collateralization ratio — it measures debt as a fraction of collateral:
+
+$$
+\LTV = \frac{V_d}{V_c} = \frac{1}{\CR}
+$$
+
+**Interpretation:**
+- $\LTV = 0.50$ (50%) means you borrowed half the value of your collateral
+- $\LTV = 0.75$ (75%) means you borrowed 3/4 of your collateral value
+- $\LTV = 0$ means no debt (you just deposited, didn't borrow)
+- $\LTV = 1.0$ (100%) would mean debt equals collateral — this is the liquidation point!
+
+**Example:** Deposit \$10,000 ETH, borrow \$6,000 USDC:
+- Your $\CR = \frac{10000}{6000} = 1.67$ (167%)
+- Your $\LTV = \frac{6000}{10000} = 0.60$ (60%)
+
+**Key relationship:**
+
+$$
+\text{If } \CR = 1.67 \implies \LTV = \frac{1}{1.67} = 0.60
+$$
+
+**Maximum LTV:** The liquidation threshold $\LT$ sets the maximum LTV:
+
+$$
+\LTV_{\max} = \LT
+$$
+
+If $\LT = 0.80$ (80%), you can borrow up to 80% of collateral value before liquidation.
+
+**Safe LTV:** Most experienced users stay much lower:
+
+$$
+\LTV_{\text{safe}} = 0.50 \text{ to } 0.60
+$$
+
+This gives you a cushion for price volatility.
+
+---
+
 ## Maximum Borrowing Power
 
 If liquidation threshold is 80%:
@@ -98,6 +140,103 @@ L = \frac{1}{1 - 0.75} = 4x
 $$
 
 Starting with \$10k, you could control \$40k worth of assets. *Very risky.*
+
+---
+
+## Unified Framework: How Everything Relates
+
+All the metrics ($\CR$, $\HF$, $\LTV$, liquidation) are different views of the same underlying relationship. Here's the unifying math:
+
+### The Core Variables
+
+You have only **two fundamental quantities**:
+- $V_c$ = collateral value
+- $V_d$ = debt value
+
+Everything else is derived from these two.
+
+### The Four Key Metrics
+
+| Metric | Formula | Meaning | Safe Range |
+|--------|---------|---------|------------|
+| **Collateralization Ratio** | $\CR = \frac{V_c}{V_d}$ | How much collateral per dollar of debt | > 1.5 |
+| **Loan-to-Value** | $\LTV = \frac{V_d}{V_c} = \frac{1}{\CR}$ | How much debt per dollar of collateral | < 0.60 |
+| **Health Factor** | $\HF = \frac{V_c \times \LT}{V_d} = \CR \times \LT$ | Distance to liquidation | > 1.5 |
+| **Liquidation Threshold** | $\LT$ (constant) | Protocol-defined max LTV | 0.75-0.85 |
+
+### The Relationships
+
+**Converting between CR and LTV:**
+
+$$
+\CR = \frac{1}{\LTV} \quad \text{and} \quad \LTV = \frac{1}{\CR}
+$$
+
+**Health Factor in terms of LTV:**
+
+$$
+\HF = \frac{\LT}{\LTV}
+$$
+
+**Liquidation condition (all equivalent):**
+
+$$
+\begin{aligned}
+\CR &< \frac{1}{\LT} \\
+\LTV &> \LT \\
+\HF &< 1
+\end{aligned}
+$$
+
+### Example: One Position, Four Views
+
+You deposit \$10,000 ETH, borrow \$6,000 USDC. Protocol has $\LT = 0.80$.
+
+| Metric | Calculation | Value | Safe? |
+|--------|-------------|-------|-------|
+| $\CR$ | $\frac{10000}{6000}$ | 1.67 | ✅ (> 1.25) |
+| $\LTV$ | $\frac{6000}{10000}$ | 0.60 | ✅ (< 0.80) |
+| $\HF$ | $\frac{10000 \times 0.80}{6000}$ | 1.33 | ⚠️ (barely > 1) |
+| Liquidation? | $\LTV < \LT$ ? | $0.60 < 0.80$ | ✅ Safe |
+
+**If ETH drops 20% to \$8,000:**
+
+| Metric | New Value | Safe? |
+|--------|-----------|-------|
+| $\CR$ | $\frac{8000}{6000} = 1.33$ | ⚠️ Danger |
+| $\LTV$ | $\frac{6000}{8000} = 0.75$ | ⚠️ Close to limit |
+| $\HF$ | $\frac{8000 \times 0.80}{6000} = 1.07$ | ⚠️ Very close to 1 |
+| Liquidation? | $0.75 < 0.80$ | ✅ Still safe (barely) |
+
+**If ETH drops 30% to \$7,000:**
+
+| Metric | New Value | Safe? |
+|--------|-----------|-------|
+| $\CR$ | $\frac{7000}{6000} = 1.17$ | ❌ Below threshold |
+| $\LTV$ | $\frac{6000}{7000} = 0.857$ | ❌ Exceeds $\LT$ |
+| $\HF$ | $\frac{7000 \times 0.80}{6000} = 0.93$ | ❌ Below 1 |
+| Liquidation? | $0.857 > 0.80$ | ❌ **LIQUIDATED** |
+
+### The General Rule
+
+For any position, you can convert between all metrics using these relationships:
+
+$$
+\boxed{
+\begin{aligned}
+\LTV &= \frac{1}{\CR} \\
+\HF &= \CR \times \LT = \frac{\LT}{\LTV} \\
+\text{Safe} &\iff \LTV < \LT \iff \CR > \frac{1}{\LT} \iff \HF > 1
+\end{aligned}
+}
+$$
+
+**Which metric to use?**
+- **LTV** is most intuitive for thinking about borrowing ("I borrowed 60% of my collateral")
+- **CR** is traditional finance language ("167% collateralized")
+- **HF** is Aave-specific but useful ("health factor of 1.33 means 33% buffer")
+
+They're all equivalent — use whichever makes most sense to you.
 
 ---
 
