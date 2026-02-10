@@ -20,3 +20,4 @@
 - [genius-act](tag/genius-act)
 - [chainlink](tag/chainlink)
 - [hedging](tag/hedging)
+- [defi](tag/defi)
