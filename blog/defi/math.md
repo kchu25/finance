@@ -234,9 +234,30 @@ $$
 **Which metric to use?**
 - **LTV** is most intuitive for thinking about borrowing ("I borrowed 60% of my collateral")
 - **CR** is traditional finance language ("167% collateralized")
-- **HF** is Aave-specific but useful ("health factor of 1.33 means 33% buffer")
+- **HF** is Aave-specific but useful (tells you distance to liquidation threshold)
 
 They're all equivalent — use whichever makes most sense to you.
+
+### How Much Can Collateral Drop?
+
+Given your current LTV and liquidation threshold $\LT$, the maximum tolerable price drop is:
+
+$$
+x_{\max} = 1 - \frac{\LTV}{\LT} = 1 - \frac{1}{\HF}
+$$
+
+**Examples:**
+
+| Current LTV | $\LT$ | HF | Max Drop | Calculation |
+|-------------|-------|----|---------:|-------------|
+| 0.60 | 0.80 | 1.33 | **25%** | $1 - \frac{0.60}{0.80}$ |
+| 0.50 | 0.80 | 1.60 | **37.5%** | $1 - \frac{0.50}{0.80}$ |
+| 0.40 | 0.80 | 2.00 | **50%** | $1 - \frac{0.40}{0.80}$ |
+| 0.75 | 0.80 | 1.07 | **6.25%** | $1 - \frac{0.75}{0.80}$ |
+
+> **Key insight**: A health factor of 1.33 does NOT mean you can drop 33%. It means you're at 60% LTV with an 80% threshold, so you can drop **25%** before liquidation.
+>
+> The formula: **Max drop = $1 - \frac{1}{\text{HF}}$**
 
 ---
 
