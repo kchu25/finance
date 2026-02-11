@@ -266,21 +266,35 @@ $$
 The price at which your collateral falls below the minimum ratio:
 
 $$
-P_{\text{liq}} = P_{\text{entry}} \times \frac{V_d}{Q_c \times \LT}
+P_{\text{liq}} = \frac{V_d}{Q_c \times \LT}
 $$
 
 where:
-- $P_{\text{entry}}$ = entry price per unit of collateral
-- $Q_c$ = quantity of collateral  
-- $V_d$ = total debt value
+- $Q_c$ = quantity of collateral tokens
+- $V_d$ = total debt value  
+- $\LT$ = liquidation threshold
 
-**Example:** You deposit 10 ETH at \$2,000 each (\$20k collateral), borrow \$12k USDC. With 75% liquidation threshold:
+**Intuition**: Your collateral value is $Q_c \times P$. At liquidation, this must equal $\frac{V_d}{\LT}$. Solve for $P$.
+
+**Example 1:** You deposit 10 ETH when price is \$2,500 each (\$25k collateral), borrow \$15k USDC. With 80% liquidation threshold ($\LT = 0.80$):
 
 $$
-P_{\text{liq}} = 2000 \times \frac{12000}{10 \times 2000 \times 0.75} = 2000 \times 0.8 = \$1,600
+P_{\text{liq}} = \frac{15000}{10 \times 0.80} = \frac{15000}{8} = \$1,875
 $$
 
-If ETH drops to \$1,600, you're toast.
+If ETH drops from \$2,500 to \$1,875 (25% drop), you're liquidated.
+
+**Verification:** At $P = \$1,875$:
+- Collateral value: $10 \times 1875 = \$18,750$
+- LTV: $\frac{15000}{18750} = 0.80$ ✓ (exactly at threshold)
+
+**Example 2:** You deposit 5 ETH when price is \$3,000 (\$15k collateral), borrow \$9k USDC. With $\LT = 0.75$:
+
+$$
+P_{\text{liq}} = \frac{9000}{5 \times 0.75} = \frac{9000}{3.75} = \$2,400
+$$
+
+ETH can drop from \$3,000 to \$2,400 (20% drop) before liquidation.
 
 ---
 
