@@ -274,27 +274,47 @@ where:
 - $V_d$ = total debt value  
 - $\LT$ = liquidation threshold
 
+**Alternative form** (showing drop from current price):
+
+$$
+P_{\text{liq}} = P_{\text{current}} \times \frac{\text{LTV}_{\text{current}}}{\LT}
+$$
+
+where $\text{LTV}_{\text{current}} = \frac{V_d}{Q_c \times P_{\text{current}}}$
+
 **Intuition**: Your collateral value is $Q_c \times P$. At liquidation, this must equal $\frac{V_d}{\LT}$. Solve for $P$.
 
-**Example 1:** You deposit 10 ETH when price is \$2,500 each (\$25k collateral), borrow \$15k USDC. With 80% liquidation threshold ($\LT = 0.80$):
+**Example 1:** You deposit 10 ETH when ETH is at \$2,500 each (\$25k collateral), borrow \$15k USDC. With 80% liquidation threshold ($\LT = 0.80$):
+
+Current LTV: $\frac{15000}{25000} = 0.60$
 
 $$
-P_{\text{liq}} = \frac{15000}{10 \times 0.80} = \frac{15000}{8} = \$1,875
+P_{\text{liq}} = \frac{15000}{10 \times 0.80} = \$1,875
 $$
 
-If ETH drops from \$2,500 to \$1,875 (25% drop), you're liquidated.
+Or equivalently:
+
+$$
+P_{\text{liq}} = 2500 \times \frac{0.60}{0.80} = 2500 \times 0.75 = \$1,875
+$$
+
+**Drop from current price:** $\frac{2500 - 1875}{2500} = 0.25$ = **25% drop**
 
 **Verification:** At $P = \$1,875$:
 - Collateral value: $10 \times 1875 = \$18,750$
 - LTV: $\frac{15000}{18750} = 0.80$ ✓ (exactly at threshold)
 
-**Example 2:** You deposit 5 ETH when price is \$3,000 (\$15k collateral), borrow \$9k USDC. With $\LT = 0.75$:
+**Example 2:** You deposit 5 ETH when ETH is at \$3,000 (\$15k collateral), borrow \$9k USDC. With $\LT = 0.75$:
+
+Current LTV: $\frac{9000}{15000} = 0.60$
 
 $$
-P_{\text{liq}} = \frac{9000}{5 \times 0.75} = \frac{9000}{3.75} = \$2,400
+P_{\text{liq}} = \frac{9000}{5 \times 0.75} = \$2,400
 $$
 
-ETH can drop from \$3,000 to \$2,400 (20% drop) before liquidation.
+Or: $P_{\text{liq}} = 3000 \times \frac{0.60}{0.75} = \$2,400$
+
+**Drop from current price:** $\frac{3000 - 2400}{3000} = 0.20$ = **20% drop**
 
 ---
 
