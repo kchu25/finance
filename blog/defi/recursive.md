@@ -148,17 +148,16 @@ It does **not** depend on how many tokens you started with or how many rounds yo
 
 ### 4.3 Liquidation Price Table
 
-Entry price: \$8.50. Aave LINK liquidation threshold: $\LT \approx 0.83$ (varies by chain/market; check the current parameter).
+Entry price: \$8.50. Aave LINK liquidation threshold: $\LT = 0.71$.
 
 | Loop LTV ($\ell$) | Liquidation Price | Drop Required |
 | --- | --- | --- |
-| 0.40 | \$4.10 | 52% |
-| 0.50 | \$5.12 | 40% |
-| 0.55 | \$5.63 | 34% |
-| 0.60 | \$6.14 | 28% |
-| 0.65 | \$6.66 | 22% |
-| 0.70 | \$7.17 | 16% |
-| 0.75 | \$7.68 | 10% |
+| 0.40 | \$4.79 | 44% |
+| 0.45 | \$5.39 | 37% |
+| 0.50 | \$5.99 | 30% |
+| 0.55 | \$6.58 | 23% |
+| 0.60 | \$7.18 | 16% |
+| 0.65 | \$7.78 | 8% |
 
 ### 4.4 Max Drop Tolerance
 
@@ -168,11 +167,12 @@ $$x_{\max} = 1 - \frac{\ell}{\LT}$$
 
 | Loop LTV ($\ell$) | Max Drop Before Liquidation |
 | --- | --- |
-| 0.40 | **52%** |
-| 0.50 | **40%** |
-| 0.60 | **28%** |
-| 0.70 | **16%** |
-| 0.75 | **10%** |
+| 0.40 | **44%** |
+| 0.45 | **37%** |
+| 0.50 | **30%** |
+| 0.55 | **23%** |
+| 0.60 | **16%** |
+| 0.65 | **8%** |
 
 ---
 
@@ -194,14 +194,15 @@ where $L = \frac{1}{1 - \ell}$ is the leverage multiplier.
 
 Starting with 1000 LINK at \$8.50, borrowing at 5% APR, holding for 1 year:
 
-| Loop LTV | Leverage | LINK +50% | LINK +100% | LINK +200% | LINK −30% |
+| Loop LTV | Leverage | LINK +50% | LINK +100% | LINK +200% | LINK −20% |
 | --- | --- | --- | --- | --- | --- |
-| 0.40 | 1.67x | **+80%** | **+163%** | **+330%** | −53% |
-| 0.50 | 2.00x | **+95%** | **+195%** | **+395%** | −65% |
-| 0.60 | 2.50x | **+118%** | **+243%** | **+493%** | −83% |
-| 0.70 | 3.33x | **+155%** | **+322%** | **+655%** | ⚠️ liquidated |
+| 0.40 | 1.67x | **+80%** | **+163%** | **+330%** | −37% |
+| 0.45 | 1.82x | **+87%** | **+178%** | **+360%** | −40% |
+| 0.50 | 2.00x | **+95%** | **+195%** | **+395%** | −45% |
+| 0.55 | 2.22x | **+106%** | **+218%** | **+440%** | −49% |
+| 0.60 | 2.50x | **+118%** | **+243%** | **+493%** | ⚠️ liquidated |
 
-*(Returns are on your original \$8,500 equity. Interest cost deducted. LINK −30% at 0.70 LTV crosses the 16% liquidation threshold.)*
+*(Returns are on your original \$8,500 equity. Interest cost deducted. LINK −20% at 0.60 LTV crosses the 16% liquidation threshold.)*
 
 ### 5.3 The Break-Even Move
 
@@ -236,7 +237,7 @@ How much lower can LINK realistically go? To \$5? \$3? LINK has a functioning ec
 **2. Asymmetric risk/reward at the floor.**
 
 At \$8.50:
-- **Downside to \$4 (53% drop):** You lose your position (at 0.60 LTV you get liquidated at ~\$6.14, so actually less)
+- **Downside to \$4 (53% drop):** You lose your position (at 0.60 LTV you get liquidated at ~\$7.18, so actually less)
 - **Upside to \$20 (135% gain):** Your equity roughly triples at 2.5x leverage
 - **Upside to \$50 (488% gain):** Your equity does ~12x at 2.5x leverage
 
@@ -284,18 +285,18 @@ Your entire position lives on Aave. A smart contract exploit, oracle manipulatio
 | Downside protection from floor | ⚠️ Moderate — floors can break |
 | Same-asset correlation ($\rho = 1$) | ❌ Maximum risk — no hedge |
 | Interest cost at moderate LTV | ✅ Low — easily covered by small move |
-| Liquidation risk at 0.50-0.60 LTV | ✅ Manageable — requires 28-40% drop |
-| Liquidation risk at 0.70+ LTV | ❌ Dangerous — only 16% buffer |
+| Liquidation risk at 0.40-0.50 LTV | ✅ Manageable — requires 30-44% drop |
+| Liquidation risk at 0.60+ LTV | ❌ Dangerous — only 16% buffer or less |
 
 ### 6.4 Recommendation
 
 > **If you're going to loop LINK at \$8.50:**
 > 
-> 1. **Use LTV ≤ 0.50** (2x leverage, survives a 40% drop to ~\$5.10)
+> 1. **Use LTV ≤ 0.45** (1.82x leverage, survives a 37% drop to ~\$5.39)
 > 2. **Keep a stablecoin buffer** (10-20% of position value) outside Aave for emergency collateral top-ups
 > 3. **Set a time limit** (6-12 months). If the thesis hasn't played out, unwind.
 > 4. **Set a free-ride target**: LINK doubles to \$17 → sell half the looped LINK → repay all debt → rest is free
-> 5. **Do NOT use LTV > 0.65.** At \$8.50, a dip to \$7 (18% drop) is entirely possible in a bad week, and 0.70 LTV gets liquidated at 16%.
+> 5. **Do NOT use LTV > 0.55.** At \$8.50, a dip to \$7 (18% drop) is entirely possible in a bad week, and 0.60 LTV gets liquidated at just a 16% drop.
 
 ---
 
@@ -308,7 +309,7 @@ This is why *when* you loop matters as much as *how much*:
 | **Downside to \$5** | 41% drop | 88% drop |
 | **Upside to \$50** | 488% gain | 25% gain |
 | **Risk/reward at 2x leverage** | Lose ~82% or gain ~976% | Lose ~176% (liquidated) or gain ~50% |
-| **Liquidation price (0.50 LTV)** | \$5.12 | \$24.10 |
+| **Liquidation price (0.50 LTV)** | \$5.99 | \$28.17 |
 | **Probability of liquidation** | Low (need to break historical support) | High (normal crypto volatility) |
 
 > **The key insight**: Looping is **least dangerous near the floor** because:
@@ -338,4 +339,4 @@ $$
 
 ### 8.2 The One-Sentence Version
 
-Recursive collateralization is a geometric series that converges to $\frac{1}{1-\ell}$ leverage. At \$8.50 near the historical floor, moderate looping (LTV ≤ 0.50) gives you 2x exposure with a 40% drop buffer — reasonable if you believe the thesis and accept the smart contract risk. Higher LTV is asking to get liquidated on a bad week.
+Recursive collateralization is a geometric series that converges to $\frac{1}{1-\ell}$ leverage. At \$8.50 near the historical floor, moderate looping (LTV ≤ 0.45) gives you ~1.8x exposure with a 37% drop buffer — reasonable if you believe the thesis and accept the smart contract risk. Higher LTV is asking to get liquidated on a bad week.
