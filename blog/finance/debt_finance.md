@@ -362,3 +362,37 @@ Being completely debt-free is financially suboptimal for most people with stable
 The Dave Ramseys of the world are wrong on the math but right on the psychology. If carrying debt causes you stress that impairs your decision-making, the mathematical optimum doesn't matter. **The best financial plan is the one you'll actually follow.**
 
 But if you can handle the nuance: strategic debt is one of the most powerful tools in building wealth. The rich understand this. Now you have the math to understand why.
+
+---
+
+## 12. The Uncomfortable Truth: "Debt-Free" Is Often Wealth-Destroying
+
+The math is unambiguous: **being debt-free is often wealth-destroying** when you have access to low-rate debt and long time horizons.
+
+### 12.1 The Core Argument
+
+Every dollar you use to pay off a 6.5% mortgage is a dollar that *could* be compounding at 10% in the S\&P. The spread — 3.5% per year — compounds over decades into enormous sums. That \$640,000 difference over 20 years from [Section 8](#the-cost-of-being-debt-free) isn't hypothetical; it's the mathematical consequence of $1.10^{20}$ vs $1.065^{20}$.
+
+### 12.2 Why "Debt-Free" Feels Right But Isn't
+
+The psychological appeal of debt-free is **certainty**. Paying off a 6.5% loan is a guaranteed 6.5% return. The S\&P's 10% is an *average* — some years it's −30%. Your brain weighs the certainty of debt reduction far more heavily than the *expected* investment gain. This is classic loss aversion.
+
+But over 20–30 year horizons, the S\&P has beaten 6.5% in roughly **90%+ of rolling periods**. You're paying a massive premium — hundreds of thousands of dollars — for protection against a ~10% probability scenario.
+
+### 12.3 The Real Kicker: Inflation
+
+A fixed-rate mortgage is a **short position on the dollar**. If you borrow \$400k at 6.5% and inflation runs at 3%, your real borrow rate is ~3.5%. Inflation literally erodes your debt while your assets (house, stocks) rise with inflation. Paying off that debt early means *closing a winning trade*.
+
+### 12.4 Where the Conventional Wisdom IS Right
+
+- **Credit card debt (20%+)**: Pay it off immediately. No investment reliably beats 20%.
+- **If you can't stomach volatility**: The psychological cost of seeing your portfolio crash 40% while owing \$300k on a mortgage is real. If it causes you to panic-sell stocks at the bottom, the math doesn't matter — you'll underperform anyway.
+- **Variable-rate or callable debt**: Can blow up at the worst moment. A margin call during a crash forces you to sell low.
+
+### 12.5 The One-Liner
+
+> Dave Ramsey's advice maximizes **peace of mind**. The Kelly criterion maximizes **wealth**. They give different answers because they're optimizing different objectives.
+
+Being debt-free at a 3% mortgage isn't conservative — it's *leaving the best risk-adjusted trade in personal finance on the table*. At 6.5% it's more debatable. At 24% credit card debt, yes, pay it off yesterday. The math depends entirely on the rate, the volatility of your investment, and your time horizon.
+
+**The wealthy don't avoid debt — they use it strategically.** The question is never "should I have debt?" but "what is the optimal amount of debt given my spread, my volatility, and my time horizon?" The Kelly formula answers that question precisely.
