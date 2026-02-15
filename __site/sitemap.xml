@@ -404,6 +404,12 @@
     <priority>0.5</priority>
 </url>
 <url>
+    <loc>https://kchu25.github.io/blog/finance/inflation_debt/index.html</loc>
+    <lastmod>2026-02-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
     <loc>https://kchu25.github.io/blog/chainlink/oops/index.html</loc>
     <lastmod>2026-02-03</lastmod>
     <changefreq>monthly</changefreq>
