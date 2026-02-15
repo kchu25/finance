@@ -46,14 +46,14 @@ None of these are mathematical arguments. They are *real*, but they are not *rea
 
 ## 3. What Actually Happens to Perpetual Debt
 
-Let the asset price be \$P_t\$, the number of collateral tokens be \$Q\$, the debt at time \$t\$ be
-\$D_t = D_0 (1+r)^t\$ where \$r\$ is the borrow APR, and the asset's annualized return be \$\mu\$.
+Let the asset price be $P_t$, the number of collateral tokens be $Q$, the debt at time $t$ be
+$D_t = D_0 (1+r)^t$ where $r$ is the borrow APR, and the asset's annualized return be $\mu$.
 
-The LTV (loan-to-value) at time \$t\$ is:
+The LTV (loan-to-value) at time $t$ is:
 
-$$\text{LTV}(t) = \frac{D_0 (1+r)^t}{Q \cdot P_0 (1+\mu)^t} = \text{LTV}_0 \cdot \left(\frac{1+r}{1+\mu}\right)^t$$
+$$\text{LTV}(t) = \frac{D_0 (1+r)^t}{Q \cdot P_0 (1+\mu)^t} = \text{LTV}_0 \cdot \bigg(\frac{1+r}{1+\mu}\bigg)^t$$
 
-If \$\mu > r\$ — the asset grows faster than the borrow rate — then:
+If $\mu > r$ — the asset grows faster than the borrow rate — then:
 
 $$\lim_{t \to \infty} \text{LTV}(t) = 0$$
 
@@ -130,16 +130,16 @@ But those 714 LINK, if LINK appreciates, are worth:
 
 The interest you "save" by repaying is \$300–\$500/yr. The upside you *forfeit* by selling
 those 714 LINK could be tens of thousands. The expected value of holding crushes the expected
-value of repaying — **as long as \$\mu > r\$**.
+value of repaying — **as long as $\mu > r$**.
 
 ---
 
 ## 6. So When *Should* You Repay?
 
-The math says "never, as long as \$\mu > r\$." But the math assumes:
+The math says "never, as long as $\mu > r$." But the math assumes:
 
-1. **You know \$\mu > r\$** — You don't. It's an estimate. Markets are uncertain.
-2. **The rate \$r\$ stays stable** — On Aave, it doesn't. Variable rates can spike.
+1. **You know $\mu > r$** — You don't. It's an estimate. Markets are uncertain.
+2. **The rate $r$ stays stable** — On Aave, it doesn't. Variable rates can spike.
 3. **You won't get liquidated** — The path matters, not just the destination.
 4. **You can stomach the volatility** — Psychology is a real constraint.
 
@@ -212,16 +212,16 @@ a rounding error on a \$287,800 position. You could sneeze and pay it off.
 ### Why this works mathematically
 
 At each doubling, the debt has already been halved *in real terms* (relative to asset value).
-You're halving it again in *nominal terms*. So after \$k\$ doublings, the LTV is:
+You're halving it again in *nominal terms*. So after $k$ doublings, the LTV is:
 
 $$\text{LTV}_k = \text{LTV}_0 \cdot \frac{1}{2^k} \cdot \frac{1}{2^k} = \text{LTV}_0 \cdot \frac{1}{4^k}$$
 
 The first factor comes from the price doubling (denominator grows). The second comes from you
 halving the debt (numerator shrinks). The LTV drops by 4× at each trigger. Starting at 13.3%:
 
-- After 1st doubling: \$13.3\% / 4 = 3.3\%\$
-- After 2nd doubling: \$3.3\% / 4 = 0.8\%\$
-- After 3rd: \$0.2\%\$
+- After 1st doubling: $13.3\% / 4 = 3.3\%$
+- After 2nd doubling: $3.3\% / 4 = 0.8\%$
+- After 3rd: $0.2\%$
 
 Three doublings and the debt is a footnote.
 
@@ -283,25 +283,25 @@ This gives you:
 
 ## 11. The Mathematical Framework
 
-Let's formalize. Define the **debt carry value** at time \$t\$:
+Let's formalize. Define the **debt carry value** at time $t$:
 
-$$V_{\text{carry}}(t) = Q \cdot P_0 \left[(1+\mu)^t - 1\right] - D_0 \left[(1+r)^t - 1\right]$$
+$$V_{\text{carry}}(t) = Q \cdot P_0 \bigg[(1+\mu)^t - 1\bigg] - D_0 \bigg[(1+r)^t - 1\bigg]$$
 
 The first term is the appreciation of the asset you kept (instead of selling to repay). The second
-is the accumulated interest cost. Carrying the debt is profitable when \$V_{\text{carry}}(t) > 0\$,
+is the accumulated interest cost. Carrying the debt is profitable when $V_{\text{carry}}(t) > 0$,
 which holds when:
 
 $$\frac{Q \cdot P_0}{D_0} > \frac{(1+r)^t - 1}{(1+\mu)^t - 1}$$
 
-For \$\mu > r\$, the right side is less than 1 for all \$t > 0\$. Since the left side (portfolio/debt)
-is typically much greater than 1, **carrying the debt is almost always profitable when \$\mu > r\$**.
+For $\mu > r$, the right side is less than 1 for all $t > 0$. Since the left side (portfolio/debt)
+is typically much greater than 1, **carrying the debt is almost always profitable when $\mu > r$**.
 
 The carry becomes *more* profitable over time, because the right side converges to
-\$\left(\frac{1+r}{1+\mu}\right)^t \to 0\$.
+$(\frac{1+r}{1+\mu})^t \to 0$.
 
 ### When carrying *stops* being profitable
 
-If the asset's return drops below the borrow rate (\$\mu < r\$), the carry value turns negative.
+If the asset's return drops below the borrow rate ($\mu < r$), the carry value turns negative.
 But it doesn't turn negative *immediately* — there's a lag from accumulated gains. This gives you
 a window to de-lever before the carry becomes a drag.
 
@@ -382,7 +382,7 @@ ratchet tells you *how* to carry it without losing sleep.
 
 | Question | Answer |
 |:---------|:-------|
-| Should I carry DeFi debt indefinitely? | Yes, as long as \$\mu > r\$ and LTV is safe |
+| Should I carry DeFi debt indefinitely? | Yes, as long as $\mu > r$ and LTV is safe |
 | Won't the interest eat me alive? | At 5%, it's \$300/yr on \$6k. Your asset likely gains more in a week |
 | What if rates spike? | Repay aggressively if borrow rate > 10% |
 | What if the asset drops? | Add collateral or partially repay if LTV > 25% |
