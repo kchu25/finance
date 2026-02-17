@@ -14,6 +14,12 @@
     <priority>0.5</priority>
 </url>
 <url>
+    <loc>https://kchu25.github.io/blog/chainlink/character_study/index.html</loc>
+    <lastmod>2026-02-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
     <loc>https://kchu25.github.io/blog/chainlink/reserve_analysis/index.html</loc>
     <lastmod>2026-01-21</lastmod>
     <changefreq>monthly</changefreq>
