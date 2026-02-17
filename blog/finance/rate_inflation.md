@@ -1,4 +1,4 @@
-@def title = "IHow Rising Interest Rates Control Inflation"
+@def title = "How Rising Interest Rates Control Inflation"
 @def published = "1 February 2026"
 @def tags = ["finance"]
 
