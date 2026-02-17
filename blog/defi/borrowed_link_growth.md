@@ -1,8 +1,8 @@
-@def title = "2,400 LINK Bought with Other People's Money: The Compounding Race"
+@def title = "X LINK Bought with Other People's Money: The Compounding Race"
 @def published = "15 February 2026"
 @def tags = ["crypto", "math", "finance"]
 
-# 2,400 LINK Bought with Other People's Money
+# X LINK Bought with Other People's Money
 ## How Borrowed LINK Outpaces USDC Debt — and Why the Gap Only Widens
 
 @@toc@@
@@ -12,9 +12,9 @@
 ## 1. The Trade
 
 I borrowed \$22,000 USDC from Aave at 3.8% APR. With that capital, I acquired approximately
-**2,400 additional LINK** at \$9.14/token.
+**X additional LINK** at \$9.14/token.
 
-That's 2,400 LINK I didn't pay for with my own money. I used *someone else's* capital — Aave
+That's X LINK I didn't pay for with my own money. I used *someone else's* capital — Aave
 liquidity providers — to buy a finite-supply asset that I believe will appreciate at 10–50%
 per year.
 
@@ -31,7 +31,7 @@ This trade is a race between two compounding curves:
 **Curve 1: The debt.** \$22,000 USDC growing at 3.8% per year (the borrow rate). This is what
 I owe. It grows slowly, linearly-ish, predictably.
 
-**Curve 2: The LINK.** 2,400 LINK appreciating at some annual rate. This is what I own. It
+**Curve 2: The LINK.** X LINK appreciating at some annual rate. This is what I own. It
 grows exponentially, unpredictably, but historically *fast*.
 
 The question is whether Curve 2 outruns Curve 1. Let's find out.
@@ -53,12 +53,12 @@ After 25 years, the debt has grown from \$22,000 to \$55,893. That's 2.5× — a
 
 ### LINK growth: fast and exponential
 
-Here's where it gets interesting. Let's model the 2,400 LINK at four different annual growth
+Here's where it gets interesting. Let's model the X LINK at four different annual growth
 rates:
 
 **Conservative (10%/yr) — "Crypto winter forever":**
 
-| Year | LINK Price | 2,400 LINK Value | Debt | Net Gain | Ratio |
+| Year | LINK Price | X LINK Value | Debt | Net Gain | Ratio |
 |:----:|:---------:|:----------------:|:----:|:--------:|:-----:|
 | 1 | \$10.05 | \$24,130 | \$22,836 | \$1,294 | 1.1× |
 | 5 | \$14.72 | \$35,328 | \$26,510 | \$8,818 | 1.3× |
@@ -72,7 +72,7 @@ capital I never had.
 
 **Base case (25%/yr) — "Chainlink becomes standard infrastructure":**
 
-| Year | LINK Price | 2,400 LINK Value | Debt | Net Gain | Ratio |
+| Year | LINK Price | X LINK Value | Debt | Net Gain | Ratio |
 |:----:|:---------:|:----------------:|:----:|:--------:|:-----:|
 | 1 | \$11.43 | \$27,420 | \$22,836 | \$4,584 | 1.2× |
 | 5 | \$27.89 | \$66,943 | \$26,510 | \$40,433 | 2.5× |
@@ -80,12 +80,12 @@ capital I never had.
 | 15 | \$259.77 | \$623,459 | \$38,493 | \$584,966 | 16.2× |
 | 25 | \$2,419 | \$5,806,411 | \$55,893 | \$5,750,518 | 103.9× |
 
-At 25%/yr, the 2,400 LINK are worth **104× the debt** by year 25. The \$22,000 borrowed becomes
+At 25%/yr, the X LINK are worth **104× the debt** by year 25. The \$22,000 borrowed becomes
 \$5.75 million in net value. The debt (\$55,893) is a rounding error.
 
 **Bull case (50%/yr) — "Crypto goes mainstream":**
 
-| Year | LINK Price | 2,400 LINK Value | Debt | Net Gain | Ratio |
+| Year | LINK Price | X LINK Value | Debt | Net Gain | Ratio |
 |:----:|:---------:|:----------------:|:----:|:--------:|:-----:|
 | 1 | \$13.71 | \$32,904 | \$22,836 | \$10,068 | 1.4× |
 | 5 | \$69.41 | \$166,576 | \$26,510 | \$140,067 | 6.3× |
@@ -199,12 +199,12 @@ reaches \$99 by year 25. My all-in cost per token: \$23.29. The profit per token
 
 ## 6. The 9.2% You'd Never Have
 
-These 2,400 LINK represent **9.2% of my total 26,000 LINK stack.** This 9.2% was acquired
+These X LINK represent **9.2% of my total 26,000 LINK stack.** This 9.2% was acquired
 entirely with other people's money.
 
 What is 9.2% of your stack worth at various LINK prices?
 
-| LINK Price | 2,400 LINK Value | Context |
+| LINK Price | X LINK Value | Context |
 |:----------:|:----------------:|:--------|
 | \$20 | \$48,000 | A car |
 | \$50 | \$120,000 | A house down payment |
@@ -262,7 +262,7 @@ suitable collateral asset for leveraged compounding:
 ### 1. Finite supply
 
 LINK has a hard cap of 1 billion tokens. Unlike dollars (which the Fed prints), LINK cannot
-be inflated away. Your 2,400 LINK will always be 0.00024% of all LINK that will ever exist.
+be inflated away. Your X LINK will always be 0.00024% of all LINK that will ever exist.
 The denominator is fixed; only the price can change.
 
 ### 2. Real utility
@@ -297,7 +297,7 @@ adoption, not interest rates. The correlation between your cost (debt) and your 
 
 Here's what makes this trade emotionally difficult:
 
-**Day 1:** You borrow \$22,000 and buy 2,400 LINK. The LINK is worth \$21,936. The debt is
+**Day 1:** You borrow \$22,000 and buy X LINK. The LINK is worth \$21,936. The debt is
 \$22,000. You're *underwater* by \$64. Your brain screams: "You just lost money borrowing
 money to buy something worth less than what you borrowed."
 
@@ -324,7 +324,7 @@ debt becomes irrelevant.
 
 | Metric | Value |
 |:-------|:------|
-| LINK acquired with borrowed capital | 2,400 tokens |
+| LINK acquired with borrowed capital | X tokens |
 | Percentage of total stack | 9.2% |
 | Borrow cost | 3.8% APR |
 | Breakeven LINK growth rate | 3.83%/yr |
@@ -333,7 +333,7 @@ debt becomes irrelevant.
 
 The spread between what LINK earns and what the debt costs **compounds exponentially** in your
 favor. Every year, the gap widens. Every year, the debt becomes more irrelevant. Every year,
-the 2,400 LINK — bought with other people's money — become worth more.
+the X LINK — bought with other people's money — become worth more.
 
 The debt can never catch up. It's mathematically impossible as long as LINK grows faster than
 3.83% per year. And if you believe LINK will grow slower than a savings account for 25 years
@@ -341,7 +341,7 @@ straight, you shouldn't own it at all.
 
 You own it. So act accordingly.
 
-> These 2,400 LINK didn't cost you anything. They cost Aave's liquidity providers \$22,000.
+> These X LINK didn't cost you anything. They cost Aave's liquidity providers \$22,000.
 > You're paying them \$2.29 per day for the privilege. And the LINK will be worth more than
 > the total accumulated interest within the first year.
 
