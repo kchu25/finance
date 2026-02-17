@@ -1,6 +1,6 @@
 @def title = "Chainlink (LINK): Realistic Analysis & Price Forecast"
 @def published = "7 November 2025"
-@def tags = ["blockchains"]
+@def tags = ["chainlink"]
 
 # Chainlink (LINK): Realistic Analysis & Price Forecast
 ## A No-BS Assessment of Oracles, Adoption, and Token Economics

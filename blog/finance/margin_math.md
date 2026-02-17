@@ -1,6 +1,6 @@
 @def title = "The Mathematics of Margin Trading"
 @def published = "6 February 2026"
-@def tags = ["finance", "math"]
+@def tags = ["trading", "quant"]
 
 # The Mathematics of Margin Trading
 ## Beyond Inequalities: Optimization, Probability, and Strategy

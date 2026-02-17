@@ -1,6 +1,6 @@
 @def title = "Comprehensive Introduction to ERC-20 Tokens"
 @def published = "29 November 2025"
-@def tags = ["crypto"]
+@def tags = ["defi"]
 
 # Comprehensive Introduction to ERC-20 Tokens
 

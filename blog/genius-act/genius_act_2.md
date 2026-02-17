@@ -1,6 +1,6 @@
 @def title = "GENIUS Act: What's Missing & Real-World Implications"
 @def published = "2 December 2025"
-@def tags = ["US-economy", "crypto", "genius-act"]
+@def tags = ["macro"]
 
 # GENIUS Act: What's Missing & Real-World Implications
 

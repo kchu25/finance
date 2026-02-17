@@ -1,6 +1,6 @@
 @def title = "Understanding Margin at Fidelity"
 @def published = "5 February 2026"
-@def tags = ["finance"]
+@def tags = ["trading"]
 
 # Understanding Margin at Fidelity
 

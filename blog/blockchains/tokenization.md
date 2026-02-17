@@ -1,6 +1,6 @@
 @def title = "Asset Tokenization: A Technical & Practical Deep Dive"
 @def published = "7 November 2025"
-@def tags = ["blockchains"]
+@def tags = ["tokenization"]
 
 # Asset Tokenization: A Technical & Practical Deep Dive
 ## Mathematical Framework, Computer Science, and Reality Check

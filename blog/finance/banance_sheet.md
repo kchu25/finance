@@ -1,6 +1,6 @@
 @def title = "Reading a Corporate Balance Sheet"
 @def published = "11 January 2026"
-@def tags = ["finance"]
+@def tags = ["personal-finance"]
 
 # Reading a Corporate Balance Sheet
 

@@ -1,6 +1,6 @@
 @def title = "Stablecoin Deep Dive: USDC & Tether"
 @def published = "29 November 2025"
-@def tags = ["crypto", "stablecoins"]
+@def tags = ["stablecoins"]
 
 # 🪙 Stablecoin Deep Dive: USDC & Tether
 

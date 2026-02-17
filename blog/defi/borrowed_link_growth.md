@@ -1,6 +1,6 @@
 @def title = "X LINK Bought with Other People's Money: The Compounding Race"
 @def published = "15 February 2026"
-@def tags = ["crypto", "math", "finance"]
+@def tags = ["defi", "chainlink", "quant"]
 
 # X LINK Bought with Other People's Money
 ## How Borrowed LINK Outpaces USDC Debt — and Why the Gap Only Widens

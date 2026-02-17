@@ -1,6 +1,6 @@
 @def title = "Chainlink: The Math Behind Fees & Valuation"
 @def published = "31 January 2026"
-@def tags = ["chainlink", "crypto"]
+@def tags = ["chainlink", "quant"]
 
 # Chainlink: The Math Behind Fees & Valuation
 

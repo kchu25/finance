@@ -1,6 +1,6 @@
 @def title = "Chainlink: The Complete Investment Thesis (Updated with Market Structure & Macro Context)"
 @def published = "31 January 2026"
-@def tags = ["chainlink", "crypto"]
+@def tags = ["chainlink"]
 
 # Chainlink: The Complete Investment Thesis
 

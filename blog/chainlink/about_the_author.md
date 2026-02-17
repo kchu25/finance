@@ -1,5 +1,5 @@
 @def title = "Why Is a Ballet Dancer Turned CS PhD Writing Chainlink Analysis"
-@def tags = ["crypto"]
+@def tags = ["meta", "chainlink"]
 @def published = "17 February 2026"
 @def rss = "The absurd career trajectory of someone who went from pirouettes to postdocs to price targets."
 

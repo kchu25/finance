@@ -1,6 +1,6 @@
 @def title = "Corporate Actions: Why Does It Cost 58 Billion?"
 @def published = "3 February 2026"
-@def tags = ["finance", "chainlink"]
+@def tags = ["chainlink", "macro"]
 
 # Corporate Actions: Why Does It Cost \$58 Billion? 🤔
 

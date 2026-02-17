@@ -1,6 +1,6 @@
 @def title = "Crypto Lending & Leverage Math Cheat Sheet"
 @def published = "10 February 2026"
-@def tags = ["crypto", "defi"]
+@def tags = ["defi", "quant"]
 
 # Crypto Lending & Leverage Math Cheat Sheet
 

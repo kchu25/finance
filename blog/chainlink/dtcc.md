@@ -1,6 +1,6 @@
 @def title = "DTCC-Chainlink Integration Overview"
 @def published = "15 December 2025"
-@def tags = ["chainlink", "crypto"]
+@def tags = ["chainlink", "macro"]
 
 # DTCC-Chainlink Integration Overview
 

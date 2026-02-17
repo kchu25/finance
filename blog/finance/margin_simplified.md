@@ -1,6 +1,6 @@
 @def title = "Margin Trading: The Essential Guide"
 @def published = "5 February 2026"
-@def tags = ["finance"]
+@def tags = ["trading"]
 
 # Margin Trading: The Essential Guide
 

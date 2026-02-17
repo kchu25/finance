@@ -1,6 +1,6 @@
 @def title = "CLARITY Act: What It Means for Crypto Markets"
 @def published = "13 January 2026"
-@def tags = ["US-economy", "crypto", "chainlink"]
+@def tags = ["macro", "chainlink"]
 
 # CLARITY Act: What It Means for Crypto Markets
 

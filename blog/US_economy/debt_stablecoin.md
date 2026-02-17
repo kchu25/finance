@@ -1,6 +1,6 @@
 @def title = "The US Debt Crisis & The Stablecoin: Chainlink as the Infrastructure Play"
 @def published = "11 December 2025"
-@def tags = ["US-economy"]
+@def tags = ["macro", "stablecoins"]
 
 # The US Debt Crisis & The Stablecoin: Chainlink as the Infrastructure Play
 

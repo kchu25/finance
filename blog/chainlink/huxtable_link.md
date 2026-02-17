@@ -1,6 +1,6 @@
 @def title = "Jonny Huxtable: Comprehensive Profile"
 @def published = "16 January 2026"
-@def tags = ["chainlink", "crypto"]
+@def tags = ["chainlink"]
 
 # Jonny Huxtable: Comprehensive Profile
 

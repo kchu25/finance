@@ -1,6 +1,6 @@
 @def title = "Black-Scholes: Intuitive Explanation"
 @def published = "5 October 2025"
-@def tags = ["options"]
+@def tags = ["options", "quant"]
 
 # Black-Scholes: Intuitive Explanation
 

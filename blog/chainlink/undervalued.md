@@ -1,6 +1,6 @@
 @def title = "Why Chainlink Is the Most Undervalued Asset in Crypto - A Civilizational Analysis"
 @def published = "17 February 2026"
-@def tags = ["chainlink", "crypto", "stocks"]
+@def tags = ["chainlink"]
 
 # Why Chainlink Is the Most Undervalued Asset in Crypto
 

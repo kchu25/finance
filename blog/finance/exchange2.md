@@ -1,6 +1,6 @@
 @def title = "Exchange Reserves & Market Violence: The Complete Picture"
 @def published = "20 January 2026"
-@def tags = ["finance"]
+@def tags = ["trading"]
 
 # Exchange Reserves & Market Violence: The Complete Picture
 

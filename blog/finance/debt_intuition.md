@@ -1,6 +1,6 @@
 @def title = "Why Keeping Debt Feels Wrong But Is Right: Building Intuition"
 @def published = "15 February 2026"
-@def tags = ["math", "finance", "crypto"]
+@def tags = ["personal-finance"]
 
 # Why Keeping Debt Feels Wrong But Is Right
 ## Five Mental Models That Make It Click

@@ -1,5 +1,5 @@
 @def title = "Character Study - The Guy Who Keeps Choosing Uncertainty"
-@def tags = ["crypto"]
+@def tags = ["meta"]
 @def published = "17 February 2026"
 @def rss = "A character analysis of someone who left ballet for CS, academia for crypto analysis, and certainty for expected value — every single time."
 

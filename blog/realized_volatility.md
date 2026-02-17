@@ -1,6 +1,6 @@
 @def title = "Realized Volatility: Complete Mathematical Explanation"
 @def published = "5 October 2025"
-@def tags = ["volatility-estimates"]
+@def tags = ["quant"]
 
 # Realized Volatility: Complete Mathematical Explanation
 

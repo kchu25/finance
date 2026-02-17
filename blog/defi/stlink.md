@@ -1,6 +1,6 @@
 @def title = "wstLINK: Earning, Tax, & Portfolio Strategy"
 @def published = "10 February 2026"
-@def tags = ["crypto", "defi"]
+@def tags = ["defi", "chainlink"]
 
 # wstLINK: Earning, Tax, & Portfolio Strategy
 

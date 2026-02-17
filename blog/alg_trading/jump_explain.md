@@ -1,6 +1,6 @@
 @def title = "Mathematical Description of Jump Detection Algorithm"
 @def published = "15 November 2025"
-@def tags = ["algorithmic-trading"]
+@def tags = ["quant", "trading"]
 
 # Mathematical Description of Jump Detection Algorithm
 

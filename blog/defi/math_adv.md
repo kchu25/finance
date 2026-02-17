@@ -1,6 +1,6 @@
 @def title = "Crypto Lending Risk Analysis: Advanced Playbook"
 @def published = "13 February 2026"
-@def tags = ["crypto", "defi"]
+@def tags = ["defi"]
 
 # Crypto Lending Risk Analysis: Advanced Playbook
 ## Practical Tricks for "Deposit A, Borrow Stablecoin, Buy B"

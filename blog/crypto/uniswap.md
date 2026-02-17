@@ -1,6 +1,6 @@
 @def title = "Uniswap Guide: What It Is & How to Use It"
 @def published = "10 February 2026"
-@def tags = ["crypto", "defi"]
+@def tags = ["defi"]
 
 # Uniswap Guide: What It Is & How to Use It
 

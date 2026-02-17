@@ -1,6 +1,6 @@
 @def title = "Inflation Is a Debt Eraser: Why Borrowers Win and Savers Lose"
 @def published = "15 February 2026"
-@def tags = ["math", "finance"]
+@def tags = ["personal-finance", "macro"]
 
 # Inflation Is a Debt Eraser
 ## Why Borrowers Win, Savers Lose, and the System Is Designed That Way

@@ -1,6 +1,6 @@
 @def title = "Why the US Values Dollar Dominance"
 @def published = "29 November 2025"
-@def tags = ["US-economy"]
+@def tags = ["macro"]
 
 # Why the US Values Dollar Dominance
 

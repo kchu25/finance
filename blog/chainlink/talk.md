@@ -1,6 +1,6 @@
 @def title = "Base's Institutional Push: Circle, AERO, and What It Means for CRCL & LINK"
 @def published = "15 January 2026"
-@def tags = ["crypto", "stablecoins"]
+@def tags = ["chainlink", "stablecoins"]
 
 # Base's Institutional Push: Circle, AERO, and What It Means for CRCL & LINK
 

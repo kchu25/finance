@@ -1,6 +1,6 @@
 @def title = "Morpho: The Meta-Protocol Perspective"
 @def published = "10 February 2026"
-@def tags = ["crypto", "defi"]
+@def tags = ["defi"]
 
 # Morpho: The Meta-Protocol Perspective
 

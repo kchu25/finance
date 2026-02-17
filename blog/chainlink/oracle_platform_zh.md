@@ -1,6 +1,6 @@
 @def title = "Chainlink 預言機平台：投資論述與價格分析"
 @def published = "6 February 2026"
-@def tags = ["crypto", "blockchains", "chainlink"]
+@def tags = ["chainlink"]
 
 # Chainlink 預言機平台：投資論述與價格分析
 ## 它做什麼、安不安全、值不值得投資？

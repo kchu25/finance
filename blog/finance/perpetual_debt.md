@@ -1,6 +1,6 @@
 @def title = "The Perpetual Debt Playbook: Managing No-Maturity DeFi Loans"
 @def published = "15 February 2026"
-@def tags = ["math", "finance", "crypto"]
+@def tags = ["defi", "personal-finance"]
 
 # The Perpetual Debt Playbook
 ## When Your Asset Outgrows Your Debt, Do You Still Repay?

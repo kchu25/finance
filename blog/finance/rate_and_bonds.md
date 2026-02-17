@@ -1,6 +1,6 @@
 @def title = "Interest Rates and Bond Markets: The Inverse Dance"
 @def published = "1 February 2026"
-@def tags = ["finance"]
+@def tags = ["macro"]
 
 # Interest Rates and Bond Markets: The Inverse Dance
 

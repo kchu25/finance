@@ -1,7 +1,7 @@
 
 @def title = "The Hurst Exponent: An Intuitive Guide"
 @def published = "12 October 2025"
-@def tags = ["math"]
+@def tags = ["quant"]
 
 # The Hurst Exponent: An Intuitive Guide
 

@@ -1,6 +1,6 @@
 @def title = "The Debt Architect Strategy: DeFi Leverage in the CLARITY Act Era"
 @def published = "10 February 2026"
-@def tags = ["crypto", "defi"]
+@def tags = ["defi", "personal-finance"]
 
 # The Debt Architect Strategy: DeFi Leverage in the CLARITY Act Era
 

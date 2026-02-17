@@ -1,6 +1,6 @@
 @def title = "Mathematical Framework for Mean Reversion Exit Strategies"
 @def published = "5 October 2025"
-@def tags = ["exit-strategy"]
+@def tags = ["quant"]
 
 # Mathematical Framework for Mean Reversion Exit Strategies
 

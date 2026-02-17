@@ -1,6 +1,6 @@
 @def title = "The Mathematics of Debt in Personal Finance"
 @def published = "13 February 2026"
-@def tags = ["math", "finance"]
+@def tags = ["personal-finance", "quant"]
 
 # The Mathematics of Debt in Personal Finance
 ## When to Borrow, When to Be Debt-Free, and Why the Math Is Not Obvious

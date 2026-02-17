@@ -1,5 +1,5 @@
 @def title = "Trust, Automated - What Happens When Verification Becomes Free"
-@def tags = ["crypto", "blockchains", "algorithmic-trading"]
+@def tags = ["chainlink", "tokenization"]
 @def published = "17 February 2026"
 @def rss = "Imagining the full scope of a world where trust is automated — and re-estimating Chainlink's market cap accordingly."
 

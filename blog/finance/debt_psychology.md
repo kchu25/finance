@@ -1,6 +1,6 @@
 @def title = "Why Nobody Teaches You to Use Debt: The Deepest Reason"
 @def published = "16 February 2026"
-@def tags = ["math", "finance"]
+@def tags = ["personal-finance"]
 
 # Why Nobody Teaches You to Use Debt
 ## The Math Is Simple. The Silence Is Engineered.

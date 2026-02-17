@@ -1,6 +1,6 @@
 @def title = "Chainlink Oracle Platform: A Technical Deep Dive"
 @def published = "6 February 2026"
-@def tags = ["crypto", "blockchains", "chainlink"]
+@def tags = ["chainlink"]
 
 # Chainlink Oracle Platform: A Technical Deep Dive
 ## How It Works, Is It Secure, and Does the Investment Thesis Hold?

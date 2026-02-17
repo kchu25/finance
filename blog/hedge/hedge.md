@@ -1,6 +1,6 @@
 @def title = "Positioning & Hedging Strategies for Market Downturns"
 @def published = "3 December 2025"
-@def tags = ["hedging", "options"]
+@def tags = ["options", "trading"]
 
 # Positioning & Hedging Strategies for Market Downturns
 

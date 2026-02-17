@@ -1,6 +1,6 @@
 @def title = "Recursive Collateralization: The Looping Strategy"
 @def published = "13 February 2026"
-@def tags = ["crypto", "defi"]
+@def tags = ["defi", "quant"]
 
 # Recursive Collateralization: The Looping Strategy
 ## Deposit LINK → Borrow USDC → Buy LINK → Repeat

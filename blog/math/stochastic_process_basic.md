@@ -1,6 +1,6 @@
 @def title = "Stochastic Process Basics for Brownian Motion"
 @def published = "5 October 2025"
-@def tags = ["math"]
+@def tags = ["quant"]
 
 # Stochastic Process Basics for Brownian Motion
 

@@ -1,6 +1,6 @@
 @def title = "Tax Planning for Your LINK Staking Journey"
 @def published = "15 January 2026"
-@def tags = ["crypto", "stablecoins", "chainlink"]
+@def tags = ["chainlink", "personal-finance"]
 
 # Tax Planning for Your LINK Staking Journey
 

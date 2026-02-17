@@ -1,6 +1,6 @@
 @def title = "LINK Exchange Reserves: The Complete Analysis"
 @def published = "20 January 2026"
-@def tags = ["chainlink", "crypto"]
+@def tags = ["chainlink", "trading"]
 
 # LINK Exchange Reserves: The Complete Analysis
 

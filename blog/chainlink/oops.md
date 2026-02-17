@@ -1,6 +1,6 @@
 @def title = "The Hidden in Plain Sight Arbitrage: Chainlink 2025 Report"
 @def published = "3 February 2026"
-@def tags = ["finance", "chainlink"]
+@def tags = ["chainlink"]
 
 
 Here is a breakdown of the **"Page 3 Secret"** and the crucial points from the 2025 Institutional Report that the retail market (and Twitter) is currently missing.

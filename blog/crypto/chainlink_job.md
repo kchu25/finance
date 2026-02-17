@@ -1,6 +1,6 @@
 @def title = "Chainlink Job Analysis:"
 @def published = "30 November 2025"
-@def tags = ["crypto"]
+@def tags = ["chainlink"]
 
 # Chainlink Job Analysis
 

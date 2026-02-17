@@ -1,6 +1,6 @@
 @def title = "stake.link Tutorial Guide"
 @def published = "16 January 2026"
-@def tags = ["chainlink", "crypto"]
+@def tags = ["chainlink", "defi"]
 
 # stake.link Tutorial Guide
 

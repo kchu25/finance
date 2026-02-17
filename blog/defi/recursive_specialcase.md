@@ -1,6 +1,6 @@
 @def title = "Recursive Collateralization: Special Case — 1000 LINK, \$2100 Already Borrowed"
 @def published = "13 February 2026"
-@def tags = ["crypto", "defi"]
+@def tags = ["defi", "quant"]
 
 # Recursive Collateralization: Special Case
 ## 1000 LINK at \$8.40, with \$2100 USDC Already Borrowed

@@ -1,6 +1,6 @@
 @def title = "stake.link Node Operators: Trustworthiness Overview"
 @def published = "16 January 2026"
-@def tags = ["chainlink", "crypto"]
+@def tags = ["chainlink"]
 
 # stake.link Node Operators: Trustworthiness Overview
 

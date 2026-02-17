@@ -1,6 +1,6 @@
 @def title = "Exchange reserve and price movements"
 @def published = "20 January 2026"
-@def tags = ["finance"]
+@def tags = ["trading"]
 
 # Exchange reserve and price movements
 

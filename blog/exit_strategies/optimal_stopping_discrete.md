@@ -1,6 +1,6 @@
 @def title = "Optimal Stopping: A Discrete Approach"
 @def published = "20 October 2025"
-@def tags = ["exit-strategy"]
+@def tags = ["quant"]
 
 # Optimal Stopping: A Discrete Approach
 

@@ -1,6 +1,6 @@
 @def title = "Chainlink Runtime Environment (CRE)"
 @def published = "11 December 2025"
-@def tags = ["chainlink", "crypto"]
+@def tags = ["chainlink"]
 
 # Chainlink Runtime Environment (CRE)
 

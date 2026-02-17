@@ -1,6 +1,6 @@
 @def title = "The Complete Risk Map of Aave: What Can Actually Kill Your Position"
 @def published = "17 February 2026"
-@def tags = ["crypto", "math", "finance"]
+@def tags = ["defi", "chainlink"]
 
 # The Complete Risk Map of Aave
 ## What Can Actually Kill Your Position — and What Can't

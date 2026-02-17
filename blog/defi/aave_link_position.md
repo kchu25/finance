@@ -1,6 +1,6 @@
 @def title = "Case Study: A Conservative Aave LINK Position"
 @def published = "15 February 2026"
-@def tags = ["crypto", "math", "finance"]
+@def tags = ["defi", "chainlink"]
 
 # Case Study: A Conservative Aave LINK Position
 ## The Full Breakdown — Risk Analysis and Strategy

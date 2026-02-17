@@ -1,6 +1,6 @@
 @def title = "Folks Finance vs Curve Finance: Deep Dive & Risk Analysis"
 @def published = "10 February 2026"
-@def tags = ["crypto", "defi"]
+@def tags = ["defi"]
 
 # Folks Finance vs Curve Finance: Deep Dive & Risk Analysis
 

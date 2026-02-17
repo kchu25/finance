@@ -1,6 +1,6 @@
 @def title = "Circle Valuation Analysis: Two Perspectives"
 @def published = "1 December 2025"
-@def tags = ["US-economy", "stocks", "crypto"]
+@def tags = ["macro", "stablecoins"]
 
 # Circle Valuation Analysis: Two Perspectives
 

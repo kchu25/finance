@@ -1,6 +1,6 @@
 @def title = "30-Day Crypto Infrastructure Sprint Plan"
 @def published = "30 November 2025"
-@def tags = ["crypto"]
+@def tags = ["defi"]
 
 
 # 30-Day Crypto Infrastructure Sprint Plan

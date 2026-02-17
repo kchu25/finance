@@ -1,6 +1,6 @@
 @def title = "Probability Analysis: How Likely Is LINK to Fall Further?"
 @def published = "13 February 2026"
-@def tags = ["crypto", "math"]
+@def tags = ["chainlink", "quant"]
 
 # Probability Analysis: How Likely Is LINK to Fall Further?
 ## A Quantitative Risk Assessment at \$8.50

@@ -1,6 +1,6 @@
 @def title = "GENIUS Act: Tech Career Opportunities for CS PhDs (ML/AI/GPU/Comp Bio)"
 @def published = "29 November 2025"
-@def tags = ["US-economy", "crypto", "genius-act"]
+@def tags = ["macro"]
 
 # GENIUS Act: Tech Career Opportunities for CS PhDs (ML/AI/GPU/Comp Bio)
 

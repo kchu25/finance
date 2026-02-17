@@ -1,6 +1,6 @@
 @def title = "Why Tokenize Assets? Key Questions & Answers"
 @def published = "15 December 2025"
-@def tags = ["blockchains", "crypto"]
+@def tags = ["tokenization"]
 
 # Why Tokenize Assets? Key Questions & Answers
 

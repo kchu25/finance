@@ -1,6 +1,6 @@
 @def title = "Introduction to Bonds and US Treasuries"
 @def published = "29 November 2025"
-@def tags = ["US-economy"]
+@def tags = ["macro"]
 
 # Introduction to Bonds and US Treasuries
 

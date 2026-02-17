@@ -1,6 +1,6 @@
 @def title = "Understanding Stationarity: ADF Test and Autocorrelation"
 @def published = "20 October 2025"
-@def tags = ["time-series"]
+@def tags = ["quant"]
 
 # Understanding Stationarity: ADF Test and Autocorrelation
 

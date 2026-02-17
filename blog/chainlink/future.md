@@ -1,6 +1,6 @@
 @def title = "LINK Futures: What's Actually Happening?"
 @def published = "15 January 2026"
-@def tags = ["chainlink", "crypto"]
+@def tags = ["chainlink", "trading"]
 
 # LINK Futures: What's Actually Happening?
 
