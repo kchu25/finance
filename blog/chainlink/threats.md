@@ -1,6 +1,6 @@
 @def title = "Threat Assessment — Can Anything Actually Kill Chainlink?"
 @def tags = ["chainlink"]
-@def rss_pubdate = Date(2026, 2, 17)
+@def published = "17 February 2026"
 @def rss_description = "A comprehensive analysis of every competing oracle model, with market data, architectural deep-dives, and an honest evaluation of what actually threatens Chainlink's dominance."
 @def rss = "threat assessment — can anything actually kill chainlink?"
 
