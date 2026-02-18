@@ -31,7 +31,7 @@ $$\text{Net Flow}(t) = \text{Inflows}(t) - \text{Outflows}(t)$$
 
 The key insight: **the institution can control the narrative about selling, but they cannot hide the coins leaving exchanges.** When quote data says "massive selling" but exchange reserves are dropping, you have a detectable contradiction. The on-chain data wins because it's harder to fake.
 
-Tools: CryptoQuant, Glassnode, Nansen. All provide exchange reserve tracking.
+Tools: [CryptoQuant](https://cryptoquant.com/asset/btc/chart/exchange-flows/exchange-reserve), [Glassnode](https://studio.glassnode.com/metrics?a=BTC&m=distribution.BalanceExchanges), [Nansen](https://app.nansen.ai/macro/token-god-mode). All provide exchange reserve tracking.
 
 **Whale wallet tracking.** Large wallets (top 100 holders of any token) are publicly visible. When a whale moves coins from an exchange to cold storage, that's a verifiable accumulation signal:
 
@@ -136,7 +136,7 @@ A collapsing fill rate during a "sell-off" is a direct mathematical fingerprint 
 Most retail traders can't see raw order book data. But you can approximate:
 
 - **Daily volume vs. order book depth:** Most exchanges show both. If depth is 10x its normal level but daily volume is flat, the fill rate has collapsed.
-- **Order book heatmaps:** Tools like TradingLite, Bookmap, and Hyblock Capital visualize order book changes over time. Spoofed walls appear and disappear in patterns that are visible on these heatmaps — they flash large, persist for minutes to hours, then vanish when price approaches.
+- **Order book heatmaps:** Tools like [TradingLite](https://tradinglite.com), [Bookmap](https://bookmap.com), and [Hyblock Capital](https://hyblock.co) visualize order book changes over time. Spoofed walls appear and disappear in patterns that are visible on these heatmaps — they flash large, persist for minutes to hours, then vanish when price approaches.
 - **Cancel rate:** Some analytics platforms track the ratio of orders placed to orders cancelled. A cancel rate above 90\% on the sell side is strongly suggestive of spoofing.
 
 ---
