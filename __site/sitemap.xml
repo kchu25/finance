@@ -195,7 +195,7 @@
 </url>
 <url>
     <loc>https://kchu25.github.io/blog/chainlink/undervalued/index.html</loc>
-    <lastmod>2026-02-17</lastmod>
+    <lastmod>2026-02-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
@@ -430,6 +430,12 @@
 <url>
     <loc>https://kchu25.github.io/blog/chainlink/about_the_author/index.html</loc>
     <lastmod>2026-02-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+</url>
+<url>
+    <loc>https://kchu25.github.io/blog/crypto/liq_cap2/index.html</loc>
+    <lastmod>2026-02-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
 </url>
