@@ -106,6 +106,18 @@ $$G_i^* = \frac{\bar{X}_i - \bar{Z}_i}{\gamma}$$
 
 Countries peg their currencies to the dollar. Maintaining the peg requires dollar reserves. Dollar reserves are held as Treasuries. Therefore, participating in the system generates Treasury demand proportional to participation.
 
+> **Where does gold fit in?**
+>
+> Gold is what made the dollar *credible* as the anchor currency, not what generated the Treasury demand directly. The chain of trust worked like this:
+>
+> 1. The US promised foreign central banks they could exchange dollars for gold at a fixed rate of \$35/oz — on demand, no questions asked. This made the dollar "as good as gold."
+> 2. Because dollars were as good as gold (but paid interest while gold didn't), every other country was happy to hold dollar reserves instead of gold itself.
+> 3. To hold dollar reserves, they bought US Treasury securities — the safest, most liquid dollar-denominated asset.
+>
+> So the *role of gold* in Bretton Woods was as a **credibility anchor**, not as the thing countries were actually accumulating. Gold made countries trust the dollar enough to peg to it. The peg is what forced them to accumulate dollar reserves. The dollar reserves are what flowed into Treasuries.
+>
+> This is why the Triffin Dilemma in Section 3 is so lethal: the more dollars circulated globally (needed for trade), the larger the gap between outstanding dollar claims and the gold that backed them. Gold was the foundation of the whole edifice — and it was finite. The equations below model the *demand side* (reserves → Treasuries), which is entirely linear. The *collapse* came from the supply side (gold ≠ infinite), which is where the nonlinearity lives.
+
 ### The Model
 
 Let there be $n$ countries indexed $i = 1, \ldots, n$, each with:
