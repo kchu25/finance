@@ -62,7 +62,9 @@ Yes. This is a factual statement about how blockchains work. A USDC-denominated 
 
 Yes, but with a caveat. These are the *current* infrastructure categories. New categories might emerge (zero-knowledge verification systems, intent-based architectures, AI agents). The specific technologies might evolve. But the *functions* — data verification, cross-chain communication, automated execution — are enduring requirements. Something has to perform these functions regardless of what it's called.
 
-**Confidence: 85%.** High confidence that these functions are needed. Moderate uncertainty about whether today's architecture is the permanent solution.
+The CLARITY Act — currently at **82% probability of passing on Polymarket** — would formally classify oracle networks and cross-chain protocols as regulated financial infrastructure, not securities. This isn't incidental. It means the US government is actively building a legal framework that *names* these exact infrastructure categories as essential to the financial system.
+
+**Confidence: 90%.** The functions are needed (85% on technical merits alone), and the CLARITY Act at 82% passage probability means the government is about to *legally codify* that oracles and cross-chain protocols are the infrastructure layer. That's not speculation — it's pending legislation with overwhelming market-implied odds.
 
 ### Link 4 — The oracle/infrastructure market is dominated by Chainlink
 
@@ -72,7 +74,7 @@ Yes, but with a caveat. These are the *current* infrastructure categories. New c
 
 The market share data is from CoinGecko (February 2026). The institutional integrations are from public announcements. The [threat assessment](/blog/chainlink/threats/) evaluated six competitor models and rated five of them LOW threat. The one MODERATE-rated competitor (Pyth) is dominant only in a niche (Solana DeFi price feeds) that isn't relevant to the institutional settlement thesis.
 
-**Confidence: 90%** that Chainlink is currently dominant. Lower confidence (~70%) that this dominance persists for 5+ years — technology markets can shift quickly, and a well-funded competitor or a new architectural paradigm could erode the moat.
+**Confidence: 90%** that Chainlink is currently dominant. And the CLARITY Act at 82% passage odds *increases* the probability that dominance persists — regulated infrastructure markets are harder to disrupt than unregulated ones. Once Chainlink is classified as regulated financial infrastructure with compliance frameworks built around it, switching costs for institutional users become enormous. Banks don't rip out regulated plumbing on a whim. This raises my 5-year dominance confidence from ~70% to ~80%.
 
 ### Link 5 — Therefore, buying LINK captures the value created by the stablecoin system
 
@@ -183,7 +185,7 @@ LINK is the only asset in the table that combines *high thesis alignment* with *
 
 I need to be honest about why someone rational might reject this conclusion.
 
-**Argument 1 — "The thesis is right but the token is wrong."** Chainlink the protocol might be essential. LINK the token might not capture that value. If Chainlink Labs raises enterprise revenue through service contracts denominated in USD (not LINK), the token becomes a staking utility with limited upside. This is the Cisco argument: Cisco routed all internet traffic but the stock went nowhere for 15 years after the dot-com peak.
+**Argument 1 — "The thesis is right but the token is wrong."** Chainlink the protocol might be essential. LINK the token might not capture that value. If Chainlink Labs raises enterprise revenue through service contracts denominated in USD (not LINK), the token becomes a staking utility with limited upside. This is the Cisco argument: Cisco routed all internet traffic but the stock went nowhere for 15 years after the dot-com peak. *However:* the CLARITY Act (82% passage odds on Polymarket) classifies oracle tokens as non-securities infrastructure — which legitimizes the token-secured model and makes it harder for Chainlink Labs to pivot away from LINK without undermining their own regulatory positioning.
 
 **Argument 2 — "You're confusing necessity with investability."** Electricity is necessary. Buying utility stocks hasn't made anyone rich. Chainlink might become essential infrastructure that earns regulated-utility returns — 8–12% annually. That's fine for a pension fund. It's not the 50x you're modeling.
 
@@ -201,20 +203,20 @@ The chain of logic is sound at every link *except* token value accrual, which is
 |:---|:---|:---|
 | 1 | US government needs stablecoin adoption | 80% |
 | 2 | Stablecoins require on-chain infrastructure | 95% |
-| 3 | Infrastructure = oracles + cross-chain | 85% |
+| 3 | Infrastructure = oracles + cross-chain (CLARITY Act at 82% on Polymarket) | 90% |
 | 4 | Chainlink dominates this infrastructure | 90% |
-| 5 | LINK token captures protocol value | 60% |
-| **Joint** | **All five links hold** | **37%** |
+| 5 | LINK token captures protocol value | 65% |
+| **Joint** | **All five links hold** | **41%** |
 
-A 37% probability that the full thesis holds.
+The CLARITY Act bumps Link 3 from 85% to 90% (the government is *naming* this infrastructure category in law) and Link 5 from 60% to 65% (regulated infrastructure tokens are harder to displace — compliance frameworks get built around the incumbent, and the Act legitimizes the token-secured model). Joint probability rises from 37% to 41%.
 
-But the question isn't whether the full thesis holds. It's whether the *expected value* is positive. With a downside of ~60% (\$8.89 → \$3.50, roughly the staking-floor valuation) and an upside of 10–50x if the thesis plays out:
+But the question isn't whether the full thesis holds. It's whether the *expected value* is positive. With a downside of ~44% (\$8.89 → \$5, the staking-economics floor) and an upside of 10–50x if the thesis plays out:
 
-$$EV = 0.37 \times 10 \times P_{\text{current}} + 0.63 \times 0.4 \times P_{\text{current}} = (3.7 + 0.25) \times P_{\text{current}} = 3.95 \times P_{\text{current}}$$
+$$EV = 0.41 \times 10 \times P_{\text{current}} + 0.59 \times 0.56 \times P_{\text{current}} = (4.1 + 0.33) \times P_{\text{current}} = 4.43 \times P_{\text{current}}$$
 
-Even using the *conservative* 10x upside scenario and a harsh 37% probability, the expected value is nearly 4x the current price. Using 20x upside:
+Even using the *conservative* 10x upside scenario and a 41% probability, the expected value is over 4.4x the current price. Using 20x upside:
 
-$$EV = 0.37 \times 20 + 0.63 \times 0.4 = 7.4 + 0.25 = 7.65x$$
+$$EV = 0.41 \times 20 + 0.59 \times 0.56 = 8.2 + 0.33 = 8.53x$$
 
 The asymmetry is the point. You don't need to be *right* about every link. You need the expected value to be positive, and it is — by a wide margin — because the upside is so much larger than the downside.
 
@@ -235,6 +237,7 @@ At 37% joint probability with 10–50x upside and ~60% downside, the Kelly crite
 **What else would I buy?** Honestly, I don't see another asset that sits at the intersection of:
 - A macro thesis supported by 80 years of precedent
 - A legal mandate (GENIUS Act) creating forced demand
+- A second legal mandate (CLARITY Act, 82% on Polymarket) classifying the infrastructure as regulated and non-security
 - An infrastructure position with 88% market share
 - A token priced 83% below its all-time high
 
