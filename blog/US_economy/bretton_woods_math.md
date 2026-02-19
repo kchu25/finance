@@ -48,7 +48,21 @@ $$M_i(t) = k \cdot G_i(t), \quad k > 0$$
 
 where $k$ is the money multiplier (constant under strict gold standard rules). This is **linear**.
 
-**Equation 3 — Prices track money supply.** By the [quantity theory of money](https://en.wikipedia.org/wiki/Quantity_theory_of_money) (in its simplest form, $MV = PY$, holding velocity $V$ and real output $Y$ roughly constant in the short run):
+**Equation 3 — Prices track money supply.** By the [quantity theory of money](https://en.wikipedia.org/wiki/Quantity_theory_of_money):
+
+> **What is $MV = PY$?**
+>
+> This is the [Fisher equation](https://en.wikipedia.org/wiki/Equation_of_exchange), the foundational identity of monetary economics:
+> - $M$ — the money supply (total currency and deposits in circulation)
+> - $V$ — velocity of money (how many times the average dollar changes hands per year)
+> - $P$ — the price level (average price of goods and services)
+> - $Y$ — real output (total quantity of goods and services produced)
+>
+> The left side $MV$ is the total dollar value of all transactions in the economy. The right side $PY$ is the same thing viewed differently: price times quantity = nominal GDP. So $MV = PY$ is an accounting identity, always true by definition.
+>
+> The behavioral assumption comes when we treat $V$ and $Y$ as roughly *constant* in the short run — a reasonable approximation when the economy isn't in upheaval. Under that assumption, doubling $M$ must double $P$: more money chasing the same amount of goods means higher prices. This is why printing money causes inflation, and why losing gold (which contracted $M$) caused deflation under the gold standard.
+
+In its simplest form, holding velocity $V$ and real output $Y$ roughly constant in the short run:
 
 $$P_i(t) = \frac{M_i(t) \cdot V}{Y_i} = \frac{k \cdot V}{Y_i} \cdot G_i(t)$$
 
