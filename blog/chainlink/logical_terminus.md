@@ -119,6 +119,8 @@ The value accrual mechanism is: more on-chain activity → more oracle requests 
 
 **Counter 4 — The \$52.9M revenue is pre-growth.** The tokenized RWA market is projected at \$16T by 2030. Even 0.01% capture = \$1.6B in annual revenue. At a 30x multiple: \$48B market cap. At 0.1% capture: \$480B.
 
+**Counter 5 — The CP architecture *requires* the token.** The [CAP analysis](/blog/chainlink/cap_and_plumbing/) reveals something subtle: Chainlink's consistency guarantees depend on BFT consensus across independent nodes, and those nodes are incentivized by LINK staking and fee payments. A permissioned oracle network (Problem 3's nightmare scenario) would be a **CA system** — consistent and available when all nodes cooperate, but catastrophically fragile during partitions. It would lose the Partition Tolerance that institutions require for sovereign-grade settlement. The CP design *requires* decentralized, independently-incentivized node operators — which *requires* a public token with staking economics. You can't have CP without the token. The architecture and the token are inseparable. Additionally, the [payment abstraction layer](/blog/chainlink/techstack/) means every institutional transaction generates programmatic LINK buy pressure through DEX auto-swaps — even though banks never see or touch the token. SVR (Smart Value Recapture) adds a second revenue channel by metering free-rider usage of oracle feeds. OEV/Atlas adds a third by auctioning liquidation rights. These aren't speculative revenue models — they're deployed, on-chain, and mechanistically tied to LINK token flows.
+
 ---
 
 ## The Competitive Alternatives — What Else Would You Buy?
@@ -199,24 +201,34 @@ I need to be honest about why someone rational might reject this conclusion.
 
 The chain of logic is sound at every link *except* token value accrual, which is plausible but not guaranteed. Let me assign probabilities:
 
-| Link | Claim | Probability |
-|:---|:---|:---|
-| 1 | US government needs stablecoin adoption | 80% |
-| 2 | Stablecoins require on-chain infrastructure | 95% |
-| 3 | Infrastructure = oracles + cross-chain (CLARITY Act at 82% on Polymarket) | 90% |
-| 4 | Chainlink dominates this infrastructure | 90% |
-| 5 | LINK token captures protocol value | 65% |
-| **Joint** | **All five links hold** | **41%** |
+| Link | Claim | Probability | Change |
+|:---|:---|:---|:---|
+| 1 | US government needs stablecoin adoption | 80% | — |
+| 2 | Stablecoins require on-chain infrastructure | 95% | — |
+| 3 | Infrastructure = oracles + cross-chain (CLARITY Act at 82% on Polymarket) | 90% | — |
+| 4 | Chainlink dominates this infrastructure | 90% | — |
+| 5 | LINK token captures protocol value | **70%** | ↑ from 65% |
+| **Joint** | **All five links hold** | **43%** | ↑ from 41% |
 
-The CLARITY Act bumps Link 3 from 85% to 90% (the government is *naming* this infrastructure category in law) and Link 5 from 60% to 65% (regulated infrastructure tokens are harder to displace — compliance frameworks get built around the incumbent, and the Act legitimizes the token-secured model). Joint probability rises from 37% to 41%.
+The CLARITY Act bumps Link 3 from 85% to 90% (the government is *naming* this infrastructure category in law). The [CAP analysis](/blog/chainlink/cap_and_plumbing/) bumps Link 5 from 65% to **70%**. Here's why:
 
-But the question isn't whether the full thesis holds. It's whether the *expected value* is positive. With a downside of ~44% (\$8.89 → \$5, the staking-economics floor) and an upside of 10–50x if the thesis plays out:
+The three original objections to token value accrual were: (1) fee compression, (2) revenue/market-cap disconnect, and (3) Chainlink Labs could pivot to a permissioned network that doesn't use LINK. The CAP analysis addresses all three:
 
-$$EV = 0.41 \times 10 \times P_{\text{current}} + 0.59 \times 0.56 \times P_{\text{current}} = (4.1 + 0.33) \times P_{\text{current}} = 4.43 \times P_{\text{current}}$$
+- **Fee compression (Problem 1)**: SVR and OEV/Atlas create revenue channels *beyond* per-query fees. SVR meters free-rider usage; OEV auctions liquidation rights. These are deployed, on-chain, and mechanistically tied to LINK. Fee compression on price feeds matters less when you have three revenue streams instead of one.
 
-Even using the *conservative* 10x upside scenario and a 41% probability, the expected value is over 4.4x the current price. Using 20x upside:
+- **Revenue disconnect (Problem 2)**: The payment abstraction layer means institutional revenue scales directly to LINK demand — every \$1 paid by a bank in USD is auto-swapped to LINK on a DEX. Revenue growth *is* token demand growth. They're the same thing.
 
-$$EV = 0.41 \times 20 + 0.59 \times 0.56 = 8.2 + 0.33 = 8.53x$$
+- **Permissioned pivot (Problem 3)**: This is where CAP delivers the kill shot. A permissioned oracle would be a CA system — no partition tolerance, no BFT, no credible neutrality. Institutions choosing oracle infrastructure rank partition tolerance and security above everything else (the [sovereign-grade ranking](/blog/general/cap_theorem/)). Chainlink *can't* drop the token without dropping P from its CAP position — and dropping P means losing the exact property that makes it institutional-grade. **The CP architecture requires the token. They're inseparable.**
+
+I'm not moving it to 80% because the Cisco risk remains real — LINK is not equity, and there's no guarantee that token demand scales proportionally to protocol revenue. But 70% reflects the fact that three deployed revenue mechanisms (fees, SVR, OEV) plus architectural necessity (CP requires decentralized staking) make the "token captures nothing" scenario materially less likely than I originally assessed.
+
+Joint probability rises from 41% to 43%. The expected value calculation:
+
+$$EV = 0.43 \times 10 \times P_{\text{current}} + 0.57 \times 0.56 \times P_{\text{current}} = (4.3 + 0.32) \times P_{\text{current}} = 4.62 \times P_{\text{current}}$$
+
+Even using the *conservative* 10x upside scenario and a 43% probability, the expected value is over 4.6x the current price. Using 20x upside:
+
+$$EV = 0.43 \times 20 + 0.57 \times 0.56 = 8.6 + 0.32 = 8.92x$$
 
 The asymmetry is the point. You don't need to be *right* about every link. You need the expected value to be positive, and it is — by a wide margin — because the upside is so much larger than the downside.
 
@@ -232,7 +244,7 @@ $$\underbrace{\text{US debt crisis}}_{\text{real}} \to \underbrace{\text{stablec
 
 The first four arrows are strong. The last arrow — from "Chainlink is dominant" to "LINK tokens capture that value" — is the weakest. But it doesn't need to be certain. It needs to be *probable enough* that the expected value justifies the position, given the asymmetry between upside and downside.
 
-At 37% joint probability with 10–50x upside and ~60% downside, the Kelly criterion suggests a substantial but not all-in allocation. Which is approximately what I have: X LINK at an average cost basis well below current price, in a portfolio that includes other assets.
+At 43% joint probability with 10–50x upside and ~60% downside, the Kelly criterion suggests a substantial but not all-in allocation. Which is approximately what I have: X LINK at an average cost basis well below current price, in a portfolio that includes other assets.
 
 **What else would I buy?** Honestly, I don't see another asset that sits at the intersection of:
 - A macro thesis supported by 80 years of precedent
@@ -247,4 +259,4 @@ $$\boxed{\text{Sound argument, uncertain conclusion, positive expected value. Th
 
 ---
 
-*This post follows from: [The Math of Manufactured Dollar Demand](/blog/US_economy/bretton_woods_math/) | [From Bretton Woods to the GENIUS Act](/blog/US_economy/bretton_woods/) | [Why Chainlink Is the Most Undervalued Asset in Crypto](/blog/chainlink/undervalued/) | [Threat Assessment](/blog/chainlink/threats/)*
+*This post follows from: [The Math of Manufactured Dollar Demand](/blog/US_economy/bretton_woods_math/) | [From Bretton Woods to the GENIUS Act](/blog/US_economy/bretton_woods/) | [Why Chainlink Is the Most Undervalued Asset in Crypto](/blog/chainlink/undervalued/) | [Threat Assessment](/blog/chainlink/threats/) | [CAP Theorem Meets Chainlink](/blog/chainlink/cap_and_plumbing/)*
