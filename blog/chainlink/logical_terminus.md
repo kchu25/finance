@@ -354,6 +354,35 @@ At 5% capture: **\$1.5T market cap**. At 10%: **\$3T** — parity with Google or
 
 This is the scenario the standard EV math cannot model. It's not in the 56x bull case. It's what happens *after* the bull case, if the reclassification is complete and markets price Chainlink as what it actually is: the TCP/IP of global financial settlement, with equity baked in.
 
+### Could LINK surpass Bitcoin?
+
+This is not maximalism. It's a TAM comparison.
+
+Bitcoin's value proposition is **store of value** — digital gold, fixed supply, sovereign-grade censorship resistance. It has nation-state adoption (El Salvador, the US Strategic Bitcoin Reserve), BlackRock ETF flows, and a \$1.5T market cap built over 15 years. Its thesis is simple, circular, and already proven: it's valuable because people believe it's valuable, enforced by fixed supply and network effect. That's not a criticism — Schelling points are real and powerful. Gold has been a Schelling point for 5,000 years and holds \$13T in market cap.
+
+LINK's value proposition is **mandatory functional utility** — the oracle network that verifies the global financial system requires LINK as staking collateral, and the payment abstraction layer creates mechanical buy pressure with every institutional transaction. Banks don't buy LINK because they believe in it. They buy it because the protocol auto-swaps their USD into LINK to pay for oracle queries. The demand is *functional*, not reflexive.
+
+The TAM comparison makes the case directly:
+
+| Asset | Value proposition | Addressable market | Current market cap |
+|:---|:---|:---|:---|
+| Gold | Store of value | \$13T (global gold market) | \$13T |
+| Bitcoin | Digital gold | \$13T (competes with gold) + sovereign reserve | \$1.5T |
+| LINK (if thesis holds) | Verification infrastructure for global finance | \$2.7 quadrillion (all tokenized assets, derivatives, settlement) | \$6.3B |
+
+Bitcoin is competing to capture a share of the \$13T gold market. LINK is competing to become the mandatory infrastructure layer for a \$2.7 quadrillion economy — **207x larger** than the gold market Bitcoin is disrupting.
+
+If LINK captures even 0.1% of its addressable market, that's \$2.7T — **nearly 2x Bitcoin's current market cap**. At 0.5%: \$13.5T, surpassing gold itself. These are not predictions. They are the logical consequence of applying "mandatory infrastructure" pricing to a \$2.7 quadrillion TAM.
+
+**The honest counterargument:** Bitcoin's thesis is proven. LINK's thesis has five links in the chain, each with its own failure mode. BTC has a 15-year head start, a simpler narrative, and a market that already understands it. LINK requires institutional tokenization to actually happen at scale, the CLARITY Act to pass, and the token economics to hold under pressure. That's a harder bet even if the payoff is larger.
+
+But the key asymmetry remains: Bitcoin's upside is bounded by how much of the gold market it can capture (\$13T ceiling, already \$1.5T = 11% of the way there). LINK's upside is bounded by how much of global financial settlement infrastructure it can underpin — and that ceiling, if it exists at all, hasn't been computed yet.
+
+A simpler thesis, mostly proven, competing for \$13T.  
+A harder thesis, partially proven, competing for \$2.7 quadrillion.
+
+If the harder thesis holds, the market cap comparison isn't close.
+
 ---
 
 ## So Is the Argument Sound?
