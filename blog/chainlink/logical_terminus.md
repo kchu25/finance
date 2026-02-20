@@ -117,15 +117,17 @@ The value accrual mechanism is: more on-chain activity → more oracle requests 
 
 **Counter 3 — No evidence of a permissioned pivot.** Every Chainlink institutional product (CCIP, CRE, DECO) uses the public LINK token. The institutional strategy appears to be "bring TradFi onto the public blockchain rails" rather than "build private rails for TradFi." Sergey Nazarov has repeatedly stated that the public, token-secured model is the core value proposition.
 
-**Counter 4 — The \$52.9M revenue is pre-growth.** The tokenized RWA market is projected at \$16T by 2030. Even 0.01% capture = \$1.6B in annual revenue. At a 30x multiple: \$48B market cap. At 0.1% capture: \$480B.
+**Counter 4 — The \$52.9M revenue is pre-growth, and the TAM is not what you think it is.** Most analyses project the tokenized RWA market at \$16T by 2030. Even 0.01% capture = \$1.6B in annual revenue. At a 30x multiple: \$48B market cap. At 0.1% capture: \$480B. But \$16T is only *traditional assets* — bonds and equities. The [trust automation thesis](/blog/chainlink/trust_automated/) shows that tokenization extends to the \$380T real estate market, \$700T+ derivatives (notional), \$7T insurance industry, tokenized human capital (athletes, musicians, IP creators), DeSci, supply chains, energy markets, government services — and categories that *don't exist yet*, like tokenized attention, biological data, and prediction-market-fused assets. Every tokenized asset is a continuous oracle consumer. The real TAM is not \$16T. It's the entire global economy's trust infrastructure — \$1.5 quadrillion+ in addressable asset value. Fee compression is irrelevant when the number of oracle queries grows by orders of magnitude.
 
 **Counter 5 — The CP architecture *requires* the token.** The [CAP analysis](/blog/chainlink/cap_and_plumbing/) reveals something subtle: Chainlink's consistency guarantees depend on BFT consensus across independent nodes, and those nodes are incentivized by LINK staking and fee payments. A permissioned oracle network (Problem 3's nightmare scenario) would be a **CA system** — consistent and available when all nodes cooperate, but catastrophically fragile during partitions. It would lose the Partition Tolerance that institutions require for sovereign-grade settlement. The CP design *requires* decentralized, independently-incentivized node operators — which *requires* a public token with staking economics. You can't have CP without the token. The architecture and the token are inseparable. Additionally, the [payment abstraction layer](/blog/chainlink/techstack/) means every institutional transaction generates programmatic LINK buy pressure through DEX auto-swaps — even though banks never see or touch the token. SVR (Smart Value Recapture) adds a second revenue channel by metering free-rider usage of oracle feeds. OEV/Atlas adds a third by auctioning liquidation rights. These aren't speculative revenue models — they're deployed, on-chain, and mechanistically tied to LINK token flows.
+
+**Counter 6 — CME futures create structural spot demand.** As of February 2026, CME Group lists regulated LINK futures (5,000 LINK per contract, ticker: LNK) and Micro LINK futures (250 LINK, ticker: MLN) — CFTC-regulated, block-eligible, and now live. On [May 29, 2026](https://www.cmegroup.com/media-room/press-releases/2026/2/19/cme_group_to_launch247cryptocurrencyfuturesandoptionstradingonma.html), CME will launch **24/7 cryptocurrency futures and options trading** (pending regulatory review). CME crypto ADV is already 407,200 contracts in 2026, up 46% YoY, with \$3 trillion in notional volume in 2025. Why does this matter for spot demand? Market makers who sell LINK futures contracts **hedge by buying spot LINK** — this is the delta-hedging mechanism that creates direct, mechanical buying pressure on the underlying asset. More futures volume = more spot hedging = more structural demand for physical LINK tokens. Additionally, CME listing is the institutional on-ramp: hedge funds, pension funds, family offices, and asset managers who are *prohibited* from holding crypto directly can now gain exposure through a CFTC-regulated venue. 24/7 trading eliminates the weekend gap risk that institutional risk desks hate. This is the same sequence that preceded Bitcoin's institutional adoption — CME BTC futures (Dec 2017) → institutional accumulation → ETF (Jan 2024). LINK is early in that same pipeline.
 
 ---
 
 ## The Competitive Alternatives — What Else Would You Buy?
 
-Okay, so the chain has one weak link (token value accrual) but five strong links. Let's compare it to the alternatives. If you believe the Bretton Woods → stablecoin thesis, what are your options?
+Okay, so the chain has one weak link (token value accrual) but six strong counters. Let's compare it to the alternatives. If you believe the Bretton Woods → stablecoin thesis, what are your options?
 
 ### Option 1 — Buy Treasuries directly
 
@@ -207,10 +209,10 @@ The chain of logic is sound at every link *except* token value accrual, which is
 | 2 | Stablecoins require on-chain infrastructure | 95% | — |
 | 3 | Infrastructure = oracles + cross-chain (CLARITY Act at 82% on Polymarket) | 90% | — |
 | 4 | Chainlink dominates this infrastructure | 90% | — |
-| 5 | LINK token captures protocol value | **75%** | ↑ from 65% |
-| **Joint** | **All five links hold** | **46%** | ↑ from 41% |
+| 5 | LINK token captures protocol value | **78%** | ↑ from 65% |
+| **Joint** | **All five links hold** | **48%** | ↑ from 41% |
 
-The CLARITY Act bumps Link 3 from 85% to 90% (the government is *naming* this infrastructure category in law). The [CAP analysis](/blog/chainlink/cap_and_plumbing/) and [trust automation thesis](/blog/chainlink/trust_automated/) bump Link 5 from 65% to **75%**. Here's why:
+The CLARITY Act bumps Link 3 from 85% to 90% (the government is *naming* this infrastructure category in law). The [CAP analysis](/blog/chainlink/cap_and_plumbing/), [trust automation thesis](/blog/chainlink/trust_automated/), and CME futures listing bump Link 5 from 65% to **78%**. Here's why:
 
 The three original objections to token value accrual were: (1) fee compression, (2) revenue/market-cap disconnect, and (3) Chainlink Labs could pivot to a permissioned network that doesn't use LINK. The CAP analysis addresses all three:
 
@@ -220,15 +222,15 @@ The three original objections to token value accrual were: (1) fee compression, 
 
 - **Permissioned pivot (Problem 3)**: This is where CAP delivers the kill shot. A permissioned oracle would be a CA system — no partition tolerance, no BFT, no credible neutrality. Institutions choosing oracle infrastructure rank partition tolerance and security above everything else (the [sovereign-grade ranking](/blog/general/cap_theorem/)). Chainlink *can't* drop the token without dropping P from its CAP position — and dropping P means losing the exact property that makes it institutional-grade. **The CP architecture requires the token. They're inseparable.** The CLARITY Act (82% passage odds on Polymarket) reinforces this — by defining "decentralized oracle networks" as a distinct, regulated asset class, the law effectively mandates the CP architecture over a permissioned/centralized alternative. Pivoting away from the token would mean pivoting away from the regulatory classification that legitimizes the entire business.
 
-I'm not moving it to 85% because the Cisco risk remains real — LINK is not equity, and there's no guarantee that token demand scales proportionally to protocol revenue. But 75% reflects three reinforcing facts: (1) three deployed revenue mechanisms (fees, SVR, OEV) diversify the fee model, (2) the CP architecture *requires* decentralized staking and therefore *requires* the token, and (3) the TAM explosion from tokenization — bonds, real estate, derivatives, human capital, DeSci, supply chains, energy, and categories that don't exist yet — means fee compression is irrelevant when query volume grows by orders of magnitude. The "token captures nothing" scenario requires all three of these to fail simultaneously.
+I'm not moving it to 85% because the Cisco risk remains real — LINK is not equity, and there's no guarantee that token demand scales proportionally to protocol revenue. But 78% reflects four reinforcing facts: (1) three deployed revenue mechanisms (fees, SVR, OEV) diversify the fee model, (2) the CP architecture *requires* decentralized staking and therefore *requires* the token, (3) the TAM explosion from tokenization — bonds, real estate, derivatives, human capital, DeSci, supply chains, energy, and categories that don't exist yet — means fee compression is irrelevant when query volume grows by orders of magnitude, and (4) CME LINK futures (now live, with 24/7 trading from May 29) create mechanical spot demand through delta-hedging and open the institutional on-ramp that preceded Bitcoin's post-ETF repricing. The "token captures nothing" scenario requires all four of these to fail simultaneously.
 
-Joint probability rises from 41% to 46%. The expected value calculation:
+Joint probability rises from 41% to 48%. The expected value calculation:
 
-$$EV = 0.46 \times 10 \times P_{\text{current}} + 0.54 \times 0.40 \times P_{\text{current}} = (4.6 + 0.22) \times P_{\text{current}} = 4.82 \times P_{\text{current}}$$
+$$EV = 0.48 \times 10 \times P_{\text{current}} + 0.52 \times 0.40 \times P_{\text{current}} = (4.8 + 0.21) \times P_{\text{current}} = 5.01 \times P_{\text{current}}$$
 
-Even using the *conservative* 10x upside scenario and a 46% probability, the expected value is nearly 5x the current price. Using 20x upside:
+Even using the *conservative* 10x upside scenario and a 48% probability, the expected value is over 5x the current price. Using 20x upside:
 
-$$EV = 0.46 \times 20 + 0.54 \times 0.40 = 9.2 + 0.22 = 9.42x$$
+$$EV = 0.48 \times 20 + 0.52 \times 0.40 = 9.6 + 0.21 = 9.81x$$
 
 The asymmetry is the point. You don't need to be *right* about every link. You need the expected value to be positive, and it is — by a wide margin — because the upside is so much larger than the downside.
 
@@ -244,13 +246,14 @@ $$\underbrace{\text{US debt crisis}}_{\text{real}} \to \underbrace{\text{stablec
 
 The first four arrows are strong. The last arrow — from "Chainlink is dominant" to "LINK tokens capture that value" — is the weakest. But it doesn't need to be certain. It needs to be *probable enough* that the expected value justifies the position, given the asymmetry between upside and downside.
 
-At 46% joint probability with 10–50x upside and ~60% downside — and an expected value of 4.8–9.4x current price — the Kelly criterion suggests a substantial but not all-in allocation. Which is approximately what I have: X LINK at an average cost basis well below current price, in a portfolio that includes other assets.
+At 48% joint probability with 10–50x upside and ~60% downside — and an expected value of 5.0–9.8x current price — the Kelly criterion suggests a substantial but not all-in allocation. Which is approximately what I have: X LINK at an average cost basis well below current price, in a portfolio that includes other assets.
 
 **What else would I buy?** Honestly, I don't see another asset that sits at the intersection of:
 - A macro thesis supported by 80 years of precedent
 - A legal mandate (GENIUS Act) creating forced demand
 - A second legal mandate (CLARITY Act, 82% on Polymarket) classifying the infrastructure as regulated and non-security
 - An infrastructure position with 88% market share
+- CME-listed futures with 24/7 trading coming May 29 — the same institutional pipeline that preceded Bitcoin's ETF
 - A token priced 83% below its all-time high
 
 The argument might be wrong. But I can't find a better one. And the math says I don't need to be right — I just need the expected value to be positive. Which it is.
