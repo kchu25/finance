@@ -253,15 +253,49 @@ The three original objections to token value accrual were: (1) fee compression, 
 
 I'm not moving it to 90% because the Cisco risk, while increasingly unlikely, is *structurally possible* — LINK is not equity, and novel regulatory regimes could still disrupt token economics in ways we can't foresee. But 83% reflects an overwhelming convergence: (1) three deployed revenue mechanisms (fees, SVR, OEV) diversify the fee model, (2) the CP architecture *requires* decentralized staking and therefore *requires* the token, (3) the TAM explosion from tokenization means fee compression is irrelevant when query volume grows by orders of magnitude, (4) CME LINK futures create mechanical spot demand through delta-hedging and open the institutional pipeline, (5) RMN dual-layer security and the Security Impact Curve create pricing power and a mathematical price floor, (6) DECO/CRE privacy rails make switching cost a regulatory re-certification nightmare, (7) production deployments at Japan's mega-banks, Robinhood Chain, and DTCC corporate actions prove the thesis is no longer theoretical, (8) the Chainlink Reserve buyback systematically reduces supply as utility grows, (9) the SEC's January 2026 Joint Statement on Tokenized Securities creates a *legal* moat — token standards like ERC-3643 require identity-aware oracles, the Innovation Exemption sandbox requires Chainlink-grade safeguards, NYSE/Nasdaq are building on-chain settlement on Chainlink data feeds, and Proof of Reserve is now mandatory for synthetic tokenization, and (10) Nazarov now sits on the CFTC's Innovation Advisory Committee, advising the regulator on how oracle infrastructure should be defined — meaning the rules are being written by the person who built the dominant protocol. The "token captures nothing" scenario requires *all* of these to fail simultaneously.
 
-Joint probability rises from 41% to 51%. The expected value calculation:
+Joint probability rises from 41% to 51%. But before calculating expected value, we need to answer the question the original EV math skipped entirely: **10x by *when*?**
 
-$$EV = 0.51 \times 10 \times P_{\text{current}} + 0.49 \times 0.40 \times P_{\text{current}} = (5.1 + 0.20) \times P_{\text{current}} = 5.30 \times P_{\text{current}}$$
+### The time horizon matters
 
-Even using the *conservative* 10x upside scenario and a 51% probability, the expected value is over 5x the current price. Using 20x upside:
+The thesis is tied to a specific macro event: the US refinancing wall of \$15 trillion in pandemic-era debt repricing over **2026–2028**. The GENIUS Act is already law. The CLARITY Act is at 82% passage odds. CME's 24/7 futures launch on May 29, 2026. NYSE and Nasdaq filed for 24/7 tokenized securities trading. These aren't multi-decade projections — they're 12–36 month catalysts. The relevant time horizon for the core thesis playing out is **2026–2029**, with the majority of institutional adoption likely front-loaded into the refinancing window.
 
-$$EV = 0.51 \times 20 + 0.49 \times 0.40 = 10.2 + 0.20 = 10.4x$$
+### Grounding the upside scenarios
 
-The asymmetry is the point. You don't need to be *right* about every link. You need the expected value to be positive, and it is — by a wide margin — because the upside is so much larger than the downside.
+Current price: **\$9.50**. Current market cap: **\$6.3B**. Current annualized revenue: **\$52.9M**.
+
+The upside scenarios are not arbitrary multiples — they're derived from two different methods:
+
+**Method 1 — Revenue multiple expansion:**
+
+| Scenario | Revenue by 2028–2029 | Multiple | Market cap | LINK price | Return |
+|:---|:---|:---|:---|:---|:---|
+| Conservative | \$530M (10x current, ~1% of projected RWA fees) | 30x | \$15.9B | \~\$24 | **2.5x** |
+| Moderate | \$2B (tokenized RWA market at \$16T, 0.01% fee capture) | 40x | \$80B | \~\$100 | **10.5x** |
+| Bull | \$10B (TAM extends to derivatives + real estate + insurance) | 50x | \$500B | \~\$530 | **56x** |
+
+**Method 2 — Market cap relative to comparable infrastructure:**
+
+- SWIFT processes \$5T/day, valued at ~\$0 (cooperative). ICE (NYSE parent) trades at ~\$90B. DTCC processes \$2.5 quadrillion annually, cooperative structure. If Chainlink secures even 5% of global financial settlement value by 2030, and markets price it at 10% of ICE's multiple (it's decentralized, not equity), that's a \$9B floor — roughly current price. At parity with how markets price niche financial infrastructure providers: **3–15x**.
+
+The two methods converge on the same range: **the conservative case is ~2.5x by 2028, the moderate case is ~10x by 2029, the bull case is 50x+ on a longer horizon (2030+).**
+
+### The expected value calculation (with time horizon)
+
+Using the **3-year horizon (by end of 2028)**, conservative and moderate scenarios:
+
+$$EV_{3\text{yr}} = 0.51 \times 10x + 0.49 \times 0.40 = 5.1 + 0.20 = \mathbf{5.3x}$$
+
+That's a **3-year expected CAGR of approximately 75%** — which requires nothing exotic. It requires the CLARITY Act to pass (82% odds), one or two of the production deployments to scale, and the tokenized RWA market to reach 20% of Standard Chartered's base-case \$16T projection.
+
+Using the **5-year horizon (by end of 2030)**, moderate and bull scenarios:
+
+$$EV_{5\text{yr}} = 0.51 \times 20x + 0.49 \times 0.40 = 10.2 + 0.20 = \mathbf{10.4x}$$
+
+That's a **5-year expected CAGR of approximately 60%** — requiring Chainlink to capture meaningful share of the broader TAM beyond traditional RWA tokenization, consistent with the [trust automation thesis](/blog/chainlink/trust_automated/).
+
+The asymmetry is the point. You don't need to be *right* about every link. You need the expected value to be positive, and it is — by a wide margin — because the upside is so much larger than the downside. And critically, the *primary catalysts have hard dates attached to them*: May 29, 2026 (CME 24/7 launch), the 2026–2028 refinancing window, and the CLARITY Act timeline.
+
+**Median resolution date: mid-2028.** By that point, the CLARITY Act has passed or failed (knowable by end of 2026), two full years of post-CLARITY institutional flow data exist, CME 24/7 has been live for two years with measurable delta-hedging spot demand, the refinancing wall is largely behind us, and the tokenized RWA market has either hit meaningful scale (~\$3–5T on Standard Chartered's base trajectory) or stalled. The thesis doesn't need to fully play out by mid-2028 — but it needs to be *clearly winning or clearly losing*. That's when the 3-year EV resolves. If you're still holding at that point without confirmation of at least 3 of the 5 links strengthening, the position warrants reassessment regardless of price.
 
 ---
 
@@ -275,7 +309,11 @@ $$\underbrace{\text{US debt crisis}}_{\text{real}} \to \underbrace{\text{stablec
 
 The first four arrows are strong. The last arrow — from "Chainlink is dominant" to "LINK tokens capture that value" — is the weakest. But it doesn't need to be certain. It needs to be *probable enough* that the expected value justifies the position, given the asymmetry between upside and downside.
 
-At 51% joint probability with 10–50x upside and ~60% downside — and an expected value of 5.3–10.4x current price — the Kelly criterion suggests a substantial but not all-in allocation. Which is approximately what I have: X LINK at an average cost basis well below current price, in a portfolio that includes other assets.
+At 51% joint probability with 10–50x upside and ~60% downside — and an expected value of 5.3x over 3 years and 10.4x over 5 years — the Kelly criterion gives a concrete answer on position sizing. Using the 3-year moderate scenario (10x upside, 0.40 downside retention):
+
+$$f^* = \frac{p \cdot b - (1-p)}{b} = \frac{0.51 \times 9 - 0.49}{9} = \frac{4.59 - 0.49}{9} = \frac{4.10}{9} \approx 45\%$$
+
+where $b = 9$ (net gain if 10x: you get 10x back, net is 9x your stake) and $p = 0.51$. Full Kelly suggests ~45% of a risk portfolio — which is aggressive. Half-Kelly (the standard practitioner adjustment for model uncertainty) suggests ~22%. Which is approximately what I have: a significant allocation at an average cost basis well below current price, in a portfolio that includes other assets. The time horizon for the primary thesis is **2026–2029**, tied directly to the US refinancing window, the CLARITY Act timeline, and the CME 24/7 launch on May 29, 2026.
 
 **What else would I buy?** Honestly, I don't see another asset that sits at the intersection of:
 - A macro thesis supported by 80 years of precedent
