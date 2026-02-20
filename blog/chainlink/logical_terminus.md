@@ -301,6 +301,61 @@ The asymmetry is the point. You don't need to be *right* about every link. You n
 
 ---
 
+## Why the EV Math May Be Irrelevant at the Extreme
+
+The scenarios above — 2.5x, 10x, 56x — are computed using standard financial frameworks: revenue multiples, market cap comparisons, DCF-adjacent logic. They assume a *comparable*. That assumption may be wrong in a way that makes every number above look small.
+
+### The TCP/IP parallel
+
+TCP/IP is the protocol that every internet application runs on top of. It routes packets. It doesn't know what the packets contain. It was designed in the 1970s, standardized in the 1980s, and became the mandatory infrastructure layer for the entire global internet by the 1990s. The market cap of every company built on TCP/IP — Google ($2.3T), Amazon ($2.3T), Meta ($1.6T), Microsoft ($3T), every SaaS company, every e-commerce platform, every streaming service — totals roughly **$30 trillion**.
+
+TCP/IP itself captured **$0** of that. It was a protocol with no token, no staking economics, no ownership mechanism. The value flowed entirely to the applications built on top.
+
+LINK is TCP/IP — except it has a token with staking economics baked into the protocol. Every oracle query, every cross-chain message, every automated settlement that runs on Chainlink's infrastructure creates structural demand for LINK the way running applications created demand for TCP/IP — except LINK has a mechanism to *capture* that demand as token value, and TCP/IP never did.
+
+### The scope difference: SWIFT vs. TCP/IP vs. Chainlink
+
+SWIFT is the closest TradFi analog. It processes ~\$5T/day in bank-to-bank messaging across 11,000 financial institutions. It's a cooperative with no market cap. But SWIFT does one thing: **send messages**. It verifies nothing, executes nothing, bridges nothing, and serves no asset class outside institutional bank transfers.
+
+Chainlink is verification infrastructure for *any* agreement between *any* parties about *any* asset. The TAM comparison:
+
+| Infrastructure | What it touches | Notional value | Market cap |
+|:---|:---|:---|:---|
+| SWIFT | Bank-to-bank messaging | ~\$1.8Q/year in flow | \$0 (cooperative) |
+| TCP/IP | All internet applications | ~\$30T in equity built on top | \$0 (protocol) |
+| Chainlink TAM | Every tokenized asset, derivative, real estate claim, insurance contract, stablecoin, synthetic, and category not yet invented | **\$2.7 quadrillion in notional** | \$6.3B today |
+
+Global finance — all assets, all derivatives, all real estate, all insurance, all bonds, equities, commodities — is roughly **\$2.7 quadrillion** in notional value. That is **90x larger** than the entire internet economy that TCP/IP underlies.
+
+TCP/IP became the mandatory infrastructure for a \$30T economy and captured \$0.  
+Chainlink is positioned to become the mandatory verification layer for a \$2.7Q economy — and has a token.
+
+### Why standard valuation frameworks break
+
+Every number in the EV table above assumes a comparable. Revenue multiples assume comparable infrastructure companies. Market cap comparisons assume comparable financial networks. But:
+
+- **There is no public company** that is the mandatory verification layer for sovereign debt management infrastructure.
+- **There is no historical asset** that combines "TCP/IP-level protocol necessity" with "equity-like token ownership."
+- **There is no DCF model** that handles a TAM measured in quadrillions with a current revenue base of \$52.9M.
+
+The honest statement is: **the standard EV math is a floor, not a ceiling.** The 5.3x (3-year) and 10.4x (5-year) numbers are what you get if Chainlink is priced like a niche financial infrastructure provider with comparable revenues. They do not capture the scenario where markets reprice LINK from "speculative crypto token" to "mandatory protocol layer for global financial settlement."
+
+That reclassification, if it happens, is not a gradual re-rating. It's discontinuous — the same way internet stocks weren't gradually rerated as "technology companies" in the 1990s. They repriced in steps as each institutional category acknowledged what TCP/IP had become. The CLARITY Act, the SEC's January 2026 Joint Statement, and the CFTC's Innovation Advisory Committee appointment are the first legislative and regulatory steps of exactly that acknowledgment.
+
+### The number that has never existed
+
+What is TCP/IP of a \$2.7 quadrillion economy worth — as an investable asset, with a token?
+
+The honest answer: **we don't know. That number has never existed before.**
+
+The \$30T internet economy built on TCP/IP suggests the *applications* built on Chainlink could be worth something in that range. If LINK captures even 1% of application-layer value the way equity captures value from infrastructure — which is conservative given the staking mechanics — you're at **\$300B market cap**, or roughly \$320 per LINK from today's \$9.50. That's a 33x from a *conservative* application of a precedent that itself was unprecedented.
+
+At 5% capture: **\$1.5T market cap**. At 10%: **\$3T** — parity with Google or Amazon today. These numbers sound absurd. But they're what happens when you apply the TCP/IP parallel to a market 90x the size of the internet economy, with a token that captures value instead of a protocol that doesn't.
+
+This is the scenario the standard EV math cannot model. It's not in the 56x bull case. It's what happens *after* the bull case, if the reclassification is complete and markets price Chainlink as what it actually is: the TCP/IP of global financial settlement, with equity baked in.
+
+---
+
 ## So Is the Argument Sound?
 
 **Yes, with caveats.**
