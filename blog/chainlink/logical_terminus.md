@@ -144,11 +144,19 @@ The value accrual mechanism is: more on-chain activity → more oracle requests 
 
 The net effect: regulatory compliance is no longer a *cost* for Chainlink — it's a **moat**. Every new SEC standard that requires identity-aware oracles, privacy-preserving proofs, and real-time reserve attestations narrows the competitive field to exactly one provider.
 
+**Counter 12 — Sergey Nazarov is now *writing the rules*.** On February 12, 2026, the CFTC appointed Sergey Nazarov to its newly expanded Innovation Advisory Committee (IAC) — a 35-member panel advising the commission on how blockchain, AI, and tokenization reshape derivatives and commodity markets. He sits alongside CEOs from **CME Group, Nasdaq, ICE, Robinhood, and Coinbase**. His specific mandate: advise on Decentralized Oracle Networks (DONs) as **critical infrastructure for the reliable operation of markets**. This is regulatory co-authorship, and it counters the Cisco risk in three ways:
+
+- **Regulatory capture by standard.** By advising the CFTC on how oracles *should* function, Nazarov is helping define what "safe" market infrastructure looks like. If the CFTC codifies security standards that Chainlink already has — multi-layered decentralization, TEEs, RMN — competitors who cut corners to be cheaper will find themselves *legally unusable* for regulated institutions. The rules are being written around Chainlink's architecture.
+- **Oracle = infrastructure, not service.** The CFTC's recognition of oracles as "core market infrastructure" (analogous to a clearinghouse or exchange) elevates the protocol from "data feed vendor" to "settlement layer for tokenized derivatives." You don't replace clearinghouses with cheaper alternatives. You *can't*.
+- **Project Crypto jurisdiction synergy.** The appointment coincides with Project Crypto, a joint SEC-CFTC program clarifying jurisdiction over digital assets. Having Nazarov at the table ensures that as "Commodity" vs. "Security" definitions are finalized, the functional utility of LINK (staking, security budget) is codified *into* the regulatory framework — not classified *out of it*.
+
+This also connects directly to the GENIUS Act: as stablecoins become a primary mechanism for managing U.S. debt, the CFTC needs to ensure the oracles providing Proof of Reserve for those stablecoins are **sovereign-grade**. This makes Chainlink's role a matter of *national fiscal security*, not just a technology choice. Cisco sold routers. Chainlink's founder is advising the federal government on how to regulate the infrastructure his protocol provides. Those are not comparable competitive positions.
+
 ---
 
 ## The Competitive Alternatives — What Else Would You Buy?
 
-Okay, so the chain has one weak link (token value accrual) but eleven strong counters. Let's compare it to the alternatives. If you believe the Bretton Woods → stablecoin thesis, what are your options?
+Okay, so the chain has one weak link (token value accrual) but twelve strong counters. Let's compare it to the alternatives. If you believe the Bretton Woods → stablecoin thesis, what are your options?
 
 ### Option 1 — Buy Treasuries directly
 
@@ -230,10 +238,10 @@ The chain of logic is sound at every link *except* token value accrual, which is
 | 2 | Stablecoins require on-chain infrastructure | 95% | — |
 | 3 | Infrastructure = oracles + cross-chain (CLARITY Act at 82% on Polymarket) | 90% | — |
 | 4 | Chainlink dominates this infrastructure | 90% | — |
-| 5 | LINK token captures protocol value | **82%** | ↑ from 65% |
-| **Joint** | **All five links hold** | **50%** | ↑ from 41% |
+| 5 | LINK token captures protocol value | **83%** | ↑ from 65% |
+| **Joint** | **All five links hold** | **51%** | ↑ from 41% |
 
-The CLARITY Act bumps Link 3 from 85% to 90% (the government is *naming* this infrastructure category in law). The [CAP analysis](/blog/chainlink/cap_and_plumbing/), [trust automation thesis](/blog/chainlink/trust_automated/), CME futures listing, production deployment evidence, and the SEC's January 2026 standardization of tokenized securities bump Link 5 from 65% to **82%**. Here's why:
+The CLARITY Act bumps Link 3 from 85% to 90% (the government is *naming* this infrastructure category in law). The [CAP analysis](/blog/chainlink/cap_and_plumbing/), [trust automation thesis](/blog/chainlink/trust_automated/), CME futures listing, production deployment evidence, the SEC's January 2026 standardization of tokenized securities, and Nazarov's CFTC advisory appointment bump Link 5 from 65% to **83%**. Here's why:
 
 The three original objections to token value accrual were: (1) fee compression, (2) revenue/market-cap disconnect, and (3) Chainlink Labs could pivot to a permissioned network that doesn't use LINK. The CAP analysis addresses all three:
 
@@ -243,15 +251,15 @@ The three original objections to token value accrual were: (1) fee compression, 
 
 - **Permissioned pivot (Problem 3)**: This is where CAP delivers the kill shot. A permissioned oracle would be a CA system — no partition tolerance, no BFT, no credible neutrality. Institutions choosing oracle infrastructure rank partition tolerance and security above everything else (the [sovereign-grade ranking](/blog/general/cap_theorem/)). Chainlink *can't* drop the token without dropping P from its CAP position — and dropping P means losing the exact property that makes it institutional-grade. **The CP architecture requires the token. They're inseparable.** The CLARITY Act (82% passage odds on Polymarket) reinforces this — by defining "decentralized oracle networks" as a distinct, regulated asset class, the law effectively mandates the CP architecture over a permissioned/centralized alternative. Pivoting away from the token would mean pivoting away from the regulatory classification that legitimizes the entire business.
 
-I'm not moving it to 90% because the Cisco risk, while increasingly unlikely, is *structurally possible* — LINK is not equity, and novel regulatory regimes could still disrupt token economics in ways we can't foresee. But 82% reflects an overwhelming convergence: (1) three deployed revenue mechanisms (fees, SVR, OEV) diversify the fee model, (2) the CP architecture *requires* decentralized staking and therefore *requires* the token, (3) the TAM explosion from tokenization means fee compression is irrelevant when query volume grows by orders of magnitude, (4) CME LINK futures create mechanical spot demand through delta-hedging and open the institutional pipeline, (5) RMN dual-layer security and the Security Impact Curve create pricing power and a mathematical price floor, (6) DECO/CRE privacy rails make switching cost a regulatory re-certification nightmare, (7) production deployments at Japan's mega-banks, Robinhood Chain, and DTCC corporate actions prove the thesis is no longer theoretical, (8) the Chainlink Reserve buyback systematically reduces supply as utility grows, and (9) the SEC's January 2026 Joint Statement on Tokenized Securities creates a *legal* moat — token standards like ERC-3643 require identity-aware oracles, the Innovation Exemption sandbox requires Chainlink-grade safeguards, NYSE/Nasdaq are building on-chain settlement on Chainlink data feeds, and Proof of Reserve is now mandatory for synthetic tokenization. The "token captures nothing" scenario requires *all* of these to fail simultaneously.
+I'm not moving it to 90% because the Cisco risk, while increasingly unlikely, is *structurally possible* — LINK is not equity, and novel regulatory regimes could still disrupt token economics in ways we can't foresee. But 83% reflects an overwhelming convergence: (1) three deployed revenue mechanisms (fees, SVR, OEV) diversify the fee model, (2) the CP architecture *requires* decentralized staking and therefore *requires* the token, (3) the TAM explosion from tokenization means fee compression is irrelevant when query volume grows by orders of magnitude, (4) CME LINK futures create mechanical spot demand through delta-hedging and open the institutional pipeline, (5) RMN dual-layer security and the Security Impact Curve create pricing power and a mathematical price floor, (6) DECO/CRE privacy rails make switching cost a regulatory re-certification nightmare, (7) production deployments at Japan's mega-banks, Robinhood Chain, and DTCC corporate actions prove the thesis is no longer theoretical, (8) the Chainlink Reserve buyback systematically reduces supply as utility grows, (9) the SEC's January 2026 Joint Statement on Tokenized Securities creates a *legal* moat — token standards like ERC-3643 require identity-aware oracles, the Innovation Exemption sandbox requires Chainlink-grade safeguards, NYSE/Nasdaq are building on-chain settlement on Chainlink data feeds, and Proof of Reserve is now mandatory for synthetic tokenization, and (10) Nazarov now sits on the CFTC's Innovation Advisory Committee, advising the regulator on how oracle infrastructure should be defined — meaning the rules are being written by the person who built the dominant protocol. The "token captures nothing" scenario requires *all* of these to fail simultaneously.
 
-Joint probability rises from 41% to 50%. The expected value calculation:
+Joint probability rises from 41% to 51%. The expected value calculation:
 
-$$EV = 0.50 \times 10 \times P_{\text{current}} + 0.50 \times 0.40 \times P_{\text{current}} = (5.0 + 0.20) \times P_{\text{current}} = 5.20 \times P_{\text{current}}$$
+$$EV = 0.51 \times 10 \times P_{\text{current}} + 0.49 \times 0.40 \times P_{\text{current}} = (5.1 + 0.20) \times P_{\text{current}} = 5.30 \times P_{\text{current}}$$
 
-Even using the *conservative* 10x upside scenario and a 50% probability, the expected value is over 5x the current price. Using 20x upside:
+Even using the *conservative* 10x upside scenario and a 51% probability, the expected value is over 5x the current price. Using 20x upside:
 
-$$EV = 0.50 \times 20 + 0.50 \times 0.40 = 10.0 + 0.20 = 10.2x$$
+$$EV = 0.51 \times 20 + 0.49 \times 0.40 = 10.2 + 0.20 = 10.4x$$
 
 The asymmetry is the point. You don't need to be *right* about every link. You need the expected value to be positive, and it is — by a wide margin — because the upside is so much larger than the downside.
 
@@ -267,7 +275,7 @@ $$\underbrace{\text{US debt crisis}}_{\text{real}} \to \underbrace{\text{stablec
 
 The first four arrows are strong. The last arrow — from "Chainlink is dominant" to "LINK tokens capture that value" — is the weakest. But it doesn't need to be certain. It needs to be *probable enough* that the expected value justifies the position, given the asymmetry between upside and downside.
 
-At 50% joint probability with 10–50x upside and ~60% downside — and an expected value of 5.2–10.2x current price — the Kelly criterion suggests a substantial but not all-in allocation. Which is approximately what I have: X LINK at an average cost basis well below current price, in a portfolio that includes other assets.
+At 51% joint probability with 10–50x upside and ~60% downside — and an expected value of 5.3–10.4x current price — the Kelly criterion suggests a substantial but not all-in allocation. Which is approximately what I have: X LINK at an average cost basis well below current price, in a portfolio that includes other assets.
 
 **What else would I buy?** Honestly, I don't see another asset that sits at the intersection of:
 - A macro thesis supported by 80 years of precedent
