@@ -207,28 +207,28 @@ The chain of logic is sound at every link *except* token value accrual, which is
 | 2 | Stablecoins require on-chain infrastructure | 95% | — |
 | 3 | Infrastructure = oracles + cross-chain (CLARITY Act at 82% on Polymarket) | 90% | — |
 | 4 | Chainlink dominates this infrastructure | 90% | — |
-| 5 | LINK token captures protocol value | **70%** | ↑ from 65% |
-| **Joint** | **All five links hold** | **43%** | ↑ from 41% |
+| 5 | LINK token captures protocol value | **75%** | ↑ from 65% |
+| **Joint** | **All five links hold** | **46%** | ↑ from 41% |
 
-The CLARITY Act bumps Link 3 from 85% to 90% (the government is *naming* this infrastructure category in law). The [CAP analysis](/blog/chainlink/cap_and_plumbing/) bumps Link 5 from 65% to **70%**. Here's why:
+The CLARITY Act bumps Link 3 from 85% to 90% (the government is *naming* this infrastructure category in law). The [CAP analysis](/blog/chainlink/cap_and_plumbing/) and [trust automation thesis](/blog/chainlink/trust_automated/) bump Link 5 from 65% to **75%**. Here's why:
 
 The three original objections to token value accrual were: (1) fee compression, (2) revenue/market-cap disconnect, and (3) Chainlink Labs could pivot to a permissioned network that doesn't use LINK. The CAP analysis addresses all three:
 
-- **Fee compression (Problem 1)**: SVR and OEV/Atlas create revenue channels *beyond* per-query fees. SVR meters free-rider usage; OEV auctions liquidation rights. These are deployed, on-chain, and mechanistically tied to LINK. Fee compression on price feeds matters less when you have three revenue streams instead of one.
+- **Fee compression (Problem 1)**: This objection treats the oracle market as a fixed-size pie where competitors squeeze margins. It's not. The [trust automation thesis](/blog/chainlink/trust_automated/) shows that tokenization isn't limited to DeFi price feeds — it extends to the $133T bond market, $380T real estate market, $700T+ derivatives market, $7T insurance industry, tokenized human capital (athletes, musicians, IP creators), DeSci, supply chains, energy, government services, and categories that don't exist yet. Even if per-query fees drop 90%, the *number of queries* grows by orders of magnitude as every tokenized asset, every automated contract, every verified claim becomes an oracle consumer. Additionally, SVR and OEV/Atlas create revenue channels *beyond* per-query fees — SVR meters free-rider usage; OEV auctions liquidation rights. Fee compression is a rounding error when the TAM is expanding from "DeFi price feeds" to "the verification layer of the entire global economy."
 
 - **Revenue disconnect (Problem 2)**: The payment abstraction layer means institutional revenue scales directly to LINK demand — every \$1 paid by a bank in USD is auto-swapped to LINK on a DEX. Revenue growth *is* token demand growth. They're the same thing.
 
-- **Permissioned pivot (Problem 3)**: This is where CAP delivers the kill shot. A permissioned oracle would be a CA system — no partition tolerance, no BFT, no credible neutrality. Institutions choosing oracle infrastructure rank partition tolerance and security above everything else (the [sovereign-grade ranking](/blog/general/cap_theorem/)). Chainlink *can't* drop the token without dropping P from its CAP position — and dropping P means losing the exact property that makes it institutional-grade. **The CP architecture requires the token. They're inseparable.**
+- **Permissioned pivot (Problem 3)**: This is where CAP delivers the kill shot. A permissioned oracle would be a CA system — no partition tolerance, no BFT, no credible neutrality. Institutions choosing oracle infrastructure rank partition tolerance and security above everything else (the [sovereign-grade ranking](/blog/general/cap_theorem/)). Chainlink *can't* drop the token without dropping P from its CAP position — and dropping P means losing the exact property that makes it institutional-grade. **The CP architecture requires the token. They're inseparable.** The CLARITY Act (82% passage odds on Polymarket) reinforces this — by defining "decentralized oracle networks" as a distinct, regulated asset class, the law effectively mandates the CP architecture over a permissioned/centralized alternative. Pivoting away from the token would mean pivoting away from the regulatory classification that legitimizes the entire business.
 
-I'm not moving it to 80% because the Cisco risk remains real — LINK is not equity, and there's no guarantee that token demand scales proportionally to protocol revenue. But 70% reflects the fact that three deployed revenue mechanisms (fees, SVR, OEV) plus architectural necessity (CP requires decentralized staking) make the "token captures nothing" scenario materially less likely than I originally assessed.
+I'm not moving it to 85% because the Cisco risk remains real — LINK is not equity, and there's no guarantee that token demand scales proportionally to protocol revenue. But 75% reflects three reinforcing facts: (1) three deployed revenue mechanisms (fees, SVR, OEV) diversify the fee model, (2) the CP architecture *requires* decentralized staking and therefore *requires* the token, and (3) the TAM explosion from tokenization — bonds, real estate, derivatives, human capital, DeSci, supply chains, energy, and categories that don't exist yet — means fee compression is irrelevant when query volume grows by orders of magnitude. The "token captures nothing" scenario requires all three of these to fail simultaneously.
 
-Joint probability rises from 41% to 43%. The expected value calculation:
+Joint probability rises from 41% to 46%. The expected value calculation:
 
-$$EV = 0.43 \times 10 \times P_{\text{current}} + 0.57 \times 0.56 \times P_{\text{current}} = (4.3 + 0.32) \times P_{\text{current}} = 4.62 \times P_{\text{current}}$$
+$$EV = 0.46 \times 10 \times P_{\text{current}} + 0.54 \times 0.40 \times P_{\text{current}} = (4.6 + 0.22) \times P_{\text{current}} = 4.82 \times P_{\text{current}}$$
 
-Even using the *conservative* 10x upside scenario and a 43% probability, the expected value is over 4.6x the current price. Using 20x upside:
+Even using the *conservative* 10x upside scenario and a 46% probability, the expected value is nearly 5x the current price. Using 20x upside:
 
-$$EV = 0.43 \times 20 + 0.57 \times 0.56 = 8.6 + 0.32 = 8.92x$$
+$$EV = 0.46 \times 20 + 0.54 \times 0.40 = 9.2 + 0.22 = 9.42x$$
 
 The asymmetry is the point. You don't need to be *right* about every link. You need the expected value to be positive, and it is — by a wide margin — because the upside is so much larger than the downside.
 
@@ -244,7 +244,7 @@ $$\underbrace{\text{US debt crisis}}_{\text{real}} \to \underbrace{\text{stablec
 
 The first four arrows are strong. The last arrow — from "Chainlink is dominant" to "LINK tokens capture that value" — is the weakest. But it doesn't need to be certain. It needs to be *probable enough* that the expected value justifies the position, given the asymmetry between upside and downside.
 
-At 43% joint probability with 10–50x upside and ~60% downside, the Kelly criterion suggests a substantial but not all-in allocation. Which is approximately what I have: X LINK at an average cost basis well below current price, in a portfolio that includes other assets.
+At 46% joint probability with 10–50x upside and ~60% downside — and an expected value of 4.8–9.4x current price — the Kelly criterion suggests a substantial but not all-in allocation. Which is approximately what I have: X LINK at an average cost basis well below current price, in a portfolio that includes other assets.
 
 **What else would I buy?** Honestly, I don't see another asset that sits at the intersection of:
 - A macro thesis supported by 80 years of precedent
@@ -259,4 +259,4 @@ $$\boxed{\text{Sound argument, uncertain conclusion, positive expected value. Th
 
 ---
 
-*This post follows from: [The Math of Manufactured Dollar Demand](/blog/US_economy/bretton_woods_math/) | [From Bretton Woods to the GENIUS Act](/blog/US_economy/bretton_woods/) | [Why Chainlink Is the Most Undervalued Asset in Crypto](/blog/chainlink/undervalued/) | [Threat Assessment](/blog/chainlink/threats/) | [CAP Theorem Meets Chainlink](/blog/chainlink/cap_and_plumbing/)*
+*This post follows from: [The Math of Manufactured Dollar Demand](/blog/US_economy/bretton_woods_math/) | [From Bretton Woods to the GENIUS Act](/blog/US_economy/bretton_woods/) | [Why Chainlink Is the Most Undervalued Asset in Crypto](/blog/chainlink/undervalued/) | [Threat Assessment](/blog/chainlink/threats/) | [CAP Theorem Meets Chainlink](/blog/chainlink/cap_and_plumbing/) | [Trust, Automated](/blog/chainlink/trust_automated/)*
