@@ -16,15 +16,15 @@ How many taxable events just happened? The IRS hasn't said. Congress is getting 
 
 Let's be concrete. Here's what happens when you collateralize LINK on Aave V3 to borrow USDC.
 
-**Step 1 — Deposit.** You send 7,228 LINK from your wallet to Aave's lending pool smart contract. In return, you receive 7,228 aLINK (an interest-bearing receipt token).
+**Step 1 — Deposit.** You send 100 LINK from your wallet to Aave's lending pool smart contract. In return, you receive 100 aLINK (an interest-bearing receipt token).
 
-**Step 2 — Borrow.** With aLINK as collateral, you borrow 24,599 USDC. This stablecoin goes to your wallet.
+**Step 2 — Borrow.** With aLINK as collateral, you borrow 340 USDC. This stablecoin goes to your wallet.
 
 **Step 3 — Hold/Use.** You use the USDC however you want — pay off credit cards, buy more LINK, sit on it.
 
-**Step 4 — Repay.** You send back 24,599 USDC plus accrued interest to Aave.
+**Step 4 — Repay.** You send back 340 USDC plus accrued interest to Aave.
 
-**Step 5 — Withdraw.** You redeem your 7,228 aLINK for 7,228 LINK (plus any earned interest). Your LINK returns to your wallet.
+**Step 5 — Withdraw.** You redeem your 100 aLINK for 100 LINK (plus any earned interest). Your LINK returns to your wallet.
 
 Five steps. Each one has a different tax profile. Let's go through them.
 
@@ -69,7 +69,7 @@ The counter-argument is strong:
 
 This is the most settled part of the entire chain. In all of U.S. tax law — traditional or crypto — **receiving borrowed money is not a taxable event.** The reasoning is simple: a loan creates an equal and offsetting obligation to repay, so there's no accession to wealth.
 
-When you borrow \$24,599 USDC against your LINK collateral, you simultaneously take on a \$24,599 debt. Net economic gain: zero. No realization event under §1001. No income under §61.
+When you borrow \$340 USDC against your LINK collateral, you simultaneously take on a \$340 debt. Net economic gain: zero. No realization event under §1001. No income under §61.
 
 This is identical to:
 - Taking a home equity line of credit (no tax)
@@ -104,7 +104,7 @@ This is where things branch:
 
 ### Principal repayment
 
-Sending USDC back to Aave to close your loan is the reverse of Step 2. You're discharging a liability, not disposing of an asset in a tax-relevant sense. If you borrowed 24,599 USDC and repay 24,599 USDC, no gain or loss.
+Sending USDC back to Aave to close your loan is the reverse of Step 2. You're discharging a liability, not disposing of an asset in a tax-relevant sense. If you borrowed 340 USDC and repay 340 USDC, no gain or loss.
 
 ### Interest payments
 
@@ -149,7 +149,7 @@ If you earned interest in aLINK terms (i.e., you withdraw slightly more LINK tha
 
 **Net result for a simple borrow-and-repay cycle: zero to one taxable events** (the interest income on excess aLINK, which is typically small).
 
-Compare this to selling \$24,599 of LINK outright, which triggers immediate capital gains tax on every dollar of appreciation. At a 20% long-term rate plus 3.8% NIIT, that's potentially \$5,800+ in taxes on a position with significant gains. The borrow route costs you 4-5% APR interest but generates zero capital gains.
+Compare this to selling \$340 of LINK outright, which triggers immediate capital gains tax on every dollar of appreciation. At a 20% long-term rate plus 3.8% NIIT, that's potentially \$80+ in taxes on a position with significant gains. Scale that up to a real portfolio and the savings are substantial. The borrow route costs you 4-5% APR interest but generates zero capital gains.
 
 ---
 
@@ -204,33 +204,26 @@ Liquidation is a **taxable event** and often a painful one — you recognize gai
 
 ### Math example
 
-You deposited 7,228 LINK at a cost basis of \$8.50/LINK (\$61,438 total basis).
+You deposited 100 LINK at a cost basis of \$8.50/LINK (\$850 total basis).
 
-LINK drops to \$4.00. Aave liquidates 3,000 LINK at \$4.00 to cover part of your debt.
+LINK drops to \$4.00. Aave liquidates 40 LINK at \$4.00 to cover part of your debt.
 
-- Proceeds: 3,000 × \$4.00 = \$12,000
-- Basis: 3,000 × \$8.50 = \$25,500
-- **Capital loss: -\$13,500**
+- Proceeds: 40 × \$4.00 = \$160
+- Basis: 40 × \$8.50 = \$340
+- **Capital loss: -\$180**
 
-The loss is real, but you can only deduct \$3,000/year against ordinary income (the rest carries forward). Meanwhile you've lost both the LINK and the tax benefit is time-delayed.
+Small numbers in this example, but scale it to a real portfolio and the damage compounds. The loss is real, but you can only deduct \$3,000/year against ordinary income (the rest carries forward). Meanwhile you've lost both the LINK and the tax benefit is time-delayed.
 
 ---
 
-## What I Actually Do
+## How to Treat This on Your Taxes
 
-For full transparency — my current position on Aave:
+Here's a reasonable approach based on the analysis above:
 
-- **Collateral**: ~\$65,777 in LINK
-- **Debt**: \$24,599 USDC
-- **Health Factor**: 1.90
-- **Liquidation threshold**: 71%
-
-I treat this as follows for tax purposes:
-
-1. **Deposit** — Not reported as a sale. I treat LINK → aLINK as a non-taxable collateral pledge, consistent with the TradFi margin analog and IRS Notice 2024-57 on wrapped tokens.
-2. **Borrow** — Not reported. Loan proceeds aren't income.
-3. **Interest accrued** — I track the USDC interest cost. Since I used the proceeds to buy more LINK (investment purpose), I intend to deduct the interest as investment interest expense under §163(d).
-4. **I maintain a health factor > 1.8** to avoid the one unambiguously taxable event: liquidation.
+1. **Deposit** — Don't report as a sale. Treat LINK → aLINK as a non-taxable collateral pledge, consistent with the TradFi margin analog and IRS Notice 2024-57 on wrapped tokens.
+2. **Borrow** — Don't report. Loan proceeds aren't income.
+3. **Interest accrued** — Track the USDC interest cost. If you used the proceeds for investment purposes (e.g., buying more crypto), the interest may be deductible as investment interest expense under §163(d).
+4. **Maintain a healthy health factor** (> 1.8 at minimum) to avoid the one unambiguously taxable event: liquidation.
 
 The single most important tax decision in DeFi lending is **not** whether the deposit is taxable. It's whether you maintain enough margin to avoid liquidation. That's where real, undeniable tax liability gets created involuntarily.
 
