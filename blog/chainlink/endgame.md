@@ -251,6 +251,123 @@ Otherwise, the perpetual collateral + staking yield model dominates.
 
 ---
 
+## The Dividend Arbitrage — Borrow USDC, Buy Yield
+
+There's a third path that combines the tax advantages of borrowing with real cash flow generation: **borrow USDC against your LINK and deploy it into high-dividend equities.**
+
+This isn't just clever — it's one of the few strategies where every layer generates a tax advantage.
+
+### How It Works
+
+1. Collateralize LINK on Aave (no taxable event)
+2. Borrow USDC at ~4–5% APR (no taxable event)
+3. Convert USDC → USD → Buy dividend stocks yielding 6–10%+
+4. Collect dividends that exceed your borrow cost
+5. Use the dividend income to service the Aave interest — or reinvest
+
+**You're arbitraging the spread between DeFi borrow rates and TradFi dividend yields.** Aave charges 4–5%. Plenty of well-established dividend payers yield more than that.
+
+### The Tax Angle — Investment Interest Deduction
+
+Here's the key: under IRC §163(d), **interest paid on debt used to purchase investments is deductible** against net investment income. This is the investment interest expense deduction.
+
+When you borrow USDC on Aave and use it to buy dividend stocks:
+- The Aave interest cost becomes **deductible**
+- The dividend income is taxable — but qualified dividends are taxed at 15–20%, not ordinary rates
+- The deduction offsets the income, reducing your net tax
+
+**Example math:**
+
+Assume you borrow \$100k USDC at 4.5% APR and buy a portfolio yielding 7% in dividends.
+
+| Line Item | Amount |
+|-----------|--------|
+| Dividend income (7% × \$100k) | +\$7,000 |
+| Aave interest cost (4.5% × \$100k) | -\$4,500 |
+| **Net cash flow** | **+\$2,500** |
+| Tax on dividends (20% qualified rate) | -\$1,400 |
+| Tax savings from interest deduction (24% marginal rate × \$4,500) | +\$1,080 |
+| **Net after-tax income** | **+\$2,180** |
+
+You generated \$2,180/year in after-tax income **without selling a single LINK.** Your collateral keeps appreciating. The interest is partially offset by the deduction. The dividend income covers the borrow cost with room to spare.
+
+### Target Universe — What Yields 6%+?
+
+You're not looking for meme stocks. You want **stable, high-yield equities** that can sustain their payout through cycles:
+
+**REITs (Real Estate Investment Trusts):**
+- Realty Income (O): ~5.5% yield, monthly dividends, 30-year track record
+- AGNC Investment (AGNC): ~14% yield (higher risk — mortgage REIT)
+- Vici Properties (VICI): ~5.8% yield, casino/experiential real estate
+
+**Energy MLPs and Midstream:**
+- Enterprise Products Partners (EPD): ~7% yield, 25 consecutive years of distribution increases
+- Energy Transfer (ET): ~8% yield
+
+**BDCs (Business Development Companies):**
+- Ares Capital (ARCC): ~9% yield, largest publicly traded BDC
+- Main Street Capital (MAIN): ~6% yield, monthly dividends
+
+**Covered Call ETFs:**
+- JEPI (JPMorgan Equity Premium Income): ~7.5% yield
+- QYLD (Global X NASDAQ-100 Covered Call): ~11% yield
+
+**Important note on qualified dividends:** REIT dividends and BDC dividends are generally taxed as ordinary income, not at the 15-20% qualified rate. MLPs have their own K-1 complexity. Covered call ETF income is partially return of capital. The tax math varies by instrument — but the investment interest deduction applies regardless.
+
+### The Full Stack — Three Layers of Yield
+
+At scale, you end up with three simultaneous income streams:
+
+| Layer | Source | Yield | Tax Treatment |
+|-------|--------|-------|---------------|
+| 1 | LINK staking | ~5% on collateral | Ordinary income |
+| 2 | Dividend portfolio | ~7% on borrowed capital | Qualified/ordinary (varies) |
+| 3 | LINK price appreciation | Variable | Unrealized (deferred) |
+
+**Combined example:**
+
+\$500k in LINK, staked at 5% = \$25k/year staking income.
+
+Collateralize \$200k (40% LTV). Borrow \$80k USDC at 4.5% = \$3,600/year interest.
+
+Deploy \$80k into dividend portfolio at 7% = \$5,600/year dividends.
+
+| Income stream | Annual |
+|--------------|--------|
+| Staking yield | \$25,000 |
+| Dividend income | \$5,600 |
+| Aave interest (deductible) | -\$3,600 |
+| **Gross income** | **\$27,000** |
+| Tax on staking (~24%) | -\$6,000 |
+| Tax on dividends (~20%) | -\$1,120 |
+| Interest deduction tax savings (~24%) | +\$864 |
+| **Net after-tax income** | **\$20,744** |
+
+That's \$20.7k/year in spendable income from a \$500k LINK position — **without selling a single token, without depleting principal, and with your LINK still appreciating.**
+
+If LINK doubles, your principal goes to \$1M, your staking yield doubles, you can borrow more, buy more dividend stocks, and the income compounds.
+
+### Why This Beats Selling
+
+Compare to selling \$80k of LINK outright to buy the same dividend portfolio:
+- Capital gains tax on the sale: ~\$19k (assuming \$8 cost basis, \$80k sale)
+- Net invested: \$61k
+- Dividend income: \$4,270/year (7% of \$61k)
+- Lost LINK upside: permanent
+
+By borrowing instead of selling, you keep all the LINK, deduct the interest, and deploy the full \$80k (not \$61k post-tax). It's strictly dominant.
+
+### The Risk
+
+This is a leverage strategy. You're borrowing to invest, which amplifies both gains and losses:
+- If your dividend stocks drop 20% while LINK drops 40%, you're losing on both ends
+- The Aave interest accrues regardless of whether your dividends are paid
+- If a company cuts its dividend (see: AT&T in 2022, Intel in 2023), your yield thesis breaks
+
+**Mitigation:** Keep total leverage modest (40% LTV max), diversify across 8–10 dividend payers, avoid chasing the highest yields (anything over 10% is usually a trap), and maintain a 6-month interest reserve in stablecoins so you can weather dry spells.
+
+---
+
 ## Risk Management — What Could Go Wrong
 
 No strategy is risk-free. Here are the failure modes and how to hedge them.
