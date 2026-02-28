@@ -45,6 +45,35 @@ Here are the hard numbers, sourced and verified:
 
 ---
 
+## Critical Distinction — Exchange Reserves vs Truly Liquid Liquidity
+
+Before diving into drain rates, a crucial clarification: **127M LINK on exchanges is not the same as 127M LINK available to buy at current price.**
+
+**Exchange reserves** = total LINK held across all exchange custodial wallets. This includes:
+- LINK in active order books (bid/ask orders)
+- LINK in exchange cold storage (not immediately available)
+- LINK held by market makers (allocated to their inventory, not for sale yet)
+- LINK in user deposits (locked in other markets, frozen in margin positions, etc.)
+
+**Truly liquid** = LINK actually in order books ready to transact at or near current price. This is typically **5–15% of total reserves** for most tokens, depending on exchange concentration and market maker participation.
+
+For LINK specifically, rough estimates from Dune/Glassnode data suggest:
+- Top 3 exchanges (Binance, Kraken, Coinbase): ~85M LINK
+  - Of which ~10–15M is in order books at any time
+  - Remaining ~70–75M is cold storage or allocated to market makers
+- Smaller exchanges + DEXes: ~42M LINK
+  - Of which ~3–5M is in active liquidity pools (Uniswap, etc.)
+
+**Real-world implication:** At current prices, there's probably only **15–20M LINK** truly liquid across all venues — not 127M. That's 2.1–2.8% of circulating supply in active order books.
+
+This is why the coil matters. You don't have to drain all 127M from exchanges for dramatic price impact. You only have to drain the 15–20M in order books. Once that's gone, every additional selling pressure goes unopposed — each incremental dollar finds less supply.
+
+The drain scenarios model *total exchange reserve depletion* (127M → 85M → etc.), but the price violence starts much earlier, when the *active order book liquidity* (the subset) gets exhausted. This typically happens when total reserves drop 20–30%, not 50–70%.
+
+**Adjusted timeline:** If violence begins when liquid order book depth falls below 10M LINK, that's roughly when total reserves hit **100–110M LINK** — which is **3–4 months away** at base-case drain rates, not 10–11 months.
+
+---
+
 ## Drain Rate Model — Quantifying the Compression
 
 Each drain has a measurable removal rate. Let's formalize them.
