@@ -75,13 +75,19 @@ where $t$ is years from today.
 
 ### Drain 2 — Staking Growth
 
-Current staking: ~42.8M LINK (6.05% of market cap per DefiLlama). The Chainlink staking mechanism has been expanding — v0.2 rolled out in late 2024, and staking capacity keeps growing as TVS demands more economic security.
+Current staking: ~42.8M LINK (6.05% of market cap per DefiLlama). However, Chainlink's staking v0.2 protocol has **per-pool capacity caps** — meaning there's a hard ceiling on how much LINK can be staked right now. Pools are either full or nearly full, and new stakers must wait for capacity to open.
 
-The [security floor analysis](/blog/chainlink/supply_floor/) showed that proper security requires staked value ≥ 10% of TVS. At current TVS of \$41B, that implies a need for \$4.1B in staked value — versus the current \$397.5M. The gap is 10x.
+This matters for the drain rate. The v0.2 cap means staking growth is **gated by protocol upgrades**, not by organic demand. The ~43M LINK currently staked is near the cap. Material growth requires v0.3 or v1.0, which don't have announced launch dates.
 
-Staking will grow through two mechanisms: higher price (same LINK, more dollar value) and more LINK staked. Assume staking participation grows from ~43M to ~60M LINK by end 2027 (a conservative 40% increase as staking rewards improve and new pools open).
+The [security floor analysis](/blog/chainlink/supply_floor/) showed that proper security requires staked value ≥ 10% of TVS. At current TVS of \$41B, that implies a need for \$4.1B in staked value — versus the current \$397.5M. The gap is 10x. The demand to stake exists. The capacity doesn't — yet.
 
-$$S_{\text{drain}}(t) \approx 5\text{–}8 \text{ M LINK per year incremental}$$
+**Conservative projection (v0.2 cap persists through 2026):** Staking growth is negligible — maybe 1–2M additional LINK as existing pools adjust and small capacity expansions roll out.
+
+**Optimistic projection (v0.3 launches H2 2026):** New capacity could absorb 5–10M LINK within months of launch, as pent-up demand floods in.
+
+$$S_{\text{drain}}(t) \approx 1\text{–}3 \text{ M LINK per year (capacity-constrained)}$$
+
+This is significantly lower than the other drains. Staking becomes a major factor *if and when* the protocol lifts caps — which is more of a step function than a smooth drain. When it happens, it could be a sudden 10–20M LINK absorption event rather than a gradual flow.
 
 ### Drain 3 — ETF Custody
 
@@ -124,15 +130,17 @@ Adding the five drains:
 | Drain | Annual rate (M LINK) | Confidence |
 |:---|:---|:---|
 | Reserve | 7.0 | High (observable) |
-| Staking growth | 5.0–8.0 | Medium |
+| Staking growth | 1.0–3.0 (capacity-capped) | Medium |
 | ETF custody | 20.0–30.0 | Medium-High |
 | CME hedging | 5.0–15.0 | Medium |
 | Institutional | 3.0–5.0 | Low-Medium |
-| **Total** | **40.0–65.0** | — |
+| **Total** | **36.0–60.0** | — |
 
-$$D_{\text{total}} \approx 40\text{–}65 \text{ M LINK/year leaving exchanges}$$
+$$D_{\text{total}} \approx 36\text{–}60 \text{ M LINK/year leaving exchanges}$$
 
-Against a starting exchange reserve of ~127M LINK, the total drain consumes **31–51% of exchange float per year.**
+Against a starting exchange reserve of ~127M LINK, the total drain consumes **28–47% of exchange float per year.**
+
+**Note on staking as a wildcard:** The staking drain is currently the weakest of the five due to v0.2 capacity constraints. But it's also the most explosive potential catalyst. If Chainlink lifts caps (v0.3 or v1.0 launch), the pent-up demand to stake could absorb 10–20M LINK in a matter of weeks — a step-function drain that would accelerate the timeline dramatically. Think of it as a coiled spring within the coiled spring.
 
 ---
 
@@ -154,16 +162,18 @@ $$\text{Exchange reserves}(t) = 127 - D_{\text{total}} \times t$$
 
 | Scenario | Annual drain | Months to 100M | Months to 90M (14%) | Months to 85M (12%) |
 |:---|:---|:---|:---|:---|
-| Conservative (40M/yr) | 40M | 8.1 | 11.1 | 12.6 |
-| Base (52M/yr) | 52M | 6.2 | 8.5 | 9.7 |
-| Aggressive (65M/yr) | 65M | 5.0 | 6.8 | 7.8 |
+| Conservative (36M/yr) | 36M | 9.0 | 12.3 | 14.0 |
+| Base (48M/yr) | 48M | 6.8 | 9.3 | 10.5 |
+| Aggressive (60M/yr) | 60M | 5.4 | 7.4 | 8.4 |
 
 **Translation:**
-- **Conservative:** Exchange reserves hit the violence zone (~85–90M) by **January–February 2027**
-- **Base case:** Violence zone reached by **November–December 2026**
-- **Aggressive:** Violence zone reached by **September–October 2026**
+- **Conservative:** Exchange reserves hit the violence zone (~85–90M) by **March–April 2027**
+- **Base case:** Violence zone reached by **December 2026–January 2027**
+- **Aggressive:** Violence zone reached by **October–November 2026**
 
-The base case says the coil reaches critical tension in roughly **9–10 months from now.**
+The base case says the coil reaches critical tension in roughly **10–11 months from now.**
+
+**Staking cap-lift scenario:** If Chainlink launches v0.3 with expanded capacity mid-2026, add a one-time 10–15M LINK absorption event to any of the above scenarios. That would compress the conservative timeline by ~3 months and push the violence zone into **late 2026** even under conservative assumptions.
 
 ### Price Impact at Different Reserve Levels
 
@@ -497,7 +507,7 @@ The model breaks if any of these occur:
 
 ## The Bottom Line
 
-The coil is a physics problem *plus* a sentiment problem. Five drains remove 40–65M LINK per year from exchanges. Starting float is 127M. The math says the order book gets critically thin in 9–12 months. After that, any catalyst of sufficient magnitude produces a violent structural repricing — and then retail FOMO pours gasoline on it.
+The coil is a physics problem *plus* a sentiment problem. Four reliable drains plus one capacity-gated wildcard (staking) remove 36–60M LINK per year from exchanges. Starting float is 127M. The math says the order book gets critically thin in 10–14 months. After that, any catalyst of sufficient magnitude produces a violent structural repricing — and then retail FOMO pours gasoline on it.
 
 The most likely scenario: **a gradual thinning through 2026, followed by a sharp structural move in Q4 2026 or Q1 2027, followed by a retail FOMO extension through Q1–Q3 2027.**
 

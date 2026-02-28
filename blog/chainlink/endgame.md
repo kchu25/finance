@@ -132,25 +132,25 @@ You're debt-free, diversified, and still holding 85% of your position. This is t
 - When you sell those rewards, it's a short-term or long-term gain depending on how long you held them after receiving them (usually short-term)
 - The principal stays untouched = no capital gains on the bulk of your position
 
-**Why this works:**
+**Why this works (with a caveat on staking capacity):**
 
-Let's say you have 8,500 LINK left after Phase 2 selling. At \$100/LINK, that's \$850k. Staked at 5% APY, you earn:
+As of early 2026, Chainlink's staking v0.2 protocol has **per-pool capacity caps**. You can't simply stake unlimited LINK at 5% APY — the protocol limits how much can go into each pool based on security requirements and economic design. Once your pool is full, you're either in a waitlist or earning lower rates in alternative pools.
 
-$$\text{Annual yield} = 8,500 \times 0.05 = 425 \text{ LINK/year}$$
+**Reality check:** If you have 8,500 LINK and staking pools are capped, you might only be able to stake 4,000–5,000 of them at full 5% APY. The remainder earns rewards in lower-tier pools (~2–3%) or doesn't earn at all until new capacity opens.
 
-At \$100/LINK, that's **\$42,500/year** in staking income. Tax treatment:
+Here's the adjusted math assuming you can stake **50% of your position** at 5% and the rest either earns lower rates or sits unstaked:
 
-1. When you receive 425 LINK as rewards, you report \$42,500 as ordinary income (taxed at your marginal rate, say 24% = \$10,200)
-2. When you sell those 425 LINK immediately, there's minimal gain (you received them at \$100, sold them at \$100), so negligible additional capital gains tax
+- 4,250 LINK staked at 5% = 212 LINK/year = \$21,200
+- 4,250 LINK in lower-tier pools at 2% = 85 LINK/year = \$8,500
+- **Total staking yield: \$29,700/year**
+- Tax on 297 LINK rewards (~24% marginal): \$7,120
+- **Net spendable income: \$22,580/year**
 
-**Net spendable income: \$32,300/year** without touching your 8,500 LINK principal.
+This is still solid — you're generating 2.7% net yield on your principal without selling. But it's not the full 5% dream.
 
-If LINK keeps appreciating, your principal grows while you live off yield. At \$150/LINK:
-- Principal: 8,500 LINK = \$1.275M
-- Annual yield: 425 LINK = \$63,750
-- Net after tax: ~\$48,500/year
+**The forward path:** Chainlink will likely roll out v0.3 and v1.0 with higher capacity. As new pools open, you can redeploy unstaked LINK into higher-yield opportunities. The 2% → 5% transition happens gradually as the protocol scales.
 
-You're living off the asset without depleting it.
+**The takeaway:** Phase 3 is still viable, but your timeline to "living fully off yield" extends. Instead of needing 2M LINK at \$100 to reach \$100k/year, you might need 3–4M LINK due to capacity constraints. This is still achievable at higher prices (\$150–200), but it's not immediate.
 
 ---
 
@@ -314,19 +314,21 @@ You're not looking for meme stocks. You want **stable, high-yield equities** tha
 
 **Important note on qualified dividends:** REIT dividends and BDC dividends are generally taxed as ordinary income, not at the 15-20% qualified rate. MLPs have their own K-1 complexity. Covered call ETF income is partially return of capital. The tax math varies by instrument — but the investment interest deduction applies regardless.
 
-### The Full Stack — Three Layers of Yield
+### The Full Stack — Three Layers of Yield (With Staking Capacity Reality)
 
-At scale, you end up with three simultaneous income streams:
+At scale, you can combine three income streams. However, due to Chainlink staking v0.2 capacity constraints, the actual blended yield is lower than the 5% headline rate:
 
-| Layer | Source | Yield | Tax Treatment |
-|-------|--------|-------|---------------|
-| 1 | LINK staking | ~5% on collateral | Ordinary income |
+| Layer | Source | Achievable Yield | Tax Treatment |
+|-------|--------|------------------|----------------|
+| 1 | LINK staking (capacity-limited) | ~2–4% blended* | Ordinary income |
 | 2 | Dividend portfolio | ~7% on borrowed capital | Qualified/ordinary (varies) |
 | 3 | LINK price appreciation | Variable | Unrealized (deferred) |
 
-**Combined example:**
+*Blended yield assumes 50% of your LINK can stake at 5% APY, remainder earns 2% in lower-tier pools or is unstaked pending capacity.
 
-\$500k in LINK, staked at 5% = \$25k/year staking income.
+**Realistic combined example:**
+
+\$500k in LINK, with 50% staked at 5% and 50% at 2% blended rate = **\$17.5k/year staking income** (vs \$25k at full capacity).
 
 Collateralize \$200k (40% LTV). Borrow \$80k USDC at 4.5% = \$3,600/year interest.
 
@@ -334,16 +336,18 @@ Deploy \$80k into dividend portfolio at 7% = \$5,600/year dividends.
 
 | Income stream | Annual |
 |--------------|--------|
-| Staking yield | \$25,000 |
+| Staking yield (blended 3.5%) | \$17,500 |
 | Dividend income | \$5,600 |
 | Aave interest (deductible) | -\$3,600 |
-| **Gross income** | **\$27,000** |
-| Tax on staking (~24%) | -\$6,000 |
+| **Gross income** | **\$19,500** |
+| Tax on staking (~24%) | -\$4,200 |
 | Tax on dividends (~20%) | -\$1,120 |
 | Interest deduction tax savings (~24%) | +\$864 |
-| **Net after-tax income** | **\$20,744** |
+| **Net after-tax income** | **\$15,044** |
 
-That's \$20.7k/year in spendable income from a \$500k LINK position — **without selling a single token, without depleting principal, and with your LINK still appreciating.**
+That's **\$15k/year in after-tax income** from a \$500k position at current staking capacity constraints. When v0.3 and v1.0 roll out with higher capacity, this scales toward \$20k+ as more of your LINK can stake at 5%.
+
+**The important part:** You're still generating meaningful income without selling, and your collateral appreciates. The staking cap doesn't prevent the strategy — it just means you hit full yield retirement at higher prices or higher LINK amounts than the idealized 5% full-capacity scenario.
 
 If LINK doubles, your principal goes to \$1M, your staking yield doubles, you can borrow more, buy more dividend stocks, and the income compounds.
 
